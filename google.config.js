@@ -1,11 +1,11 @@
 export default [
 	{
-		"id": "1352iFuTSDDFPNAXBbOaEXkF8mCdjPu6B43hpUF2P3C4",
-		"filepath": "src/data/copy.json"
+		id: "1E0fP3NYxnkaNx_nQ7uOvYJabtrB7t4cKJdcKX2sZfr8",
+		filepath: "src/data/copy.json"
 	},
 	{
-		"id": "1te65h_nywgXVAzvV-9E5fmHGblcKvctf_cNZgeam9Tk",
-		"gid": "0",
-		"filepath": "src/data/test.csv"
+		id: "1s17Nb4zZzy9kolcEme-kdh399GJSwi4D_N2C16aaIo4",
+		gid: "0",
+		filepath: "src/data/architecture.csv"
 	}
-]
+];

@@ -1,0 +1,29 @@
+<svg width="174" height="201" viewBox="0 0 174 201" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Box / Top Hole">
+<g id="Faces / Left / Top-block" clip-path="url(#clip0_384_15675)">
+<g id="Faces / Left / Base">
+<rect width="100" height="100" transform="matrix(0.866025 0.5 -2.20305e-08 1 0 50.8)" fill="#474F4F"/>
+<rect id="Rectangle 1" width="100" height="100" transform="matrix(0.866025 0.5 -2.20305e-08 1 0 50.8)" fill="#474F4F"/>
+</g>
+</g>
+<g id="Faces / Right / Top-Block">
+<g id="Faces / Right / Base">
+<rect id="right" width="100" height="100" transform="matrix(0.866025 -0.5 2.20305e-08 1 86.6025 100.795)" fill="#737981"/>
+</g>
+</g>
+<g id="Faces / Top / Pattern - Pressed-button">
+<g id="Faces / Top / Base">
+<rect id="top" width="100" height="100" transform="matrix(0.866025 0.5 -0.866025 0.5 86.6025 0.800007)" fill="#AFAFAF"/>
+</g>
+<g id="Pattern / Pressed-button">
+<path id="Subtract" d="M142.896 43.2998L142.895 58.3003L99.5929 83.3008L73.6122 83.3008L30.31 58.3003L30.3092 43.2998L73.6122 18.2989L99.5929 18.2989L142.896 43.2998Z" fill="black"/>
+<path id="Subtract_2" d="M128.822 45.1748L128.822 56.4248L96.3453 75.1753L76.8597 75.1753L44.383 56.4248L44.383 45.1748L76.8598 26.4243L96.3453 26.4243L128.822 45.1748Z" fill="black"/>
+</g>
+</g>
+</g>
+<defs>
+<clipPath id="clip0_384_15675">
+<rect width="100" height="100" fill="white" transform="matrix(0.866025 0.5 -2.20305e-08 1 0 50.8)"/>
+</clipPath>
+</defs>
+</svg>

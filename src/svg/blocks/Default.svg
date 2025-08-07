@@ -1,0 +1,14 @@
+<svg width="174" height="200" viewBox="0 0 174 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Box / Default">
+<g id="Faces / Left / Base">
+<rect width="100" height="100" transform="matrix(0.866025 0.5 -2.20305e-08 1 0 50)" fill="#474F4F"/>
+<rect id="Rectangle 1" width="100" height="100" transform="matrix(0.866025 0.5 -2.20305e-08 1 0 50)" fill="#474F4F"/>
+</g>
+<g id="Faces / Right / Base">
+<rect id="right" width="100" height="100" transform="matrix(0.866025 -0.5 2.20305e-08 1 86.6025 99.9952)" fill="#737981"/>
+</g>
+<g id="Faces / Top / Base">
+<rect id="top" width="100" height="100" transform="matrix(0.866025 0.5 -0.866025 0.5 86.6025 0)" fill="#AFAFAF"/>
+</g>
+</g>
+</svg>

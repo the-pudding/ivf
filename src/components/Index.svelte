@@ -1,11 +1,11 @@
 <script>
-	import { getContext } from "svelte";
-	import Footer from "$components/Footer.svelte";
-
-	// const copy = getContext("copy");
-	// const data = getContext("data");
+	import BlockByBlock from "$components/BlockByBlock.svelte";
+	import World from "$components/World.svelte";
 </script>
 
-<svelte:boundary onerror={(e) => console.error(e)}>
-	<!-- <Footer recirc={true} /> -->
-</svelte:boundary>
+<!-- <BlockByBlock /> -->
+<World />
+
+<!-- <svelte:boundary onerror={(e) => console.error(e)}>
+	<Footer recirc={true} />
+</svelte:boundary> -->

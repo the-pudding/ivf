@@ -1,0 +1,18 @@
+<svg width="175" height="201" viewBox="0 0 175 201" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Box / Right (L) Arch">
+<g id="Group 15">
+<g id="Faces / Left / Base">
+<rect width="100" height="100" transform="matrix(0.866025 0.5 -2.20305e-08 1 0.897461 50.2024)" fill="#474F4F"/>
+<rect id="Rectangle 1" width="100" height="100" transform="matrix(0.866025 0.5 -2.20305e-08 1 0.897461 50.2024)" fill="#474F4F"/>
+</g>
+<g id="Faces / Right / Arc-2">
+<g id="Faces / Right / Arc-1">
+<path id="Rectangle 1_2" d="M174.103 50.2024L87.5 100.202L87.5 200.202C88.4678 144.885 126.68 78.6994 174.103 50.2024Z" fill="#737981"/>
+</g>
+</g>
+<g id="Faces / Top / Base">
+<rect id="top" width="100" height="100" transform="matrix(0.866025 0.5 -0.866025 0.5 87.5 0.197601)" fill="#AFAFAF"/>
+</g>
+</g>
+</g>
+</svg>

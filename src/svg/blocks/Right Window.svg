@@ -1,0 +1,25 @@
+<svg width="174" height="200" viewBox="0 0 174 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Box / Right Window">
+<g id="Faces / Left / Window">
+<g id="Faces / Left / Base">
+<rect width="100" height="100" transform="matrix(-0.866025 0.5 2.20305e-08 1 174 50)" fill="#737981"/>
+<rect id="Rectangle 1" width="100" height="100" transform="matrix(-0.866025 0.5 2.20305e-08 1 174 50)" fill="#737981"/>
+</g>
+<g id="Pattern / Window">
+<path id="window" d="M141.957 86.5L130.699 75L119.44 99.5L119.44 181.5L141.957 168.5L141.957 86.5Z" fill="url(#paint0_linear_384_15740)"/>
+</g>
+</g>
+<g id="Faces / Right / Base">
+<rect id="right" width="100" height="100" transform="matrix(-0.866025 -0.5 -2.20305e-08 1 87.3975 99.9952)" fill="#474F4F"/>
+</g>
+<g id="Faces / Top / Base">
+<rect id="top" width="100" height="100" transform="matrix(-0.866025 0.5 0.866025 0.5 87.3975 0)" fill="#AFAFAF"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_384_15740" x1="141.957" y1="119.088" x2="119.44" y2="119.088" gradientUnits="userSpaceOnUse">
+<stop stop-color="#393939"/>
+<stop offset="1"/>
+</linearGradient>
+</defs>
+</svg>

@@ -1,0 +1,23 @@
+<svg width="174" height="300" viewBox="0 0 174 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Box / Right Opening">
+<g id="Faces / Door">
+<g id="Faces / Left / Base">
+<rect width="100" height="200" transform="matrix(0.866025 0.5 -2.20305e-08 1 0 50)" fill="#474F4F"/>
+<rect id="Rectangle 1" width="100" height="200" transform="matrix(0.866025 0.5 -2.20305e-08 1 0 50)" fill="#474F4F"/>
+</g>
+<path id="Subtract" d="M79.6744 148.579L79.6744 295.854L6.92822 253.854L6.92822 106.579L43.2319 85.5244L79.6744 148.579Z" fill="url(#paint0_linear_384_15769)"/>
+</g>
+<g id="Faces / Right / Base">
+<rect id="right" width="100" height="200" transform="matrix(0.866025 -0.5 2.20305e-08 1 86.6025 100)" fill="#737981"/>
+</g>
+<g id="Faces / Top / Base">
+<rect id="top" width="100" height="100" transform="matrix(0.866025 0.5 -0.866025 0.5 86.6025 0)" fill="#AFAFAF"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_384_15769" x1="-11.7009" y1="208.469" x2="80.9486" y2="223.01" gradientUnits="userSpaceOnUse">
+<stop/>
+<stop offset="1" stop-color="#393939"/>
+</linearGradient>
+</defs>
+</svg>

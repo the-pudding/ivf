@@ -11,7 +11,7 @@
 	 * optional params with defaults
 	 * <Scrolly root={null} top={0} bottom={0} increments={100}>
 	 */
-	
+
 	let {
 		root = null,
 		top = 0,
@@ -27,7 +27,7 @@
 	let intersectionObservers = [];
 	let container = undefined;
 
-	function mostInView () {
+	function mostInView() {
 		let maxRatio = 0;
 		let maxIndex = 0;
 		for (let i = 0; i < steps.length; i++) {
@@ -39,7 +39,7 @@
 
 		if (maxRatio > 0) value = maxIndex;
 		else value = undefined;
-	};
+	}
 
 	function createObserver(node, index) {
 		const handleIntersect = (e) => {
@@ -79,7 +79,6 @@
 		bottom;
 		update();
 	});
-
 </script>
 
 <div bind:this={container}>
