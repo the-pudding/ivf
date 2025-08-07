@@ -1,36 +1,4 @@
-<!doctype html>
-<html lang="en">
-
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	
-		<link href="./_app/immutable/assets/0.CJFRmKi0.css" rel="stylesheet">
-		<link href="./_app/immutable/assets/2.DHIGB-JZ.css" rel="stylesheet">
-		<link rel="modulepreload" href="./_app/immutable/entry/start.CFTwBO4I.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/C6YkmW9M.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/CDi5ttmh.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/BwUKTUmn.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/DnTbB_N4.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/BHA3XBc5.js">
-		<link rel="modulepreload" href="./_app/immutable/entry/app.DnB2MwyU.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/BbURyVeR.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/BbVfF0Dv.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/CWj6FrbW.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/TPrTWOy-.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/CE_GOirL.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/BZigAb59.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/0.uaiP5FiK.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/DBhy04lY.js">
-		<link rel="modulepreload" href="./_app/immutable/nodes/2.BA2QW_Wy.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/Dtp-zxGf.js">
-		<link rel="modulepreload" href="./_app/immutable/chunks/BvPv_fYZ.js"><!--[--><meta name="description" content="Description TK"/> <meta name="author" content="The Pudding"/> <meta name="news_keywords" content=""/> <meta property="og:title" content="Title TK"/> <meta property="og:site_name" content="The Pudding"/> <meta property="og:url" content="https://pudding.cool"/> <meta property="og:description" content="Description TK"/> <meta property="og:type" content="article"/> <meta property="og:locale" content="en_US"/> <meta property="og:image" content="https://pudding.cool/assets/social-facebook.jpg"/> <meta property="og:image:type" content="image/jpeg"/> <meta property="og:image:width" content="1200"/> <meta property="og:image:height" content="628"/> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:site" content="https://pudding.cool"/> <meta name="twitter:creator" content="@puddingviz"/> <meta name="twitter:title" content="Title TK"/> <meta name="twitter:description" content="Description TK"/> <meta name="twitter:image:src" content="https://pudding.cool/assets/social-twitter.jpg"/> <meta name="robots" content="max-image-preview:large"/> <link rel="canonical" href="https://pudding.cool/"/> <!--[--><link rel="preload" href="https://pudding.cool/assets/fonts/tiempos/TiemposTextWeb-Regular.woff2" as="font" type="font/woff2" crossorigin=""/><link rel="preload" href="https://pudding.cool/assets/fonts/tiempos/TiemposTextWeb-Bold.woff2" as="font" type="font/woff2" crossorigin=""/><link rel="preload" href="https://pudding.cool/assets/fonts/atlas/AtlasGrotesk-Regular-Web.woff2" as="font" type="font/woff2" crossorigin=""/><link rel="preload" href="https://pudding.cool/assets/fonts/atlas/AtlasGrotesk-Bold-Web.woff2" as="font" type="font/woff2" crossorigin=""/><!--]--><!--]--><title>Title TK</title>
-</head>
-
-<body>
-	<a href="#content" class="skip-to-main">Skip to main content</a>
-	<div><!--[--><!--[--><!----><header></header><!----> <main id="content"><!----><!----> <section id="scrolly" class="left svelte-zpdlep"><div class="sticky svelte-zpdlep"><div class="svg-wrapper svelte-zpdlep"><!----><?xml version="1.0" encoding="UTF-8"?>
+import"../chunks/CWj6FrbW.js";import{a1 as X,a2 as t,A as E,aE as s1,j as o,z as R,f as t1,o as _,a6 as j,B as N,a8 as C,C as h,D as G,aF as D}from"../chunks/CDi5ttmh.js";import{f as w,a as U,d as o1}from"../chunks/BbVfF0Dv.js";import{k as l1,f as a1,a as p1}from"../chunks/BbURyVeR.js";import{e as H,i as J,s as p,a as K,c as n1}from"../chunks/Dtp-zxGf.js";import{p as b}from"../chunks/BZigAb59.js";import{o as e1}from"../chunks/BHA3XBc5.js";import{h as f1,S as i1,c as $}from"../chunks/BvPv_fYZ.js";var r1=w('<link rel="preload" as="font" type="font/woff2" crossorigin=""/>'),c1=w('<meta name="description"/> <meta name="author" content="The Pudding"/> <meta name="news_keywords"/> <meta property="og:title"/> <meta property="og:site_name" content="The Pudding"/> <meta property="og:url"/> <meta property="og:description"/> <meta property="og:type" content="article"/> <meta property="og:locale" content="en_US"/> <meta property="og:image"/> <meta property="og:image:type" content="image/jpeg"/> <meta property="og:image:width" content="1200"/> <meta property="og:image:height" content="628"/> <meta name="twitter:card" content="summary_large_image"/> <meta name="twitter:site" content="https://pudding.cool"/> <meta name="twitter:creator" content="@puddingviz"/> <meta name="twitter:title"/> <meta name="twitter:description"/> <meta name="twitter:image:src"/> <meta name="robots" content="max-image-preview:large"/> <link rel="canonical"/> <!>',1);function d1(i,s){let r=b(s,"title",3,"Title TK"),f=b(s,"description",3,"Description TK"),l=b(s,"url",3,"https://pudding.cool"),u=b(s,"keywords",3,""),y=b(s,"preloadFont",19,()=>[]);l1(n=>{var c=c1(),e=X(c),m=t(e,4),M=t(m,2),v=t(M,4),x=t(v,2),Z=t(x,6),k=t(Z,14),T=t(k,2),P=t(T,2),S=t(P,4),F=t(S,2);H(F,17,y,J,(a,A)=>{var d=r1();E(()=>p(d,"href",o(A))),U(a,d)}),E(()=>{s1.title=r(),p(e,"content",f()),p(m,"content",u()),p(M,"content",r()),p(v,"content",l()),p(x,"content",f()),p(Z,"content",`${l()??""}/assets/social-facebook.jpg`),p(k,"content",r()),p(T,"content",f()),p(P,"content",`${l()??""}/assets/social-twitter.jpg`),p(S,"href",`${l()??""}/`)}),U(n,c)})}const y1=`<?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 1868 5300">
   <!-- Generator: Adobe Illustrator 29.6.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 9)  -->
   <defs>
@@ -3260,30 +3228,4 @@
       </g>
     </g>
   </g>
-</svg><!----></div></div> <div class="steps svelte-zpdlep"><div><!--[--><div class="step svelte-zpdlep"><p>I never thought becoming a mom was going to be an issue for me. My paternal grandmother had 13 children. My mother’s mom had 6. I came from a fertile group of women. But alas, I was not able to become pregnant after 12 months of trying and was sent on the route of IVF.</p></div><div class="step svelte-zpdlep"><p>In vitro fertilization, which is more commonly known as IVF, is an obstacle course of logistics, a test of your physical and emotional stamina, and a drain on your savings. Many folks compare women who go through IVF to warriors.</p></div><div class="step svelte-zpdlep"><p>That’s likely because doing IVF can feel like a quest with a series of challenges.</p></div><div class="step svelte-zpdlep"><p>First there’s the egg retrieval and making of embryos. Your body must withstand an ungodly amount of needles for this process. There are the daily hormonal injections, first 2 and then 3 needles a day.</p></div><div class="step svelte-zpdlep"><p>In between there are the doctor’s appointments, which includes another needle to draw blood every 2-3 days, and the weekly fertility acupuncture sessions.</p></div><div class="step svelte-zpdlep"><p>Throughout all of this you have to solve a jigsaw puzzle that is your schedule.</p></div><div class="step svelte-zpdlep"><p>You have to take on giant healthcare bureaucrats — many who want to deny your claims and support staff that confuse your case.</p></div><div class="step svelte-zpdlep"><p>One time, our fertility clinic did not send in our prescription on time, and I had to travel across the city to pick up medications a friend had left over from her cycle.</p></div><div class="step svelte-zpdlep"><p>Another time, I was sent to the wrong clinic for an appointment.</p></div><div class="step svelte-zpdlep"><p>And yet another, I received an automated text message from the fertility clinic falsely stating that I owed more than $10,000 while I was in the middle of sobbing over some other bad test results.</p></div><div class="step svelte-zpdlep"><p>You lose resources — money, time and sanity.</p></div><div class="step svelte-zpdlep"><p>And still, if you’ve braved all the hoops and hurdles there’s an element of sheer luck that might foil you.</p></div><div class="step svelte-zpdlep"><p>And through it all you have to keep on hope, you have to do research to find other doctors who are able to help. And you have to keep believing that in the</p></div><div class="step svelte-zpdlep"><p>Like with any quest, you meet people along the way. You bond with many who give you strength.</p></div><div class="step svelte-zpdlep"><p>IVF feels like a journey that is marred with complicated feelings. You feel shame because your body is not doing what it is “supposed to do.” During the process, you feel like cattle being moved through a terrible factory, constantly reacting to forces that are out of your control. And above all, you feel lonely in your journey because it can seem like a taboo subject. But when I opened up, I found many people from all walks of life and all experiences to support me.</p></div><div class="step svelte-zpdlep"><p>There was Simone, a close friend who went through IVF right before I started my journey and who asked me for updates on major milestones during my journey.</p></div><div class="step svelte-zpdlep"><p>There were my friends whom I bumped into at the clinic and those who told me they were doing egg retrievals or IVF after I mentioned my own fertility struggles. We would walk alongside one another for part of each other’s journeys and even when our paths diverged, we’d still check in.</p></div><div class="step svelte-zpdlep"><p>And then were the many women online. During moments of crippling anxiety and late night Google searches, I found similar solidarity in the countless women who had posted on Reddit forums or on Facebook.</p></div><div class="step svelte-zpdlep"><p>Their collective encouragement felt a bit like a crowd on the sidelines, cheering me on during a marathon.</p></div><div class="step svelte-zpdlep"><p>You can’t do all this alone and everyone is so excited for you to meet your baby.</p></div><!--]--><!----></div><!----></div></section> <button class="svelte-zpdlep">mom</button> <button class="svelte-zpdlep">baby</button><!----><!----><!----></main><!----><!--]--> <!--[!--><!--]--><!--]-->
-			
-			<script>
-				{
-					__sveltekit_1fcw7ec = {
-						base: new URL(".", location).pathname.slice(0, -1)
-					};
-
-					const element = document.currentScript.parentElement;
-
-					Promise.all([
-						import("./_app/immutable/entry/start.CFTwBO4I.js"),
-						import("./_app/immutable/entry/app.DnB2MwyU.js")
-					]).then(([kit, app]) => {
-						kit.start(app, element, {
-							node_ids: [0, 2],
-							data: [null,{type:"data",data:{},uses:{}}],
-							form: null,
-							error: null
-						});
-					});
-				}
-			</script>
-		</div>
-</body>
-
-</html>
+</svg>`;var v1=w("<div><p> </p></div>"),g1=(i,s)=>_(s,"left"),u1=(i,s)=>_(s,"right"),x1=w('<section id="scrolly"><div class="sticky svelte-zpdlep"><div class="svg-wrapper svelte-zpdlep"><!></div></div> <div class="steps svelte-zpdlep"><!></div></section> <button class="svelte-zpdlep">mom</button> <button class="svelte-zpdlep">baby</button>',1);function h1(i,s){R(s,!0);let r=0,f,l=[],u=0,y=j(!1),n=j("left"),c=C(()=>o(n)==="left"?"mom":"baby"),e=j(void 0);const m=(a,A=1e3)=>{if(o(y))return;_(y,!0);const d=r,I=a-d,L=performance.now(),z=V=>{const W=V-L,g=Math.min(W/A,1),B=d+I*g;r=B;const O=l[o(n)==="left"?0:1].getPointAtLength(B*u);f.setAttribute("transform",`translate(${O.x}, ${O.y})`),g<1?requestAnimationFrame(z):_(y,!1)};requestAnimationFrame(z)};t1(()=>{if(o(e)===void 0){m(0);return}const a=(o(e)+1)/$[o(c)].length;m(a)}),e1(()=>{f=document.getElementById("character"),l[0]=document.getElementById("left"),l[1]=document.getElementById("right"),document.getElementById("fade"),u=l[0].getTotalLength();const a=l[0].getPointAtLength(0);f.setAttribute("transform",`translate(${a.x}, ${a.y})`)});var M=x1(),v=X(M),x=h(v),Z=h(x),k=h(Z);f1(k,()=>y1),G(Z),G(x);var T=t(x,2),P=h(T);i1(P,{get value(){return o(e)},set value(a){_(e,a,!0)},children:(a,A)=>{var d=o1(),I=X(d);H(I,17,()=>$[o(c)],J,(L,z,V)=>{let W=()=>o(z).value;var g=v1();const B=C(()=>o(e)===V);let O;var q=h(g),Q=h(q,!0);G(q),G(g),E(Y=>{O=K(g,1,"step svelte-zpdlep",null,O,Y),p1(Q,W())},[()=>({active:o(B)})]),U(L,g)}),U(a,d)},$$slots:{default:!0}}),G(T),G(v);var S=t(v,2);S.__click=[g1,n];var F=t(S,2);F.__click=[u1,n],E(()=>K(v,1,n1(o(n)),"svelte-zpdlep")),U(i,M),N()}a1(["click"]);function G1(i){h1(i,{})}function U1(){console.log("--- --- --- --- --- ---"),console.log("svelte-starter: 6.13.0"),console.log("build: 2025-08-07-16:35"),console.log("--- --- --- --- --- ---")}var m1=w("<!> <!>",1);function k1(i,s){R(s,!0),U1();const r=["https://pudding.cool/assets/fonts/tiempos/TiemposTextWeb-Regular.woff2","https://pudding.cool/assets/fonts/tiempos/TiemposTextWeb-Bold.woff2","https://pudding.cool/assets/fonts/atlas/AtlasGrotesk-Regular-Web.woff2","https://pudding.cool/assets/fonts/atlas/AtlasGrotesk-Bold-Web.woff2"],{title:f,description:l,url:u,keywords:y}=$;D("copy",$),D("data",s.data);var n=m1(),c=X(n);d1(c,{title:f,description:l,url:u,preloadFont:r,keywords:y});var e=t(c,2);G1(e),U(i,n),N()}export{k1 as component};
