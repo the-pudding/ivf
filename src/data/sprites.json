@@ -1,1 +1,14 @@
-[{ "id": "mom", "rows": 7, "cols": 5, "frameWidth": 200, "frameHeight": 400 }]
+[
+	{
+		"id": "mom",
+		"rows": 7,
+		"cols": 5,
+		"frameWidth": 200,
+		"frameHeight": 400,
+		"frames": [
+			{ "index": 0, "x": 0, "y": 0, "name": "walk" },
+			{ "index": 1, "x": 200, "y": 0, "name": "walk" },
+			{ "index": 2, "x": 400, "y": 0, "name": "walk" }
+		]
+	}
+]

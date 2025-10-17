@@ -1,5 +1,6 @@
 <script>
 	import spriteData from "$data/sprites.json";
+	import { onDestroy } from "svelte";
 
 	let { id, steps, pathEl, pathLength } = $props();
 
@@ -8,19 +9,22 @@
 	const frameWidth = spriteData[0].frameWidth;
 	const frameHeight = spriteData[0].frameHeight;
 
+	const FRAMERATE = 300;
+
 	const scale = 0.25;
 	const width = frameWidth * scale;
 	const height = frameHeight * scale;
-	const frameX = 0;
-	const frameY = 0;
 
 	let lastSteps;
+	let cycleInterval;
 
 	let animating = $state(false);
 	let x = $state(0);
 	let y = $state(0);
 	let currentPercent = $state(0);
 	let flipped = $state(false);
+	let frameIndex = $state(0);
+	let frame = $derived(spriteData[0].frames[frameIndex]);
 
 	const percentToCoordinates = (percent) => {
 		const lengthAtPercent = (percent / 100) * pathLength;
@@ -80,11 +84,34 @@
 		});
 	};
 
+	const cycle = (cycleId) => {
+		if (cycleInterval) clearInterval(cycleInterval);
+		const frames = spriteData[0].frames.filter((d) => d.name === cycleId);
+
+		if (frames.length === 0) {
+			frameIndex = 0;
+			return;
+		}
+
+		frameIndex = +frames[0].index;
+
+		let i = 0;
+		cycleInterval = setInterval(() => {
+			if (i + 1 >= frames.length) i = 0;
+			else i += 1;
+
+			frameIndex = +frames[i].index;
+		}, FRAMERATE);
+	};
+
 	const performSteps = async () => {
 		for (const step of steps) {
 			flipped = step.flip === "TRUE";
 
+			cycle(step.cycle);
+
 			await moveTo(+step.percent, +step.duration);
+			if (cycleInterval) clearInterval(cycleInterval);
 		}
 	};
 
@@ -94,6 +121,10 @@
 			performSteps();
 		}
 	});
+
+	onDestroy(() => {
+		if (cycleInterval) clearInterval(cycleInterval);
+	});
 </script>
 
 <div
@@ -102,7 +133,7 @@
 	style:width={`${width}px`}
 	style:height={`${height}px`}
 	style:background-size={`calc(${cols} * 100%) calc(${rows} * 100%)`}
-	style:background-position={`${scale * frameWidth * frameX * -1}px ${scale * frameHeight * frameY * -1}px`}
+	style:background-position={`${scale * frame.x * -1}px ${scale * frame.y * -1}px`}
 	style:left={`${x}px`}
 	style:top={`${y}px`}
 ></div>
