@@ -1,5 +1,0 @@
-storyline,id,percent,sprite,cycle,flip,duration
-mom,start,0,mom,,FALSE,0
-mom,test,3,mom,walk,FALSE,1000
-mom,test,7,mom,walk,TRUE,1000
-mom,test-2,10,mom,walk,FALSE,1000

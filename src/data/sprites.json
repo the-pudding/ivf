@@ -8,7 +8,29 @@
 		"frames": [
 			{ "index": 0, "x": 0, "y": 0, "name": "walk" },
 			{ "index": 1, "x": 200, "y": 0, "name": "walk" },
-			{ "index": 2, "x": 400, "y": 0, "name": "walk" }
+			{ "index": 2, "x": 400, "y": 0, "name": "walk" },
+			{ "index": 3, "x": 600, "y": 0, "name": "walk-armor" },
+			{ "index": 4, "x": 800, "y": 0, "name": "walk-armor" },
+			{ "index": 5, "x": 0, "y": 400, "name": "walk-armor" },
+			{ "index": 6, "x": 200, "y": 400, "name": "walk-armor-backwards" },
+			{ "index": 7, "x": 400, "y": 400, "name": "walk-armor-backwards" },
+			{ "index": 8, "x": 600, "y": 400, "name": "walk-armor-backwards" },
+			{ "index": 9, "x": 800, "y": 400, "name": "walk-covered" },
+			{ "index": 10, "x": 0, "y": 800, "name": "walk-covered" },
+			{ "index": 11, "x": 200, "y": 800, "name": "walk-covered" }
+		]
+	},
+	{
+		"id": "embryo",
+		"rows": 8,
+		"cols": 4,
+		"frameWidth": 100,
+		"frameHeight": 100,
+		"frames": [
+			{ "index": 0, "x": 0, "y": 0, "name": "follicle" },
+			{ "index": 0, "x": 0, "y": 200, "name": "egg" },
+			{ "index": 0, "x": 0, "y": 400, "name": "early-embryo" },
+			{ "index": 0, "x": 0, "y": 600, "name": "embryo" }
 		]
 	}
 ]

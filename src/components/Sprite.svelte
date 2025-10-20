@@ -1,19 +1,15 @@
 <script>
 	import spriteData from "$data/sprites.json";
 	import { onDestroy } from "svelte";
+	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
+
+	let dimensions = new useWindowDimensions();
 
 	let { id, steps, pathEl, pathLength } = $props();
 
-	const rows = spriteData[0].rows;
-	const cols = spriteData[0].cols;
-	const frameWidth = spriteData[0].frameWidth;
-	const frameHeight = spriteData[0].frameHeight;
-
 	const FRAMERATE = 300;
-
-	const scale = 0.25;
-	const width = frameWidth * scale;
-	const height = frameHeight * scale;
+	const spriteDataForId = spriteData.find((d) => d.id === id);
+	const { rows, cols, frameWidth, frameHeight, frames } = spriteDataForId;
 
 	let lastSteps;
 	let cycleInterval;
@@ -24,7 +20,10 @@
 	let currentPercent = $state(0);
 	let flipped = $state(false);
 	let frameIndex = $state(0);
-	let frame = $derived(spriteData[0].frames[frameIndex]);
+	let frame = $derived(frames[frameIndex]);
+	let scale = $derived(dimensions.width / 3000);
+	const width = $derived(frameWidth * scale);
+	const height = $derived(frameHeight * scale);
 
 	const percentToCoordinates = (percent) => {
 		const lengthAtPercent = (percent / 100) * pathLength;
@@ -86,21 +85,21 @@
 
 	const cycle = (cycleId) => {
 		if (cycleInterval) clearInterval(cycleInterval);
-		const frames = spriteData[0].frames.filter((d) => d.name === cycleId);
+		const cycleFrames = frames.filter((d) => d.name === cycleId);
 
-		if (frames.length === 0) {
+		if (cycleFrames.length === 0) {
 			frameIndex = 0;
 			return;
 		}
 
-		frameIndex = +frames[0].index;
+		frameIndex = +cycleFrames[0].index;
 
 		let i = 0;
 		cycleInterval = setInterval(() => {
-			if (i + 1 >= frames.length) i = 0;
+			if (i + 1 >= cycleFrames.length) i = 0;
 			else i += 1;
 
-			frameIndex = +frames[i].index;
+			frameIndex = +cycleFrames[i].index;
 		}, FRAMERATE);
 	};
 
@@ -122,6 +121,12 @@
 		}
 	});
 
+	$effect(() => {
+		if (dimensions.width) {
+			moveTo(currentPercent, 0);
+		}
+	});
+
 	onDestroy(() => {
 		if (cycleInterval) clearInterval(cycleInterval);
 	});
@@ -132,6 +137,7 @@
 	class:flipped
 	style:width={`${width}px`}
 	style:height={`${height}px`}
+	style:background-image={`url("assets/sprites/${id}.png")`}
 	style:background-size={`calc(${cols} * 100%) calc(${rows} * 100%)`}
 	style:background-position={`${scale * frame.x * -1}px ${scale * frame.y * -1}px`}
 	style:left={`${x}px`}
@@ -141,8 +147,7 @@
 <style>
 	.sprite {
 		position: absolute;
-		transform: translate(-50%, -80%);
-		background-image: url("assets/sprites/mom.png");
+		transform: translate(-50%, -87%);
 	}
 
 	.flipped {

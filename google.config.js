@@ -6,6 +6,11 @@ export default [
 	{
 		id: "1Hmr-_TKwx__o3s8nMzQDb5b87kj_cnPYqGVS60upRH8",
 		gid: "309498899",
-		filepath: "src/data/beats.csv"
+		filepath: "src/data/beats-mom.csv"
+	},
+	{
+		id: "1Hmr-_TKwx__o3s8nMzQDb5b87kj_cnPYqGVS60upRH8",
+		gid: "1231807351",
+		filepath: "src/data/beats-baby.csv"
 	}
 ];

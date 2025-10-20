@@ -1,14 +1,19 @@
 <script>
 	import Side from "$components/Side.svelte";
 	import pathSvg from "$svg/paths.svg";
+	import momBeats from "$data/beats-mom.csv";
+	import babyBeats from "$data/beats-baby.csv";
+
+	let side = $state("mom");
 </script>
 
 <div class="world">
 	<img class="background" src="assets/images/background.png" alt="Background" />
+
 	{@html pathSvg}
 
-	<Side id="mom" />
-	<!-- <Side id="baby" /> -->
+	<Side id="mom" beats={momBeats} active={side === "mom"} bind:side />
+	<Side id="baby" beats={babyBeats} active={side === "baby"} bind:side />
 </div>
 
 <style>
@@ -19,7 +24,6 @@
 		width: 100%;
 		max-width: 1400px;
 		margin: 0 auto;
-		/* background: var(--color-black); */
 	}
 
 	img.background {
