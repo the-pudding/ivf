@@ -1,6 +1,6 @@
 storyline,id,percent,sprite,cycle,flip,duration
 mom,start,0,mom,,FALSE,0
-mom,test,3.5,mom,walk,FALSE,1000
+mom,test,3.5,mom,walk,FALSE,2000
 mom,test-2,6.9,mom,walk-armor,TRUE,1000
-mom,test-3,10.9,mom,walk-armor,FALSE,1000
-mom,test-4,13.6,mom,walk-covered,FALSE,1000
+mom,test-2,10.9,mom,walk-armor,FALSE,1000
+mom,test-3,13.6,mom,walk-covered,FALSE,1000

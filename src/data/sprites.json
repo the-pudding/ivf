@@ -9,6 +9,7 @@
 			{ "index": 0, "x": 0, "y": 0, "name": "walk" },
 			{ "index": 1, "x": 200, "y": 0, "name": "walk" },
 			{ "index": 2, "x": 400, "y": 0, "name": "walk" },
+			{ "index": 3, "x": 200, "y": 0, "name": "walk" },
 			{ "index": 3, "x": 600, "y": 0, "name": "walk-armor" },
 			{ "index": 4, "x": 800, "y": 0, "name": "walk-armor" },
 			{ "index": 5, "x": 0, "y": 400, "name": "walk-armor" },
@@ -28,6 +29,9 @@
 		"frameHeight": 100,
 		"frames": [
 			{ "index": 0, "x": 0, "y": 0, "name": "follicle" },
+			{ "index": 1, "x": 100, "y": 0, "name": "follicle" },
+			{ "index": 2, "x": 200, "y": 0, "name": "follicle" },
+			{ "index": 3, "x": 300, "y": 0, "name": "follicle" },
 			{ "index": 0, "x": 0, "y": 200, "name": "egg" },
 			{ "index": 0, "x": 0, "y": 400, "name": "early-embryo" },
 			{ "index": 0, "x": 0, "y": 600, "name": "embryo" }

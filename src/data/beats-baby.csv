@@ -1,3 +1,6 @@
-storyline,id,percent,sprite,cycle,flip,duration
-baby,start,0,embryo,,FALSE,0
-baby,test,3.5,embryo,,FALSE,1000
+storyline,id,percent,sprite,cycle,flip,duration,pathOffset,dupe
+baby,start,0,embryo,follicle,FALSE,0,,
+baby,test,10.9,embryo,follicle,FALSE,3000,,
+baby,test-2,13.6,embryo,,FALSE,1000,,a
+baby,test-2,13.6,embryo,,FALSE,1000,2,b
+baby,test-2,13.6,embryo,,FALSE,1000,-2,c

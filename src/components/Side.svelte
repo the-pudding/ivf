@@ -17,9 +17,19 @@
 
 	let beatI = $state(0);
 	let beatId = $derived(allBeats[beatI].id);
-	let spriteIds = $derived([
-		...new Set(beats.filter((d) => d.id === beatId).map((d) => d.sprite))
-	]);
+	let spriteIds = $derived(
+		beats
+			.filter((d) => d.id === beatId)
+			.reduce((acc, cur, i) => {
+				if (cur.dupe) {
+					acc.push(`${cur.sprite}-${cur.dupe}`);
+				} else if (!acc.includes(cur.sprite)) {
+					acc.push(cur.sprite);
+				}
+				return acc;
+			}, [])
+	);
+
 	let steps = $derived(beats.filter((d) => d.id === beatId));
 
 	onMount(() => {
@@ -28,13 +38,7 @@
 	});
 </script>
 
-<div
-	class={`bg ${id === "mom" ? "left" : "right"}`}
-	class:visible={!active}
-	onclick={() => (side = id)}
-></div>
-
-<div class={`side-${id}`}>
+<div id={`side-${id}`} class="side" class:active>
 	{#if active}
 		<div class={`controls ${id === "mom" ? "left" : "right"}`}>
 			<strong>{id}</strong>
@@ -43,53 +47,40 @@
 			<button onclick={() => (beatI = Math.min(allBeats.length - 1, beatI + 1))}
 				>next</button
 			>
+
+			<button onclick={() => (id === "mom" ? (side = "baby") : (side = "mom"))}
+				>switch sides</button
+			>
 		</div>
 	{/if}
 
 	{#if pathEl}
-		{#each spriteIds as id (id)}
-			<Sprite {id} {steps} {pathEl} {pathLength} />
+		{#each spriteIds as spriteId (spriteId)}
+			<Sprite id={spriteId} sideId={id} {steps} {pathEl} {pathLength} />
 		{/each}
 	{/if}
 </div>
 
 <style>
+	.side {
+		position: absolute;
+		top: 0;
+		width: 50%;
+		height: 100%;
+	}
+
+	#side-mom {
+		left: 0;
+	}
+
+	#side-baby {
+		right: 0;
+	}
+
 	.controls {
 		position: absolute;
 		top: 0;
 		left: 50%;
 		padding: 1rem;
-	}
-
-	.controls.left {
-		transform: translate(-100%, 0);
-	}
-
-	.bg {
-		background: var(--color-gray-500);
-		opacity: 0;
-		height: 100%;
-		position: absolute;
-		top: 0;
-		width: 50%;
-		pointer-events: none;
-	}
-
-	.bg.visible {
-		opacity: 0.8;
-		pointer-events: all;
-	}
-
-	.bg:hover {
-		opacity: 0.9;
-		cursor: pointer;
-	}
-
-	.bg.left {
-		left: 0;
-	}
-
-	.bg.right {
-		right: 0;
 	}
 </style>

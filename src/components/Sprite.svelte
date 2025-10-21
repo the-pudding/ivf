@@ -1,13 +1,15 @@
 <script>
+	import Force from "$components/Sprite.Force.svelte";
 	import spriteData from "$data/sprites.json";
 	import { onDestroy } from "svelte";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 
 	let dimensions = new useWindowDimensions();
 
-	let { id, steps, pathEl, pathLength } = $props();
+	let { id, sideId, steps, pathEl, pathLength } = $props();
 
 	const FRAMERATE = 300;
+	const Y_OFFSET = 0.87;
 	const spriteDataForId = spriteData.find((d) => d.id === id);
 	const { rows, cols, frameWidth, frameHeight, frames } = spriteDataForId;
 
@@ -28,15 +30,22 @@
 	const percentToCoordinates = (percent) => {
 		const lengthAtPercent = (percent / 100) * pathLength;
 		const point = pathEl.getPointAtLength(lengthAtPercent);
-		const ctm = pathEl.ownerSVGElement.getScreenCTM();
-		const svgPoint = pathEl.ownerSVGElement.createSVGPoint();
+
+		const svg = pathEl.ownerSVGElement;
+		const ctm = svg.getScreenCTM();
+		const svgPoint = svg.createSVGPoint();
 		svgPoint.x = point.x;
 		svgPoint.y = point.y;
+
 		const screenPoint = svgPoint.matrixTransform(ctm);
-		const svgRect = pathEl.ownerSVGElement.getBoundingClientRect();
+		// const svgRect = svg.getBoundingClientRect();
+
+		const parentEl = document.querySelector(`#side-${sideId}`);
+		const parentRect = parentEl.getBoundingClientRect();
+
 		return {
-			x: screenPoint.x - svgRect.left,
-			y: screenPoint.y - svgRect.top
+			x: screenPoint.x - parentRect.left,
+			y: screenPoint.y - parentRect.top
 		};
 	};
 
@@ -107,7 +116,7 @@
 		for (const step of steps) {
 			flipped = step.flip === "TRUE";
 
-			cycle(step.cycle);
+			if (step.cycle) cycle(step.cycle);
 
 			await moveTo(+step.percent, +step.duration);
 			if (cycleInterval) clearInterval(cycleInterval);
@@ -135,6 +144,7 @@
 <div
 	class="sprite"
 	class:flipped
+	style={`--y-offset: ${Y_OFFSET}`}
 	style:width={`${width}px`}
 	style:height={`${height}px`}
 	style:background-image={`url("assets/sprites/${id}.png")`}
@@ -144,13 +154,15 @@
 	style:top={`${y}px`}
 ></div>
 
+<Force centerX={x} centerY={y - (Y_OFFSET - 0.5) * height} />
+
 <style>
 	.sprite {
 		position: absolute;
-		transform: translate(-50%, -87%);
+		transform: translate(-50%, calc(-100% * var(--y-offset)));
 	}
 
 	.flipped {
-		transform: translate(-50%, -80%) scaleX(-1);
+		transform: translate(-50%, calc(-100% * var(--y-offset))) scaleX(-1);
 	}
 </style>

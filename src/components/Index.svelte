@@ -4,7 +4,7 @@
 	import momBeats from "$data/beats-mom.csv";
 	import babyBeats from "$data/beats-baby.csv";
 
-	let side = $state("mom");
+	let side = $state("baby");
 </script>
 
 <div class="world">
