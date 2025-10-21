@@ -9,10 +9,10 @@
 	} from "d3-force";
 	import spriteData from "$data/sprites.json";
 
-	let { centerX, centerY, forceData } = $props();
+	let { centerX, centerY, spriteWidth, spriteHeight, forceData, yOffset } =
+		$props();
 
-	const nodeRadius = 32;
-
+	let nodeRadius = $derived(Math.max(spriteWidth, spriteHeight));
 	let spriteIds = $derived(forceData.sprites.split(",").map((d) => d.trim()));
 	let nodes = $derived(
 		Array.from({ length: forceData.n || spriteIds.length }, (d, i) => ({
@@ -27,7 +27,7 @@
 		nodeEls.forEach((el, i) => {
 			const d = nodes[i];
 			if (el && d.x != null && d.y != null) {
-				el.style.transform = `translate(${d.x - nodeRadius / 2}px, ${d.y - nodeRadius / 2}px)`;
+				el.style.transform = `translate(${d.x - nodeRadius / 2}px, calc(${d.y - nodeRadius / 2}px - ${yOffset * 100 - 50}%))`;
 			}
 		});
 	};
@@ -46,7 +46,7 @@
 				.force("charge", forceManyBody().strength(-5))
 				.force("center", forceCenter(centerX, centerY))
 				.force("collision", forceCollide().radius(nodeRadius / 4))
-				.force("radial", forceRadial(40, centerX, centerY))
+				.force("radial", forceRadial(nodeRadius, centerX, centerY))
 				.on("tick", ticked);
 		}
 	};
@@ -68,13 +68,6 @@
 {/each}
 
 <style>
-	.container {
-		position: absolute;
-		pointer-events: none;
-		transform: translate(-50%, -50%);
-		border: 3px dashed lightblue;
-	}
-
 	.node {
 		position: absolute;
 	}

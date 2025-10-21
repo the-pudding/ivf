@@ -10,6 +10,7 @@
 
 	const FRAMERATE = 300;
 	const Y_OFFSET = 0.87;
+
 	const spriteDataForId = spriteData.find((d) => d.id === id);
 	const { rows, cols, frameWidth, frameHeight, frames } = spriteDataForId;
 
@@ -27,6 +28,8 @@
 	let scale = $derived(dimensions.width / 3000);
 	const width = $derived(frameWidth * scale);
 	const height = $derived(frameHeight * scale);
+
+	$inspect({ width, height });
 
 	const percentToCoordinates = (percent) => {
 		const lengthAtPercent = (percent / 100) * pathLength;
@@ -163,7 +166,14 @@
 ></div>
 
 {#if forceData && x && y}
-	<Force centerX={x} centerY={y} {forceData} />
+	<Force
+		centerX={x}
+		centerY={y}
+		spriteWidth={width}
+		spriteHeight={height}
+		{forceData}
+		yOffset={Y_OFFSET}
+	/>
 {/if}
 
 <style>

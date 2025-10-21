@@ -1,5 +1,5 @@
 id,percent,sprite,cycle,flip,duration,forceSprites,forceN,forceConfig
-start,0,embryo,follicle,FALSE,0,,,
+start,0,embryo,follicle,FALSE,0,embryo,10,halo
 test,5,embryo,follicle,FALSE,1000,embryo,10,cluster
 test-2,10,embryo,follicle,FALSE,1000,embryo,8,halo
 test-3,15,embryo,follicle,FALSE,1000,"embryo, mom",,halo
