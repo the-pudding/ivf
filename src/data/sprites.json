@@ -10,15 +10,17 @@
 			{ "index": 1, "x": 200, "y": 0, "name": "walk" },
 			{ "index": 2, "x": 400, "y": 0, "name": "walk" },
 			{ "index": 3, "x": 200, "y": 0, "name": "walk" },
-			{ "index": 3, "x": 600, "y": 0, "name": "walk-armor" },
-			{ "index": 4, "x": 800, "y": 0, "name": "walk-armor" },
-			{ "index": 5, "x": 0, "y": 400, "name": "walk-armor" },
-			{ "index": 6, "x": 200, "y": 400, "name": "walk-armor-backwards" },
-			{ "index": 7, "x": 400, "y": 400, "name": "walk-armor-backwards" },
-			{ "index": 8, "x": 600, "y": 400, "name": "walk-armor-backwards" },
-			{ "index": 9, "x": 800, "y": 400, "name": "walk-covered" },
-			{ "index": 10, "x": 0, "y": 800, "name": "walk-covered" },
-			{ "index": 11, "x": 200, "y": 800, "name": "walk-covered" }
+			{ "index": 4, "x": 600, "y": 0, "name": "walk-armor" },
+			{ "index": 5, "x": 800, "y": 0, "name": "walk-armor" },
+			{ "index": 6, "x": 0, "y": 400, "name": "walk-armor" },
+			{ "index": 7, "x": 800, "y": 0, "name": "walk-armor" },
+			{ "index": 8, "x": 200, "y": 400, "name": "walk-armor-backwards" },
+			{ "index": 9, "x": 400, "y": 400, "name": "walk-armor-backwards" },
+			{ "index": 10, "x": 600, "y": 400, "name": "walk-armor-backwards" },
+			{ "index": 11, "x": 800, "y": 400, "name": "walk-covered" },
+			{ "index": 12, "x": 0, "y": 800, "name": "walk-covered" },
+			{ "index": 13, "x": 200, "y": 800, "name": "walk-covered" },
+			{ "index": 14, "x": 0, "y": 800, "name": "walk-covered" }
 		]
 	},
 	{

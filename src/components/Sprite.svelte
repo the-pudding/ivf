@@ -29,8 +29,6 @@
 	const width = $derived(frameWidth * scale);
 	const height = $derived(frameHeight * scale);
 
-	$inspect({ width, height });
-
 	const percentToCoordinates = (percent) => {
 		const lengthAtPercent = (percent / 100) * pathLength;
 		const point = pathEl.getPointAtLength(lengthAtPercent);
