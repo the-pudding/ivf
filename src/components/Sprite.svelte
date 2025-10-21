@@ -21,6 +21,7 @@
 	let y = $state(0);
 	let currentPercent = $state(0);
 	let flipped = $state(false);
+	let forceData = $state();
 	let frameIndex = $state(0);
 	let frame = $derived(frames[frameIndex]);
 	let scale = $derived(dimensions.width / 3000);
@@ -38,8 +39,6 @@
 		svgPoint.y = point.y;
 
 		const screenPoint = svgPoint.matrixTransform(ctm);
-		// const svgRect = svg.getBoundingClientRect();
-
 		const parentEl = document.querySelector(`#side-${sideId}`);
 		const parentRect = parentEl.getBoundingClientRect();
 
@@ -115,6 +114,15 @@
 	const performSteps = async () => {
 		for (const step of steps) {
 			flipped = step.flip === "TRUE";
+			if (step.forceSprites) {
+				forceData = {
+					sprites: step.forceSprites,
+					n: step.forceN,
+					config: step.forceConfig
+				};
+			} else {
+				forceData = undefined;
+			}
 
 			if (step.cycle) cycle(step.cycle);
 
@@ -154,12 +162,15 @@
 	style:top={`${y}px`}
 ></div>
 
-<Force centerX={x} centerY={y - (Y_OFFSET - 0.5) * height} />
+{#if forceData && x && y}
+	<Force centerX={x} centerY={y} {forceData} />
+{/if}
 
 <style>
 	.sprite {
 		position: absolute;
 		transform: translate(-50%, calc(-100% * var(--y-offset)));
+		/* outline: 3px dashed lightgreen; */
 	}
 
 	.flipped {

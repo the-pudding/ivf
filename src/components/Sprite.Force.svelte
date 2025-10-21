@@ -4,71 +4,78 @@
 		forceSimulation,
 		forceManyBody,
 		forceCenter,
-		forceCollide
+		forceCollide,
+		forceRadial
 	} from "d3-force";
-	import { onMount } from "svelte";
+	import spriteData from "$data/sprites.json";
 
-	let { centerX = 0, centerY = 0 } = $props();
+	let { centerX, centerY, forceData } = $props();
 
-	const n = 10;
 	const nodeRadius = 32;
 
-	let width = 200,
-		height = 200;
-	let nodes = Array.from({ length: n }, () => ({}));
+	let spriteIds = $derived(forceData.sprites.split(",").map((d) => d.trim()));
+	let nodes = $derived(
+		Array.from({ length: forceData.n || spriteIds.length }, (d, i) => ({
+			sprite: spriteIds.length === 1 ? forceData.sprites : spriteIds[i]
+		}))
+	);
 
 	let simulation;
 	let nodeEls = [];
 
-	function ticked() {
+	const ticked = () => {
 		nodeEls.forEach((el, i) => {
 			const d = nodes[i];
 			if (el && d.x != null && d.y != null) {
-				el.style.transform = `translate(${d.x}px, ${d.y}px)`;
+				el.style.transform = `translate(${d.x - nodeRadius / 2}px, ${d.y - nodeRadius / 2}px)`;
 			}
 		});
-	}
+	};
 
-	onMount(() => {
-		simulation = forceSimulation(nodes)
-			.force("charge", forceManyBody().strength(5))
-			.force("center", forceCenter(centerX + width / 2, centerY + height / 2))
-			.force("collision", forceCollide().radius(nodeRadius / 4))
-			.on("tick", ticked);
-	});
+	const setUpSimulation = () => {
+		if (simulation) simulation.stop();
+
+		if (forceData.config === "cluster") {
+			simulation = forceSimulation(nodes)
+				.force("charge", forceManyBody().strength(5))
+				.force("center", forceCenter(centerX, centerY))
+				.force("collision", forceCollide().radius(nodeRadius / 4))
+				.on("tick", ticked);
+		} else if (forceData.config === "halo") {
+			simulation = forceSimulation(nodes)
+				.force("charge", forceManyBody().strength(-5))
+				.force("center", forceCenter(centerX, centerY))
+				.force("collision", forceCollide().radius(nodeRadius / 4))
+				.force("radial", forceRadial(40, centerX, centerY))
+				.on("tick", ticked);
+		}
+	};
+
+	$effect(() => setUpSimulation(centerX, centerY));
 </script>
 
-<div
-	class="container"
-	style:left={`${centerX}px`}
-	style:top={`${centerY}px`}
-	style:width={`${width}px`}
-	style:height={`${height}px`}
->
-	{#each _.range(n) as i (i)}
-		<div
-			class="node"
-			bind:this={nodeEls[i]}
-			style:width={`${nodeRadius}px`}
-			style:height={`${nodeRadius}px`}
-		></div>
-	{/each}
-</div>
+{#each nodes as node, i (i)}
+	{@const spriteD = spriteData.find((d) => d.id === node.sprite)}
+	<div
+		class="node"
+		bind:this={nodeEls[i]}
+		style:width={`${nodeRadius}px`}
+		style:height={`${nodeRadius}px`}
+		style:background-image={`url("assets/sprites/${node.sprite}.png")`}
+		style:background-size={`calc(${spriteD.cols} * 100%) calc(${spriteD.rows} * 100%)`}
+		style:background-position={`0px 0px`}
+	></div>
+{/each}
 
 <style>
 	.container {
 		position: absolute;
 		pointer-events: none;
 		transform: translate(-50%, -50%);
-		background: lightgray;
-		opacity: 0.5;
+		border: 3px dashed lightblue;
 	}
 
 	.node {
 		position: absolute;
-		background-image: url("assets/sprites/embryo.png");
-		background-size: calc(400%) calc(800%);
-		background-position: 0px 0px;
-		border-radius: 50%;
 	}
 </style>
