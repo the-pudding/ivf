@@ -33,7 +33,7 @@
 	let steps = $derived(beats.filter((d) => d.id === beatId));
 
 	onMount(() => {
-		pathEl = document.querySelector(`#${id}-path path`);
+		pathEl = document.querySelector(`.${id}-path path`);
 		pathLength = pathEl.getTotalLength();
 	});
 </script>
@@ -56,7 +56,14 @@
 
 	{#if pathEl}
 		{#each spriteIds as spriteId (spriteId)}
-			<Sprite id={spriteId} sideId={id} {steps} {pathEl} {pathLength} />
+			<Sprite
+				id={spriteId}
+				sideId={id}
+				{beatId}
+				{steps}
+				{pathEl}
+				{pathLength}
+			/>
 		{/each}
 	{/if}
 </div>

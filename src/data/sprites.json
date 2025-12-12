@@ -6,21 +6,24 @@
 		"frameWidth": 200,
 		"frameHeight": 400,
 		"frames": [
-			{ "index": 0, "x": 0, "y": 0, "name": "walk" },
-			{ "index": 1, "x": 200, "y": 0, "name": "walk" },
-			{ "index": 2, "x": 400, "y": 0, "name": "walk" },
-			{ "index": 3, "x": 200, "y": 0, "name": "walk" },
-			{ "index": 4, "x": 600, "y": 0, "name": "walk-armor" },
-			{ "index": 5, "x": 800, "y": 0, "name": "walk-armor" },
-			{ "index": 6, "x": 0, "y": 400, "name": "walk-armor" },
-			{ "index": 7, "x": 800, "y": 0, "name": "walk-armor" },
-			{ "index": 8, "x": 200, "y": 400, "name": "walk-armor-backwards" },
-			{ "index": 9, "x": 400, "y": 400, "name": "walk-armor-backwards" },
-			{ "index": 10, "x": 600, "y": 400, "name": "walk-armor-backwards" },
-			{ "index": 11, "x": 800, "y": 400, "name": "walk-covered" },
-			{ "index": 12, "x": 0, "y": 800, "name": "walk-covered" },
-			{ "index": 13, "x": 200, "y": 800, "name": "walk-covered" },
-			{ "index": 14, "x": 0, "y": 800, "name": "walk-covered" }
+			{ "index": 0, "x": 0, "y": 0, "cycle": "walk" },
+			{ "index": 1, "x": 200, "y": 0, "cycle": "walk", "pose": "standing" },
+			{ "index": 2, "x": 400, "y": 0, "cycle": "walk" },
+			{ "index": 3, "x": 600, "y": 0, "cycle": "walk-armor" },
+			{
+				"index": 4,
+				"x": 800,
+				"y": 0,
+				"cycle": "walk-armor",
+				"pose": "standing-armor"
+			},
+			{ "index": 5, "x": 0, "y": 400, "cycle": "walk-armor" },
+			{ "index": 6, "x": 200, "y": 400, "cycle": "walk-armor-backwards" },
+			{ "index": 7, "x": 400, "y": 400, "cycle": "walk-armor-backwards" },
+			{ "index": 8, "x": 600, "y": 400, "cycle": "walk-armor-backwards" },
+			{ "index": 9, "x": 800, "y": 400, "cycle": "walk-covered" },
+			{ "index": 10, "x": 0, "y": 800, "cycle": "walk-covered" },
+			{ "index": 11, "x": 200, "y": 800, "cycle": "walk-covered" }
 		]
 	},
 	{
@@ -30,13 +33,13 @@
 		"frameWidth": 100,
 		"frameHeight": 100,
 		"frames": [
-			{ "index": 0, "x": 0, "y": 0, "name": "follicle" },
-			{ "index": 1, "x": 100, "y": 0, "name": "follicle" },
-			{ "index": 2, "x": 200, "y": 0, "name": "follicle" },
-			{ "index": 3, "x": 300, "y": 0, "name": "follicle" },
-			{ "index": 0, "x": 0, "y": 200, "name": "egg" },
-			{ "index": 0, "x": 0, "y": 400, "name": "early-embryo" },
-			{ "index": 0, "x": 0, "y": 600, "name": "embryo" }
+			{ "index": 0, "x": 0, "y": 0, "cycle": "follicle" },
+			{ "index": 1, "x": 100, "y": 0, "cycle": "follicle" },
+			{ "index": 2, "x": 200, "y": 0, "cycle": "follicle" },
+			{ "index": 3, "x": 300, "y": 0, "cycle": "follicle" },
+			{ "index": 0, "x": 0, "y": 200, "cycle": "egg" },
+			{ "index": 0, "x": 0, "y": 400, "cycle": "early-embryo" },
+			{ "index": 0, "x": 0, "y": 600, "cycle": "embryo" }
 		]
 	}
 ]

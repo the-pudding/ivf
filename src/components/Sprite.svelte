@@ -1,15 +1,16 @@
 <script>
 	import Force from "$components/Sprite.Force.svelte";
 	import spriteData from "$data/sprites.json";
-	import { onDestroy } from "svelte";
+	import { onDestroy, untrack } from "svelte";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 
 	let dimensions = new useWindowDimensions();
 
-	let { id, sideId, steps, pathEl, pathLength } = $props();
+	let { id, sideId, beatId, steps, pathEl, pathLength } = $props();
 
 	const FRAMERATE = 300;
 	const Y_OFFSET = 0.87;
+	const SPEED = 0.2;
 
 	const spriteDataForId = spriteData.find((d) => d.id === id);
 	const { rows, cols, frameWidth, frameHeight, frames } = spriteDataForId;
@@ -20,7 +21,8 @@
 	let animating = $state(false);
 	let x = $state(0);
 	let y = $state(0);
-	let currentPercent = $state(0);
+	let currentT = $state(0);
+	let currentSpotId = $state();
 	let flipped = $state(false);
 	let forceData = $state();
 	let frameIndex = $state(0);
@@ -29,9 +31,27 @@
 	const width = $derived(frameWidth * scale);
 	const height = $derived(frameHeight * scale);
 
-	const percentToCoordinates = (percent) => {
-		const lengthAtPercent = (percent / 100) * pathLength;
-		const point = pathEl.getPointAtLength(lengthAtPercent);
+	const findClosestT = (pathEl, cx, cy, samples = 2000) => {
+		const total = pathEl.getTotalLength();
+		let best = { dist: Infinity, t: 0 };
+
+		for (let i = 0; i <= samples; i++) {
+			const t = (i / samples) * total;
+			const p = pathEl.getPointAtLength(t);
+
+			const dx = p.x - cx;
+			const dy = p.y - cy;
+			const d = dx * dx + dy * dy;
+
+			if (d < best.dist) {
+				best = { dist: d, t };
+			}
+		}
+		return best.t;
+	};
+
+	const coordinatesForT = (t) => {
+		const point = pathEl.getPointAtLength(t);
 
 		const svg = pathEl.ownerSVGElement;
 		const ctm = svg.getScreenCTM();
@@ -49,14 +69,30 @@
 		};
 	};
 
-	const moveTo = (targetPercent, duration = 1000) => {
+	const getCircleById = (spotId) => {
+		const circle = pathEl
+			.closest("svg")
+			.querySelector(`.markers circle.${spotId}`);
+
+		return circle;
+	};
+
+	const moveTo = (spotId, duration) => {
 		return new Promise((resolve) => {
 			if (animating) return;
 
-			if (duration === 0) {
-				currentPercent = targetPercent;
+			const circle = getCircleById(spotId);
+			if (!circle) return;
 
-				const coords = percentToCoordinates(currentPercent);
+			const cx = circle.cx.baseVal.value;
+			const cy = circle.cy.baseVal.value;
+
+			const targetT = findClosestT(pathEl, cx, cy);
+
+			if (duration === 0) {
+				currentT = targetT;
+
+				const coords = coordinatesForT(currentT);
 				x = coords.x;
 				y = coords.y;
 
@@ -66,18 +102,19 @@
 			}
 
 			animating = true;
-			const start = currentPercent;
-			const diff = targetPercent - start;
+			const startT = currentT;
+			const diff = targetT - startT;
 			const startTime = performance.now();
 
 			const step = (now) => {
 				const elapsed = now - startTime;
-				const t = Math.min(elapsed / duration, 1);
-				const current = start + diff * t;
+				const dist = Math.abs(targetT - startT);
+				const dur = duration || dist / SPEED;
+				const t = Math.min(elapsed / dur, 1);
 
-				currentPercent = current;
+				currentT = startT + diff * t;
 
-				const coords = percentToCoordinates(currentPercent);
+				const coords = coordinatesForT(currentT);
 				x = coords.x;
 				y = coords.y;
 
@@ -94,7 +131,7 @@
 
 	const cycle = (cycleId) => {
 		if (cycleInterval) clearInterval(cycleInterval);
-		const cycleFrames = frames.filter((d) => d.name === cycleId);
+		const cycleFrames = frames.filter((d) => d.cycle === cycleId);
 
 		if (cycleFrames.length === 0) {
 			frameIndex = 0;
@@ -112,6 +149,13 @@
 		}, FRAMERATE);
 	};
 
+	const pose = (poseId) => {
+		const poseFrame = frames.find((d) => d.pose === poseId);
+		if (poseFrame) {
+			frameIndex = +poseFrame.index;
+		}
+	};
+
 	const performSteps = async () => {
 		for (const step of steps) {
 			flipped = step.flip === "TRUE";
@@ -125,9 +169,12 @@
 				forceData = undefined;
 			}
 
+			if (step.pose) pose(step.pose);
 			if (step.cycle) cycle(step.cycle);
 
-			await moveTo(+step.percent, +step.duration);
+			currentSpotId = step.toSpot ? `${beatId}-${step.toSpot}` : beatId;
+			await moveTo(currentSpotId, step.duration ? +step.duration : undefined);
+
 			if (cycleInterval) clearInterval(cycleInterval);
 		}
 	};
@@ -140,8 +187,11 @@
 	});
 
 	$effect(() => {
-		if (dimensions.width) {
-			moveTo(currentPercent, 0);
+		const width = dimensions.width;
+		if (width) {
+			untrack(() => {
+				moveTo(currentSpotId, 0);
+			});
 		}
 	});
 
