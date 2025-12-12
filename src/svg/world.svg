@@ -1133,6 +1133,8 @@
       <circle cx="597.5" cy="1532.5" r="12.5" fill="#2FF275" class="heartbreak-3"/>
       <circle cx="844.5" cy="1386.5" r="12.5" fill="#2FF275" class="heartbreak-2"/>
       <circle cx="934.5" cy="1331.5" r="12.5" fill="#2FF275" class="heartbreak-1"/>
+      <circle cx="1054.5" cy="1965.5" r="12.5" fill="#2FF275" class="needles-2"/>
+      <circle cx="1042.5" cy="1694.5" r="12.5" fill="#2FF275" class="needles-1"/>
     </g>
   </g>
 </svg>

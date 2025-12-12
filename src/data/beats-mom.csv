@@ -1,6 +1,9 @@
-id,sprite,pose,cycle,duration,delay,toSpot,flip,scenery,sceneryAction
-start,mom,standing,,0,,,FALSE,,
-heartbreak,mom,,walk,,,1,FALSE,,
-heartbreak,mom,,walk,,,2,TRUE,,
-heartbreak,mom,,walk-armor,,500,3,TRUE,,
-heartbreak,mom,standing-armor,,0,,,TRUE,,
+id,sprite,pose,cycle,duration,delay,toSpot,scenery,sceneryAction
+start,mom,standing,,0,,,,
+heartbreak,mom,,walk,,,1,,
+heartbreak,mom,,walk,,,2,,
+heartbreak,mom,,walk-armor,,500,3,,
+heartbreak,mom,standing-armor,,0,,,,
+needles,mom,,walk-covered,,,1,,
+needles,mom,,walk-covered,,,2,,
+needles,mom,standing-armor,,,,,,

@@ -13,8 +13,6 @@
 	);
 
 	let pathEl = $state();
-	let pathLength = $state(0);
-
 	let beatI = $state(0);
 	let beatId = $derived(allBeats[beatI].id);
 	let spriteIds = $derived(
@@ -34,7 +32,6 @@
 
 	onMount(() => {
 		pathEl = document.querySelector(`.${id}-path path`);
-		pathLength = pathEl.getTotalLength();
 	});
 </script>
 
@@ -43,7 +40,7 @@
 		<div class={`controls ${id === "mom" ? "left" : "right"}`}>
 			<strong>{id}</strong>
 			<div>{beatId || "not started"}</div>
-			<button onclick={() => (beatI = Math.max(0, beatI - 1))}>prev</button>
+			<!-- <button onclick={() => (beatI = Math.max(0, beatI - 1))}>prev</button> -->
 			<button onclick={() => (beatI = Math.min(allBeats.length - 1, beatI + 1))}
 				>next</button
 			>
@@ -56,14 +53,7 @@
 
 	{#if pathEl}
 		{#each spriteIds as spriteId (spriteId)}
-			<Sprite
-				id={spriteId}
-				sideId={id}
-				{beatId}
-				{steps}
-				{pathEl}
-				{pathLength}
-			/>
+			<Sprite id={spriteId} sideId={id} {beatId} {steps} {pathEl} />
 		{/each}
 	{/if}
 </div>
