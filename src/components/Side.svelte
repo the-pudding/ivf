@@ -1,5 +1,6 @@
 <script>
 	import Sprite from "$components/Sprite.svelte";
+	import { sceneryAnimations } from "$utils/sceneryAnimations.js";
 	import { onMount } from "svelte";
 	import _ from "lodash";
 
@@ -32,6 +33,12 @@
 
 	onMount(() => {
 		pathEl = document.querySelector(`.${id}-path path`);
+
+		for (const sceneryId in sceneryAnimations) {
+			const els = document.querySelectorAll(`.Foreground .${sceneryId}`);
+			const resetter = sceneryAnimations[sceneryId].reset;
+			if (els && resetter) resetter(els);
+		}
 	});
 </script>
 
@@ -79,5 +86,6 @@
 		top: 0;
 		left: 50%;
 		padding: 1rem;
+		z-index: var(--z-top);
 	}
 </style>

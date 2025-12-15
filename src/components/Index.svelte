@@ -1,6 +1,7 @@
 <script>
 	import Side from "$components/Side.svelte";
 	import worldSvg from "$svg/world.svg";
+	import foregroundSvg from "$svg/world-foreground.svg";
 	import momBeats from "$data/beats-mom.csv";
 	import babyBeats from "$data/beats-baby.csv";
 
@@ -8,7 +9,13 @@
 </script>
 
 <div class="world">
-	{@html worldSvg}
+	<div class="background">
+		{@html worldSvg}
+	</div>
+
+	<div class="foreground">
+		{@html foregroundSvg}
+	</div>
 
 	<Side id="mom" beats={momBeats} active={side === "mom"} bind:side />
 	<!-- <Side id="baby" beats={babyBeats} active={side === "baby"} bind:side /> -->
@@ -22,15 +29,13 @@
 		width: 100%;
 		max-width: 1400px;
 		margin: 0 auto;
+		z-index: 0;
 	}
 
-	img.background {
-		width: 100%;
-		transform-origin: 50% 50%;
-		transform: scale(1) translate(0, 0);
-		transition:
-			transform 0.8s ease-out,
-			transform-origin 0.8s ease-out;
+	.foreground {
+		position: absolute;
+		top: 0;
+		z-index: 2;
 	}
 
 	:global(.world svg#paths) {

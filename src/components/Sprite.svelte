@@ -6,6 +6,7 @@
 		findClosestT,
 		coordinatesForT
 	} from "$utils/spriteHelpers.js";
+	import { sceneryAnimations } from "$utils/sceneryAnimations.js";
 	import { onDestroy, untrack } from "svelte";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 
@@ -21,9 +22,10 @@
 	const { rows, cols, frameWidth, frameHeight, frames } = spriteDataForId;
 
 	let lastSteps;
-	let cycleInterval;
 
-	let animating = $state(false);
+	let cycleInterval = null;
+	let rafId = null;
+
 	let x = $state(0);
 	let y = $state(0);
 	let currentT = $state(0);
@@ -38,7 +40,10 @@
 
 	const moveTo = (spotId, duration) => {
 		return new Promise((resolve) => {
-			if (animating) return;
+			if (rafId) {
+				cancelAnimationFrame(rafId);
+				rafId = null;
+			}
 
 			const circle = pathEl
 				.closest("svg")
@@ -57,12 +62,10 @@
 				x = coords.x;
 				y = coords.y;
 
-				animating = false;
 				resolve();
 				return;
 			}
 
-			animating = true;
 			const startT = currentT;
 			const diff = targetT - startT;
 			const startTime = performance.now();
@@ -80,18 +83,28 @@
 				y = coords.y;
 
 				if (t < 1) {
-					requestAnimationFrame(step);
+					rafId = requestAnimationFrame(step);
 				} else {
-					animating = false;
 					resolve();
 				}
 			};
-			requestAnimationFrame(step);
+			rafId = requestAnimationFrame(step);
 		});
 	};
 
+	const pose = (poseId) => {
+		const poseFrame = frames.find((d) => d.pose === poseId);
+		if (poseFrame) {
+			frameIndex = +poseFrame.index;
+		}
+	};
+
 	const cycle = (cycleId) => {
-		if (cycleInterval) clearInterval(cycleInterval);
+		if (cycleInterval) {
+			clearInterval(cycleInterval);
+			cycleInterval = null;
+		}
+
 		const cycleFrames = frames.filter((d) => d.cycle === cycleId);
 
 		if (cycleFrames.length === 0) {
@@ -110,11 +123,10 @@
 		}, FRAMERATE);
 	};
 
-	const pose = (poseId) => {
-		const poseFrame = frames.find((d) => d.pose === poseId);
-		if (poseFrame) {
-			frameIndex = +poseFrame.index;
-		}
+	const scenery = (sceneryId, sceneryAction) => {
+		const els = document.querySelectorAll(`.Foreground .${sceneryId}`);
+		const handler = sceneryAnimations[sceneryId][sceneryAction];
+		if (handler) handler(els);
 	};
 
 	const performSteps = async () => {
@@ -129,21 +141,30 @@
 				forceData = undefined;
 			}
 
-			if (step.pose) pose(step.pose);
 			if (step.cycle) cycle(step.cycle);
+			else if (step.pose) {
+				if (cycleInterval) {
+					clearInterval(cycleInterval);
+					cycleInterval = null;
+				}
+				pose(step.pose);
+			}
+			if (step.scenery && step.sceneryAction)
+				scenery(step.scenery, step.sceneryAction);
 
-			currentSpotId = step.toSpot ? `${beatId}-${step.toSpot}` : beatId;
+			currentSpotId = step.endSpot;
+
 			await moveTo(currentSpotId, step.duration ? +step.duration : undefined);
-
-			if (cycleInterval) clearInterval(cycleInterval);
 		}
 	};
 
 	$effect(() => {
-		if (pathEl && steps !== lastSteps) {
-			lastSteps = steps;
-			performSteps();
-		}
+		if (!pathEl || steps === lastSteps) return;
+
+		moveTo(steps[0].startSpot, 0);
+
+		lastSteps = steps;
+		performSteps();
 	});
 
 	$effect(() => {
