@@ -1,4 +1,5 @@
 <script>
+	import _ from "lodash";
 	import Force from "$components/Sprite.Force.svelte";
 	import spriteData from "$data/sprites.json";
 	import {
@@ -139,11 +140,12 @@
 	const performSteps = async () => {
 		for (const step of steps) {
 			if (step.forceSprites) {
-				forceData = {
+				const incomingData = {
 					sprites: step.forceSprites,
 					sizeFactor: step.forceNodeSize,
 					config: step.forceConfig
 				};
+				if (!_.isEqual(incomingData, forceData)) forceData = incomingData;
 			} else {
 				forceData = undefined;
 			}

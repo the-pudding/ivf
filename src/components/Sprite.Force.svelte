@@ -43,18 +43,32 @@
 		if (forceData.config === "cluster") {
 			simulation = forceSimulation(nodes)
 				.force("charge", forceManyBody().strength(5))
-				.force("center", forceCenter(centerX, centerY))
 				.force("collision", forceCollide().radius(nodeRadius / 4))
 				.on("tick", ticked);
 		} else if (forceData.config === "halo") {
 			simulation = forceSimulation(nodes)
 				.force("charge", forceManyBody().strength(-5))
-				.force("center", forceCenter(centerX, centerY))
 				.force("collision", forceCollide().radius(nodeRadius / 4))
-				.force("radial", forceRadial(nodeRadius, centerX, centerY))
 				.on("tick", ticked);
 		}
 	};
+
+	const updateSimulation = () => {
+		if (!simulation) return;
+
+		if (forceData.config === "cluster") {
+			simulation.force("center", forceCenter(centerX, centerY));
+			simulation.alpha(0.3).restart();
+		} else if (forceData.config === "halo") {
+			simulation.force("center", forceCenter(centerX, centerY));
+			simulation.force("radial", forceRadial(nodeRadius, centerX, centerY));
+			simulation.alpha(0.3).restart();
+		}
+	};
+
+	$effect(() => {
+		updateSimulation(centerX, centerY);
+	});
 
 	$effect(() => {
 		setUpSimulation();
