@@ -13,6 +13,7 @@
 		})
 	);
 
+	let spritePosition = $state("below");
 	let pathEl = $state();
 	let beatI = $state(0);
 	let beatId = $derived(allBeats[beatI].id);
@@ -42,12 +43,21 @@
 	});
 </script>
 
-<div id={`side-${id}`} class="side" class:active>
+<svelte:window
+	on:keydown={(e) => {
+		if (active) {
+			if (e.key === "ArrowRight") {
+				beatI = Math.min(allBeats.length - 1, beatI + 1);
+			}
+		}
+	}}
+/>
+
+<div id={`side-${id}`} class={`side ${spritePosition}`} class:active>
 	{#if active}
 		<div class={`controls ${id === "mom" ? "left" : "right"}`}>
 			<strong>{id}</strong>
 			<div>{beatId || "not started"}</div>
-			<!-- <button onclick={() => (beatI = Math.max(0, beatI - 1))}>prev</button> -->
 			<button onclick={() => (beatI = Math.min(allBeats.length - 1, beatI + 1))}
 				>next</button
 			>
@@ -60,7 +70,14 @@
 
 	{#if pathEl}
 		{#each spriteIds as spriteId (spriteId)}
-			<Sprite id={spriteId} sideId={id} {beatId} {steps} {pathEl} />
+			<Sprite
+				id={spriteId}
+				sideId={id}
+				{beatId}
+				{steps}
+				{pathEl}
+				bind:spritePosition
+			/>
 		{/each}
 	{/if}
 </div>
@@ -73,6 +90,14 @@
 		height: 100%;
 	}
 
+	.side.below {
+		z-index: 1;
+	}
+
+	.side.above {
+		z-index: 3;
+	}
+
 	#side-mom {
 		left: 0;
 	}
@@ -82,7 +107,7 @@
 	}
 
 	.controls {
-		position: absolute;
+		position: fixed;
 		top: 0;
 		left: 50%;
 		padding: 1rem;

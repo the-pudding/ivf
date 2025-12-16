@@ -12,7 +12,14 @@
 
 	let dimensions = new useWindowDimensions();
 
-	let { id, sideId, beatId, steps, pathEl } = $props();
+	let {
+		id,
+		sideId,
+		beatId,
+		steps,
+		pathEl,
+		spritePosition = $bindable()
+	} = $props();
 
 	const FRAMERATE = 300;
 	const Y_OFFSET = 0.87;
@@ -154,14 +161,18 @@
 
 			currentSpotId = step.endSpot;
 
+			if (step.position) spritePosition = step.position;
+			else spritePosition = "below";
+
 			await moveTo(currentSpotId, step.duration ? +step.duration : undefined);
 		}
 	};
 
-	$effect(() => {
+	$effect(async () => {
 		if (!pathEl || steps === lastSteps) return;
 
-		moveTo(steps[0].startSpot, 0);
+		await moveTo(steps[0].startSpot, 0);
+		// TODO: make sure previous scenery actions all happened
 
 		lastSteps = steps;
 		performSteps();

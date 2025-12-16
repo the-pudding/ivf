@@ -9,9 +9,7 @@
 </script>
 
 <div class="world">
-	<div class="background">
-		{@html worldSvg}
-	</div>
+	{@html worldSvg}
 
 	<div class="foreground">
 		{@html foregroundSvg}

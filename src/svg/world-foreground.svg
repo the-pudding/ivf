@@ -159,7 +159,7 @@
 				<path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1539.8 3692.7-112.3 68.7c-.3.2-.6.3-1 .3-1.7 0-4-1.8-5.7-4.6-1.7-2.8-2.2-5.7-1.4-7.2.2-.3.4-.6.7-.8l112.3-68.7c1.7-1 4.7.9 6.7 4.3s2.4 6.9.7 7.9v.1Z" class="Vector"/>
 			</g>
 		</g>
-		<g class="Calendar">
+		<g class="calendar">
 			<g class="days">
 				<path fill="#F0D0D3" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M677 2241.8v58.7l-43.2-24.8V2217l43.2 24.8Z" class="day"/>
 				<path fill="#fff" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M720.2 2266.5v58.8l-43.2-24.8v-58.7l43.2 24.7Z" class="day"/>
