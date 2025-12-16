@@ -16,6 +16,7 @@
 	let spritePosition = $state("below");
 	let pathEl = $state();
 	let beatI = $state(0);
+	let direction = $state("forward");
 	let beatId = $derived(allBeats[beatI].id);
 	let spriteIds = $derived(
 		beats
@@ -30,7 +31,11 @@
 			}, [])
 	);
 
-	let steps = $derived(beats.filter((d) => d.id === beatId));
+	let steps = $derived(
+		direction === "backward"
+			? [beats.filter((d) => d.id === beatId).at(-1)]
+			: beats.filter((d) => d.id === beatId)
+	);
 
 	onMount(() => {
 		pathEl = document.querySelector(`.${id}-path path`);
@@ -47,27 +52,17 @@
 	on:keydown={(e) => {
 		if (active) {
 			if (e.key === "ArrowRight") {
+				direction = "forward";
 				beatI = Math.min(allBeats.length - 1, beatI + 1);
+			} else if (e.key === "ArrowLeft") {
+				direction = "backward";
+				beatI = Math.max(0, beatI - 1);
 			}
 		}
 	}}
 />
 
 <div id={`side-${id}`} class={`side ${spritePosition}`} class:active>
-	{#if active}
-		<div class={`controls ${id === "mom" ? "left" : "right"}`}>
-			<strong>{id}</strong>
-			<div>{beatId || "not started"}</div>
-			<button onclick={() => (beatI = Math.min(allBeats.length - 1, beatI + 1))}
-				>next</button
-			>
-
-			<button onclick={() => (id === "mom" ? (side = "baby") : (side = "mom"))}
-				>switch sides</button
-			>
-		</div>
-	{/if}
-
 	{#if pathEl}
 		{#each spriteIds as spriteId (spriteId)}
 			<Sprite
