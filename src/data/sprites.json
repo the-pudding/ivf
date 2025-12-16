@@ -23,7 +23,22 @@
 			{ "index": 8, "x": 600, "y": 400, "cycle": "walk-armor-backwards" },
 			{ "index": 9, "x": 800, "y": 400, "cycle": "walk-covered" },
 			{ "index": 10, "x": 0, "y": 800, "cycle": "walk-covered" },
-			{ "index": 11, "x": 200, "y": 800, "cycle": "walk-covered" }
+			{ "index": 11, "x": 200, "y": 800, "cycle": "walk-covered" },
+			{ "index": 12, "x": 400, "y": 800, "cycle": "walk-covered-backwards" },
+			{ "index": 13, "x": 600, "y": 800, "cycle": "walk-covered-backwards" },
+			{ "index": 14, "x": 800, "y": 800, "cycle": "walk-covered-backwards" },
+			{ "index": 15, "x": 0, "y": 1200, "cycle": "walk-crying" },
+			{ "index": 16, "x": 200, "y": 1200, "cycle": "walk-crying" },
+			{
+				"index": 17,
+				"x": 400,
+				"y": 1200,
+				"cycle": "walk-crying",
+				"pose": "crying"
+			},
+			{ "index": 18, "x": 600, "y": 1200, "cycle": "walk-crying-backwards" },
+			{ "index": 19, "x": 800, "y": 1200, "cycle": "walk-crying-backwards" },
+			{ "index": 20, "x": 0, "y": 1600, "cycle": "walk-crying-backwards" }
 		]
 	},
 	{
@@ -41,5 +56,85 @@
 			{ "index": 0, "x": 0, "y": 400, "cycle": "early-embryo" },
 			{ "index": 0, "x": 0, "y": 600, "cycle": "embryo" }
 		]
+	},
+	{
+		"id": "floating-head-mom-1",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "floating-head-mom-2",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "floating-head-mom-3",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "floating-head-mom-4",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "floating-head-mom-5",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "floating-head-baby-1",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "floating-head-baby-2",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "floating-head-baby-3",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "floating-head-baby-4",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "floating-head-baby-5",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
 	}
 ]

@@ -141,7 +141,7 @@
 			if (step.forceSprites) {
 				forceData = {
 					sprites: step.forceSprites,
-					n: step.forceN,
+					sizeFactor: step.forceNodeSize,
 					config: step.forceConfig
 				};
 			} else {
@@ -208,7 +208,7 @@
 {#if forceData && x && y}
 	<Force
 		centerX={x}
-		centerY={y}
+		centerY={y - (Y_OFFSET - 0.5) * height}
 		spriteWidth={width}
 		spriteHeight={height}
 		{forceData}

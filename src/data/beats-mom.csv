@@ -1,12 +1,17 @@
-id,sprite,pose,cycle,duration,startSpot,endSpot,scenery,sceneryAction,position
-start,mom,standing,,0,start,start,,,
-heartbreak,mom,,walk,,start,heartbreak-1,,,
-heartbreak,mom,,walk,,heartbreak-1,heartbreak-2,,,
-heartbreak,mom,,walk-armor,,heartbreak-2,heartbreak-3,heart,split,above
-heartbreak,mom,standing-armor,,0,heartbreak-3,heartbreak-3,,,
-needles,mom,,walk-covered,,heartbreak-3,needles-1,needle,enter,
-needles,mom,,walk-covered,,needles-1,needles-2,,,
-needles,mom,standing-armor,,,needles-2,needles-2,,,
-calendar,mom,,walk-armor,,needles-2,calendar-1,,,
-calendar,mom,,walk-armor,,calendar-1,calendar-2,calendar,drop,
-calendar,mom,standing-armor,,,calendar-2,calendar-2,,,
+id,sprite,pose,cycle,duration,startSpot,endSpot,position,scenery,sceneryAction,forceSprites,forceNodeSize,forceConfig
+start,mom,standing,,0,start,start,,,,,,
+heartbreak,mom,,walk,,start,heartbreak-1,,,,,,
+heartbreak,mom,,walk-armor,,heartbreak-1,heartbreak-2,above,heart,split,,,
+heartbreak,mom,standing-armor,,0,heartbreak-2,heartbreak-2,above,,,,,
+needles,mom,,walk-covered,,heartbreak-2,needles-1,,needle,enter,,,
+needles,mom,,walk-covered,,needles-1,needles-2,,,,,,
+needles,mom,standing-armor,,0,needles-2,needles-2,,,,,,
+calendar,mom,,walk-armor,,needles-2,calendar-1,,,,,,
+calendar,mom,,walk-armor,,calendar-1,calendar-2, ,calendar,drop,,,
+calendar,mom,,walk-armor,,calendar-2,calendar-3,above,,,,,
+calendar,mom,standing-armor,,0,calendar-3,calendar-3,above,,,,,
+faces,mom,,walk-covered,,calendar-3,faces,,,,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
+faces,mom,standing-armor,,0,faces,faces,,,,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
+papers,mom,,walk-covered,,faces,papers-1,,,,,,
+papers,mom,,walk-covered,,papers-1,papers-2,above,paper-stack,enter,,,
+papers,mom,crying,,0,papers-2,papers-2,above,,,,,

@@ -12,10 +12,15 @@
 	let { centerX, centerY, spriteWidth, spriteHeight, forceData, yOffset } =
 		$props();
 
-	let nodeRadius = $derived(Math.max(spriteWidth, spriteHeight));
+	let nodeRadius = $derived(
+		Math.max(
+			spriteWidth * +forceData.sizeFactor,
+			spriteHeight * +forceData.sizeFactor
+		)
+	);
 	let spriteIds = $derived(forceData.sprites.split(",").map((d) => d.trim()));
 	let nodes = $derived(
-		Array.from({ length: forceData.n || spriteIds.length }, (d, i) => ({
+		Array.from({ length: spriteIds.length }, (d, i) => ({
 			sprite: spriteIds.length === 1 ? forceData.sprites : spriteIds[i]
 		}))
 	);
@@ -51,7 +56,16 @@
 		}
 	};
 
-	$effect(() => setUpSimulation(centerX, centerY));
+	$effect(() => {
+		setUpSimulation();
+
+		return () => {
+			if (simulation) {
+				simulation.stop();
+				simulation = null;
+			}
+		};
+	});
 </script>
 
 {#each nodes as node, i (i)}

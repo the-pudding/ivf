@@ -45,5 +45,29 @@ export const sceneryAnimations = {
 			els[0].style.transform = "translateY(-2%)";
 			els[0].style.opacity = "0";
 		}
+	},
+	"paper-stack": {
+		enter: (els) => {
+			els.forEach((stackEl, i) => {
+				const stackDelay = i * 0.4;
+				const paperEls = stackEl.querySelectorAll("path");
+
+				paperEls.forEach((paperEl, j) => {
+					const paperDelay = j * 0.1;
+					paperEl.style.transition = `opacity 0.4s ${stackDelay + paperDelay}s ease-in-out, transform 0.4s ${stackDelay + paperDelay}s ease-in-out`;
+					paperEl.style.opacity = "1";
+					paperEl.style.transform = "translateY(0)";
+				});
+			});
+		},
+		reset: (els) => {
+			els.forEach((stackEl) => {
+				const paperEls = stackEl.querySelectorAll("path");
+				paperEls.forEach((paperEl) => {
+					paperEl.style.opacity = "0";
+					paperEl.style.transform = "translateY(-2%)";
+				});
+			});
+		}
 	}
 };

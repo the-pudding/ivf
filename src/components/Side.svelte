@@ -74,7 +74,7 @@
 				id={spriteId}
 				sideId={id}
 				{beatId}
-				{steps}
+				steps={steps.filter((d) => d.sprite === spriteId)}
 				{pathEl}
 				bind:spritePosition
 			/>

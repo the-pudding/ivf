@@ -15,6 +15,8 @@
 		{@html foregroundSvg}
 	</div>
 
+	
+
 	<Side id="mom" beats={momBeats} active={side === "mom"} bind:side />
 	<!-- <Side id="baby" beats={babyBeats} active={side === "baby"} bind:side /> -->
 </div>
