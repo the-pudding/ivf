@@ -117,7 +117,7 @@
 			</g>
 		</g>
 		<g class="HorizontalNeedles">
-			<g class="needle">
+			<g class="horizontal-needle">
 				<path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1344.7 3681.5-42.5 26.3" class="Vector"/>
 				<g class="Group">
 					<path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1507.2 3593.5c-.4.3-.9.4-1.5.4-2.5 0-6-2.6-8.6-6.7-2.6-4.1-3.4-8.4-2.2-10.7.3-.5.6-.9 1-1.2 2.5-1.5 7 1.3 10.1 6.3 3.1 5 3.6 10.3 1.2 11.9Z" class="Vector"/>
@@ -127,7 +127,7 @@
 				<path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1359.3 3664.1-14.6 17.4 22.2-5.3-7.6-12.1Z" class="Vector"/>
 				<path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1478.8 3606.9-111.9 69.3c-.3.2-.6.3-1 .3-1.7 0-4.1-1.8-5.8-4.5-1.7-2.7-2.3-5.7-1.5-7.2.2-.3.4-.6.7-.8l111.9-69.3c1.7-1 4.7.9 6.8 4.2 2.1 3.4 2.4 6.9.8 7.9v.1Z" class="Vector"/>
 			</g>
-			<g class="needle">
+			<g class="horizontal-needle">
 				<path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1476.3 3667.7-42.4 26.3" class="Vector"/>
 				<g class="Group">
 					<path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1638.8 3579.6c-.4.3-.9.4-1.5.4-2.5 0-6-2.6-8.6-6.7-2.6-4.1-3.4-8.4-2.2-10.7.3-.5.6-.9 1-1.2 2.5-1.5 7 1.3 10.1 6.3 3.1 5 3.6 10.3 1.2 11.9Z" class="Vector"/>
@@ -137,7 +137,7 @@
 				<path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1490.9 3650.2-14.6 17.5 22.2-5.3-7.6-12.2Z" class="Vector"/>
 				<path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1610.4 3593.1-111.9 69.3c-.3.2-.6.3-1 .3-1.7 0-4.1-1.8-5.8-4.5-1.7-2.8-2.3-5.7-1.5-7.2.2-.3.4-.6.7-.8l111.9-69.3c1.7-1 4.7.9 6.8 4.2 2.1 3.3 2.4 6.9.8 7.9v.1Z" class="Vector"/>
 			</g>
-			<g class="needle">
+			<g class="horizontal-needle">
 				<path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1405.3 3766.6-42.6 26" class="Vector"/>
 				<g class="Group">
 					<path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1568.3 3679.4c-.4.3-.9.4-1.5.4-2.5 0-6-2.6-8.6-6.8-2.5-4.1-3.3-8.5-2.1-10.7.3-.5.6-.9 1-1.1 2.5-1.5 7 1.3 10.1 6.4 3.1 5.1 3.6 10.3 1.1 11.9v-.1Z" class="Vector"/>

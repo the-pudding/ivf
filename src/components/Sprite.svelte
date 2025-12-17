@@ -192,6 +192,7 @@
 		for (const step of steps) {
 			if (step.forceSprites) {
 				const incomingData = {
+					id: step.force,
 					sprites: step.forceSprites,
 					sizeFactor: step.forceNodeSize,
 					config: step.forceConfig

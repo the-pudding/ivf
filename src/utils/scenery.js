@@ -1,7 +1,6 @@
 export const scenery = {
 	heart: {
 		split: (els) => {
-			console.log("heart split");
 			const left = els[0].querySelector("path.left");
 			const right = els[0].querySelector("path.right");
 
@@ -12,7 +11,6 @@ export const scenery = {
 			right.style.transform = "translate(4%, 0)";
 		},
 		reset: (els) => {
-			console.log("heart reset");
 			const left = els[0].querySelector("path.left");
 			const right = els[0].querySelector("path.right");
 
@@ -70,6 +68,22 @@ export const scenery = {
 					paperEl.style.opacity = "0";
 					paperEl.style.transform = "translateY(-2%)";
 				});
+			});
+		}
+	},
+	"horizontal-needle": {
+		enter: (els) => {
+			els.forEach((el) => {
+				const delay = Math.random() * 0.3 + 0.5;
+				el.style.transition = `opacity 0.5s ${delay}s ease-in-out, transform 0.5s ${delay + 0.1}s ease-in-out`;
+				el.style.opacity = "1";
+				el.style.transform = "translateX(1%)";
+			});
+		},
+		reset: (els) => {
+			els.forEach((el) => {
+				el.style.opacity = "0";
+				el.style.transform = "translateX(0)";
 			});
 		}
 	}

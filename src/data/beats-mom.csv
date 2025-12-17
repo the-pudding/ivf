@@ -1,17 +1,32 @@
-id,sprite,pose,cycle,duration,startSpot,endSpot,position,scenery,sceneryAction,forceSprites,forceNodeSize,forceConfig
-start,mom,standing,,0,start,start,,,,,,
-heartbreak,mom,,walk,,start,heartbreak-1,,,,,,
-heartbreak,mom,,walk-armor,,heartbreak-1,heartbreak-2,above,heart,split,,,
-heartbreak,mom,standing-armor,,0,heartbreak-2,heartbreak-2,above,,,,,
-needles,mom,,walk-covered,,heartbreak-2,needles-1,,needle,enter,,,
-needles,mom,,walk-covered,,needles-1,needles-2,,,,,,
-needles,mom,standing-armor,,0,needles-2,needles-2,,,,,,
-calendar,mom,,walk-armor,,needles-2,calendar-1,,,,,,
-calendar,mom,,walk-armor,,calendar-1,calendar-2, ,calendar,drop,,,
-calendar,mom,,walk-armor,,calendar-2,calendar-3,above,,,,,
-calendar,mom,standing-armor,,0,calendar-3,calendar-3,above,,,,,
-faces,mom,,walk-covered,,calendar-3,faces,,,,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
-faces,mom,standing-armor,,0,faces,faces,,,,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
-papers,mom,,walk-covered,,faces,papers-1,,,,,,
-papers,mom,,walk-covered,,papers-1,papers-2,above,paper-stack,enter,,,
-papers,mom,crying,,0,papers-2,papers-2,above,,,,,
+id,sprite,pose,cycle,duration,startSpot,endSpot,position,scenery,sceneryAction,force,forceSprites,forceNodeSize,forceConfig
+start,mom,standing,,0,start,start,,,,,,,
+heartbreak,mom,,walk,,start,heartbreak-1,,,,,,,
+heartbreak,mom,,walk-armor,,heartbreak-1,heartbreak-2,above,heart,split,,,,
+heartbreak,mom,standing-armor,,0,heartbreak-2,heartbreak-2,above,,,,,,
+needles,mom,,walk-covered,,heartbreak-2,needles-1,,needle,enter,,,,
+needles,mom,,walk-covered,,needles-1,needles-2,,,,,,,
+needles,mom,standing-armor,,0,needles-2,needles-2,,,,,,,
+calendar,mom,,walk-armor,,needles-2,calendar-1,,,,,,,
+calendar,mom,,walk-armor,,calendar-1,calendar-2, ,calendar,drop,,,,
+calendar,mom,,walk-armor,,calendar-2,calendar-3,above,,,,,,
+calendar,mom,standing-armor,,0,calendar-3,calendar-3,above,,,,,,
+faces,mom,,walk-covered,,calendar-3,faces,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
+faces,mom,standing-armor,,0,faces,faces,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
+papers,mom,,walk-covered,,faces,papers-1,,,,,,,
+papers,mom,,walk-covered,,papers-1,papers-2,above,paper-stack,enter,,,,
+papers,mom,crying,,0,papers-2,papers-2,above,,,,,,
+more-needles,mom,,walk-crying,,papers-2,more-needles-1,,,,,,,
+more-needles,mom,,walk-crying,,more-needles-1,more-needles-2,,horizontal-needle,enter,,,,
+more-needles,mom,crying,,0,more-needles-2,more-needles-2,,,,,,,
+friend1,mom,,walk-crying,,more-needles-2,friend1-1,,,,,,,
+friend1,mom,,walk-hopeful,,friend1-1,friend1-2,,,,friends,floating-head-mom-1,0.5,above
+friend1,mom,hopeful,,0,friend1-2,friend1-2,,,,friends,floating-head-mom-1,0.5,above
+friend2,mom,,walk-hopeful,,friend1-2,friend2-1,,,,friends,floating-head-mom-1,0.5,above
+friend2,mom,,walk-hopeful,,friend2-1,friend2-2,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
+friend2,mom,hopeful,,0,friend2-2,friend2-2,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
+friend3,mom,,walk-hopeful,,friend2-2,friend3-1,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
+friend3,mom,,walk-hopeful,,friend3-1,friend3-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
+friend3,mom,hopeful,,0,friend3-2,friend3-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
+friend4,mom,,walk-hopeful,,friend3-2,friend4-1,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
+friend4,mom,,walk-hopeful,,friend4-1,friend4-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",0.5,above
+friend4,mom,hopeful,,0,friend4-2,friend4-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",0.5,above

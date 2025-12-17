@@ -28,17 +28,29 @@
 			{ "index": 13, "x": 600, "y": 800, "cycle": "walk-covered-backwards" },
 			{ "index": 14, "x": 800, "y": 800, "cycle": "walk-covered-backwards" },
 			{ "index": 15, "x": 0, "y": 1200, "cycle": "walk-crying" },
-			{ "index": 16, "x": 200, "y": 1200, "cycle": "walk-crying" },
 			{
-				"index": 17,
-				"x": 400,
+				"index": 16,
+				"x": 200,
 				"y": 1200,
 				"cycle": "walk-crying",
 				"pose": "crying"
 			},
+			{ "index": 17, "x": 400, "y": 1200, "cycle": "walk-crying" },
 			{ "index": 18, "x": 600, "y": 1200, "cycle": "walk-crying-backwards" },
 			{ "index": 19, "x": 800, "y": 1200, "cycle": "walk-crying-backwards" },
-			{ "index": 20, "x": 0, "y": 1600, "cycle": "walk-crying-backwards" }
+			{ "index": 20, "x": 0, "y": 1600, "cycle": "walk-crying-backwards" },
+			{ "index": 21, "x": 200, "y": 1600, "cycle": "walk-hopeful" },
+			{
+				"index": 22,
+				"x": 400,
+				"y": 1600,
+				"cycle": "walk-hopeful",
+				"pose": "hopeful"
+			},
+			{ "index": 23, "x": 600, "y": 1600, "cycle": "walk-hopeful" },
+			{ "index": 24, "x": 800, "y": 1600, "cycle": "walk-hopeful-backwards" },
+			{ "index": 25, "x": 0, "y": 2000, "cycle": "walk-hopeful-backwards" },
+			{ "index": 26, "x": 200, "y": 2000, "cycle": "walk-hopeful-backwards" }
 		]
 	},
 	{

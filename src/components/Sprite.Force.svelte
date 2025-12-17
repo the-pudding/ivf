@@ -5,13 +5,17 @@
 		forceManyBody,
 		forceCenter,
 		forceCollide,
+		forceX,
+		forceY,
 		forceRadial
 	} from "d3-force";
 	import spriteData from "$data/sprites.json";
+	import { onDestroy } from "svelte";
 
 	let { centerX, centerY, spriteWidth, spriteHeight, forceData, yOffset } =
 		$props();
 
+	let currentForceId = $state();
 	let nodeRadius = $derived(
 		Math.max(
 			spriteWidth * +forceData.sizeFactor,
@@ -37,8 +41,41 @@
 		});
 	};
 
+	const getAboveTargets = (nodes, centerX, centerY, radius) => {
+		const n = nodes.length;
+
+		// Special case: single node
+		if (n === 1) {
+			return [
+				{
+					x: centerX,
+					y: centerY - radius
+				}
+			];
+		}
+
+		return nodes.map((_, i) => {
+			const t = i / (n - 1); // 0 → 1
+			const angle = -Math.PI + t * Math.PI; // -π → 0
+
+			return {
+				x: centerX + radius * Math.cos(angle),
+				y: centerY + radius * Math.sin(angle)
+			};
+		});
+	};
+
 	const setUpSimulation = () => {
 		if (simulation) simulation.stop();
+
+		currentForceId = forceData.id;
+
+		nodes.forEach((d) => {
+			d.x ??= centerX;
+			d.y ??= centerY;
+			d.vx = 0;
+			d.vy = 0;
+		});
 
 		if (forceData.config === "cluster") {
 			simulation = forceSimulation(nodes)
@@ -49,6 +86,11 @@
 			simulation = forceSimulation(nodes)
 				.force("charge", forceManyBody().strength(-5))
 				.force("collision", forceCollide().radius(nodeRadius / 4))
+				.on("tick", ticked);
+		} else if (forceData.config === "above") {
+			simulation = forceSimulation(nodes)
+				.force("charge", forceManyBody().strength(-5))
+				.force("collision", forceCollide().radius(nodeRadius / 2))
 				.on("tick", ticked);
 		}
 	};
@@ -63,22 +105,58 @@
 			simulation.force("center", forceCenter(centerX, centerY));
 			simulation.force("radial", forceRadial(nodeRadius, centerX, centerY));
 			simulation.alpha(0.3).restart();
+		} else if (forceData.config === "above") {
+			const targets = getAboveTargets(nodes, centerX, centerY, nodeRadius);
+			simulation
+				.force(
+					"x",
+					forceX((d, i) => {
+						if (!targets[i]) return centerX;
+						return targets[i].x;
+					}).strength(0.15)
+				)
+				.force(
+					"y",
+					forceY((d, i) => {
+						if (!targets[i]) return centerY;
+						return targets[i].y;
+					}).strength(0.15)
+				);
+
+			simulation.alpha(0.4).restart();
 		}
 	};
+
+	const updateNodes = () => {
+		if (!simulation) return;
+
+		nodes.forEach((d) => {
+			d.x ??= centerX;
+			d.y ??= centerY;
+			d.vx = 0;
+			d.vy = 0;
+		});
+
+		simulation.nodes(nodes);
+		simulation.alphaTarget(0.3).restart();
+	};
+
+	$effect(() => {
+		if (forceData.id !== currentForceId) {
+			setUpSimulation(forceData.id);
+		}
+	});
 
 	$effect(() => {
 		updateSimulation(centerX, centerY);
 	});
 
 	$effect(() => {
-		setUpSimulation();
+		updateNodes(nodes);
+	});
 
-		return () => {
-			if (simulation) {
-				simulation.stop();
-				simulation = null;
-			}
-		};
+	onDestroy(() => {
+		simulation?.stop();
 	});
 </script>
 
