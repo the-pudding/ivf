@@ -1,6 +1,6 @@
 <script>
 	import Sprite from "$components/Sprite.svelte";
-	import { sceneryAnimations } from "$utils/sceneryAnimations.js";
+	import { scenery } from "$utils/scenery.js";
 	import { onMount } from "svelte";
 	import _ from "lodash";
 
@@ -11,6 +11,20 @@
 			id,
 			steps
 		})
+	);
+	const allScenery = allBeats.flatMap((beat) =>
+		(beat.steps ?? [])
+			.filter((step) => step.scenery && step.sceneryAction)
+			.map((step) => ({
+				scenery: step.scenery,
+				sceneryAction: step.sceneryAction
+			}))
+	);
+	const sceneryState = new Map(
+		Array.from(new Set(allScenery.map((d) => d.scenery))).map((id) => [
+			id,
+			false
+		])
 	);
 
 	let spritePosition = $state("below");
@@ -40,9 +54,9 @@
 	onMount(() => {
 		pathEl = document.querySelector(`.${id}-path path`);
 
-		for (const sceneryId in sceneryAnimations) {
+		for (const sceneryId in scenery) {
 			const els = document.querySelectorAll(`.Foreground .${sceneryId}`);
-			const resetter = sceneryAnimations[sceneryId].reset;
+			const resetter = scenery[sceneryId].reset;
 			if (els && resetter) resetter(els);
 		}
 	});
@@ -68,10 +82,12 @@
 			<Sprite
 				id={spriteId}
 				sideId={id}
+				{allBeats}
 				{beatId}
 				steps={steps.filter((d) => d.sprite === spriteId)}
 				{pathEl}
 				bind:spritePosition
+				{sceneryState}
 			/>
 		{/each}
 	{/if}
@@ -99,13 +115,5 @@
 
 	#side-baby {
 		right: 0;
-	}
-
-	.controls {
-		position: fixed;
-		top: 0;
-		left: 50%;
-		padding: 1rem;
-		z-index: var(--z-top);
 	}
 </style>

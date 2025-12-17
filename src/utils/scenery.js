@@ -1,6 +1,7 @@
-export const sceneryAnimations = {
+export const scenery = {
 	heart: {
 		split: (els) => {
+			console.log("heart split");
 			const left = els[0].querySelector("path.left");
 			const right = els[0].querySelector("path.right");
 
@@ -11,11 +12,13 @@ export const sceneryAnimations = {
 			right.style.transform = "translate(4%, 0)";
 		},
 		reset: (els) => {
+			console.log("heart reset");
 			const left = els[0].querySelector("path.left");
 			const right = els[0].querySelector("path.right");
 
 			left.style.transform = "translate(0, 0)";
 			right.style.transform = "translate(0, 0)";
+			els[0].style.opacity = "1";
 		}
 	},
 	needle: {

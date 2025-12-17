@@ -7,7 +7,7 @@
 		findClosestT,
 		coordinatesForT
 	} from "$utils/spriteHelpers.js";
-	import { sceneryAnimations } from "$utils/sceneryAnimations.js";
+	import { scenery } from "$utils/scenery.js";
 	import { onDestroy, untrack } from "svelte";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 
@@ -17,9 +17,11 @@
 		id,
 		sideId,
 		beatId,
+		allBeats,
 		steps,
 		pathEl,
-		spritePosition = $bindable()
+		spritePosition = $bindable(),
+		sceneryState
 	} = $props();
 
 	const FRAMERATE = 300;
@@ -30,7 +32,6 @@
 	const { rows, cols, frameWidth, frameHeight, frames } = spriteDataForId;
 
 	let lastSteps;
-
 	let cycleInterval = null;
 	let rafId = null;
 
@@ -131,10 +132,60 @@
 		}, FRAMERATE);
 	};
 
-	const scenery = (sceneryId, sceneryAction) => {
+	const performSceneryAction = (sceneryId, sceneryAction) => {
+		const performed = sceneryState.get(sceneryId);
+		if (performed) return;
+
 		const els = document.querySelectorAll(`.Foreground .${sceneryId}`);
-		const handler = sceneryAnimations[sceneryId][sceneryAction];
-		if (handler) handler(els);
+		const actionHandler = scenery[sceneryId][sceneryAction];
+		if (actionHandler) {
+			actionHandler(els);
+			sceneryState.set(sceneryId, true);
+		}
+	};
+
+	const prep = async () => {
+		// Jump to start
+		await moveTo(steps[0].startSpot, 0);
+
+		// Apply previous scenery actions
+		const i = allBeats.findIndex((d) => d.id === beatId);
+		const previousBeats = i === -1 ? allBeats : allBeats.slice(0, i);
+		const previousSceneryActions = previousBeats
+			.flatMap((beat) => beat.steps ?? [])
+			.filter((step) => step.scenery && step.sceneryAction)
+			.map((step) => ({
+				scenery: step.scenery,
+				sceneryAction: step.sceneryAction
+			}));
+		previousSceneryActions.forEach((d) => {
+			performSceneryAction(d.scenery, d.sceneryAction);
+		});
+
+		// Fade out previous scenery
+		previousBeats
+			.filter((d) => d.steps.some((s) => s.scenery && s.sceneryAction))
+			.forEach((beat) => {
+				const actions = beat.steps.filter((s) => s.scenery && s.sceneryAction);
+				actions.forEach((step) => {
+					const els = document.querySelectorAll(`.Foreground .${step.scenery}`);
+					els.forEach((el) => (el.style.opacity = "0.2"));
+				});
+			});
+
+		// Reset future scenery
+		const futureSceneryActions = allBeats
+			.slice(i + 1)
+			.flatMap((beat) => beat.steps ?? [])
+			.filter((step) => step.scenery && step.sceneryAction);
+		futureSceneryActions.forEach((d) => {
+			const els = document.querySelectorAll(`.Foreground .${d.scenery}`);
+			const resetter = scenery[d.scenery].reset;
+			if (els && resetter) {
+				resetter(els);
+				sceneryState.set(d.scenery, false);
+			}
+		});
 	};
 
 	const performSteps = async () => {
@@ -159,7 +210,7 @@
 				pose(step.pose);
 			}
 			if (step.scenery && step.sceneryAction)
-				scenery(step.scenery, step.sceneryAction);
+				performSceneryAction(step.scenery, step.sceneryAction);
 
 			currentSpotId = step.endSpot;
 
@@ -173,8 +224,7 @@
 	$effect(async () => {
 		if (!pathEl || steps === lastSteps) return;
 
-		await moveTo(steps[0].startSpot, 0);
-		// TODO: make sure previous scenery actions all happened
+		await prep();
 
 		lastSteps = steps;
 		performSteps();
