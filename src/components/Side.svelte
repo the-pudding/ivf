@@ -4,7 +4,7 @@
 	import { onMount } from "svelte";
 	import _ from "lodash";
 
-	let { id, beats, active, side = $bindable() } = $props();
+	let { id, beats, active, beatI, direction } = $props();
 
 	const allBeats = Object.entries(_.groupBy(beats, "id")).map(
 		([id, steps]) => ({
@@ -29,9 +29,7 @@
 
 	let spritePosition = $state("below");
 	let pathEl = $state();
-	let beatI = $state(0);
-	let direction = $state("forward");
-	let beatId = $derived(allBeats[beatI].id);
+	let beatId = $derived(active ? allBeats[beatI].id : allBeats[0].id);
 	let spriteIds = $derived(
 		beats
 			.filter((d) => d.id === beatId)
@@ -62,21 +60,13 @@
 	});
 </script>
 
-<svelte:window
-	on:keydown={(e) => {
-		if (active) {
-			if (e.key === "ArrowRight") {
-				direction = "forward";
-				beatI = Math.min(allBeats.length - 1, beatI + 1);
-			} else if (e.key === "ArrowLeft") {
-				direction = "backward";
-				beatI = Math.max(0, beatI - 1);
-			}
-		}
-	}}
-/>
-
-<div id={`side-${id}`} class={`side ${spritePosition}`} class:active>
+<div
+	id={`side-${id}`}
+	class="side"
+	class:active
+	class:above={spritePosition === "above" || !active}
+	class:below={spritePosition === "below" && active}
+>
 	{#if pathEl}
 		{#each spriteIds as spriteId (spriteId)}
 			<Sprite
@@ -91,6 +81,8 @@
 			/>
 		{/each}
 	{/if}
+
+	<div class="fade" class:visible={!active}></div>
 </div>
 
 <style>
@@ -115,5 +107,17 @@
 
 	#side-baby {
 		right: 0;
+	}
+
+	.fade {
+		height: 100%;
+		width: 100%;
+		background: var(--color-bg);
+		opacity: 0;
+		transition: opacity calc(var(--1s) * 0.3);
+	}
+
+	.fade.visible {
+		opacity: 0.9;
 	}
 </style>

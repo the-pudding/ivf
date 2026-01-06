@@ -60,13 +60,57 @@
 		"frameWidth": 100,
 		"frameHeight": 100,
 		"frames": [
-			{ "index": 0, "x": 0, "y": 0, "cycle": "follicle" },
+			{
+				"index": 0,
+				"x": 0,
+				"y": 0,
+				"cycle": "follicle",
+				"pose": "follicle-still"
+			},
 			{ "index": 1, "x": 100, "y": 0, "cycle": "follicle" },
 			{ "index": 2, "x": 200, "y": 0, "cycle": "follicle" },
 			{ "index": 3, "x": 300, "y": 0, "cycle": "follicle" },
-			{ "index": 0, "x": 0, "y": 200, "cycle": "egg" },
-			{ "index": 0, "x": 0, "y": 400, "cycle": "early-embryo" },
-			{ "index": 0, "x": 0, "y": 600, "cycle": "embryo" }
+			{ "index": 4, "x": 0, "y": 100, "cycle": "follicle" },
+			{ "index": 5, "x": 100, "y": 100, "cycle": "follicle" },
+			{ "index": 6, "x": 200, "y": 100, "cycle": "follicle" },
+			{ "index": 7, "x": 300, "y": 100, "cycle": "follicle" },
+			{ "index": 8, "x": 0, "y": 200, "cycle": "egg" },
+			{ "index": 9, "x": 100, "y": 200, "cycle": "egg" },
+			{ "index": 10, "x": 200, "y": 200, "cycle": "egg" },
+			{ "index": 11, "x": 300, "y": 200, "cycle": "egg" },
+			{ "index": 12, "x": 0, "y": 300, "cycle": "egg" },
+			{ "index": 13, "x": 100, "y": 300, "cycle": "egg" },
+			{ "index": 14, "x": 200, "y": 300, "cycle": "egg" },
+			{ "index": 15, "x": 300, "y": 300, "cycle": "egg" },
+			{ "index": 16, "x": 0, "y": 400, "cycle": "early-embryo" },
+			{ "index": 17, "x": 100, "y": 400, "cycle": "early-embryo" },
+			{ "index": 18, "x": 200, "y": 400, "cycle": "early-embryo" },
+			{ "index": 19, "x": 300, "y": 400, "cycle": "early-embryo" },
+			{ "index": 20, "x": 0, "y": 500, "cycle": "early-embryo" },
+			{ "index": 21, "x": 100, "y": 500, "cycle": "early-embryo" },
+			{ "index": 22, "x": 200, "y": 500, "cycle": "early-embryo" },
+			{ "index": 23, "x": 300, "y": 500, "cycle": "early-embryo" },
+			{ "index": 24, "x": 0, "y": 600, "cycle": "embryo" },
+			{ "index": 25, "x": 100, "y": 600, "cycle": "embryo" },
+			{ "index": 26, "x": 200, "y": 600, "cycle": "embryo" },
+			{ "index": 27, "x": 300, "y": 600, "cycle": "embryo" },
+			{ "index": 28, "x": 0, "y": 700, "cycle": "embryo" },
+			{ "index": 29, "x": 100, "y": 700, "cycle": "embryo" },
+			{ "index": 30, "x": 200, "y": 700, "cycle": "embryo" },
+			{ "index": 31, "x": 300, "y": 700, "cycle": "embryo" }
+		]
+	},
+	{
+		"id": "child",
+		"rows": 1,
+		"cols": 4,
+		"frameWidth": 200,
+		"frameHeight": 400,
+		"frames": [
+			{ "index": 0, "x": 0, "y": 0, "cycle": "walk" },
+			{ "index": 1, "x": 200, "y": 0, "cycle": "walk", "pose": "standing" },
+			{ "index": 2, "x": 400, "y": 0, "cycle": "walk" },
+			{ "index": 3, "x": 600, "y": 0, "cycle": "walk" }
 		]
 	},
 	{

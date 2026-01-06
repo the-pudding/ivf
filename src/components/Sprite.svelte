@@ -25,8 +25,9 @@
 	} = $props();
 
 	const FRAMERATE = 300;
-	const Y_OFFSET = 0.87;
-	const SPEED = 0.2;
+	const Y_OFFSET = 0.79;
+	const SPEED = 0.17;
+	const SCALE_FACTOR = id === "mom" ? 5000 : 3000;
 
 	const spriteDataForId = spriteData.find((d) => d.id === id);
 	const { rows, cols, frameWidth, frameHeight, frames } = spriteDataForId;
@@ -43,7 +44,7 @@
 	let frameIndex = $state(0);
 	let flipped = $derived(Math.cos(getAngleAtT(currentT, pathEl)) < 0);
 	let frame = $derived(frames[frameIndex]);
-	let scale = $derived(dimensions.width / 3000);
+	let scale = $derived(dimensions.width / SCALE_FACTOR);
 	const width = $derived(frameWidth * scale);
 	const height = $derived(frameHeight * scale);
 

@@ -1,5 +1,8 @@
-id,percent,sprite,cycle,flip,duration,forceSprites,forceN,forceConfig
-start,0,embryo,follicle,FALSE,0,embryo,10,halo
-test,5,embryo,follicle,FALSE,1000,embryo,10,cluster
-test-2,10,embryo,follicle,FALSE,1000,embryo,8,halo
-test-3,15,embryo,follicle,FALSE,1000,"embryo, mom",,halo
+id,sprite,pose,cycle,duration,startSpot,endSpot,position,scenery,sceneryAction,force,forceSprites,forceNodeSize,forceConfig
+start,embryo,follicle-still,,0,start,start,,,,,,,
+multiply,embryo,,follicle,,start,multiply-1,,,,,,,
+multiply,embryo,,follicle,,multiply-1,multiply-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+multiply,embryo,follicle-still,,0,multiply-2,multiply-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+egg,embryo,,follicle,,multiply-2,egg-1,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+egg,embryo,,egg,,egg-1,egg-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+egg,embryo,egg-still,,0,egg-2,egg-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster

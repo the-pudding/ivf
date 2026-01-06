@@ -925,6 +925,9 @@
       <path stroke="#2FF275" stroke-miterlimit="10" stroke-width="5" d="m2138.8 1123.4-312.5 206.7 147.7 106-500.1 292.1 39.8 29.8 83.3 150.1 42.9 18.9 85.3-43.7 215.9 135.8 85.9 141.2 32.7 26.5-506.5 303.4s51 26.7 43.8 22.9c-7.2-3.8 84.2 150.1 84.2 150.1l385.9 229.3-140.5 74.8-81 148.6-288.3 164.3 593.5 356.3-565.5 337.5-80.9 136.9-42.9 30.3 262.6 143.1 258.2-147 172.7 102-53.9 39.2-88.9 138.8-361.4 220.3 292.1 172.9 83.5 145.9 37.5 34.8-476.2 268.5-83.3 147.2-42.9 30.3 346.7 195.8 276.5-193.5-3.1 528.1-148.7 99-85.9 144.7-469.3 272.4" class="Vector"/>
     </g>
     <g class="markers">
+      <circle cx="780.5" cy="6045.5" r="12.5" fill="#2FF275" class="emerge-3"/>
+      <circle cx="693.5" cy="6005.5" r="12.5" fill="#2FF275" class="emerge-2"/>
+      <circle cx="693.5" cy="5467.5" r="12.5" fill="#2FF275" class="emerge-1"/>
       <circle cx="1047.5" cy="5369.5" r="12.5" fill="#2FF275" class="friend4-2"/>
       <circle cx="997.5" cy="5068.5" r="12.5" fill="#2FF275" class="friend4-1"/>
       <circle cx="867.5" cy="4992.5" r="12.5" fill="#2FF275" class="friend3-2"/>
@@ -946,6 +949,25 @@
       <circle cx="597.5" cy="1532.5" r="12.5" fill="#2FF275" class="heartbreak-2"/>
       <circle cx="844.5" cy="1386.5" r="12.5" fill="#2FF275" class="heartbreak-1"/>
       <circle cx="617.5" cy="1114.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="1779.5" cy="2350.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="1943.5" cy="2822.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="1655.5" cy="3226.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="2146.5" cy="3628.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="1460.5" cy="4141.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="1722.5" cy="4279.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="2150.5" cy="4237.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="1925.5" cy="4471.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="1650.5" cy="4641.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="1885.5" cy="4769.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="2058.5" cy="4992.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="1645.5" cy="5224.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="1462.5" cy="5432.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="2083.5" cy="5438.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="2083.5" cy="5964.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="1982.5" cy="6033.5" r="12.5" fill="#2FF275" class="start"/>
+      <circle cx="1823.5" cy="1943.5" r="12.5" fill="#2FF275" class="multiply-2"/>
+      <circle cx="1898.5" cy="1475.5" r="12.5" fill="#2FF275" class="multiply-1"/>
+      <circle cx="2139.5" cy="1122.5" r="12.5" fill="#2FF275" class="start"/>
     </g>
     <g class="mask">
       <mask id="a" width="2641" height="781" x="0" y="5254" class="a" maskUnits="userSpaceOnUse" style="mask-type:luminance">
