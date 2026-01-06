@@ -57,7 +57,7 @@
 
 			const circle = pathEl
 				.closest("svg")
-				.querySelector(`.markers circle.${spotId}`);
+				.querySelector(`.markers .${sideId} circle.${spotId}`);
 			if (!circle) return;
 
 			const cx = circle.cx.baseVal.value;

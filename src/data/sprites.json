@@ -50,7 +50,16 @@
 			{ "index": 23, "x": 600, "y": 1600, "cycle": "walk-hopeful" },
 			{ "index": 24, "x": 800, "y": 1600, "cycle": "walk-hopeful-backwards" },
 			{ "index": 25, "x": 0, "y": 2000, "cycle": "walk-hopeful-backwards" },
-			{ "index": 26, "x": 200, "y": 2000, "cycle": "walk-hopeful-backwards" }
+			{ "index": 26, "x": 200, "y": 2000, "cycle": "walk-hopeful-backwards" },
+			{ "index": 27, "x": 400, "y": 2000, "cycle": "walk-hand-extended" },
+			{
+				"index": 28,
+				"x": 600,
+				"y": 2000,
+				"cycle": "walk-hand-extended",
+				"pose": "hand-extended"
+			},
+			{ "index": 29, "x": 800, "y": 2000, "cycle": "walk-hand-extended" }
 		]
 	},
 	{

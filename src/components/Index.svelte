@@ -6,6 +6,7 @@
 	import momBeats from "$data/beats-mom.csv";
 	import babyBeats from "$data/beats-baby.csv";
 	import _ from "lodash";
+	import copy from "$data/copy.json";
 
 	const numBeats = Object.entries(_.groupBy(momBeats, "id")).map(
 		([id, steps]) => ({
@@ -47,13 +48,13 @@
 	</div>
 
 	<Side id="mom" beats={momBeats} active={side === "mom"} {beatI} {direction} />
-	<Side
+	<!-- <Side
 		id="baby"
 		beats={babyBeats}
 		active={side === "baby"}
 		{beatI}
 		{direction}
-	/>
+	/> -->
 </div>
 
 <style>

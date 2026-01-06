@@ -1,36 +1,50 @@
 id,sprite,pose,cycle,duration,startSpot,endSpot,position,scenery,sceneryAction,force,forceSprites,forceNodeSize,forceConfig
 start,mom,standing,,0,start,start,,,,,,,
-heartbreak,mom,,walk,,start,heartbreak-1,,,,,,,
+fertile,mom,,walk,,start,fertile,,,,,,,
+fertile,mom,standing,,0,fertile,fertile,,,,,,,
+heartbreak,mom,,walk,,fertile,heartbreak-1,,,,,,,
 heartbreak,mom,,walk-armor,,heartbreak-1,heartbreak-2,above,heart,split,,,,
 heartbreak,mom,standing-armor,,0,heartbreak-2,heartbreak-2,above,,,,,,
-needles,mom,,walk-covered,,heartbreak-2,needles-1,,needle,enter,,,,
-needles,mom,,walk-covered,,needles-1,needles-2,,,,,,,
-needles,mom,standing-armor,,0,needles-2,needles-2,,,,,,,
-calendar,mom,,walk-armor,,needles-2,calendar-1,,,,,,,
-calendar,mom,,walk-armor,,calendar-1,calendar-2, ,calendar,drop,,,,
-calendar,mom,,walk-armor,,calendar-2,calendar-3,above,,,,,,
-calendar,mom,standing-armor,,0,calendar-3,calendar-3,above,,,,,,
-faces,mom,,walk-covered,,calendar-3,faces,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
-faces,mom,standing-armor,,0,faces,faces,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
-papers,mom,,walk-covered,,faces,papers-1,,,,,,,
-papers,mom,,walk-covered,,papers-1,papers-2,above,paper-stack,enter,,,,
-papers,mom,crying,,0,papers-2,papers-2,above,,,,,,
-more-needles,mom,,walk-crying,,papers-2,more-needles-1,,,,,,,
-more-needles,mom,,walk-crying,,more-needles-1,more-needles-2,,horizontal-needle,enter,,,,
-more-needles,mom,crying,,0,more-needles-2,more-needles-2,,,,,,,
-friend1,mom,,walk-crying,,more-needles-2,friend1-1,,,,,,,
-friend1,mom,,walk-hopeful,,friend1-1,friend1-2,,,,friends,floating-head-mom-1,0.5,above
-friend1,mom,hopeful,,0,friend1-2,friend1-2,,,,friends,floating-head-mom-1,0.5,above
-friend2,mom,,walk-hopeful,,friend1-2,friend2-1,,,,friends,floating-head-mom-1,0.5,above
-friend2,mom,,walk-hopeful,,friend2-1,friend2-2,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
-friend2,mom,hopeful,,0,friend2-2,friend2-2,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
-friend3,mom,,walk-hopeful,,friend2-2,friend3-1,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
-friend3,mom,,walk-hopeful,,friend3-1,friend3-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
-friend3,mom,hopeful,,0,friend3-2,friend3-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
-friend4,mom,,walk-hopeful,,friend3-2,friend4-1,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
-friend4,mom,,walk-hopeful,,friend4-1,friend4-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",0.5,above
-friend4,mom,hopeful,,0,friend4-2,friend4-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",0.5,above
-emerge,mom,,walk-armor,,friend4-2,emerge-1,,,,,,,
-emerge,mom,standing-armor,,,emerge-1,emerge-2,,,,,,,
-emerge,mom,,walk-armor,,emerge-2,emerge-3,,,,,,,
-emerge,mom,standing-armor,,0,emerge-3,emerge-3,,,,,,,
+needles,mom,,walk-covered,,heartbreak-2,needles,,needle,enter,,,,
+needles,mom,standing-armor,,0,needles,needles,,,,,,,
+more-needles,mom,,walk-covered,,needles,more-needles,,,,,,,
+more-needles,mom,standing-armor,,0,more-needles,more-needles,,,,,,,
+logistics,mom,,walk-armor,,more-needles,logistics-1,,,,,,,
+logistics,mom,,walk-armor,,logistics-1,logistics-2, ,calendar,drop,,,,
+logistics,mom,,walk-armor,,logistics-2,logistics-3,above,,,,,,
+logistics,mom,standing-armor,,0,logistics-3,logistics-3,above,,,,,,
+adversaries,mom,,walk-covered,,logistics-3,adversaries,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
+adversaries,mom,standing-armor,,0,adversaries,adversaries,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
+go-wrong,mom,,walk-armor,,adversaries,go-wrong,,,,,,,
+go-wrong,mom,standing-armor,,0,go-wrong,go-wrong,,,,,,,
+wrong-clinic,mom,,walk-armor,,go-wrong,wrong-clinic,,,,,,,
+wrong-clinic,mom,standing-armor,,0,wrong-clinic,wrong-clinic,,,,,,,
+owe-money,mom,,walk-covered,,wrong-clinic,owe-money-1,,,,,,,
+owe-money,mom,,walk-covered,,owe-money-1,owe-money-2,above,paper-stack,enter,,,,
+owe-money,mom,standing-armor,,0,owe-money-2,owe-money-2,above,,,,,,
+sanity,mom,,walk-covered,,owe-money-2,sanity,,,,,,,
+sanity,mom,crying,,0,sanity,sanity,,,,,,,
+hoops,mom,,walk-crying,,sanity,hoops-1,,,,,,,
+hoops,mom,,walk-crying,,hoops-1,hoops-2,,horizontal-needle,enter,,,,
+hoops,mom,crying,,0,hoops-2,hoops-2,,,,,,,
+help,mom,,walk-crying,,hoops-2,help,,,,,,,
+help,mom,crying,,0,help,help,,,,,,,
+strength,mom,,walk-crying,,help,strength,,,,,,,
+strength,mom,crying,,0,strength,strength,,,,,,,
+taboo,mom,hopeful,,0,strength,strength,,,,,,,
+simone,mom,,walk-hopeful,,strength,simone-1,,,,,,,
+simone,mom,,walk-hopeful,,simone-1,simone-2,,,,friends,floating-head-mom-1,0.5,above
+simone,mom,hopeful,,0,simone-2,simone-2,,,,friends,floating-head-mom-1,0.5,above
+friends,mom,,walk-hopeful,,simone-2,friends-1,,,,friends,floating-head-mom-1,0.5,above
+friends,mom,,walk-hopeful,,friends-1,friends-2,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
+friends,mom,hopeful,,0,friends-2,friends-2,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
+online,mom,,walk-hopeful,,friends-2,online-1,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
+online,mom,,walk-hopeful,,online-1,online-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
+online,mom,hopeful,,0,online-2,online-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
+warriors,mom,,walk-hopeful,,online-2,warriors-1,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
+warriors,mom,,walk-hopeful,,warriors-1,warriors-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",0.5,above
+warriors,mom,hopeful,,0,warriors-2,warriors-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",0.5,above
+end,mom,,walk-armor,,warriors-2,end-1,,,,,,,
+end,mom,standing-armor,,,end-1,end-2,,,,,,,
+end,mom,,walk-armor,,end-2,end-3,,,,,,,
+end,mom,hand-extended,,0,end-3,end-3,,,,,,,

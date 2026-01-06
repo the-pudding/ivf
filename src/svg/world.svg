@@ -925,49 +925,60 @@
       <path stroke="#2FF275" stroke-miterlimit="10" stroke-width="5" d="m2138.8 1123.4-312.5 206.7 147.7 106-500.1 292.1 39.8 29.8 83.3 150.1 42.9 18.9 85.3-43.7 215.9 135.8 85.9 141.2 32.7 26.5-506.5 303.4s51 26.7 43.8 22.9c-7.2-3.8 84.2 150.1 84.2 150.1l385.9 229.3-140.5 74.8-81 148.6-288.3 164.3 593.5 356.3-565.5 337.5-80.9 136.9-42.9 30.3 262.6 143.1 258.2-147 172.7 102-53.9 39.2-88.9 138.8-361.4 220.3 292.1 172.9 83.5 145.9 37.5 34.8-476.2 268.5-83.3 147.2-42.9 30.3 346.7 195.8 276.5-193.5-3.1 528.1-148.7 99-85.9 144.7-469.3 272.4" class="Vector"/>
     </g>
     <g class="markers">
-      <circle cx="780.5" cy="6045.5" r="12.5" fill="#2FF275" class="emerge-3"/>
-      <circle cx="693.5" cy="6005.5" r="12.5" fill="#2FF275" class="emerge-2"/>
-      <circle cx="693.5" cy="5467.5" r="12.5" fill="#2FF275" class="emerge-1"/>
-      <circle cx="1047.5" cy="5369.5" r="12.5" fill="#2FF275" class="friend4-2"/>
-      <circle cx="997.5" cy="5068.5" r="12.5" fill="#2FF275" class="friend4-1"/>
-      <circle cx="867.5" cy="4992.5" r="12.5" fill="#2FF275" class="friend3-2"/>
-      <circle cx="671.5" cy="4688.5" r="12.5" fill="#2FF275" class="friend3-1"/>
-      <circle cx="861.5" cy="4580.5" r="12.5" fill="#2FF275" class="friend2-2"/>
-      <circle cx="1102.5" cy="4614.5" r="12.5" fill="#2FF275" class="friend2-1"/>
-      <circle cx="1289.5" cy="4434.5" r="12.5" fill="#2FF275" class="friend1-2"/>
-      <circle cx="882.5" cy="4203.5" r="12.5" fill="#2FF275" class="friend1-1"/>
-      <circle cx="633.5" cy="3943.5" r="12.5" fill="#2FF275" class="more-needles-2"/>
-      <circle cx="1186.5" cy="3693.5" r="12.5" fill="#2FF275" class="more-needles-1"/>
-      <circle cx="691.5" cy="3578.5" r="12.5" fill="#2FF275" class="papers-2"/>
-      <circle cx="1199.5" cy="3286.5" r="12.5" fill="#2FF275" class="papers-1"/>
-      <circle cx="866.5" cy="3071.5" r="12.5" fill="#2FF275" class="faces"/>
-      <circle cx="880.5" cy="2502.5" r="12.5" fill="#2FF275" class="calendar-3"/>
-      <circle cx="600.5" cy="2234.5" r="12.5" fill="#2FF275" class="calendar-2"/>
-      <circle cx="901.5" cy="2057.5" r="12.5" fill="#2FF275" class="calendar-1"/>
-      <circle cx="1054.5" cy="1965.5" r="12.5" fill="#2FF275" class="needles-2"/>
-      <circle cx="1042.5" cy="1694.5" r="12.5" fill="#2FF275" class="needles-1"/>
-      <circle cx="597.5" cy="1532.5" r="12.5" fill="#2FF275" class="heartbreak-2"/>
-      <circle cx="844.5" cy="1386.5" r="12.5" fill="#2FF275" class="heartbreak-1"/>
-      <circle cx="617.5" cy="1114.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="1779.5" cy="2350.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="1943.5" cy="2822.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="1655.5" cy="3226.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="2146.5" cy="3628.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="1460.5" cy="4141.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="1722.5" cy="4279.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="2150.5" cy="4237.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="1925.5" cy="4471.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="1650.5" cy="4641.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="1885.5" cy="4769.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="2058.5" cy="4992.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="1645.5" cy="5224.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="1462.5" cy="5432.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="2083.5" cy="5438.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="2083.5" cy="5964.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="1982.5" cy="6033.5" r="12.5" fill="#2FF275" class="start"/>
-      <circle cx="1823.5" cy="1943.5" r="12.5" fill="#2FF275" class="multiply-2"/>
-      <circle cx="1898.5" cy="1475.5" r="12.5" fill="#2FF275" class="multiply-1"/>
-      <circle cx="2139.5" cy="1122.5" r="12.5" fill="#2FF275" class="start"/>
+      <g class="baby">
+        <circle cx="1655.5" cy="3226.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="2146.5" cy="3628.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="1460.5" cy="4141.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="1722.5" cy="4279.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="2150.5" cy="4237.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="1925.5" cy="4471.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="1650.5" cy="4641.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="1885.5" cy="4769.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="2058.5" cy="4992.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="1645.5" cy="5224.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="1462.5" cy="5432.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="2083.5" cy="5438.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="2083.5" cy="5964.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="1982.5" cy="6033.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="1943.5" cy="2822.5" r="12.5" fill="#2FF275" class="egg-2"/>
+        <circle cx="1779.5" cy="2350.5" r="12.5" fill="#2FF275" class="egg-1"/>
+        <circle cx="1823.5" cy="1943.5" r="12.5" fill="#2FF275" class="multiply-2"/>
+        <circle cx="1898.5" cy="1475.5" r="12.5" fill="#2FF275" class="multiply-1"/>
+        <circle cx="2139.5" cy="1122.5" r="12.5" fill="#2FF275" class="start"/>
+      </g>
+      <g class="mom">
+        <circle cx="1318.5" cy="6451.5" r="12.5" fill="#2FF275" class="end-3"/>
+        <circle cx="693.5" cy="6005.5" r="12.5" fill="#2FF275" class="end-2"/>
+        <circle cx="693.5" cy="5467.5" r="12.5" fill="#2FF275" class="end-1"/>
+        <circle cx="860.5" cy="5577.5" r="12.5" fill="#2FF275" class="warriors-2"/>
+        <circle cx="997.5" cy="5068.5" r="12.5" fill="#2FF275" class="warriors-1"/>
+        <circle cx="867.5" cy="4992.5" r="12.5" fill="#2FF275" class="online-2"/>
+        <circle cx="671.5" cy="4688.5" r="12.5" fill="#2FF275" class="online-1"/>
+        <circle cx="861.5" cy="4580.5" r="12.5" fill="#2FF275" class="friends-2"/>
+        <circle cx="1102.5" cy="4614.5" r="12.5" fill="#2FF275" class="friends-1"/>
+        <circle cx="1289.5" cy="4434.5" r="12.5" fill="#2FF275" class="simone-2"/>
+        <circle cx="882.5" cy="4203.5" r="12.5" fill="#2FF275" class="simone-1"/>
+        <circle cx="829.5" cy="4172.5" r="12.5" fill="#2FF275" class="strength"/>
+        <circle cx="857.5" cy="3779.5" r="12.5" fill="#2FF275" class="help"/>
+        <circle cx="1138.5" cy="3926.5" r="12.5" fill="#2FF275" class="hoops-2"/>
+        <circle cx="1186.5" cy="3693.5" r="12.5" fill="#2FF275" class="hoops-1"/>
+        <circle cx="682.5" cy="3583.5" r="12.5" fill="#2FF275" class="sanity"/>
+        <circle cx="905.5" cy="3454.5" r="12.5" fill="#2FF275" class="owe-money-2"/>
+        <circle cx="1199.5" cy="3286.5" r="12.5" fill="#2FF275" class="owe-money-1"/>
+        <circle cx="686.5" cy="3182.5" r="12.5" fill="#2FF275" class="wrong-clinic"/>
+        <circle cx="994.5" cy="2998.5" r="12.5" fill="#2FF275" class="go-wrong"/>
+        <circle cx="1154.5" cy="2664.5" r="12.5" fill="#2FF275" class="adversaries"/>
+        <circle cx="880.5" cy="2502.5" r="12.5" fill="#2FF275" class="logistics-3"/>
+        <circle cx="600.5" cy="2234.5" r="12.5" fill="#2FF275" class="logistics-2"/>
+        <circle cx="901.5" cy="2057.5" r="12.5" fill="#2FF275" class="logistics-1"/>
+        <circle cx="1054.5" cy="1965.5" r="12.5" fill="#2FF275" class="more-needles"/>
+        <circle cx="1042.5" cy="1694.5" r="12.5" fill="#2FF275" class="needles"/>
+        <circle cx="769.5" cy="1723.5" r="12.5" fill="#2FF275" class="quest"/>
+        <circle cx="709.5" cy="1469.5" r="12.5" fill="#2FF275" class="heartbreak-2"/>
+        <circle cx="844.5" cy="1386.5" r="12.5" fill="#2FF275" class="heartbreak-1"/>
+        <circle cx="834.5" cy="1259.5" r="12.5" fill="#2FF275" class="fertile"/>
+        <circle cx="617.5" cy="1114.5" r="12.5" fill="#2FF275" class="start"/>
+      </g>
     </g>
     <g class="mask">
       <mask id="a" width="2641" height="781" x="0" y="5254" class="a" maskUnits="userSpaceOnUse" style="mask-type:luminance">
