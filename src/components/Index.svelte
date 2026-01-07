@@ -15,7 +15,7 @@
 		})
 	).length;
 
-	let side = $state("mom");
+	let side = $state("baby");
 	let beatI = $state(0);
 	let direction = $state("forward");
 </script>
@@ -48,13 +48,13 @@
 	</div>
 
 	<Side id="mom" beats={momBeats} active={side === "mom"} {beatI} {direction} />
-	<!-- <Side
+	<Side
 		id="baby"
 		beats={babyBeats}
 		active={side === "baby"}
 		{beatI}
 		{direction}
-	/> -->
+	/>
 </div>
 
 <style>

@@ -25,12 +25,12 @@
 	} = $props();
 
 	const FRAMERATE = 300;
-	const Y_OFFSET = 0.79;
 	const SPEED = 0.17;
-	const SCALE_FACTOR = id === "mom" ? 5000 : 3000;
 
 	const spriteDataForId = spriteData.find((d) => d.id === id);
 	const { rows, cols, frameWidth, frameHeight, frames } = spriteDataForId;
+	const yOffset = spriteDataForId.yOffset || 0;
+	const scaleFactor = spriteDataForId.scaleFactor || 5000;
 
 	let lastSteps;
 	let cycleInterval = null;
@@ -44,7 +44,7 @@
 	let frameIndex = $state(0);
 	let flipped = $derived(Math.cos(getAngleAtT(currentT, pathEl)) < 0);
 	let frame = $derived(frames[frameIndex]);
-	let scale = $derived(dimensions.width / SCALE_FACTOR);
+	let scale = $derived(dimensions.width / scaleFactor);
 	const width = $derived(frameWidth * scale);
 	const height = $derived(frameHeight * scale);
 
@@ -249,7 +249,7 @@
 <div
 	class="sprite"
 	class:flipped
-	style={`--y-offset: ${Y_OFFSET}`}
+	style={`--y-offset: ${yOffset}`}
 	style:width={`${width}px`}
 	style:height={`${height}px`}
 	style:background-image={`url("assets/sprites/${id}.png")`}
@@ -262,11 +262,11 @@
 {#if forceData && x && y}
 	<Force
 		centerX={x}
-		centerY={y - (Y_OFFSET - 0.5) * height}
+		centerY={y - (yOffset - 0.5) * height}
 		spriteWidth={width}
 		spriteHeight={height}
 		{forceData}
-		yOffset={Y_OFFSET}
+		{yOffset}
 	/>
 {/if}
 

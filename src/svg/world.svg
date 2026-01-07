@@ -926,25 +926,37 @@
     </g>
     <g class="markers">
       <g class="baby">
-        <circle cx="1655.5" cy="3226.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="2146.5" cy="3628.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="1460.5" cy="4141.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="1722.5" cy="4279.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="2150.5" cy="4237.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="1925.5" cy="4471.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="1650.5" cy="4641.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="1885.5" cy="4769.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="2058.5" cy="4992.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="1645.5" cy="5224.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="1462.5" cy="5432.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="2083.5" cy="5438.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="2083.5" cy="5964.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="1982.5" cy="6033.5" r="12.5" fill="#2FF275" class="start"/>
-        <circle cx="1943.5" cy="2822.5" r="12.5" fill="#2FF275" class="egg-2"/>
-        <circle cx="1779.5" cy="2350.5" r="12.5" fill="#2FF275" class="egg-1"/>
-        <circle cx="1823.5" cy="1943.5" r="12.5" fill="#2FF275" class="multiply-2"/>
-        <circle cx="1898.5" cy="1475.5" r="12.5" fill="#2FF275" class="multiply-1"/>
-        <circle cx="2139.5" cy="1122.5" r="12.5" fill="#2FF275" class="start"/>
+        <circle cx="1429.5" cy="6451.5" r="12.5" fill="#2FF275" class="end-3"/>
+        <circle cx="2079.5" cy="5971.5" r="12.5" fill="#2FF275" class="end-2"/>
+        <circle cx="2085.5" cy="5670.5" r="12.5" fill="#2FF275" class="end-1"/>
+        <circle cx="1632.5" cy="5531.5" r="12.5" fill="#2FF275" class="microbiologist"/>
+        <circle cx="2063.5" cy="4992.5" r="12.5" fill="#2FF275" class="acupuncturists"/>
+        <circle cx="1656.5" cy="4636.5" r="12.5" fill="#2FF275" class="doula"/>
+        <circle cx="2154.5" cy="4237.5" r="12.5" fill="#2FF275" class="nutritionist"/>
+        <circle cx="1722.5" cy="4279.5" r="12.5" fill="#2FF275" class="journey"/>
+        <circle cx="1461.5" cy="4139.5" r="12.5" fill="#2FF275" class="variables"/>
+        <circle cx="1625.5" cy="3951.5" r="12.5" fill="#2FF275" class="transfer-2"/>
+        <circle cx="1698.5" cy="3904.5" r="12.5" fill="#2FF275" class="transfer-1"/>
+        <circle cx="1925.5" cy="3768.5" r="12.5" fill="#2FF275" class="perservere-2"/>
+        <circle cx="2064.5" cy="3686.5" r="12.5" fill="#2FF275" class="perservere-1"/>
+        <circle cx="2002.5" cy="3546.5" r="12.5" fill="#2FF275" class="lottery"/>
+        <circle cx="1715.5" cy="3376.5" r="12.5" fill="#2FF275" class="genetic-testing-2"/>
+        <circle cx="1661.5" cy="3344.5" r="12.5" fill="#2FF275" class="genetic-testing-1"/>
+        <circle cx="1559.5" cy="3280.5" r="12.5" fill="#2FF275" class="viable-2"/>
+        <circle cx="1669.5" cy="3215.5" r="12.5" fill="#2FF275" class="viable-1"/>
+        <circle cx="1809.5" cy="3133.5" r="12.5" fill="#2FF275" class="fertilize-2"/>
+        <circle cx="1921.5" cy="2802.5" r="12.5" fill="#2FF275" class="fertilize-1"/>
+        <circle cx="1740.5" cy="2694.5" r="12.5" fill="#2FF275" class="first-cycle-2"/>
+        <circle cx="1683.5" cy="2664.5" r="12.5" fill="#2FF275" class="first-cycle-1"/>
+        <circle cx="1556.5" cy="2489.5" r="12.5" fill="#2FF275" class="hormones"/>
+        <circle cx="1856.5" cy="1965.5" r="12.5" fill="#2FF275" class="egg-2"/>
+        <circle cx="1543.5" cy="1814.5" r="12.5" fill="#2FF275" class="egg-1"/>
+        <circle cx="1473.5" cy="1727.5" r="12.5" fill="#2FF275" class="inefficient"/>
+        <circle cx="1727.5" cy="1580.5" r="12.5" fill="#2FF275" class="follicles-2"/>
+        <circle cx="1898.5" cy="1475.5" r="12.5" fill="#2FF275" class="follicles-1"/>
+        <circle cx="1896.5" cy="1378.5" r="12.5" fill="#2FF275" class="science"/>
+        <circle cx="1903.5" cy="1281.5" r="12.5" fill="#2FF275" class="ivf"/>
+        <circle cx="2138.5" cy="1122.5" r="12.5" fill="#2FF275" class="start"/>
       </g>
       <g class="mom">
         <circle cx="1318.5" cy="6451.5" r="12.5" fill="#2FF275" class="end-3"/>

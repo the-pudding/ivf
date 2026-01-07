@@ -1,8 +1,52 @@
 id,sprite,pose,cycle,duration,startSpot,endSpot,position,scenery,sceneryAction,force,forceSprites,forceNodeSize,forceConfig
 start,embryo,follicle-still,,0,start,start,,,,,,,
-multiply,embryo,,follicle,,start,multiply-1,,,,,,,
-multiply,embryo,,follicle,,multiply-1,multiply-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
-multiply,embryo,follicle-still,,0,multiply-2,multiply-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
-egg,embryo,,follicle,,multiply-2,egg-1,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
-egg,embryo,,egg,,egg-1,egg-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
-egg,embryo,egg-still,,0,egg-2,egg-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+ivf,embryo,,follicle,,start,ivf,,,,,,,
+ivf,embryo,follicle-still,,0,ivf,ivf,,,,,,,
+science,embryo,,follicle,,ivf,science,,,,,,,
+science,embryo,follicle-still,,0,science,science,,,,,,,
+follicles,embryo,,follicle,,science,follicles-1,,,,,,,
+follicles,embryo,,follicle,,follicles-1,follicles-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+follicles,embryo,follicle-still,,0,follicles-2,follicles-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+inefficient,embryo,,follicle,,follicles-2,inefficient,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+inefficient,embryo,follicle-still,,0,inefficient,inefficient,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+egg,embryo,,follicle,,inefficient,egg-1,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+egg,embryo,,egg,,egg-1,egg-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,halo
+egg,embryo,egg-still,,0,egg-2,egg-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,halo
+hormones,embryo,,egg,,egg-2,hormones,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+hormones,embryo,egg-still,,0,hormones,hormones,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+first-cycle,embryo,,egg,,hormones,first-cycle-1,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+first-cycle,embryo,,egg,,first-cycle-1,first-cycle-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+first-cycle,embryo,egg-still,,0,first-cycle-2,first-cycle-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+fertilize,embryo,,egg,,first-cycle-2,fertilize-1,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+fertilize,embryo,,early-embryo,,fertilize-1,fertilize-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+fertilize,embryo,early-embryo-still,,0,fertilize-2,fertilize-2,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+viable,embryo,,early-embryo,,fertilize-2,viable-1,,,,cluster,"embryo, embryo, embryo, embryo, embryo, embryo",1,cluster
+viable,embryo,,early-embryo,,viable-1,viable-2,,,,cluster,"embryo, embryo",1,cluster
+viable,embryo,early-embryo-still,,0,viable-2,viable-2,,,,cluster,"embryo, embryo",1,cluster
+genetic-testing,embryo,,early-embryo,,viable-2,genetic-testing-1,,,,cluster,"embryo, embryo",1,cluster
+genetic-testing,embryo,,early-embryo,,genetic-testing-1,genetic-testing-2,,,,,,,
+genetic-testing,embryo,early-embryo-still,,0,genetic-testing-2,genetic-testing-2,,,,,,,
+lottery,embryo,,early-embryo,,genetic-testing-2,lottery,,,,,,,
+lottery,embryo,early-embryo-still,,0,lottery,lottery,,,,,,,
+perservere,embryo,,embryo,,lottery,perservere-1,,,,,,,
+perservere,embryo,,embryo,,perservere-1,perservere-2,,,,cluster2,"embryo, embryo, embryo",1,cluster
+perservere,embryo,embryo-still,,0,perservere-2,perservere-2,,,,cluster2,"embryo, embryo, embryo",1,cluster
+transfer,embryo,,embryo,,perservere-2,transfer-1,,,,cluster2,"embryo, embryo, embryo",1,halo
+transfer,embryo,,embryo,,transfer-1,transfer-2,,,,,,,
+transfer,embryo,embryo-still,,0,transfer-2,transfer-2,,,,,,,
+variables,embryo,,embryo,,transfer-2,variables,,,,,,,
+variables,embryo,embryo-still,,0,variables,variables,,,,,,,
+journey,embryo,,embryo,,variables,journey,,,,,,,
+journey,embryo,embryo-still,,0,journey,journey,,,,,,,
+nutritionist,embryo,,embryo,,journey,nutritionist,,,,cluster3,floating-head-mom-1,1,above
+nutritionist,embryo,embryo-still,,0,nutritionist,nutritionist,,,,cluster3,floating-head-mom-1,1,above
+doula,embryo,,embryo,,nutritionist,doula,,,,cluster3,floating-head-mom-2,1,above
+doula,embryo,embryo-still,,0,doula,doula,,,,cluster3,floating-head-mom-2,1,above
+acupuncurists,embryo,,embryo,,doula,acupuncturists,,,,cluster3,floating-head-mom-3,1,above
+acupuncurists,embryo,embryo-still,,0,acupuncturists,acupuncturists,,,,cluster3,floating-head-mom-3,1,above
+microbiologist,embryo,,embryo,,acupuncturists,microbiologist,,,,cluster3,floating-head-mom-4,1,above
+microbiologist,embryo,embryo-still,,0,microbiologist,microbiologist,,,,cluster3,floating-head-mom-4,1,above
+end,embryo,,embryo,,microbiologist,end-1,,,,,,,
+end,child,standing,,,end-1,end-2,,,,,,,
+end,child,,walk,,end-2,end-3,,,,,,,
+end,child,hand-extended,,0,end-3,end-3,,,,,,,
