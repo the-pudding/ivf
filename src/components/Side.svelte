@@ -3,8 +3,16 @@
 	import { scenery } from "$utils/scenery.js";
 	import { onMount } from "svelte";
 	import _ from "lodash";
+	import { browser } from "$app/environment";
 
-	let { id, beats, active, beatI, direction } = $props();
+	let {
+		id,
+		beats,
+		active,
+		beatI,
+		direction,
+		transform = $bindable()
+	} = $props();
 
 	const allBeats = Object.entries(_.groupBy(beats, "id")).map(
 		([id, steps]) => ({
@@ -48,6 +56,33 @@
 			? [beats.filter((d) => d.id === beatId).at(-1)]
 			: beats.filter((d) => d.id === beatId)
 	);
+
+	// // TODO: fix
+	// let endY = $derived.by(() => {
+	// 	if (!browser) return 0;
+
+	// 	const endSpot = steps.at(-1).endSpot;
+	// 	const el = document.querySelector(`.${id} circle.${endSpot}`);
+
+	// 	if (!el) return 0;
+
+	// 	const rect = el.getBoundingClientRect();
+	// 	return rect.top + rect.height / 2;
+	// });
+
+	// $effect(() => {
+	// 	const vh = window.innerHeight;
+	// 	const totalHeight = document
+	// 		.querySelector(".world-view")
+	// 		?.getBoundingClientRect().height;
+
+	// 	if (endY > vh * 0.8) {
+	// 		const currentTranslateY = parseFloat(
+	// 			transform.match(/translate\(0,\s*(-?\d+\.?\d*)px\)/)?.[1] || "0"
+	// 		);
+	// 		transform = `translate(0, ${(totalHeight * 0.5 - endY) * -1}px)`;
+	// 	}
+	// });
 
 	onMount(() => {
 		pathEl = document.querySelector(`.${id}-path path`);
