@@ -29,8 +29,6 @@
 	let transform = $state("translate(0, 0)");
 	let text = $derived(copy.beats?.[side]?.[beatI]?.text ?? "");
 
-	$inspect({ transform });
-
 	$effect(() => {
 		const camera = document.querySelector(".main");
 		const world = document.querySelector(".world-view");
@@ -91,6 +89,16 @@
 />
 
 <div class="main">
+	<div class="copy" class:left={side === "baby"} class:right={side === "mom"}>
+		{#if Array.isArray(text)}
+			{#each text as { value: paragraph }}
+				<p>{@html paragraph}</p>
+			{/each}
+		{:else}
+			<p>{@html text}</p>
+		{/if}
+	</div>
+
 	<div class="world-view" style:transform>
 		{@html worldSvg}
 
@@ -122,6 +130,26 @@
 </div>
 
 <style>
+	.copy {
+		position: absolute;
+		top: 50%;
+		transform: translate(0, -50%);
+		background: var(--color-fg);
+		color: var(--color-bg);
+		font-family: var(--sans);
+		padding: 0.5rem 1rem;
+		z-index: 4;
+		width: 50%;
+	}
+
+	.copy.left {
+		left: 1rem;
+	}
+
+	.copy.right {
+		right: 1rem;
+	}
+
 	.main {
 		position: relative;
 		overflow: hidden;
