@@ -27,7 +27,9 @@
 	);
 	let direction = $state("forward");
 	let transform = $state("translate(0, 0)");
-	let text = $derived(copy.beats?.[side]?.[beatI]?.text ?? "");
+	let text = $derived(
+		beatI === 0 ? "" : (copy.beats?.[side]?.[beatI - 1]?.text ?? "")
+	);
 
 	$effect(() => {
 		const camera = document.querySelector(".main");
@@ -89,15 +91,17 @@
 />
 
 <div class="main">
-	<div class="copy" class:left={side === "baby"} class:right={side === "mom"}>
-		{#if Array.isArray(text)}
-			{#each text as { value: paragraph }}
-				<p>{@html paragraph}</p>
-			{/each}
-		{:else}
-			<p>{@html text}</p>
-		{/if}
-	</div>
+	{#if text !== ""}
+		<div class="copy" class:left={side === "baby"} class:right={side === "mom"}>
+			{#if Array.isArray(text)}
+				{#each text as { value: paragraph }}
+					<p>{@html paragraph}</p>
+				{/each}
+			{:else}
+				<p>{@html text}</p>
+			{/if}
+		</div>
+	{/if}
 
 	<div class="world-view" style:transform>
 		{@html worldSvg}
