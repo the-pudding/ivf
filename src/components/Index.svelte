@@ -16,7 +16,7 @@
 	).length;
 
 	let side = $state("mom");
-	let beatI = $state(0);
+	let beatI = $state(19);
 	let beatId = $derived(
 		Object.entries(_.groupBy(side === "mom" ? momBeats : babyBeats, "id")).map(
 			([id, steps]) => ({
@@ -131,8 +131,14 @@
 			bind:transform
 		/>
 
-		<div class="fade left" class:visible={side === "baby"}></div>
-		<div class="fade right" class:visible={side === "mom"}></div>
+		<div
+			class="fade left"
+			class:visible={side === "baby" && beatI < numBeats - 1}
+		></div>
+		<div
+			class="fade right"
+			class:visible={side === "mom" && beatI < numBeats - 1}
+		></div>
 	</div>
 </div>
 

@@ -76,7 +76,7 @@
 		"cols": 4,
 		"frameWidth": 100,
 		"frameHeight": 100,
-		"yOffset": 0.5,
+		"yOffset": 0.7,
 		"scaleFactor": 2500,
 		"frames": [
 			{
@@ -144,21 +144,6 @@
 				"y": 800,
 				"pose": "child-extended"
 			}
-		]
-	},
-	{
-		"id": "child",
-		"rows": 1,
-		"cols": 4,
-		"frameWidth": 200,
-		"frameHeight": 400,
-		"yOffset": 0.5,
-		"scaleFactor": 5000,
-		"frames": [
-			{ "index": 0, "x": 0, "y": 0, "cycle": "walk" },
-			{ "index": 1, "x": 200, "y": 0, "cycle": "walk", "pose": "standing" },
-			{ "index": 2, "x": 400, "y": 0, "cycle": "walk" },
-			{ "index": 3, "x": 600, "y": 0, "pose": "hand-extended" }
 		]
 	},
 	{
