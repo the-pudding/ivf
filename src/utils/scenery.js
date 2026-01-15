@@ -97,5 +97,22 @@ export const scenery = {
 				el.style.transform = "translateX(0)";
 			});
 		}
+	},
+	block: {
+		fall: (els) => {
+			els.forEach((el) => {
+				el.style.transition =
+					"transform 0.9s cubic-bezier(.2, .0, 1, .8), opacity 0.5s 1s ease-in-out";
+				el.style.transform = "translateY(100%)";
+				el.style.opacity = "0";
+			});
+		},
+		reset: (els) => {
+			els.forEach((el) => {
+				el.style.transition = "none";
+				el.style.transform = "translateY(0)";
+				el.style.opacity = "1";
+			});
+		}
 	}
 };

@@ -21,10 +21,11 @@ adversaries,mom,standing-armor,,0,adversaries,adversaries,,,,faces-halo,"floatin
 go-wrong,mom,,walk-armor,,adversaries,go-wrong,,,,,,,
 go-wrong,mom,standing-armor,,0,go-wrong,go-wrong,,,,,,,
 wrong-clinic,mom,,walk-armor,,go-wrong,wrong-clinic,,,,,,,
-wrong-clinic,mom,crying,,0,wrong-clinic,wrong-clinic,,,,,,,
+wrong-clinic,mom,standing-armor,,800,wrong-clinic,wrong-clinic,,block,fall,,,,
+wrong-clinic,mom,covered,,0,wrong-clinic,wrong-clinic,,,,,,,
 owe-money,mom,,walk-covered,,wrong-clinic,owe-money-1,,,,,,,
 owe-money,mom,,walk-covered,,owe-money-1,owe-money-2,above,paper-stack,enter,,,,
-owe-money,mom,standing-armor,,0,owe-money-2,owe-money-2,above,,,,,,
+owe-money,mom,crying,,0,owe-money-2,owe-money-2,above,,,,,,
 sanity,mom,,walk-covered,,owe-money-2,sanity,,,,,,,
 sanity,mom,crying,,0,sanity,sanity,,,,,,,
 hoops,mom,,walk-crying,,sanity,hoops-1,,,,cloud,cloud,0.7,above
