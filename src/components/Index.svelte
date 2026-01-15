@@ -231,6 +231,74 @@
 		}
 	}
 
+	@keyframes flash-loop {
+		/* long white stretches */
+		0% {
+			fill: #ffffff;
+		}
+		10% {
+			fill: #ffffff;
+		}
+		20% {
+			fill: #ffffff;
+		}
+
+		/* first soft cluster */
+		24% {
+			fill: #f0d0d3;
+		}
+		27% {
+			fill: #ffffff;
+		}
+		30% {
+			fill: #f0b49d;
+		}
+		33% {
+			fill: #ffffff;
+		}
+
+		/* white again */
+		42% {
+			fill: #ffffff;
+		}
+
+		/* second cluster */
+		48% {
+			fill: #f0d0d3;
+		}
+		52% {
+			fill: #ffffff;
+		}
+		56% {
+			fill: #f0d0d3;
+		}
+		59% {
+			fill: #ffffff;
+		}
+
+		/* breather */
+		68% {
+			fill: #ffffff;
+		}
+
+		/* final accent */
+		74% {
+			fill: #f0b49d;
+		}
+		78% {
+			fill: #ffffff;
+		}
+
+		100% {
+			fill: #ffffff;
+		}
+	}
+
+	:global(.calendar-flash) {
+		animation: flash-loop 8s steps(1) infinite;
+		transition: fill 0.25s ease;
+	}
+
 	:global(.needle-jab) {
 		animation: jab 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
 	}

@@ -14,8 +14,8 @@ more-needles,mom,,walk-covered,,needles,more-needles,,needle,poke-loop,,,,
 more-needles,mom,covered,,0,more-needles,more-needles,,needle,poke-loop,,,,
 logistics,mom,,walk-armor,,more-needles,logistics-1,,,,,,,
 logistics,mom,,walk-armor,,logistics-1,logistics-2, ,calendar,drop,,,,
-logistics,mom,,walk-armor,,logistics-2,logistics-3,above,,,,,,
-logistics,mom,standing-armor,,0,logistics-3,logistics-3,above,,,,,,
+logistics,mom,,walk-armor,,logistics-2,logistics-3,above,calendar,flash-loop,,,,
+logistics,mom,standing-armor,,0,logistics-3,logistics-3,above,calendar,flash-loop,,,,
 adversaries,mom,,walk-covered,,logistics-3,adversaries,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
 adversaries,mom,standing-armor,,0,adversaries,adversaries,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
 go-wrong,mom,,walk-armor,,adversaries,go-wrong,,,,,,,

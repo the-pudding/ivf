@@ -39,6 +39,12 @@ export const scenery = {
 				el.style.animationDelay = `${i * 0.15}s`;
 			});
 		},
+		fade: (els) => {
+			els.forEach((el) => {
+				el.classList.remove("needle-jab");
+				el.style.opacity = "0.2";
+			});
+		},
 		reset: (els) => {
 			els.forEach((el) => {
 				el.style.opacity = "0";
@@ -52,6 +58,22 @@ export const scenery = {
 				"transform 0.5s ease-in-out, opacity 0.5s ease-in-out";
 			els[0].style.transform = "translateY(0)";
 			els[0].style.opacity = "1";
+		},
+		"flash-loop": (els) => {
+			const squareEls = els[0].querySelectorAll(".days path");
+			squareEls.forEach((squareEl) => {
+				squareEl.classList.add("calendar-flash");
+				squareEl.style.animationDelay = `${-Math.random() * 4}s`;
+			});
+		},
+		fade: (els) => {
+			els.forEach((el) => {
+				el.style.opacity = "0.2";
+				const squareEls = els[0].querySelectorAll(".days path");
+				squareEls.forEach((squareEl) => {
+					squareEl.classList.remove("calendar-flash");
+				});
+			});
 		},
 		reset: (els) => {
 			els[0].style.transform = "translateY(-2%)";
@@ -100,19 +122,15 @@ export const scenery = {
 	},
 	block: {
 		fall: (els) => {
-			els.forEach((el) => {
-				el.style.transition =
-					"transform 0.9s cubic-bezier(.2, .0, 1, .8), opacity 0.5s 1s ease-in-out";
-				el.style.transform = "translateY(100%)";
-				el.style.opacity = "0";
-			});
+			els[0].style.transition =
+				"transform 0.9s cubic-bezier(.2, .0, 1, .8), opacity 0.5s 1s ease-in-out";
+			els[0].style.transform = "translateY(100%)";
+			els[0].style.opacity = "0";
 		},
 		reset: (els) => {
-			els.forEach((el) => {
-				el.style.transition = "none";
-				el.style.transform = "translateY(0)";
-				el.style.opacity = "1";
-			});
+			els[0].style.transition = "none";
+			els[0].style.transform = "translateY(0)";
+			els[0].style.opacity = "1";
 		}
 	}
 };

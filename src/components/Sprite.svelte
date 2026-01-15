@@ -184,7 +184,8 @@
 				const actions = beat.steps.filter((s) => s.scenery && s.sceneryAction);
 				actions.forEach((step) => {
 					const els = document.querySelectorAll(`.Foreground .${step.scenery}`);
-					els.forEach((el) => (el.style.opacity = "0.2"));
+					if (scenery[step.scenery].fade) scenery[step.scenery].fade(els);
+					else els.forEach((el) => (el.style.opacity = "0.2"));
 				});
 			});
 
