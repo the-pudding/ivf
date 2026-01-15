@@ -90,7 +90,7 @@
 		{/each}
 	{/if}
 
-	<div class="fade" class:visible={!active}></div>
+	<!-- <div class="fade" class:visible={!active}></div> -->
 </div>
 
 <style>
@@ -115,17 +115,5 @@
 
 	#side-baby {
 		right: 0;
-	}
-
-	.fade {
-		height: 100%;
-		width: 100%;
-		background: var(--color-bg);
-		opacity: 0;
-		transition: opacity calc(var(--1s) * 0.3);
-	}
-
-	.fade.visible {
-		opacity: 0.9;
 	}
 </style>

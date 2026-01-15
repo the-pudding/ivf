@@ -130,6 +130,9 @@
 			{direction}
 			bind:transform
 		/>
+
+		<div class="fade left" class:visible={side === "baby"}></div>
+		<div class="fade right" class:visible={side === "mom"}></div>
 	</div>
 </div>
 
@@ -142,8 +145,8 @@
 		color: var(--color-bg);
 		font-family: var(--sans);
 		padding: 0.5rem 1rem;
-		z-index: 4;
-		width: 50%;
+		z-index: 1;
+		width: 45%;
 	}
 
 	.copy.left {
@@ -162,7 +165,6 @@
 		height: 100svh;
 		max-width: 1400px;
 		margin: 0 auto;
-		z-index: 0;
 	}
 
 	.world-view {
@@ -178,7 +180,30 @@
 	.mask {
 		position: absolute;
 		top: 0;
-		z-index: 2;
+		z-index: 4;
+	}
+
+	.fade {
+		position: absolute;
+		top: 0;
+		z-index: 5;
+		height: 100%;
+		width: 50%;
+		background: var(--color-bg);
+		opacity: 0;
+		transition: opacity calc(var(--1s) * 0.3);
+	}
+
+	.fade.left {
+		left: 0;
+	}
+
+	.fade.right {
+		right: 0;
+	}
+
+	.fade.visible {
+		opacity: 0.9;
 	}
 
 	:global(.world .mom-path, .world .baby-path, .world .markers) {
