@@ -1,5 +1,10 @@
 export const scenery = {
 	heart: {
+		enter: (els) => {
+			els[0].style.transition =
+				"opacity 0.5s ease-in-out, transform 0.5s ease-in-out";
+			els[0].style.opacity = "1";
+		},
 		split: (els) => {
 			const left = els[0].querySelector("path.left");
 			const right = els[0].querySelector("path.right");
@@ -16,7 +21,7 @@ export const scenery = {
 
 			left.style.transform = "translate(0, 0)";
 			right.style.transform = "translate(0, 0)";
-			els[0].style.opacity = "1";
+			els[0].style.opacity = "0";
 		}
 	},
 	needle: {
@@ -26,6 +31,11 @@ export const scenery = {
 				el.style.transition = `opacity 0.5s ${delay}s ease-in-out, transform 0.5s ${delay + 0.1}s ease-in-out`;
 				el.style.opacity = "1";
 				el.style.transform = "translateY(1%)";
+			});
+		},
+		"poke-loop": (els) => {
+			els.forEach((el) => {
+				// here
 			});
 		},
 		reset: (els) => {

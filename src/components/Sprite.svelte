@@ -42,6 +42,7 @@
 	let currentSpotId = $state();
 	let forceData = $state();
 	let frameIndex = $state(0);
+	let gray = $state(false);
 	let flipped = $derived(Math.cos(getAngleAtT(currentT, pathEl)) < 0);
 	let frame = $derived(frames[frameIndex]);
 	let scale = $derived(dimensions.width / scaleFactor);
@@ -115,7 +116,15 @@
 			cycleInterval = null;
 		}
 
-		const cycleFrames = frames.filter((d) => d.cycle === cycleId);
+		let cycleFrames = frames.filter((d) => d.cycle === cycleId);
+		if (
+			cycleId === "follicle" ||
+			cycleId === "egg" ||
+			cycleId === "early-embryo" ||
+			cycleId === "embryo"
+		) {
+			cycleFrames = [...cycleFrames].reverse();
+		}
 
 		if (cycleFrames.length === 0) {
 			frameIndex = 0;
@@ -134,14 +143,14 @@
 	};
 
 	const performSceneryAction = (sceneryId, sceneryAction) => {
-		const performed = sceneryState.get(sceneryId);
+		const performed = sceneryState[sceneryId][sceneryAction];
 		if (performed) return;
 
 		const els = document.querySelectorAll(`.Foreground .${sceneryId}`);
 		const actionHandler = scenery[sceneryId][sceneryAction];
 		if (actionHandler) {
 			actionHandler(els);
-			sceneryState.set(sceneryId, true);
+			sceneryState[sceneryId][sceneryAction] = true;
 		}
 	};
 
@@ -184,7 +193,7 @@
 			const resetter = scenery[d.scenery].reset;
 			if (els && resetter) {
 				resetter(els);
-				sceneryState.set(d.scenery, false);
+				sceneryState[d.scenery][d.sceneryAction] = false;
 			}
 		});
 	};
@@ -202,6 +211,9 @@
 			} else {
 				forceData = undefined;
 			}
+
+			if (step.gray === "TRUE") gray = true;
+			else gray = false;
 
 			if (step.cycle) cycle(step.cycle);
 			else if (step.pose) {
@@ -249,6 +261,7 @@
 <div
 	class="sprite"
 	class:flipped
+	class:gray
 	style={`--y-offset: ${yOffset}`}
 	style:width={`${width}px`}
 	style:height={`${height}px`}
@@ -267,6 +280,7 @@
 		spriteHeight={height}
 		{forceData}
 		{yOffset}
+		{gray}
 	/>
 {/if}
 
@@ -278,5 +292,9 @@
 
 	.flipped {
 		transform: translate(-50%, calc(-100% * var(--y-offset))) scaleX(-1);
+	}
+
+	.gray {
+		filter: grayscale(100%);
 	}
 </style>

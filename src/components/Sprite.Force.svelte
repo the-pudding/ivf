@@ -11,9 +11,19 @@
 	} from "d3-force";
 	import spriteData from "$data/sprites.json";
 	import { onDestroy } from "svelte";
+	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 
-	let { centerX, centerY, spriteWidth, spriteHeight, forceData, yOffset } =
-		$props();
+	let dimensions = new useWindowDimensions();
+
+	let {
+		centerX,
+		centerY,
+		spriteWidth,
+		spriteHeight,
+		forceData,
+		yOffset,
+		gray
+	} = $props();
 
 	let currentForceId = $state();
 	let nodeRadius = $derived(
@@ -79,7 +89,7 @@
 
 		if (forceData.config === "cluster") {
 			simulation = forceSimulation(nodes)
-				.force("charge", forceManyBody().strength(5))
+				.force("charge", forceManyBody().strength(-10))
 				.force("collision", forceCollide().radius(nodeRadius / 4))
 				.on("tick", ticked);
 		} else if (forceData.config === "halo") {
@@ -100,6 +110,7 @@
 
 		if (forceData.config === "cluster") {
 			simulation.force("center", forceCenter(centerX, centerY));
+			simulation.force("radial", forceRadial(nodeRadius / 2, centerX, centerY));
 			simulation.alpha(0.3).restart();
 		} else if (forceData.config === "halo") {
 			simulation.force("center", forceCenter(centerX, centerY));
@@ -161,20 +172,34 @@
 </script>
 
 {#each nodes as node, i (i)}
-	{@const spriteD = spriteData.find((d) => d.id === node.sprite)}
+	{@const spriteId = node.sprite.split(":")[0]}
+	{@const spriteD = spriteData.find((d) => d.id === spriteId)}
+	{@const pose =
+		node.sprite.split(":").length > 1
+			? `${node.sprite.split(":")[1]}-still`
+			: undefined}
+	{@const frame = pose
+		? spriteD.frames.find((f) => f.pose === pose)
+		: spriteD.frames[0]}
+	{@const scale = dimensions.width / (spriteD.scaleFactor || 5000)}
 	<div
 		class="node"
+		class:gray
 		bind:this={nodeEls[i]}
 		style:width={`${nodeRadius}px`}
 		style:height={`${nodeRadius}px`}
-		style:background-image={`url("assets/sprites/${node.sprite}.png")`}
+		style:background-image={`url("assets/sprites/${spriteId}.png")`}
 		style:background-size={`calc(${spriteD.cols} * 100%) calc(${spriteD.rows} * 100%)`}
-		style:background-position={`0px 0px`}
+		style:background-position={`-${scale * frame.x}px -${scale * frame.y}px`}
 	></div>
 {/each}
 
 <style>
 	.node {
 		position: absolute;
+	}
+
+	.gray {
+		filter: grayscale(100%);
 	}
 </style>
