@@ -85,6 +85,7 @@
 				{pathEl}
 				bind:spritePosition
 				{sceneryState}
+				{active}
 			/>
 		{/each}
 	{/if}

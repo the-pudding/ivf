@@ -1,4 +1,5 @@
 id,sprite,pose,cycle,gray,duration,startSpot,endSpot,position,scenery,sceneryAction,force,forceSprites,forceNodeSize,forceConfig
+start,baby,,follicle,,,hidden-enter,start,,,,,,,
 start,baby,follicle-still,,,0,start,start,,,,,,,
 ivf,baby,,follicle,,,start,ivf,,,,,,,
 ivf,baby,follicle-still,,,0,ivf,ivf,,,,,,,
@@ -10,9 +11,9 @@ inefficient,baby,follicle-still,,,0,inefficient,inefficient,,,,explanation,"baby
 egg,baby,,follicle,,,inefficient,egg-1,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
 egg,baby,,follicle,,,egg-1,egg-2,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
 egg,baby,follicle-still,,,0,egg-2,egg-2,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
-hormones,baby,,egg,,,egg-2,hormones,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
-hormones,baby,egg-still,,,0,hormones,hormones,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
-first-cycle,baby,,egg,,,hormones,first-cycle-1,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
+hormones,baby,,egg,,,egg-2,hormones,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
+hormones,baby,egg-still,,,0,hormones,hormones,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
+first-cycle,baby,,egg,,,hormones,first-cycle-1,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
 first-cycle,baby,,egg,,,first-cycle-1,first-cycle-2,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
 first-cycle,baby,egg-still,,,0,first-cycle-2,first-cycle-2,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
 fertilize,baby,,egg,,,first-cycle-2,fertilize-1,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
@@ -38,12 +39,12 @@ journey,baby,,embryo,TRUE,,variables,journey,,,,,,,
 journey,baby,embryo-still,,TRUE,0,journey,journey,,,,,,,
 nutritionist,baby,,embryo,,,journey,nutritionist,,,,friends,floating-head-mom-1,1,above
 nutritionist,baby,embryo-still,,,0,nutritionist,nutritionist,,,,friends,floating-head-mom-1,1,above
-doula,baby,,embryo,,,nutritionist,doula,,,,friends,floating-head-mom-2,1,above
-doula,baby,embryo-still,,,0,doula,doula,,,,friends,floating-head-mom-2,1,above
-acupuncurists,baby,,embryo,,,doula,acupuncturists,,,,friends,floating-head-mom-3,1,above
-acupuncurists,baby,embryo-still,,,0,acupuncturists,acupuncturists,,,,friends,floating-head-mom-3,1,above
-microbiologist,baby,,embryo,,,acupuncturists,microbiologist,,,,friends,floating-head-mom-4,1,above
-microbiologist,baby,embryo-still,,,0,microbiologist,microbiologist,,,,friends,floating-head-mom-4,1,above
+doula,baby,,embryo,,,nutritionist,doula,,,,friends,"floating-head-mom-1, floating-head-mom-2",1,above
+doula,baby,embryo-still,,,0,doula,doula,,,,friends,"floating-head-mom-1, floating-head-mom-2",1,above
+acupuncurists,baby,,embryo,,,doula,acupuncturists,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
+acupuncurists,baby,embryo-still,,,0,acupuncturists,acupuncturists,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
+microbiologist,baby,,embryo,,,acupuncturists,microbiologist,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
+microbiologist,baby,embryo-still,,,0,microbiologist,microbiologist,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
 finally,baby,,embryo,,,microbiologist,finally,,,,,,,
 finally,baby,embryo-still,,,0,finally,finally,,,,,,,
 end,baby,,embryo,,,finally,end-1,,,,,,,

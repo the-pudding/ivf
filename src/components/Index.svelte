@@ -15,7 +15,7 @@
 		})
 	).length;
 
-	let side = $state("baby");
+	let side = $state("mom");
 	let beatI = $state(0);
 	let beatId = $derived(
 		Object.entries(_.groupBy(side === "mom" ? momBeats : babyBeats, "id")).map(

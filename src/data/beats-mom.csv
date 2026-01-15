@@ -1,4 +1,5 @@
 id,sprite,pose,cycle,duration,startSpot,endSpot,position,scenery,sceneryAction,force,forceSprites,forceNodeSize,forceConfig
+start,mom,,walk,,hidden-enter,start,,,,,,,
 start,mom,standing,,0,start,start,,,,,,,
 fertile,mom,,walk,,start,fertile,,,,,,,
 fertile,mom,standing,,0,fertile,fertile,,,,,,,

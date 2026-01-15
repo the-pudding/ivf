@@ -21,7 +21,8 @@
 		steps,
 		pathEl,
 		spritePosition = $bindable(),
-		sceneryState
+		sceneryState,
+		active
 	} = $props();
 
 	const FRAMERATE = 300;
@@ -39,11 +40,15 @@
 	let x = $state(0);
 	let y = $state(0);
 	let currentT = $state(0);
-	let currentSpotId = $state();
+	let currentSpotId = $state("hidden-enter");
 	let forceData = $state();
 	let frameIndex = $state(0);
 	let gray = $state(false);
-	let flipped = $derived(Math.cos(getAngleAtT(currentT, pathEl)) < 0);
+	let flipped = $derived(
+		id === "mom"
+			? Math.cos(getAngleAtT(currentT, pathEl)) < 0
+			: Math.cos(getAngleAtT(currentT, pathEl)) > 0
+	);
 	let frame = $derived(frames[frameIndex]);
 	let scale = $derived(dimensions.width / scaleFactor);
 	const width = $derived(frameWidth * scale);
@@ -236,7 +241,7 @@
 	};
 
 	$effect(async () => {
-		if (!pathEl || steps === lastSteps) return;
+		if (!pathEl || steps === lastSteps || !active) return;
 
 		await prep();
 
