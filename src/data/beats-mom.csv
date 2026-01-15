@@ -6,12 +6,12 @@ fertile,mom,standing,,0,fertile,fertile,,,,,,,
 heartbreak,mom,,walk,,fertile,heartbreak-1,,heart,enter,,,,
 heartbreak,mom,,walk,,heartbreak-1,heartbreak-2,above,heart,split,,,,
 heartbreak,mom,standing,,0,heartbreak-2,heartbreak-2,above,,,,,,
-quest,mom,,walk,,heartbreak-2,quest,,,,,,,
+quest,mom,,walk,,heartbreak-2,quest,above,,,,,,
 quest,mom,standing-armor,,0,quest,quest,,,,,,,
 needles,mom,,walk-covered,,quest,needles,,needle,enter,,,,
 needles,mom,covered,,0,needles,needles,,needle,poke-loop,,,,
-more-needles,mom,,walk-covered,,needles,more-needles,,,,,,,
-more-needles,mom,covered,,0,more-needles,more-needles,,,,,,,
+more-needles,mom,,walk-covered,,needles,more-needles,,needle,poke-loop,,,,
+more-needles,mom,covered,,0,more-needles,more-needles,,needle,poke-loop,,,,
 logistics,mom,,walk-armor,,more-needles,logistics-1,,,,,,,
 logistics,mom,,walk-armor,,logistics-1,logistics-2, ,calendar,drop,,,,
 logistics,mom,,walk-armor,,logistics-2,logistics-3,above,,,,,,
@@ -27,14 +27,13 @@ owe-money,mom,,walk-covered,,owe-money-1,owe-money-2,above,paper-stack,enter,,,,
 owe-money,mom,standing-armor,,0,owe-money-2,owe-money-2,above,,,,,,
 sanity,mom,,walk-covered,,owe-money-2,sanity,,,,,,,
 sanity,mom,crying,,0,sanity,sanity,,,,,,,
-hoops,mom,,walk-crying,,sanity,hoops-1,,,,,,,
-hoops,mom,,walk-crying,,hoops-1,hoops-2,,horizontal-needle,enter,,,,
-hoops,mom,crying,,0,hoops-2,hoops-2,,,,,,,
-help,mom,,walk-crying,,hoops-2,help,,,,,,,
-help,mom,crying,,0,help,help,,,,,,,
-strength,mom,,walk-crying,,help,strength,,,,,,,
-strength,mom,crying,,0,strength,strength,,,,,,,
-taboo,mom,hopeful,,0,strength,strength,,,,,,,
+hoops,mom,,walk-crying,,sanity,hoops-1,,,,cloud,cloud,0.7,above
+hoops,mom,,walk-crying,,hoops-1,hoops-2,,horizontal-needle,enter,cloud,cloud,0.7,above
+hoops,mom,crying,,0,hoops-2,hoops-2,,,,cloud,cloud,0.7,above
+help,mom,,walk-crying,,hoops-2,help,,,,cloud,cloud,0.7,above
+help,mom,crying,,0,help,help,,,,cloud,cloud,0.7,above
+strength,mom,,walk-crying,,help,strength,,,,cloud,cloud,0.7,above
+strength,mom,hopeful,,0,strength,strength,,,,,,,
 simone,mom,,walk-hopeful,,strength,simone-1,,,,,,,
 simone,mom,,walk-hopeful,,simone-1,simone-2,,,,friends,floating-head-mom-1,0.5,above
 simone,mom,hopeful,,0,simone-2,simone-2,,,,friends,floating-head-mom-1,0.5,above

@@ -7,36 +7,14 @@
       </g>
       <g class="VerticalNeedles">
         <g class="needle">
-          <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M914 1611.45v50" class="Vector"/>
-          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m906.899 1589.85 7.1 21.6 7.2-21.6h-14.3Z" class="Vector"/>
-          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M921.2 1458.15v131.7c0 .3 0 .7-.3 1-.9 1.5-3.6 2.5-6.9 2.5-3.3 0-6-1.1-6.9-2.5-.2-.3-.3-.7-.3-1v-131.7c0-1.9 3.2-3.5 7.2-3.5s7.2 1.6 7.2 3.5Z" class="Vector"/>
+          <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1329.8 1706.85v49.9" class="Vector"/>
+          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1322.6 1685.25 7.2 21.6 7.1-21.6h-14.3Z" class="Vector"/>
+          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1336.9 1553.55v131.7c0 .3 0 .7-.3 1-.9 1.5-3.6 2.5-6.9 2.5-3.3 0-6-1.1-6.9-2.5-.2-.3-.3-.7-.3-1v-131.7c0-1.9 3.2-3.5 7.2-3.5s7.2 1.6 7.2 3.5Z" class="Vector"/>
           <g class="Group">
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M931.9 1454.65c0 .5 0 1-.2 1.5-1.4 4.2-8.8 7.3-17.7 7.3-8.9 0-16.3-3.2-17.7-7.3-.2-.5-.2-1-.2-1.5 0-4.9 8-8.8 17.9-8.8 9.9 0 17.9 3.9 17.9 8.8Z" class="Vector"/>
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M917.4 1429.35v25.3c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7v-25.3c0 .9 1.5 1.7 3.4 1.7s3.4-.7 3.4-1.7Z" class="Vector"/>
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M917.4 1429.35c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7 1.5-1.7 3.4-1.7 3.4.7 3.4 1.7Z" class="Vector"/>
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M924.7 1426.35c0 .5-.2 1-.4 1.5-1.3 2.2-5.4 3.8-10.3 3.8s-9-1.6-10.3-3.8c-.3-.5-.4-1-.4-1.5 0-2.9 4.8-5.3 10.7-5.3 5.9 0 10.7 2.4 10.7 5.3Z" class="Vector"/>
-          </g>
-        </g>
-        <g class="needle">
-          <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1087.6 1471.75v50" class="Vector"/>
-          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1080.5 1450.15 7.1 21.6 7.2-21.6h-14.3Z" class="Vector"/>
-          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1094.8 1318.55v131.7c0 .3 0 .7-.3 1-.9 1.5-3.6 2.5-6.9 2.5-3.3 0-6-1.1-6.9-2.5-.2-.3-.3-.7-.3-1v-131.7c0-1.9 3.2-3.5 7.2-3.5s7.2 1.6 7.2 3.5Z" class="Vector"/>
-          <g class="Group">
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1105.6 1314.95c0 .5 0 1-.2 1.5-1.4 4.2-8.8 7.3-17.7 7.3-8.9 0-16.3-3.2-17.7-7.3-.2-.5-.2-1-.2-1.5 0-4.9 8-8.8 17.9-8.8 9.9 0 17.9 3.9 17.9 8.8Z" class="Vector"/>
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1091 1289.65v25.3c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7v-25.3c0 .9 1.5 1.7 3.4 1.7s3.4-.7 3.4-1.7Z" class="Vector"/>
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1091 1289.65c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7 1.5-1.7 3.4-1.7 3.4.7 3.4 1.7Z" class="Vector"/>
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1098.3 1286.65c0 .5-.2 1-.4 1.5-1.3 2.2-5.4 3.8-10.3 3.8s-9-1.6-10.3-3.8c-.3-.5-.4-1-.4-1.5 0-2.9 4.8-5.3 10.7-5.3 5.9 0 10.7 2.4 10.7 5.3Z" class="Vector"/>
-          </g>
-        </g>
-        <g class="needle">
-          <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1000.15 1573.75v49.9" class="Vector"/>
-          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m992.951 1552.15 7.199 21.6 7.2-21.6h-14.399Z" class="Vector"/>
-          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1007.35 1420.45v131.7c0 .3 0 .7-.3 1-.9 1.5-3.6 2.5-6.9 2.5-3.299 0-5.999-1.1-6.899-2.5-.2-.3-.3-.7-.3-1v-131.7c0-1.9 3.2-3.5 7.199-3.5 4 0 7.2 1.6 7.2 3.5Z" class="Vector"/>
-          <g class="Group">
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1018.05 1416.95c0 .5 0 1-.2 1.5-1.4 4.2-8.8 7.3-17.7 7.3-8.899 0-16.299-3.2-17.699-7.3-.2-.5-.2-1-.2-1.5 0-4.9 8-8.8 17.899-8.8 9.9 0 17.9 3.9 17.9 8.8Z" class="Vector"/>
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1003.55 1391.55v25.3c0 .9-1.5 1.7-3.4 1.7-1.899 0-3.399-.7-3.399-1.7v-25.3c0 .9 1.5 1.7 3.399 1.7 1.9 0 3.4-.7 3.4-1.7Z" class="Vector"/>
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1003.55 1391.55c0 .9-1.5 1.7-3.4 1.7-1.899 0-3.399-.7-3.399-1.7s1.5-1.7 3.399-1.7c1.9 0 3.4.7 3.4 1.7Z" class="Vector"/>
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1010.85 1388.65c0 .5-.2 1-.4 1.5-1.3 2.2-5.4 3.8-10.3 3.8-4.899 0-8.999-1.6-10.299-3.8-.3-.5-.4-1-.4-1.5 0-2.9 4.8-5.3 10.699-5.3 5.9 0 10.7 2.4 10.7 5.3Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1347.7 1550.05c0 .5 0 1-.2 1.5-1.4 4.2-8.8 7.3-17.7 7.3-8.9 0-16.3-3.2-17.7-7.3-.2-.5-.2-1-.2-1.5 0-4.9 8-8.8 17.9-8.8 9.9 0 17.9 3.9 17.9 8.8Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1333.2 1524.65v25.3c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7v-25.3c0 .9 1.5 1.7 3.4 1.7s3.4-.7 3.4-1.7Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1333.2 1524.65c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7 1.5-1.7 3.4-1.7 3.4.7 3.4 1.7Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1340.5 1521.75c0 .5-.2 1-.4 1.5-1.3 2.2-5.4 3.8-10.3 3.8s-9-1.6-10.3-3.8c-.3-.5-.4-1-.4-1.5 0-2.9 4.8-5.3 10.7-5.3 5.9 0 10.7 2.4 10.7 5.3Z" class="Vector"/>
           </g>
         </g>
         <g class="needle">
@@ -59,17 +37,6 @@
             <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1274.9 1465.25v25.3c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7v-25.3c0 .9 1.5 1.7 3.4 1.7s3.4-.7 3.4-1.7Z" class="Vector"/>
             <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1274.9 1465.25c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7 1.5-1.7 3.4-1.7 3.4.7 3.4 1.7Z" class="Vector"/>
             <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1282.2 1462.35c0 .5-.2 1-.4 1.5-1.3 2.2-5.4 3.8-10.3 3.8s-9-1.6-10.3-3.8c-.3-.5-.4-1-.4-1.5 0-2.9 4.8-5.3 10.7-5.3 5.9 0 10.7 2.4 10.7 5.3Z" class="Vector"/>
-          </g>
-        </g>
-        <g class="needle">
-          <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1329.8 1706.85v49.9" class="Vector"/>
-          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1322.6 1685.25 7.2 21.6 7.1-21.6h-14.3Z" class="Vector"/>
-          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1336.9 1553.55v131.7c0 .3 0 .7-.3 1-.9 1.5-3.6 2.5-6.9 2.5-3.3 0-6-1.1-6.9-2.5-.2-.3-.3-.7-.3-1v-131.7c0-1.9 3.2-3.5 7.2-3.5s7.2 1.6 7.2 3.5Z" class="Vector"/>
-          <g class="Group">
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1347.7 1550.05c0 .5 0 1-.2 1.5-1.4 4.2-8.8 7.3-17.7 7.3-8.9 0-16.3-3.2-17.7-7.3-.2-.5-.2-1-.2-1.5 0-4.9 8-8.8 17.9-8.8 9.9 0 17.9 3.9 17.9 8.8Z" class="Vector"/>
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1333.2 1524.65v25.3c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7v-25.3c0 .9 1.5 1.7 3.4 1.7s3.4-.7 3.4-1.7Z" class="Vector"/>
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1333.2 1524.65c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7 1.5-1.7 3.4-1.7 3.4.7 3.4 1.7Z" class="Vector"/>
-            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1340.5 1521.75c0 .5-.2 1-.4 1.5-1.3 2.2-5.4 3.8-10.3 3.8s-9-1.6-10.3-3.8c-.3-.5-.4-1-.4-1.5 0-2.9 4.8-5.3 10.7-5.3 5.9 0 10.7 2.4 10.7 5.3Z" class="Vector"/>
           </g>
         </g>
         <g class="needle">
@@ -114,6 +81,39 @@
             <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1141.3 1446.4v25.3c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7v-25.3c0 .9 1.5 1.7 3.4 1.7s3.4-.7 3.4-1.7Z" class="Vector"/>
             <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1141.3 1446.4c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7 1.5-1.7 3.4-1.7 3.4.7 3.4 1.7Z" class="Vector"/>
             <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1148.6 1443.4c0 .5-.2 1-.4 1.5-1.3 2.2-5.4 3.8-10.3 3.8s-9-1.6-10.3-3.8c-.3-.5-.4-1-.4-1.5 0-2.9 4.8-5.3 10.7-5.3 5.9 0 10.7 2.4 10.7 5.3Z" class="Vector"/>
+          </g>
+        </g>
+        <g class="needle">
+          <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1087.6 1471.75v50" class="Vector"/>
+          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1080.5 1450.15 7.1 21.6 7.2-21.6h-14.3Z" class="Vector"/>
+          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1094.8 1318.55v131.7c0 .3 0 .7-.3 1-.9 1.5-3.6 2.5-6.9 2.5-3.3 0-6-1.1-6.9-2.5-.2-.3-.3-.7-.3-1v-131.7c0-1.9 3.2-3.5 7.2-3.5s7.2 1.6 7.2 3.5Z" class="Vector"/>
+          <g class="Group">
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1105.6 1314.95c0 .5 0 1-.2 1.5-1.4 4.2-8.8 7.3-17.7 7.3-8.9 0-16.3-3.2-17.7-7.3-.2-.5-.2-1-.2-1.5 0-4.9 8-8.8 17.9-8.8 9.9 0 17.9 3.9 17.9 8.8Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1091 1289.65v25.3c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7v-25.3c0 .9 1.5 1.7 3.4 1.7s3.4-.7 3.4-1.7Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1091 1289.65c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7 1.5-1.7 3.4-1.7 3.4.7 3.4 1.7Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1098.3 1286.65c0 .5-.2 1-.4 1.5-1.3 2.2-5.4 3.8-10.3 3.8s-9-1.6-10.3-3.8c-.3-.5-.4-1-.4-1.5 0-2.9 4.8-5.3 10.7-5.3 5.9 0 10.7 2.4 10.7 5.3Z" class="Vector"/>
+          </g>
+        </g>
+        <g class="needle">
+          <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1000.15 1573.75v49.9" class="Vector"/>
+          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m992.951 1552.15 7.199 21.6 7.2-21.6h-14.399Z" class="Vector"/>
+          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1007.35 1420.45v131.7c0 .3 0 .7-.3 1-.9 1.5-3.6 2.5-6.9 2.5-3.299 0-5.999-1.1-6.899-2.5-.2-.3-.3-.7-.3-1v-131.7c0-1.9 3.2-3.5 7.199-3.5 4 0 7.2 1.6 7.2 3.5Z" class="Vector"/>
+          <g class="Group">
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1018.05 1416.95c0 .5 0 1-.2 1.5-1.4 4.2-8.8 7.3-17.7 7.3-8.899 0-16.299-3.2-17.699-7.3-.2-.5-.2-1-.2-1.5 0-4.9 8-8.8 17.899-8.8 9.9 0 17.9 3.9 17.9 8.8Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1003.55 1391.55v25.3c0 .9-1.5 1.7-3.4 1.7-1.899 0-3.399-.7-3.399-1.7v-25.3c0 .9 1.5 1.7 3.399 1.7 1.9 0 3.4-.7 3.4-1.7Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1003.55 1391.55c0 .9-1.5 1.7-3.4 1.7-1.899 0-3.399-.7-3.399-1.7s1.5-1.7 3.399-1.7c1.9 0 3.4.7 3.4 1.7Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1010.85 1388.65c0 .5-.2 1-.4 1.5-1.3 2.2-5.4 3.8-10.3 3.8-4.899 0-8.999-1.6-10.299-3.8-.3-.5-.4-1-.4-1.5 0-2.9 4.8-5.3 10.699-5.3 5.9 0 10.7 2.4 10.7 5.3Z" class="Vector"/>
+          </g>
+        </g>
+        <g class="needle">
+          <path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M914 1611.45v50" class="Vector"/>
+          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m906.899 1589.85 7.1 21.6 7.2-21.6h-14.3Z" class="Vector"/>
+          <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M921.2 1458.15v131.7c0 .3 0 .7-.3 1-.9 1.5-3.6 2.5-6.9 2.5-3.3 0-6-1.1-6.9-2.5-.2-.3-.3-.7-.3-1v-131.7c0-1.9 3.2-3.5 7.2-3.5s7.2 1.6 7.2 3.5Z" class="Vector"/>
+          <g class="Group">
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M931.9 1454.65c0 .5 0 1-.2 1.5-1.4 4.2-8.8 7.3-17.7 7.3-8.9 0-16.3-3.2-17.7-7.3-.2-.5-.2-1-.2-1.5 0-4.9 8-8.8 17.9-8.8 9.9 0 17.9 3.9 17.9 8.8Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M917.4 1429.35v25.3c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7v-25.3c0 .9 1.5 1.7 3.4 1.7s3.4-.7 3.4-1.7Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M917.4 1429.35c0 .9-1.5 1.7-3.4 1.7s-3.4-.7-3.4-1.7 1.5-1.7 3.4-1.7 3.4.7 3.4 1.7Z" class="Vector"/>
+            <path fill="#423E49" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M924.7 1426.35c0 .5-.2 1-.4 1.5-1.3 2.2-5.4 3.8-10.3 3.8s-9-1.6-10.3-3.8c-.3-.5-.4-1-.4-1.5 0-2.9 4.8-5.3 10.7-5.3 5.9 0 10.7 2.4 10.7 5.3Z" class="Vector"/>
           </g>
         </g>
       </g>

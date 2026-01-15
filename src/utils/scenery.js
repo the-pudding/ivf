@@ -34,8 +34,9 @@ export const scenery = {
 			});
 		},
 		"poke-loop": (els) => {
-			els.forEach((el) => {
-				// here
+			els.forEach((el, i) => {
+				el.classList.add("needle-jab");
+				el.style.animationDelay = `${i * 0.15}s`;
 			});
 		},
 		reset: (els) => {

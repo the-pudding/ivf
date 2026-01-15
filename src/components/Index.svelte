@@ -16,7 +16,7 @@
 	).length;
 
 	let side = $state("mom");
-	let beatI = $state(19);
+	let beatI = $state(0);
 	let beatId = $derived(
 		Object.entries(_.groupBy(side === "mom" ? momBeats : babyBeats, "id")).map(
 			([id, steps]) => ({
@@ -214,5 +214,24 @@
 
 	:global(.world .mom-path, .world .baby-path, .world .markers) {
 		opacity: 0;
+	}
+
+	@keyframes jab {
+		0% {
+			transform: translateY(0);
+		}
+		8% {
+			transform: translateY(16px);
+		}
+		70% {
+			transform: translateY(-2px);
+		}
+		100% {
+			transform: translateY(0);
+		}
+	}
+
+	:global(.needle-jab) {
+		animation: jab 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
 	}
 </style>
