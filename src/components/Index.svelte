@@ -91,6 +91,16 @@
 />
 
 <div class="main">
+	<div class="instructions">
+		<p>
+			This is an interactive story about IVF. Use the arrow keys to navigate:
+		</p>
+		<p>
+			<strong>Up/Down</strong> to move through the story,
+			<strong>Left/Right</strong> to switch perspectives.
+		</p>
+	</div>
+
 	{#if text !== ""}
 		<div class="copy" class:left={side === "baby"} class:right={side === "mom"}>
 			{#if Array.isArray(text)}
@@ -143,13 +153,25 @@
 </div>
 
 <style>
+	.instructions {
+		background: var(--color-gray-100);
+		font-size: var(--12px);
+		color: var(--color-bg);
+		z-index: 1;
+		position: absolute;
+		top: 0;
+		padding: 0 1rem;
+		left: 50%;
+		transform: translateX(-50%);
+		text-align: center;
+	}
+
 	.copy {
 		position: absolute;
 		top: 50%;
 		transform: translate(0, -50%);
 		background: var(--color-fg);
 		color: var(--color-bg);
-		font-family: var(--sans);
 		padding: 0.5rem 1rem;
 		z-index: 1;
 		width: 45%;
