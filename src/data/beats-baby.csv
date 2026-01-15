@@ -33,9 +33,7 @@ perservere,baby,embryo-still,,,0,perservere-2,perservere-2,,,,explanation,"baby:
 transfer,baby,,embryo,,,perservere-2,transfer-1,,,,,,,
 transfer,baby,,embryo,,,transfer-1,transfer-2,,,,,,,
 transfer,baby,embryo-still,,TRUE,0,transfer-2,transfer-2,,,,,,,
-variables,baby,,embryo,TRUE,,transfer-2,variables,,,,,,,
-variables,baby,embryo-still,,TRUE,0,variables,variables,,,,,,,
-journey,baby,,embryo,TRUE,,variables,journey,,,,,,,
+journey,baby,,embryo,TRUE,,transfer-2,journey,,,,,,,
 journey,baby,embryo-still,,TRUE,0,journey,journey,,,,,,,
 nutritionist,baby,,embryo,,,journey,nutritionist,,,,friends,floating-head-mom-1,1,above
 nutritionist,baby,embryo-still,,,0,nutritionist,nutritionist,,,,friends,floating-head-mom-1,1,above

@@ -93,11 +93,13 @@
 <div class="main">
 	<div class="instructions">
 		<p>
-			This is an interactive story about IVF. Use the arrow keys to navigate:
+			This is an interactive story about IVF, told from two perspectives: parent
+			and baby.
 		</p>
 		<p>
-			<strong>Up/Down</strong> to move through the story,
-			<strong>Left/Right</strong> to switch perspectives.
+			Use the arrow keys:
+			<strong>up/down</strong> to move through the story,
+			<strong>left/right</strong> to switch perspectives.
 		</p>
 	</div>
 
@@ -127,7 +129,7 @@
 		<Side
 			id="mom"
 			beats={momBeats}
-			active={side === "mom"}
+			active={side === "mom" || beatI === numBeats - 1}
 			{beatI}
 			{direction}
 			bind:transform
@@ -135,7 +137,7 @@
 		<Side
 			id="baby"
 			beats={babyBeats}
-			active={side === "baby"}
+			active={side === "baby" || beatI === numBeats - 1}
 			{beatI}
 			{direction}
 			bind:transform
@@ -154,14 +156,16 @@
 
 <style>
 	.instructions {
-		background: var(--color-gray-100);
+		background: rgba(239, 239, 239, 0.9);
 		font-size: var(--12px);
 		color: var(--color-bg);
 		z-index: 1;
 		position: absolute;
-		top: 0;
+		top: 0.5rem;
 		padding: 0 1rem;
 		left: 50%;
+		width: 60%;
+		max-width: 580px;
 		transform: translateX(-50%);
 		text-align: center;
 	}

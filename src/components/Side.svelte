@@ -3,7 +3,6 @@
 	import { scenery } from "$utils/scenery.js";
 	import { onMount } from "svelte";
 	import _ from "lodash";
-	import { browser } from "$app/environment";
 
 	let {
 		id,
@@ -20,6 +19,7 @@
 			steps
 		})
 	);
+
 	const allScenery = allBeats.flatMap((beat) =>
 		(beat.steps ?? [])
 			.filter((step) => step.scenery && step.sceneryAction)
@@ -89,8 +89,6 @@
 			/>
 		{/each}
 	{/if}
-
-	<!-- <div class="fade" class:visible={!active}></div> -->
 </div>
 
 <style>
