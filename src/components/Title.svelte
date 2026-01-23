@@ -14,7 +14,7 @@
 	const start = (id) => {
 		started = true;
 		side = id;
-		beatI = 0;
+		beatI = 19;
 		visible = false;
 	};
 

@@ -38,12 +38,12 @@
 		background-color: transparent;
 	}
 
-	:global(.wordmark svg) {
+	:global(header .wordmark svg) {
 		height: 100%;
 		width: auto;
 	}
 
-	:global(.wordmark svg path) {
+	:global(header .wordmark svg path) {
 		fill: #d1c3e3;
 	}
 </style>

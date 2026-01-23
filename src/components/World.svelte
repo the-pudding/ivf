@@ -7,7 +7,7 @@
 	import babyBeats from "$data/beats-baby.csv";
 	import _ from "lodash";
 
-	let { started, side, direction, beatI, numBeats } = $props();
+	let { side, direction, beatI, numBeats } = $props();
 
 	let transform = $state("translate(0, 0)");
 	let beatId = $derived(

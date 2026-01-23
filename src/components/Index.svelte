@@ -40,34 +40,52 @@
 	}}
 />
 
-<div class="main">
-	<Title bind:started bind:side bind:beatI bind:titleHeight />
+<article class:locked={beatI < numBeats - 1}>
+	<div class="main">
+		<Title bind:started bind:side bind:beatI bind:titleHeight />
 
-	<div class="camera" class:started style={`--title-height: ${titleHeight}px`}>
-		{#if text !== ""}
-			<div
-				class="copy"
-				class:left={side === "baby"}
-				class:right={side === "mom"}
-			>
-				{#if Array.isArray(text)}
-					{#each text as { value: paragraph }}
-						<p>{@html paragraph}</p>
-					{/each}
-				{:else}
-					<p>{@html text}</p>
-				{/if}
-			</div>
-		{/if}
+		<div
+			class="camera"
+			class:started
+			style={`--title-height: ${titleHeight}px`}
+		>
+			{#if text !== ""}
+				<div
+					class="copy"
+					class:left={side === "baby"}
+					class:right={side === "mom"}
+				>
+					{#if Array.isArray(text)}
+						{#each text as { value: paragraph }}
+							<p>{@html paragraph}</p>
+						{/each}
+					{:else}
+						<p>{@html text}</p>
+					{/if}
+				</div>
+			{/if}
 
-		<World {started} {side} {direction} {beatI} {numBeats} />
+			<World {side} {direction} {beatI} {numBeats} />
+		</div>
+
+		<div class="gradient" class:visible={beatI < numBeats - 1}></div>
 	</div>
 
-	<div class="gradient" class:visible={beatI < numBeats - 1}></div>
-	<Footer />
-</div>
+	<svelte:boundary onerror={(e) => console.error(e)}>
+		<Footer recirc={true} recircImages={true} />
+	</svelte:boundary>
+</article>
 
 <style>
+	article {
+		overflow: auto;
+		height: 100svh;
+	}
+
+	article.locked {
+		overflow: hidden;
+	}
+
 	.main {
 		overflow: hidden;
 		height: 100svh;
