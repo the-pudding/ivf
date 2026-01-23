@@ -9,7 +9,8 @@
 	--sans:
 		"Atlas Grotesk", -apple-system, BlinkMacSystemFont, Helvetica, Arial,
 		sans-serif;
-	--serif: "Tiempos Text", Iowan Old Style, Times New Roman, Times, serif;
+	--serif:
+		"Canela", "Tiempos Text", Iowan Old Style, Times New Roman, Times, serif;
 	--mono: Menlo, Consolas, Monaco, monospace;
 
 	/* z-index */
@@ -22,21 +23,23 @@
 	--border-radius: 2px;
 	--font-body: var(--sans);
 	--font-form: var(--sans);
+	--color-fg: #f9f4ff;
 	--color-bg: var(--color-black);
-	--color-fg: var(--color-white);
 	--color-primary: var(--color-black);
-	--color-link: var(--color-black);
-	--color-link-hover: var(--color-black);
+	--color-link: #d1c3e3;
+	--color-link-hover: var(--color-fg);
 	--color-focus: var(--color-red);
 	--color-mark: var(--color-yellow);
 	--color-selection: var(--color-gray-300);
 	--color-border: var(--color-gray-300);
-	--color-button-bg: var(--color-gray-300);
-	--color-button-fg: var(--color-gray-900);
+	--color-button-bg: #f7e3bd;
+	--color-button-fg: var(--color-bg);
 	--color-button-hover: var(--color-gray-400);
 	--color-input-bg: var(--color-gray-50);
 	--color-input-fg: var(--color-gray-900);
 	--color-placeholder: var(--color-gray-500);
+
+	--header-height: 5rem;
 
 	/* "1" second duration */
 	--1s: 1ms;
@@ -83,4 +86,16 @@ svg {
 	display: block;
 	width: 100%;
 	height: auto;
+}
+
+a:hover {
+	color: var(--color-link-hover);
+	text-decoration-color: var(--color-link-hover);
+}
+
+button {
+	border: 2px solid #4c5c8f;
+	border-radius: 4px;
+	text-transform: uppercase;
+	font-weight: bold;
 }

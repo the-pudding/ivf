@@ -1,25 +1,34 @@
 <script>
 	// shadow, plain, line, bubble
-	import wordmark from "$svg/wordmark-shadow.svg";
+	import wordmark from "$svg/wordmark-plain.svg";
 </script>
 
 <header>
-	<!-- <div class="wordmark">
+	<div class="wordmark">
 		<a href="https://pudding.cool" aria-label="The Pudding" target="_self"
 			>{@html wordmark}</a
 		>
-	</div> -->
+	</div>
 </header>
 
 <style>
+	header {
+		position: fixed;
+		top: 0;
+		height: var(--header-height);
+		width: 100%;
+		z-index: var(--z-top);
+	}
+
 	.wordmark {
-		max-width: 14em;
+		height: 100%;
+		width: max-content;
 		margin: 0 auto;
-		padding: 32px 0;
-		transform: rotate(-4deg);
 	}
 
 	.wordmark a {
+		height: 100%;
+		padding: 1.25rem 0;
 		border: none;
 		display: block;
 		color: var(--color-fg);
@@ -27,5 +36,14 @@
 
 	.wordmark a:hover {
 		background-color: transparent;
+	}
+
+	:global(.wordmark svg) {
+		height: 100%;
+		width: auto;
+	}
+
+	:global(.wordmark svg path) {
+		fill: #d1c3e3;
 	}
 </style>
