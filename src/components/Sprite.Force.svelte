@@ -11,9 +11,6 @@
 	} from "d3-force";
 	import spriteData from "$data/sprites.json";
 	import { onDestroy } from "svelte";
-	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
-
-	let dimensions = new useWindowDimensions();
 
 	let {
 		centerX,
@@ -22,6 +19,7 @@
 		spriteHeight,
 		forceData,
 		yOffset,
+		svgScaleFactor,
 		gray
 	} = $props();
 
@@ -181,7 +179,7 @@
 	{@const frame = pose
 		? spriteD.frames.find((f) => f.pose === pose)
 		: spriteD.frames[0]}
-	{@const scale = dimensions.width / (spriteD.scaleFactor || 5000)}
+	{@const scale = (spriteD.scaleFactor || 1) * svgScaleFactor}
 	<div
 		class="node"
 		class:gray

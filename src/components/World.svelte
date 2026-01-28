@@ -7,6 +7,7 @@
 	import babyBeats from "$data/beats-baby.csv";
 	import { Tween } from "svelte/motion";
 	import { cubicInOut } from "svelte/easing";
+	import { scaleLinear } from "d3-scale";
 	import { browser } from "$app/environment";
 	import _ from "lodash";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
@@ -25,11 +26,13 @@
 
 	const svgW = 2755;
 	const svgH = 6854;
+	const zoomScale = scaleLinear().domain([1500, 600]).range([1, 3]).clamp(true);
+	const buffer = svgW * 0.15;
 
 	let worldW = $state(0);
 	let worldH = $state(0);
 
-	const zoom = $derived(showBoth ? 1 : 1.5);
+	const zoom = $derived(showBoth ? 1 : zoomScale(dimensions.width));
 	const cameraH = $derived(dimensions.height);
 	const viewboxW = $derived(svgW / zoom);
 	const viewboxH = $derived(svgH / zoom);
@@ -37,11 +40,11 @@
 		showBoth
 			? svgW / 2 - svgW / (2 * zoom)
 			: side === "mom"
-				? 0
-				: svgW - svgW / zoom
+				? buffer
+				: svgW - svgW / zoom - buffer
 	);
 	const viewboxY = $derived.by(() => {
-		if (!browser) return 0;
+		if (!browser || beatI === 0) return 0;
 
 		const steps =
 			side === "mom"

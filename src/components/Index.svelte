@@ -102,7 +102,7 @@
 		aspect-ratio: 2400 / 6251;
 		width: 100%;
 		height: 100svh;
-		max-width: 1400px;
+		/* max-width: 1400px; */
 		margin: 0 auto;
 		transition: transform 1s 0.5s ease-in-out;
 	}
@@ -116,6 +116,7 @@
 
 	.copy {
 		position: absolute;
+		width: 40%;
 		top: 50%;
 		transform: translate(0, -50%);
 		background: rgba(249, 244, 255, 0.95);
@@ -125,7 +126,6 @@
 		color: var(--color-bg);
 		padding: 0.5rem 1rem;
 		z-index: 4;
-		width: 45%;
 	}
 
 	.copy.left {

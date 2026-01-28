@@ -27,7 +27,7 @@
 	const spriteDataForId = spriteData.find((d) => d.id === id);
 	const { rows, cols, frameWidth, frameHeight, frames } = spriteDataForId;
 	const yOffset = spriteDataForId.yOffset || 0;
-	const scaleFactor = spriteDataForId.scaleFactor || 5000;
+	const scaleFactor = spriteDataForId.scaleFactor || 1;
 
 	let lastSteps;
 	let cycleInterval = null;
@@ -46,7 +46,13 @@
 			: Math.cos(getAngleAtT(currentT, pathEl)) > 0
 	);
 	let frame = $derived(frames[frameIndex]);
-	let scale = $derived(dimensions.width / scaleFactor);
+	let svgScaleFactor = $derived(
+		Math.max(
+			dimensions.width / camera.current.w,
+			dimensions.height / camera.current.h
+		)
+	);
+	let scale = $derived(scaleFactor * svgScaleFactor);
 	const width = $derived(frameWidth * scale);
 	const height = $derived(frameHeight * scale);
 
@@ -231,10 +237,10 @@
 
 	// Update position when currentT or dimensions changes
 	$effect(() => {
-		if (!pathEl) return;
+		if (!pathEl || !currentT) return;
 		const svgLocation = pathEl.getPointAtLength(currentT);
 
-		const scale = Math.max(
+		const screenScale = Math.max(
 			dimensions.width / camera.current.w,
 			dimensions.height / camera.current.h
 		);
@@ -243,8 +249,8 @@
 		const parentRect = parentEl.getBoundingClientRect();
 
 		const screenX =
-			(svgLocation.x - camera.current.x) * scale - parentRect.left;
-		const screenY = (svgLocation.y - camera.current.y) * scale;
+			(svgLocation.x - camera.current.x) * screenScale - parentRect.left;
+		const screenY = (svgLocation.y - camera.current.y) * screenScale;
 
 		x = screenX;
 		y = screenY;
@@ -287,6 +293,7 @@
 		spriteHeight={height}
 		{forceData}
 		{yOffset}
+		{svgScaleFactor}
 		{gray}
 	/>
 {/if}
