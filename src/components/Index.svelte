@@ -14,7 +14,8 @@
 	).length;
 
 	let started = $state(false);
-	let side = $state("both");
+	let side = $state("mom");
+	let showBoth = $state(true);
 	let beatI = $state(0);
 	let direction = $state("forward");
 	let titleHeight = $state(0);
@@ -22,6 +23,14 @@
 	let text = $derived(
 		beatI === 0 ? "" : (copy.beats?.[side]?.[beatI - 1]?.text ?? "")
 	);
+
+	$effect(() => {
+		if (beatI >= numBeats - 1 || !started) {
+			showBoth = true;
+		} else {
+			showBoth = false;
+		}
+	});
 </script>
 
 <svelte:window
@@ -65,10 +74,10 @@
 				</div>
 			{/if}
 
-			<World {side} {direction} {beatI} {numBeats} />
+			<World {side} {showBoth} {direction} {beatI} />
 		</div>
 
-		<div class="gradient" class:visible={beatI < numBeats - 1}></div>
+		<!-- <div class="gradient" class:visible={beatI < numBeats - 1}></div> -->
 	</div>
 
 	<svelte:boundary onerror={(e) => console.error(e)}>

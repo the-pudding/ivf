@@ -4,14 +4,7 @@
 	import { onMount } from "svelte";
 	import _ from "lodash";
 
-	let {
-		id,
-		beats,
-		active,
-		beatI,
-		direction,
-		transform = $bindable()
-	} = $props();
+	let { id, beats, active, beatI, direction, camera } = $props();
 
 	const allBeats = Object.entries(_.groupBy(beats, "id")).map(
 		([id, steps]) => ({
@@ -86,6 +79,7 @@
 				bind:spritePosition
 				{sceneryState}
 				{active}
+				{camera}
 			/>
 		{/each}
 	{/if}
@@ -97,6 +91,11 @@
 		top: 0;
 		width: 50%;
 		height: 100%;
+		opacity: 0;
+	}
+
+	.active {
+		opacity: 1;
 	}
 
 	.side.below {

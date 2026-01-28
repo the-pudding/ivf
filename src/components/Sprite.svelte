@@ -22,7 +22,8 @@
 		pathEl,
 		spritePosition = $bindable(),
 		sceneryState,
-		active
+		active,
+		camera
 	} = $props();
 
 	const FRAMERATE = 300;

@@ -5,11 +5,16 @@
 	import maskSvg from "$svg/world-mask.svg";
 	import momBeats from "$data/beats-mom.csv";
 	import babyBeats from "$data/beats-baby.csv";
+	import { Tween } from "svelte/motion";
+	import { cubicInOut } from "svelte/easing";
+	import { browser } from "$app/environment";
+
 	import _ from "lodash";
+	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
+	let dimensions = new useWindowDimensions();
 
-	let { side, direction, beatI, numBeats } = $props();
+	let { side, showBoth, direction, beatI } = $props();
 
-	let transform = $state("translate(0, 0)");
 	let beatId = $derived(
 		Object.entries(_.groupBy(side === "mom" ? momBeats : babyBeats, "id")).map(
 			([id, steps]) => ({
@@ -19,58 +24,76 @@
 		)[beatI].id
 	);
 
-	$effect(() => {
-		if (beatI === numBeats - 1) {
-			side = "both";
-		}
-	});
+	const zoom = $derived(showBoth ? 1 : 1.5);
 
-	$effect(() => {
-		const camera = document.querySelector(".camera");
-		const world = document.querySelector(".world-view");
+	const svgW = 2755;
+	const svgH = 6854;
 
-		if (!camera || !world) return;
+	let worldW = $state(0);
+	let worldH = $state(0);
 
-		const cameraHeight = camera.clientHeight;
-		const worldHeight = world.scrollHeight;
+	const cameraW = $derived(dimensions.width);
+	const cameraH = $derived(dimensions.height);
 
-		const maxCameraY = Math.max(0, worldHeight - cameraHeight);
-
-		const beatIncrement = maxCameraY / (numBeats - 1);
-
-		let nextCameraY = beatI * beatIncrement;
+	const viewboxW = $derived(svgW / zoom);
+	const viewboxH = $derived(svgH / zoom);
+	const viewboxX = $derived(
+		showBoth
+			? svgW / 2 - svgW / (2 * zoom)
+			: side === "mom"
+				? 0
+				: svgW - svgW / zoom
+	);
+	const viewboxY = $derived.by(() => {
+		if (!browser) return 0;
 
 		const steps =
 			side === "mom"
 				? momBeats.filter((d) => d.id === beatId)
 				: babyBeats.filter((d) => d.id === beatId);
-
 		const endSpot = steps.at(-1).endSpot;
 		const el = document.querySelector(`.${side} circle.${endSpot}`);
 
-		if (el) {
-			const elRect = el.getBoundingClientRect();
-			const camRect = camera.getBoundingClientRect();
+		const min = 0;
+		const max = svgH - (cameraH * (svgH / worldH)) / zoom;
 
-			// element below view
-			if (elRect.bottom > camRect.bottom) {
-				nextCameraY += elRect.bottom - camRect.bottom;
-			}
+		const centeredY =
+			el.cy.baseVal.value - (cameraH * (svgH / worldH)) / zoom / 2;
 
-			// element above view
-			if (elRect.top < camRect.top) {
-				nextCameraY -= camRect.top - elRect.top;
-			}
-		}
-
-		// clamp to world bounds
-		nextCameraY = Math.max(0, Math.min(nextCameraY, maxCameraY));
-
-		transform = `translate(0, ${-nextCameraY}px)`;
+		return Math.min(Math.max(centeredY, min), max);
 	});
+
+	const camera = new Tween(
+		{ x: 0, y: 0, w: svgW, h: svgH },
+		{ duration: 2000, delay: 600, easing: cubicInOut }
+	);
+
+	const updateCamera = () => {
+		camera.set({
+			x: viewboxX,
+			y: viewboxY,
+			w: viewboxW,
+			h: viewboxH
+		});
+	};
+
+	const animateViewbox = () => {
+		const svgEl = document.querySelector(".world-view svg");
+		const maskEl = document.querySelector(".mask svg");
+		const fgEl = document.querySelector(".foreground svg");
+		[svgEl, maskEl, fgEl].forEach((el) => {
+			if (el) {
+				const { x, y, w, h } = camera.current;
+				el.setAttribute("viewBox", `${x} ${y} ${w} ${h}`);
+			}
+		});
+	};
+
+	$effect(() => updateCamera(beatI));
+	$effect(() => animateViewbox(camera));
 </script>
 
-<div class="world-view" style:transform>
+<div class="world-view" bind:clientHeight={worldH} bind:clientWidth={worldW}>
 	{@html worldSvg}
 
 	<div class="foreground">
@@ -84,22 +107,19 @@
 	<Side
 		id="mom"
 		beats={momBeats}
-		active={side === "mom" || side === "both"}
+		active={side === "mom" || showBoth}
 		{beatI}
 		{direction}
-		bind:transform
+		{camera}
 	/>
 	<Side
 		id="baby"
 		beats={babyBeats}
-		active={side === "baby" || side === "both"}
+		active={side === "baby" || showBoth}
 		{beatI}
 		{direction}
-		bind:transform
+		{camera}
 	/>
-
-	<div class="fade left" class:visible={side === "baby"}></div>
-	<div class="fade right" class:visible={side === "mom"}></div>
 </div>
 
 <style>
@@ -117,29 +137,6 @@
 		position: absolute;
 		top: 0;
 		z-index: 4;
-	}
-
-	.fade {
-		position: absolute;
-		top: 0;
-		z-index: 5;
-		height: 100%;
-		width: 50%;
-		background: var(--color-bg);
-		opacity: 0;
-		transition: opacity calc(var(--1s) * 0.3) ease-in-out;
-	}
-
-	.fade.left {
-		left: 0;
-	}
-
-	.fade.right {
-		right: 0;
-	}
-
-	.fade.visible {
-		opacity: 0.9;
 	}
 
 	:global(.world .mom-path, .world .baby-path, .world .markers) {
