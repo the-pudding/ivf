@@ -8,7 +8,6 @@
 	import { Tween } from "svelte/motion";
 	import { cubicInOut } from "svelte/easing";
 	import { browser } from "$app/environment";
-
 	import _ from "lodash";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 	let dimensions = new useWindowDimensions();
@@ -24,17 +23,14 @@
 		)[beatI].id
 	);
 
-	const zoom = $derived(showBoth ? 1 : 1.5);
-
 	const svgW = 2755;
 	const svgH = 6854;
 
 	let worldW = $state(0);
 	let worldH = $state(0);
 
-	const cameraW = $derived(dimensions.width);
+	const zoom = $derived(showBoth ? 1 : 1.5);
 	const cameraH = $derived(dimensions.height);
-
 	const viewboxW = $derived(svgW / zoom);
 	const viewboxH = $derived(svgH / zoom);
 	const viewboxX = $derived(
@@ -65,7 +61,7 @@
 
 	const camera = new Tween(
 		{ x: 0, y: 0, w: svgW, h: svgH },
-		{ duration: 2000, delay: 600, easing: cubicInOut }
+		{ duration: 2000, delay: 0, easing: cubicInOut }
 	);
 
 	const updateCamera = () => {
@@ -78,7 +74,7 @@
 	};
 
 	const animateViewbox = () => {
-		const svgEl = document.querySelector(".world-view svg");
+		const svgEl = document.querySelector(".world svg");
 		const maskEl = document.querySelector(".mask svg");
 		const fgEl = document.querySelector(".foreground svg");
 		[svgEl, maskEl, fgEl].forEach((el) => {
@@ -93,7 +89,7 @@
 	$effect(() => animateViewbox(camera));
 </script>
 
-<div class="world-view" bind:clientHeight={worldH} bind:clientWidth={worldW}>
+<div class="world" bind:clientHeight={worldH} bind:clientWidth={worldW}>
 	{@html worldSvg}
 
 	<div class="foreground">
@@ -123,7 +119,7 @@
 </div>
 
 <style>
-	.world-view {
+	.world {
 		transition: transform 2s 0.5s ease-out;
 	}
 
@@ -131,12 +127,14 @@
 		position: absolute;
 		top: 0;
 		z-index: 2;
+		pointer-events: none;
 	}
 
 	.mask {
 		position: absolute;
 		top: 0;
-		z-index: 4;
+		z-index: 3;
+		pointer-events: none;
 	}
 
 	:global(.world .mom-path, .world .baby-path, .world .markers) {

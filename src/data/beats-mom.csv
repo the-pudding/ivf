@@ -1,53 +1,53 @@
-id,sprite,pose,cycle,duration,startSpot,endSpot,position,scenery,sceneryAction,force,forceSprites,forceNodeSize,forceConfig
-start,mom,,walk,,hidden-enter,start,,,,,,,
-start,mom,standing,,0,start,start,,,,,,,
-fertile,mom,,walk,,start,fertile,,,,,,,
-fertile,mom,standing,,0,fertile,fertile,,,,,,,
-heartbreak,mom,,walk,,fertile,heartbreak-1,,heart,enter,,,,
-heartbreak,mom,,walk,,heartbreak-1,heartbreak-2,above,heart,split,,,,
-heartbreak,mom,standing,,0,heartbreak-2,heartbreak-2,above,,,,,,
-quest,mom,,walk,,heartbreak-2,quest,above,,,,,,
-quest,mom,standing-armor,,0,quest,quest,,,,,,,
-needles,mom,,walk-covered,,quest,needles,,needle,enter,,,,
-needles,mom,covered,,0,needles,needles,,needle,poke-loop,,,,
-more-needles,mom,,walk-covered,,needles,more-needles,,needle,poke-loop,,,,
-more-needles,mom,covered,,0,more-needles,more-needles,,needle,poke-loop,,,,
-logistics,mom,,walk-armor,,more-needles,logistics-1,,,,,,,
-logistics,mom,,walk-armor,,logistics-1,logistics-2, ,calendar,drop,,,,
-logistics,mom,,walk-armor,,logistics-2,logistics-3,above,calendar,flash-loop,,,,
-logistics,mom,standing-armor,,0,logistics-3,logistics-3,above,calendar,flash-loop,,,,
-adversaries,mom,,walk-covered,,logistics-3,adversaries,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
-adversaries,mom,standing-armor,,0,adversaries,adversaries,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
-go-wrong,mom,,walk-armor,,adversaries,go-wrong,,,,,,,
-go-wrong,mom,standing-armor,,0,go-wrong,go-wrong,,,,,,,
-wrong-clinic,mom,,walk-armor,,go-wrong,wrong-clinic,,,,,,,
-wrong-clinic,mom,standing-armor,,800,wrong-clinic,wrong-clinic,,block,fall,,,,
-wrong-clinic,mom,covered,,0,wrong-clinic,wrong-clinic,,,,,,,
-owe-money,mom,,walk-covered,,wrong-clinic,owe-money-1,,,,,,,
-owe-money,mom,,walk-covered,,owe-money-1,owe-money-2,above,paper-stack,enter,,,,
-owe-money,mom,crying,,0,owe-money-2,owe-money-2,above,,,,,,
-sanity,mom,,walk-covered,,owe-money-2,sanity,,,,,,,
-sanity,mom,crying,,0,sanity,sanity,,,,,,,
-hoops,mom,,walk-crying,,sanity,hoops-1,,,,cloud,cloud,0.7,above
-hoops,mom,,walk-crying,,hoops-1,hoops-2,,horizontal-needle,enter,cloud,cloud,0.7,above
-hoops,mom,crying,,0,hoops-2,hoops-2,,,,cloud,cloud,0.7,above
-help,mom,,walk-crying,,hoops-2,help,,,,cloud,cloud,0.7,above
-help,mom,crying,,0,help,help,,,,cloud,cloud,0.7,above
-strength,mom,,walk-crying,,help,strength,,,,cloud,cloud,0.7,above
-strength,mom,hopeful,,0,strength,strength,,,,,,,
-simone,mom,,walk-hopeful,,strength,simone-1,,,,,,,
-simone,mom,,walk-hopeful,,simone-1,simone-2,,,,friends,floating-head-mom-1,0.5,above
-simone,mom,hopeful,,0,simone-2,simone-2,,,,friends,floating-head-mom-1,0.5,above
-friends,mom,,walk-hopeful,,simone-2,friends-1,,,,friends,floating-head-mom-1,0.5,above
-friends,mom,,walk-hopeful,,friends-1,friends-2,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
-friends,mom,hopeful,,0,friends-2,friends-2,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
-online,mom,,walk-hopeful,,friends-2,online-1,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
-online,mom,,walk-hopeful,,online-1,online-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
-online,mom,hopeful,,0,online-2,online-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
-warriors,mom,,walk-hopeful,,online-2,warriors-1,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
-warriors,mom,,walk-hopeful,,warriors-1,warriors-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",0.5,above
-warriors,mom,hopeful,,0,warriors-2,warriors-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",0.5,above
-end,mom,,walk-armor,,warriors-2,end-1,,,,,,,
-end,mom,standing-armor,,,end-1,end-2,,,,,,,
-end,mom,,walk-armor,,end-2,end-3,,,,,,,
-end,mom,hand-extended,,0,end-3,end-3,,,,,,,
+id,pose,cycle,duration,startSpot,endSpot,position,scenery,sceneryAction,force,forceSprites,forceNodeSize,forceConfig
+start,,walk,,hidden-enter,start,,,,,,,
+start,standing,,0,start,start,,,,,,,
+fertile,,walk,,start,fertile,,,,,,,
+fertile,standing,,0,fertile,fertile,,,,,,,
+heartbreak,,walk,,fertile,heartbreak-1,,heart,enter,,,,
+heartbreak,,walk,,heartbreak-1,heartbreak-2,above,heart,split,,,,
+heartbreak,standing,,0,heartbreak-2,heartbreak-2,above,,,,,,
+quest,,walk,,heartbreak-2,quest,above,,,,,,
+quest,standing-armor,,0,quest,quest,,,,,,,
+needles,,walk-covered,,quest,needles,,needle,enter,,,,
+needles,covered,,0,needles,needles,,needle,poke-loop,,,,
+more-needles,,walk-covered,,needles,more-needles,,needle,poke-loop,,,,
+more-needles,covered,,0,more-needles,more-needles,,needle,poke-loop,,,,
+logistics,,walk-armor,,more-needles,logistics-1,,,,,,,
+logistics,,walk-armor,,logistics-1,logistics-2, ,calendar,drop,,,,
+logistics,,walk-armor,,logistics-2,logistics-3,above,calendar,flash-loop,,,,
+logistics,standing-armor,,0,logistics-3,logistics-3,above,calendar,flash-loop,,,,
+adversaries,,walk-covered,,logistics-3,adversaries,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
+adversaries,standing-armor,,0,adversaries,adversaries,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
+go-wrong,,walk-armor,,adversaries,go-wrong,,,,,,,
+go-wrong,standing-armor,,0,go-wrong,go-wrong,,,,,,,
+wrong-clinic,,walk-armor,,go-wrong,wrong-clinic,,,,,,,
+wrong-clinic,standing-armor,,800,wrong-clinic,wrong-clinic,,block,fall,,,,
+wrong-clinic,covered,,0,wrong-clinic,wrong-clinic,,,,,,,
+owe-money,,walk-covered,,wrong-clinic,owe-money-1,,,,,,,
+owe-money,,walk-covered,,owe-money-1,owe-money-2,above,paper-stack,enter,,,,
+owe-money,crying,,0,owe-money-2,owe-money-2,above,,,,,,
+sanity,,walk-covered,,owe-money-2,sanity,,,,,,,
+sanity,crying,,0,sanity,sanity,,,,,,,
+hoops,,walk-crying,,sanity,hoops-1,,,,cloud,cloud,0.7,above
+hoops,,walk-crying,,hoops-1,hoops-2,,horizontal-needle,enter,cloud,cloud,0.7,above
+hoops,crying,,0,hoops-2,hoops-2,,,,cloud,cloud,0.7,above
+help,,walk-crying,,hoops-2,help,,,,cloud,cloud,0.7,above
+help,crying,,0,help,help,,,,cloud,cloud,0.7,above
+strength,,walk-crying,,help,strength,,,,cloud,cloud,0.7,above
+strength,hopeful,,0,strength,strength,,,,,,,
+simone,,walk-hopeful,,strength,simone-1,,,,,,,
+simone,,walk-hopeful,,simone-1,simone-2,,,,friends,floating-head-mom-1,0.5,above
+simone,hopeful,,0,simone-2,simone-2,,,,friends,floating-head-mom-1,0.5,above
+friends,,walk-hopeful,,simone-2,friends-1,,,,friends,floating-head-mom-1,0.5,above
+friends,,walk-hopeful,,friends-1,friends-2,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
+friends,hopeful,,0,friends-2,friends-2,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
+online,,walk-hopeful,,friends-2,online-1,,,,friends,"floating-head-mom-1, floating-head-mom-2",0.5,above
+online,,walk-hopeful,,online-1,online-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
+online,hopeful,,0,online-2,online-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
+warriors,,walk-hopeful,,online-2,warriors-1,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",0.5,above
+warriors,,walk-hopeful,,warriors-1,warriors-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",0.5,above
+warriors,hopeful,,0,warriors-2,warriors-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",0.5,above
+end,,walk-armor,,warriors-2,end-1,,,,,,,
+end,standing-armor,,,end-1,end-2,,,,,,,
+end,,walk-armor,,end-2,end-3,,,,,,,
+end,hand-extended,,0,end-3,end-3,,,,,,,

@@ -30,18 +30,6 @@
 	let spritePosition = $state("below");
 	let pathEl = $state();
 	let beatId = $derived(active ? allBeats[beatI].id : allBeats[0].id);
-	let spriteIds = $derived(
-		beats
-			.filter((d) => d.id === beatId)
-			.reduce((acc, cur, i) => {
-				if (cur.dupe) {
-					acc.push(`${cur.sprite}-${cur.dupe}`);
-				} else if (!acc.includes(cur.sprite)) {
-					acc.push(cur.sprite);
-				}
-				return acc;
-			}, [])
-	);
 
 	let steps = $derived(
 		direction === "backward"
@@ -68,20 +56,17 @@
 	class:below={spritePosition === "below" && active}
 >
 	{#if pathEl}
-		{#each spriteIds as spriteId (spriteId)}
-			<Sprite
-				id={spriteId}
-				sideId={id}
-				{allBeats}
-				{beatId}
-				steps={steps.filter((d) => d.sprite === spriteId)}
-				{pathEl}
-				bind:spritePosition
-				{sceneryState}
-				{active}
-				{camera}
-			/>
-		{/each}
+		<Sprite
+			{id}
+			{allBeats}
+			{beatId}
+			{steps}
+			{pathEl}
+			bind:spritePosition
+			{sceneryState}
+			{active}
+			{camera}
+		/>
 	{/if}
 </div>
 
@@ -92,6 +77,7 @@
 		width: 50%;
 		height: 100%;
 		opacity: 0;
+		transition: opacity 1s ease-in-out;
 	}
 
 	.active {

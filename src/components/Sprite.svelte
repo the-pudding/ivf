@@ -2,20 +2,15 @@
 	import _ from "lodash";
 	import Force from "$components/Sprite.Force.svelte";
 	import spriteData from "$data/sprites.json";
-	import {
-		getAngleAtT,
-		findClosestT,
-		coordinatesForT
-	} from "$utils/spriteHelpers.js";
+	import { getAngleAtT, findClosestT } from "$utils/spriteHelpers.js";
 	import { scenery } from "$utils/scenery.js";
-	import { onDestroy, untrack } from "svelte";
+	import { onDestroy } from "svelte";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 
 	let dimensions = new useWindowDimensions();
 
 	let {
 		id,
-		sideId,
 		beatId,
 		allBeats,
 		steps,
@@ -64,7 +59,7 @@
 
 			const circle = pathEl
 				.closest("svg")
-				.querySelector(`.markers .${sideId} circle.${spotId}`);
+				.querySelector(`.markers .${id} circle.${spotId}`);
 			if (!circle) return;
 
 			const cx = circle.cx.baseVal.value;
@@ -74,10 +69,6 @@
 
 			if (duration === 0) {
 				currentT = targetT;
-
-				const coords = coordinatesForT(currentT, pathEl, sideId);
-				x = coords.x;
-				y = coords.y;
 
 				resolve();
 				return;
@@ -94,10 +85,6 @@
 				const t = Math.min(elapsed / dur, 1);
 
 				currentT = startT + diff * t;
-
-				const coords = coordinatesForT(currentT, pathEl, sideId);
-				x = coords.x;
-				y = coords.y;
 
 				if (t < 1) {
 					rafId = requestAnimationFrame(step);
@@ -242,6 +229,28 @@
 		}
 	};
 
+	// Update position when currentT or dimensions changes
+	$effect(() => {
+		if (!pathEl) return;
+		const svgLocation = pathEl.getPointAtLength(currentT);
+
+		const scale = Math.max(
+			dimensions.width / camera.current.w,
+			dimensions.height / camera.current.h
+		);
+
+		const parentEl = document.querySelector(`#side-${id}`);
+		const parentRect = parentEl.getBoundingClientRect();
+
+		const screenX =
+			(svgLocation.x - camera.current.x) * scale - parentRect.left;
+		const screenY = (svgLocation.y - camera.current.y) * scale;
+
+		x = screenX;
+		y = screenY;
+	});
+
+	// New steps -> perform them
 	$effect(async () => {
 		if (!pathEl || steps === lastSteps || !active) return;
 
@@ -249,15 +258,6 @@
 
 		lastSteps = steps;
 		performSteps();
-	});
-
-	$effect(() => {
-		const width = dimensions.width;
-		if (width) {
-			untrack(() => {
-				moveTo(currentSpotId, 0);
-			});
-		}
 	});
 
 	onDestroy(() => {

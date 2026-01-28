@@ -1,6 +1,8 @@
 // Given a t value along the path, return the angle (in radians) of the path at that point
 // (Used to decide whether sprite is flipped)
 const getAngleAtT = (t, pathEl) => {
+	if (!pathEl || !t) return 0;
+
 	const delta = 0.1;
 	const pathLength = pathEl.getTotalLength();
 

@@ -53,11 +53,7 @@
 	<div class="main">
 		<Title bind:started bind:side bind:beatI bind:titleHeight />
 
-		<div
-			class="camera"
-			class:started
-			style={`--title-height: ${titleHeight}px`}
-		>
+		<div class="story" class:started style={`--title-height: ${titleHeight}px`}>
 			{#if text !== ""}
 				<div
 					class="copy"
@@ -77,7 +73,7 @@
 			<World {side} {showBoth} {direction} {beatI} />
 		</div>
 
-		<!-- <div class="gradient" class:visible={beatI < numBeats - 1}></div> -->
+		<div class="gradient" class:visible={beatI < numBeats - 1}></div>
 	</div>
 
 	<svelte:boundary onerror={(e) => console.error(e)}>
@@ -100,7 +96,7 @@
 		height: 100svh;
 	}
 
-	.camera {
+	.story {
 		position: relative;
 		overflow: hidden;
 		aspect-ratio: 2400 / 6251;
@@ -111,7 +107,7 @@
 		transition: transform 1s 0.5s ease-in-out;
 	}
 
-	.camera.started {
+	.story.started {
 		transform: translate(
 			0,
 			calc(-1 * (var(--title-height) + var(--header-height)))
@@ -128,7 +124,7 @@
 		border-radius: 8px;
 		color: var(--color-bg);
 		padding: 0.5rem 1rem;
-		z-index: 1;
+		z-index: 4;
 		width: 45%;
 	}
 
@@ -150,6 +146,7 @@
 			rgba(0, 0, 0, 0),
 			rgba(0, 0, 0, 1) 85%
 		);
+		z-index: 3;
 		opacity: 0;
 		transition: opacity calc(var(--1s) * 0.5) ease-in-out;
 	}
