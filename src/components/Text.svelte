@@ -88,10 +88,12 @@
 
 	.copy.left {
 		grid-column: 2;
+		justify-self: start;
 	}
 
 	.copy.right {
 		grid-column: 3;
+		justify-self: end;
 	}
 
 	.copy p {
@@ -144,5 +146,38 @@
 
 	button.inactive:hover {
 		background: var(--color-gray-900);
+	}
+
+	@media (max-width: 1000px) {
+		.wrapper {
+			align-items: start;
+		}
+
+		.switch {
+			transform: translate(0, 6rem);
+		}
+
+		.copy.right,
+		.copy.left {
+			position: absolute;
+			bottom: 6rem;
+			left: 50%;
+			transform: translate(-50%, 0);
+			grid-column: none;
+			width: 100%;
+			max-width: 600px;
+			padding: 0 1rem;
+		}
+
+		.copy p {
+			margin: 0.15rem 0;
+		}
+
+		.left p.multi:nth-of-type(1),
+		.left p.multi:nth-of-type(3),
+		.right p.multi:nth-of-type(1),
+		.right p.multi:nth-of-type(3) {
+			transform: translate(0, 0);
+		}
 	}
 </style>

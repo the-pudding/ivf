@@ -29,7 +29,7 @@
 			if (showBoth || Array.from(el.classList).some((d) => d.includes(side))) {
 				el.style.fillOpacity = 0;
 			} else {
-				el.style.fillOpacity = 0.8;
+				el.style.fillOpacity = 0.9;
 			}
 		});
 	};
@@ -166,7 +166,7 @@
 		position: absolute;
 		bottom: 0;
 		width: 100%;
-		height: 200px;
+		height: 150px;
 		background: linear-gradient(
 			to bottom,
 			rgba(0, 0, 0, 0),

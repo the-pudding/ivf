@@ -26,8 +26,11 @@
 
 	const svgW = 2755;
 	const svgH = 6854;
-	const zoomScale = scaleLinear().domain([1500, 600]).range([1, 3]).clamp(true);
-	const buffer = svgW * 0.15;
+	const zoomScale = scaleLinear()
+		.domain([1000, 600])
+		.range([1.5, 3])
+		.clamp(true);
+	const buffer = $derived(dimensions.width > 1500 ? 0 : svgW * 0.15);
 
 	let worldW = $state(0);
 	let worldH = $state(0);
@@ -56,8 +59,10 @@
 		const min = 0;
 		const max = svgH - (cameraH * (svgH / worldH)) / zoom;
 
+		const center = dimensions.width < 600 ? 0.3 : 0.45;
+
 		const centeredY =
-			el.cy.baseVal.value - (cameraH * (svgH / worldH)) / zoom / 2;
+			el.cy.baseVal.value - ((cameraH * (svgH / worldH)) / zoom) * center;
 
 		return Math.min(Math.max(centeredY, min), max);
 	});
