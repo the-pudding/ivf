@@ -64,7 +64,7 @@
 		padding: 0 1rem;
 		pointer-events: none;
 		opacity: 0;
-		transition: opacity 0.5s 0.5s ease-in-out;
+		transition: opacity 0.5s ease-in-out;
 	}
 
 	#title.visible {

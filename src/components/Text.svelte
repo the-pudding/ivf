@@ -2,17 +2,26 @@
 	import { fade } from "svelte/transition";
 	import parentSvg from "$svg/parent-preview.svg";
 	import babySvg from "$svg/baby-preview.svg";
+	import momBeats from "$data/beats-mom.csv";
 	import copy from "$data/copy.json";
+	import _ from "lodash";
 
-	let { side = $bindable(), beatI } = $props();
+	let { visible, side = $bindable(), beatI } = $props();
+
+	const numBeats = Object.entries(_.groupBy(momBeats, "id")).map(
+		([id, steps]) => ({
+			id,
+			steps
+		})
+	).length;
 
 	let content = $derived(
 		beatI === 0 ? null : (copy.beats?.[side]?.[beatI - 1]?.text ?? "")
 	);
 </script>
 
-<div class="wrapper">
-	<div class="switch mom">
+<div class="wrapper" class:visible>
+	<div class="switch mom" class:visible={beatI < numBeats - 1}>
 		<span class="switch-text" class:visible={side === "baby"}>Switch to</span>
 		<button onclick={() => (side = "mom")} class:inactive={side === "baby"}>
 			<span>{@html parentSvg}</span>
@@ -34,7 +43,7 @@
 		{/if}
 	</div>
 
-	<div class="switch baby">
+	<div class="switch baby" class:visible={beatI < numBeats - 1}>
 		<span class="switch-text" class:visible={side === "mom"}>Switch to</span>
 		<button onclick={() => (side = "baby")} class:inactive={side === "mom"}>
 			Baby
@@ -54,6 +63,14 @@
 		grid-template-columns: auto 1fr 1fr auto;
 		align-items: center;
 		gap: 1rem;
+		opacity: 0;
+		pointer-events: none;
+		transition: opacity calc(var(--1s) * 0.5) calc(var(--1s) * 1.5) ease-in-out;
+	}
+
+	.wrapper.visible {
+		pointer-events: all;
+		opacity: 1;
 	}
 
 	.switch {
@@ -63,6 +80,12 @@
 		gap: 4px;
 		font-weight: bold;
 		color: #f7e3bd;
+		opacity: 0;
+		transition: opacity calc(var(--1s) * 0.5) ease-in-out;
+	}
+
+	.switch.visible {
+		opacity: 1;
 	}
 
 	.switch.mom {

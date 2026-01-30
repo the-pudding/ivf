@@ -16,6 +16,7 @@
 	).length;
 
 	let started = $state(false);
+	let locked = $state(true);
 	let side = $state("mom");
 	let showBoth = $state(true);
 	let beatI = $state(0);
@@ -35,13 +36,30 @@
 	};
 
 	const next = () => {
+		if (beatI >= numBeats - 1) return;
 		direction = "forward";
 		beatI = Math.min(numBeats - 1, beatI + 1);
 	};
 
 	const prev = () => {
+		if (beatI === 1) return;
 		direction = "backward";
 		beatI = Math.max(0, beatI - 1);
+		locked = true;
+	};
+
+	const restart = (newSide) => {
+		locked = true;
+		document
+			.querySelector(".main")
+			.scrollIntoView({ behavior: "instant", block: "end" });
+		side = newSide;
+		beatI = 1;
+	};
+
+	const showCredits = () => {
+		locked = false;
+		document.querySelector("footer").scrollIntoView({ behavior: "smooth" });
 	};
 
 	const onKeyDown = (e) => {
@@ -70,23 +88,27 @@
 
 <svelte:window on:keydown={onKeyDown} />
 
-<article class:locked={beatI < numBeats - 1}>
+<article class:locked>
 	<div class="main">
 		<Title bind:started bind:side bind:beatI bind:titleHeight />
 
 		<div class="story" class:started style={`--title-height: ${titleHeight}px`}>
-			{#if started}
-				<Text bind:side {beatI} />
-			{/if}
+			<Text visible={started} bind:side bind:beatI />
 			<World {side} {showBoth} {direction} {beatI} />
 		</div>
 
 		<div class="bottom" class:visible={started}>
-			<span class="desktop-instructions">Tap here to navigate the story</span>
-			<button onclick={prev}><span>{@html chevronUpSvg}</span> Prev</button>
-			<span class="mobile-instructions">Tap to navigate</span>
-			<button onclick={next}><span>{@html chevronDownSvg}</span> Next</button>
-			<span class="desktop-instructions">Or use your keyboard arrows</span>
+			{#if showBoth && beatI === numBeats - 1}
+				<button onclick={() => restart("mom")}>Restart as parent</button>
+				<button onclick={() => restart("baby")}>Restart as baby</button>
+				<button onclick={showCredits}>Credits</button>
+			{:else}
+				<span class="desktop-instructions">Tap here to navigate the story</span>
+				<button onclick={prev}><span>{@html chevronUpSvg}</span> Prev</button>
+				<span class="mobile-instructions">Tap to navigate</span>
+				<button onclick={next}><span>{@html chevronDownSvg}</span> Next</button>
+				<span class="desktop-instructions">Or use your keyboard arrows</span>
+			{/if}
 		</div>
 
 		<div class="gradient" class:visible={beatI < numBeats - 1}></div>
@@ -123,12 +145,11 @@
 		transform: translate(0, -100px);
 		transition:
 			transform 1s 0.5s ease-in-out,
-			width 1s 0.5s ease-in-out;
+			max-width 1s 0.5s ease-in-out;
 	}
 
 	.story.started {
-		max-width: none;
-		margin: 0;
+		max-width: 100vw;
 		transform: translate(
 			0,
 			calc(-1 * (var(--title-height) + var(--header-height)))
