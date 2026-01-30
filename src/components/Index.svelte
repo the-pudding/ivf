@@ -1,10 +1,10 @@
 <script>
 	import Title from "$components/Title.svelte";
+	import Text from "$components/Text.svelte";
 	import World from "$components/World.svelte";
 	import Footer from "$components/Footer.svelte";
 	import momBeats from "$data/beats-mom.csv";
 	import _ from "lodash";
-	import copy from "$data/copy.json";
 
 	const numBeats = Object.entries(_.groupBy(momBeats, "id")).map(
 		([id, steps]) => ({
@@ -19,10 +19,6 @@
 	let beatI = $state(0);
 	let direction = $state("forward");
 	let titleHeight = $state(0);
-
-	let text = $derived(
-		beatI === 0 ? "" : (copy.beats?.[side]?.[beatI - 1]?.text ?? "")
-	);
 
 	const switchSides = () => {
 		const sideEls = document.querySelectorAll(".mask .Overlay path");
@@ -68,22 +64,7 @@
 		<Title bind:started bind:side bind:beatI bind:titleHeight />
 
 		<div class="story" class:started style={`--title-height: ${titleHeight}px`}>
-			{#if text !== ""}
-				<div
-					class="copy"
-					class:left={side === "baby"}
-					class:right={side === "mom"}
-				>
-					{#if Array.isArray(text)}
-						{#each text as { value: paragraph }}
-							<p>{@html paragraph}</p>
-						{/each}
-					{:else}
-						<p>{@html text}</p>
-					{/if}
-				</div>
-			{/if}
-
+			<Text {side} {beatI} />
 			<World {side} {showBoth} {direction} {beatI} />
 		</div>
 
@@ -126,28 +107,6 @@
 			0,
 			calc(-1 * (var(--title-height) + var(--header-height)))
 		);
-	}
-
-	.copy {
-		position: absolute;
-		width: 40%;
-		top: 50%;
-		transform: translate(0, -50%);
-		background: rgba(249, 244, 255, 0.95);
-		color: var(--color-bg);
-		border: 2px solid #4c5c8f;
-		border-radius: 8px;
-		color: var(--color-bg);
-		padding: 0.5rem 1rem;
-		z-index: 4;
-	}
-
-	.copy.left {
-		left: 1rem;
-	}
-
-	.copy.right {
-		right: 1rem;
 	}
 
 	.gradient {

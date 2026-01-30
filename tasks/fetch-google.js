@@ -4,13 +4,22 @@ import docs from "../google.config.js";
 
 const CWD = process.cwd();
 
-const fetchGoogle = async ({ id, gid }) => {
+const fetchGoogle = async ({ id, gid, tab }) => {
 	console.log(`fetching...${id}`);
 
 	const base = "https://docs.google.com";
-	const post = gid
-		? `spreadsheets/u/1/d/${id}/export?format=csv&id=${id}&gid=${gid}`
-		: `document/d/${id}/export?format=txt`;
+
+	let post;
+
+	if (gid) {
+		// Google Sheet
+		post = `spreadsheets/u/1/d/${id}/export?format=csv&id=${id}&gid=${gid}`;
+	} else {
+		// Google Doc (optionally with tab)
+		const tabParam = tab ? `&tab=${tab}` : "";
+		post = `document/d/${id}/export?format=txt${tabParam}`;
+	}
+
 	const url = `${base}/${post}`;
 
 	try {
