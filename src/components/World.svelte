@@ -27,9 +27,10 @@
 	const svgW = 2755;
 	const svgH = 6854;
 	const zoomScale = scaleLinear()
-		.domain([1000, 600])
-		.range([1.5, 3])
+		.domain([600, 1000, 2000])
+		.range([3, 1.5, 1])
 		.clamp(true);
+
 	const buffer = $derived(dimensions.width > 1500 ? 0 : svgW * 0.15);
 
 	let worldW = $state(0);

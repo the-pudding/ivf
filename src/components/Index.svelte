@@ -82,10 +82,11 @@
 		</div>
 
 		<div class="bottom" class:visible={started}>
-			Tap here to navigate the story
+			<span class="desktop-instructions">Tap here to navigate the story</span>
 			<button onclick={prev}><span>{@html chevronUpSvg}</span> Prev</button>
+			<span class="mobile-instructions">Tap to navigate</span>
 			<button onclick={next}><span>{@html chevronDownSvg}</span> Next</button>
-			Or use your keyboard arrows
+			<span class="desktop-instructions">Or use your keyboard arrows</span>
 		</div>
 
 		<div class="gradient" class:visible={beatI < numBeats - 1}></div>
@@ -117,12 +118,17 @@
 		aspect-ratio: 2400 / 6251;
 		width: 100%;
 		height: 100svh;
-		/* max-width: 1400px; */
+		max-width: 1000px;
 		margin: 0 auto;
-		transition: transform 1s 0.5s ease-in-out;
+		transform: translate(0, -100px);
+		transition:
+			transform 1s 0.5s ease-in-out,
+			width 1s 0.5s ease-in-out;
 	}
 
 	.story.started {
+		max-width: none;
+		margin: 0;
 		transform: translate(
 			0,
 			calc(-1 * (var(--title-height) + var(--header-height)))
@@ -144,6 +150,7 @@
 		text-transform: uppercase;
 		font-size: var(--12px);
 		font-weight: bold;
+		padding: 0 1rem;
 	}
 
 	.bottom.visible {
@@ -162,11 +169,15 @@
 		width: 18px;
 	}
 
+	.mobile-instructions {
+		display: none;
+	}
+
 	.gradient {
 		position: absolute;
 		bottom: 0;
 		width: 100%;
-		height: 150px;
+		height: 6rem;
 		background: linear-gradient(
 			to bottom,
 			rgba(0, 0, 0, 0),
@@ -179,5 +190,23 @@
 
 	.gradient.visible {
 		opacity: 1;
+	}
+
+	@media (max-width: 650px) {
+		.mobile-instructions {
+			display: flex;
+		}
+
+		.desktop-instructions {
+			display: none;
+		}
+
+		.bottom {
+			justify-content: space-between;
+		}
+
+		.story {
+			transform: translate(0, 0);
+		}
 	}
 </style>

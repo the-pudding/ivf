@@ -61,6 +61,7 @@
 		align-items: center;
 		position: relative;
 		z-index: var(--z-top);
+		padding: 0 1rem;
 		pointer-events: none;
 		opacity: 0;
 		transition: opacity 0.5s 0.5s ease-in-out;
@@ -122,6 +123,7 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 1.5rem;
+		margin: 0 1rem;
 		padding: 1.5rem;
 		opacity: 0;
 		transition: opacity 0.5s 1s ease-in-out;
@@ -157,5 +159,34 @@
 		text-transform: uppercase;
 		font-size: var(--12px);
 		font-weight: bold;
+	}
+
+	@media (max-width: 600px) {
+		h1 {
+			font-size: var(--48px);
+		}
+
+		.byline:nth-of-type(1) {
+			font-size: var(--16px);
+		}
+
+		.byline:nth-of-type(2),
+		.byline:nth-of-type(3) {
+			font-size: var(--12px);
+		}
+
+		.instructions {
+			font-size: var(--16px);
+		}
+
+		button {
+			font-size: var(--12px);
+		}
+	}
+
+	@media (max-width: 400px) {
+		h1 {
+			font-size: var(--40px);
+		}
 	}
 </style>
