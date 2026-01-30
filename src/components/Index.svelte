@@ -24,6 +24,18 @@
 		beatI === 0 ? "" : (copy.beats?.[side]?.[beatI - 1]?.text ?? "")
 	);
 
+	const switchSides = () => {
+		const sideEls = document.querySelectorAll(".mask .Overlay path");
+		sideEls.forEach((el) => {
+			el.style.transition = "fill-opacity 1s ease-in-out";
+			if (showBoth || Array.from(el.classList).some((d) => d.includes(side))) {
+				el.style.fillOpacity = 0;
+			} else {
+				el.style.fillOpacity = 0.8;
+			}
+		});
+	};
+
 	$effect(() => {
 		if (beatI >= numBeats - 1 || !started) {
 			showBoth = true;
@@ -31,6 +43,8 @@
 			showBoth = false;
 		}
 	});
+
+	$effect(() => switchSides(side));
 </script>
 
 <svelte:window
