@@ -4,6 +4,8 @@
 	import World from "$components/World.svelte";
 	import Footer from "$components/Footer.svelte";
 	import momBeats from "$data/beats-mom.csv";
+	import chevronUpSvg from "$svg/chevron-up.svg";
+	import chevronDownSvg from "$svg/chevron-down.svg";
 	import _ from "lodash";
 
 	const numBeats = Object.entries(_.groupBy(momBeats, "id")).map(
@@ -32,6 +34,29 @@
 		});
 	};
 
+	const next = () => {
+		direction = "forward";
+		beatI = Math.min(numBeats - 1, beatI + 1);
+	};
+
+	const prev = () => {
+		direction = "backward";
+		beatI = Math.max(0, beatI - 1);
+	};
+
+	const onKeyDown = (e) => {
+		if (!started) return;
+		if (e.key === "ArrowDown") {
+			next();
+		} else if (e.key === "ArrowUp") {
+			prev();
+		} else if (e.key === "ArrowLeft") {
+			side = "mom";
+		} else if (e.key === "ArrowRight") {
+			side = "baby";
+		}
+	};
+
 	$effect(() => {
 		if (beatI >= numBeats - 1 || !started) {
 			showBoth = true;
@@ -43,29 +68,24 @@
 	$effect(() => switchSides(side));
 </script>
 
-<svelte:window
-	on:keydown={(e) => {
-		if (e.key === "ArrowDown") {
-			direction = "forward";
-			beatI = Math.min(numBeats - 1, beatI + 1);
-		} else if (e.key === "ArrowUp") {
-			direction = "backward";
-			beatI = Math.max(0, beatI - 1);
-		} else if (e.key === "ArrowLeft") {
-			side = "mom";
-		} else if (e.key === "ArrowRight") {
-			side = "baby";
-		}
-	}}
-/>
+<svelte:window on:keydown={onKeyDown} />
 
 <article class:locked={beatI < numBeats - 1}>
 	<div class="main">
 		<Title bind:started bind:side bind:beatI bind:titleHeight />
 
 		<div class="story" class:started style={`--title-height: ${titleHeight}px`}>
-			<Text {side} {beatI} />
+			{#if started}
+				<Text bind:side {beatI} />
+			{/if}
 			<World {side} {showBoth} {direction} {beatI} />
+		</div>
+
+		<div class="bottom" class:visible={started}>
+			Tap here to navigate the story
+			<button onclick={prev}><span>{@html chevronUpSvg}</span> Prev</button>
+			<button onclick={next}><span>{@html chevronDownSvg}</span> Next</button>
+			Or use your keyboard arrows
 		</div>
 
 		<div class="gradient" class:visible={beatI < numBeats - 1}></div>
@@ -107,6 +127,39 @@
 			0,
 			calc(-1 * (var(--title-height) + var(--header-height)))
 		);
+	}
+
+	.bottom {
+		display: none;
+		align-items: center;
+		justify-content: center;
+		gap: 4px;
+		height: 4rem;
+		background: rgba(0, 0, 0, 5);
+		border-top: 1px solid #4c5c8f;
+		position: absolute;
+		bottom: 0;
+		z-index: 4;
+		width: 100%;
+		text-transform: uppercase;
+		font-size: var(--12px);
+		font-weight: bold;
+	}
+
+	.bottom.visible {
+		display: flex;
+	}
+
+	.bottom button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 2px;
+	}
+
+	.bottom button span {
+		height: 18px;
+		width: 18px;
 	}
 
 	.gradient {

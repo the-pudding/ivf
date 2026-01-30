@@ -110,6 +110,8 @@
 		{beatI}
 		{direction}
 		{camera}
+		{worldW}
+		{worldH}
 	/>
 	<Side
 		id="baby"
@@ -118,11 +120,14 @@
 		{beatI}
 		{direction}
 		{camera}
+		{worldW}
+		{worldH}
 	/>
 </div>
 
 <style>
 	.world {
+		position: relative;
 		transition: transform 2s 0.5s ease-out;
 	}
 

@@ -4,7 +4,8 @@
 	import { onMount } from "svelte";
 	import _ from "lodash";
 
-	let { id, beats, active, beatI, direction, camera } = $props();
+	let { id, beats, active, beatI, direction, camera, worldW, worldH } =
+		$props();
 
 	const allBeats = Object.entries(_.groupBy(beats, "id")).map(
 		([id, steps]) => ({
@@ -66,6 +67,8 @@
 			{sceneryState}
 			{active}
 			{camera}
+			{worldW}
+			{worldH}
 		/>
 	{/if}
 </div>

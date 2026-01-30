@@ -1,6 +1,8 @@
 <script>
 	import { onMount } from "svelte";
 	import copy from "$data/copy.json";
+	import parentSvg from "$svg/parent-preview.svg";
+	import babySvg from "$svg/baby-preview.svg";
 
 	let {
 		started = $bindable(),
@@ -36,9 +38,15 @@
 		<div class="text">{@html copy.landing.text}</div>
 
 		<div class="buttons">
-			<button onclick={() => start("mom")}>Parent</button>
+			<button onclick={() => start("mom")}>
+				<span>{@html parentSvg}</span>
+				Parent</button
+			>
 			<span>and</span>
-			<button onclick={() => start("baby")}>Baby</button>
+			<button onclick={() => start("baby")}>
+				Baby
+				<span>{@html babySvg}</span>
+			</button>
 		</div>
 
 		<div class="select">Select one to continue</div>
@@ -132,6 +140,17 @@
 		align-items: center;
 		gap: 0.5rem;
 		font-size: var(--14px);
+	}
+
+	button {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+	}
+
+	button span {
+		width: 20px;
+		height: 20px;
 	}
 
 	.select {

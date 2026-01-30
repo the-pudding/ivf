@@ -18,7 +18,9 @@
 		spritePosition = $bindable(),
 		sceneryState,
 		active,
-		camera
+		camera,
+		worldW,
+		worldH
 	} = $props();
 
 	const FRAMERATE = 300;
@@ -47,10 +49,7 @@
 	);
 	let frame = $derived(frames[frameIndex]);
 	let svgScaleFactor = $derived(
-		Math.max(
-			dimensions.width / camera.current.w,
-			dimensions.height / camera.current.h
-		)
+		Math.max(worldW / camera.current.w, worldH / camera.current.h)
 	);
 	let scale = $derived(scaleFactor * svgScaleFactor);
 	const width = $derived(frameWidth * scale);
@@ -241,15 +240,14 @@
 		const svgLocation = pathEl.getPointAtLength(currentT);
 
 		const screenScale = Math.max(
-			dimensions.width / camera.current.w,
-			dimensions.height / camera.current.h
+			worldW / camera.current.w,
+			worldH / camera.current.h
 		);
 
 		const parentEl = document.querySelector(`#side-${id}`);
-		const parentRect = parentEl.getBoundingClientRect();
 
 		const screenX =
-			(svgLocation.x - camera.current.x) * screenScale - parentRect.left;
+			(svgLocation.x - camera.current.x) * screenScale - parentEl.offsetLeft;
 		const screenY = (svgLocation.y - camera.current.y) * screenScale;
 
 		x = screenX;
