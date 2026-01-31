@@ -6,6 +6,8 @@
 	import momBeats from "$data/beats-mom.csv";
 	import chevronUpSvg from "$svg/chevron-up.svg";
 	import chevronDownSvg from "$svg/chevron-down.svg";
+	import parentSvg from "$svg/parent-preview.svg";
+	import babySvg from "$svg/baby-preview.svg";
 	import _ from "lodash";
 
 	const numBeats = Object.entries(_.groupBy(momBeats, "id")).map(
@@ -99,14 +101,24 @@
 
 		<div class="bottom" class:visible={started}>
 			{#if showBoth && beatI === numBeats - 1}
-				<button onclick={() => restart("mom")}>Restart as parent</button>
-				<button onclick={() => restart("baby")}>Restart as baby</button>
+				<button class="restart parent" onclick={() => restart("mom")}>
+					<span>{@html parentSvg}</span>
+					Restart as Parent
+				</button>
+				<button class="restart baby" onclick={() => restart("baby")}>
+					Restart as baby
+					<span>{@html babySvg}</span>
+				</button>
 				<button onclick={showCredits}>Credits</button>
 			{:else}
 				<span class="desktop-instructions">Tap here to navigate the story</span>
-				<button onclick={prev}><span>{@html chevronUpSvg}</span> Prev</button>
+				<button class="nav" onclick={prev}
+					><span>{@html chevronUpSvg}</span> Prev</button
+				>
 				<span class="mobile-instructions">Tap to navigate</span>
-				<button onclick={next}><span>{@html chevronDownSvg}</span> Next</button>
+				<button class="nav" onclick={next}
+					><span>{@html chevronDownSvg}</span> Next</button
+				>
 				<span class="desktop-instructions">Or use your keyboard arrows</span>
 			{/if}
 		</div>
@@ -178,16 +190,28 @@
 		display: flex;
 	}
 
-	.bottom button {
+	button.nav,
+	button.restart {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		gap: 2px;
+		gap: 4px;
+		height: 2.25rem;
 	}
 
-	.bottom button span {
+	button.nav span {
 		height: 18px;
 		width: 18px;
+	}
+
+	button.restart span {
+		height: 20px;
+		width: 20px;
+	}
+
+	button.restart.parent span {
+		height: 16px;
+		width: 16px;
 	}
 
 	.mobile-instructions {

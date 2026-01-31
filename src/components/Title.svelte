@@ -38,12 +38,12 @@
 		<div class="text">{@html copy.landing.text}</div>
 
 		<div class="buttons">
-			<button onclick={() => start("mom")}>
+			<button class="parent" onclick={() => start("mom")}>
 				<span>{@html parentSvg}</span>
 				Parent</button
 			>
 			<span>and</span>
-			<button onclick={() => start("baby")}>
+			<button class="baby" onclick={() => start("baby")}>
 				Baby
 				<span>{@html babySvg}</span>
 			</button>
@@ -147,12 +147,18 @@
 	button {
 		display: flex;
 		align-items: center;
-		gap: 0.25rem;
+		gap: 4px;
+		height: 2.25rem;
 	}
 
 	button span {
 		width: 20px;
 		height: 20px;
+	}
+
+	button.parent span {
+		width: 16px;
+		height: 16px;
 	}
 
 	.select {

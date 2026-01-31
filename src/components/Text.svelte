@@ -23,7 +23,11 @@
 <div class="wrapper" class:visible>
 	<div class="switch mom" class:visible={beatI < numBeats - 1}>
 		<span class="switch-text" class:visible={side === "baby"}>Switch to</span>
-		<button onclick={() => (side = "mom")} class:inactive={side === "baby"}>
+		<button
+			class="parent"
+			onclick={() => (side = "mom")}
+			class:inactive={side === "baby"}
+		>
 			<span>{@html parentSvg}</span>
 			Parent
 		</button>
@@ -45,7 +49,11 @@
 
 	<div class="switch baby" class:visible={beatI < numBeats - 1}>
 		<span class="switch-text" class:visible={side === "mom"}>Switch to</span>
-		<button onclick={() => (side = "baby")} class:inactive={side === "mom"}>
+		<button
+			class="baby"
+			onclick={() => (side = "baby")}
+			class:inactive={side === "mom"}
+		>
 			Baby
 			<span>{@html babySvg}</span>
 		</button>
@@ -148,12 +156,18 @@
 	button {
 		display: flex;
 		align-items: center;
-		gap: 0.25rem;
+		gap: 4px;
+		height: 2.25rem;
 	}
 
 	button span {
 		width: 20px;
 		height: 20px;
+	}
+
+	button.parent span {
+		width: 16px;
+		height: 16px;
 	}
 
 	button:hover {
