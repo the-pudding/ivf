@@ -2,12 +2,9 @@
 	import Title from "$components/Title.svelte";
 	import Text from "$components/Text.svelte";
 	import World from "$components/World.svelte";
+	import Bottom from "$components/Bottom.svelte";
 	import Footer from "$components/Footer.svelte";
 	import momBeats from "$data/beats-mom.csv";
-	import chevronUpSvg from "$svg/chevron-up.svg";
-	import chevronDownSvg from "$svg/chevron-down.svg";
-	import parentSvg from "$svg/parent-preview.svg";
-	import babySvg from "$svg/baby-preview.svg";
 	import _ from "lodash";
 
 	const numBeats = Object.entries(_.groupBy(momBeats, "id")).map(
@@ -50,20 +47,6 @@
 		locked = true;
 	};
 
-	const restart = (newSide) => {
-		locked = true;
-		document
-			.querySelector(".main")
-			.scrollIntoView({ behavior: "instant", block: "end" });
-		side = newSide;
-		beatI = 1;
-	};
-
-	const showCredits = () => {
-		locked = false;
-		document.querySelector("footer").scrollIntoView({ behavior: "smooth" });
-	};
-
 	const onKeyDown = (e) => {
 		if (!started) return;
 		if (e.key === "ArrowDown") {
@@ -99,29 +82,16 @@
 			<World {side} {showBoth} {direction} {beatI} />
 		</div>
 
-		<div class="bottom" class:visible={started}>
-			{#if showBoth && beatI === numBeats - 1}
-				<button class="restart parent" onclick={() => restart("mom")}>
-					<span>{@html parentSvg}</span>
-					Restart as Parent
-				</button>
-				<button class="restart baby" onclick={() => restart("baby")}>
-					Restart as baby
-					<span>{@html babySvg}</span>
-				</button>
-				<button onclick={showCredits}>Credits</button>
-			{:else}
-				<span class="desktop-instructions">Tap here to navigate the story</span>
-				<button class="nav" onclick={prev}
-					><span>{@html chevronUpSvg}</span> Prev</button
-				>
-				<span class="mobile-instructions">Tap to navigate</span>
-				<button class="nav" onclick={next}
-					><span>{@html chevronDownSvg}</span> Next</button
-				>
-				<span class="desktop-instructions">Or use your keyboard arrows</span>
-			{/if}
-		</div>
+		<Bottom
+			visible={started}
+			atTheEnd={showBoth && beatI === numBeats - 1}
+			{numBeats}
+			{next}
+			{prev}
+			bind:locked
+			bind:side
+			bind:beatI
+		/>
 
 		<div class="gradient" class:visible={beatI < numBeats - 1}></div>
 	</div>
@@ -168,56 +138,6 @@
 		);
 	}
 
-	.bottom {
-		display: none;
-		align-items: center;
-		justify-content: center;
-		gap: 4px;
-		height: 4rem;
-		background: rgba(0, 0, 0, 5);
-		border-top: 1px solid #4c5c8f;
-		position: absolute;
-		bottom: 0;
-		z-index: 4;
-		width: 100%;
-		text-transform: uppercase;
-		font-size: var(--12px);
-		font-weight: bold;
-		padding: 0 1rem;
-	}
-
-	.bottom.visible {
-		display: flex;
-	}
-
-	button.nav,
-	button.restart {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 4px;
-		height: 2.25rem;
-	}
-
-	button.nav span {
-		height: 18px;
-		width: 18px;
-	}
-
-	button.restart span {
-		height: 20px;
-		width: 20px;
-	}
-
-	button.restart.parent span {
-		height: 16px;
-		width: 16px;
-	}
-
-	.mobile-instructions {
-		display: none;
-	}
-
 	.gradient {
 		position: absolute;
 		bottom: 0;
@@ -238,18 +158,6 @@
 	}
 
 	@media (max-width: 650px) {
-		.mobile-instructions {
-			display: flex;
-		}
-
-		.desktop-instructions {
-			display: none;
-		}
-
-		.bottom {
-			justify-content: space-between;
-		}
-
 		.story {
 			transform: translate(0, 0);
 		}
