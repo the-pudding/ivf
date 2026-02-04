@@ -16,7 +16,10 @@
 	).length;
 
 	let content = $derived(
-		beatI === 0 ? null : (copy.beats?.[side]?.[beatI - 1]?.text ?? "")
+		beatI === 0 ? [] : (copy.beats?.[side]?.[beatI - 1]?.text ?? "")
+	);
+	let paragraphs = $derived(
+		Array.isArray(content) ? content.map((d) => d.value) : [content]
 	);
 </script>
 
@@ -34,17 +37,14 @@
 	</div>
 
 	<div class="copy" class:left={side === "baby"} class:right={side === "mom"}>
-		{#if Array.isArray(content)}
-			{#each content as { value }, i (value)}
-				<p class="multi" in:fade={{ duration: 300, delay: i * 1000 }}>
-					{@html value}
-				</p>
-			{/each}
-		{:else}
-			{#key content}
-				<p in:fade={{ duration: 300 }}>{@html content}</p>
-			{/key}
-		{/if}
+		{#each paragraphs as paragraph, i (paragraph)}
+			<p
+				class:multi={paragraphs.length > 1}
+				in:fade={{ duration: 300, delay: i * 800 }}
+			>
+				{@html paragraph}
+			</p>
+		{/each}
 	</div>
 
 	<div class="switch baby" class:visible={beatI < numBeats - 1}>
