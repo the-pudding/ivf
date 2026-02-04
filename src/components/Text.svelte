@@ -8,6 +8,7 @@
 
 	let { visible, side = $bindable(), beatI } = $props();
 
+	const DELAY = 2000;
 	const numBeats = Object.entries(_.groupBy(momBeats, "id")).map(
 		([id, steps]) => ({
 			id,
@@ -40,7 +41,7 @@
 		{#each paragraphs as paragraph, i (paragraph)}
 			<p
 				class:multi={paragraphs.length > 1}
-				in:fade={{ duration: 300, delay: i * 800 }}
+				in:fade={{ duration: 300, delay: DELAY + i * 800 }}
 			>
 				{@html paragraph}
 			</p>
