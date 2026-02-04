@@ -45,7 +45,7 @@ microbiologist,,embryo,,,acupuncturists,microbiologist,,,,friends,"floating-head
 microbiologist,embryo-still,,,0,microbiologist,microbiologist,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
 finally,,embryo,,,microbiologist,finally,,,,,,,
 finally,embryo-still,,,0,finally,finally,,,,,,,
-end,,embryo,,,finally,end-1,,,,,,,
-end,child-standing,,,,end-1,end-2,,,,,,,
+end,,embryo,,1800,finally,end-1,,,,,,,
+end,child-standing,,,200,end-1,end-2,,,,,,,
 end,,child-walk,,,end-2,end-3,,,,,,,
 end,child-extended,,,0,end-3,end-3,,,,,,,

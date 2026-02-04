@@ -5,9 +5,6 @@
 	import { getAngleAtT, findClosestT } from "$utils/spriteHelpers.js";
 	import { scenery } from "$utils/scenery.js";
 	import { onDestroy } from "svelte";
-	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
-
-	let dimensions = new useWindowDimensions();
 
 	let {
 		id,

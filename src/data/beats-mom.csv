@@ -48,6 +48,6 @@ warriors,,walk-hopeful,,online-2,warriors-1,,,,friends,"floating-head-mom-1, flo
 warriors,,walk-hopeful,,warriors-1,warriors-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",0.5,above
 warriors,hopeful,,0,warriors-2,warriors-2,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",0.5,above
 end,,walk-armor,,warriors-2,end-1,,,,,,,
-end,standing-armor,,,end-1,end-2,,,,,,,
+end,standing-armor,,200,end-1,end-2,,,,,,,
 end,,walk-armor,,end-2,end-3,,,,,,,
 end,hand-extended,,0,end-3,end-3,,,,,,,
