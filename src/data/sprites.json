@@ -233,5 +233,45 @@
 		"frameWidth": 135,
 		"frameHeight": 81,
 		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "adversary-1",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "adversary-2",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "adversary-3",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "adversary-4",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
+	},
+	{
+		"id": "adversary-5",
+		"rows": 1,
+		"cols": 1,
+		"frameWidth": 260,
+		"frameHeight": 260,
+		"frames": [{ "index": 0, "x": 0, "y": 0 }]
 	}
 ]

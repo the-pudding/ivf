@@ -16,8 +16,8 @@ logistics,,walk-armor,,more-needles,logistics-1,,,,,,,
 logistics,,walk-armor,,logistics-1,logistics-2, ,calendar,drop,,,,
 logistics,,walk-armor,,logistics-2,logistics-3,above,calendar,flash-loop,,,,
 logistics,standing-armor,,0,logistics-3,logistics-3,above,calendar,flash-loop,,,,
-adversaries,,walk-covered,,logistics-3,adversaries,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
-adversaries,standing-armor,,0,adversaries,adversaries,,,,faces-halo,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4, floating-head-mom-5",0.5,halo
+adversaries,,walk-covered,,logistics-3,adversaries,,,,faces-halo,"adversary-1, adversary-2, adversary-3, adversary-4, adversary-5",0.5,halo
+adversaries,covered,,0,adversaries,adversaries,,,,faces-halo,"adversary-1, adversary-2, adversary-3, adversary-4, adversary-5",0.5,halo
 go-wrong,,walk-armor,,adversaries,go-wrong,,,,,,,
 go-wrong,standing-armor,,0,go-wrong,go-wrong,,,,,,,
 wrong-clinic,,walk-armor,,go-wrong,wrong-clinic,,,,,,,
