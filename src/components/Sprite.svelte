@@ -39,6 +39,7 @@
 	let forceData = $state();
 	let frameIndex = $state(0);
 	let gray = $state(false);
+	let idle = $state(false);
 	let flipped = $derived(
 		id === "mom"
 			? Math.cos(getAngleAtT(currentT, pathEl)) < 0
@@ -187,6 +188,8 @@
 	};
 
 	const performSteps = async () => {
+		idle = false;
+
 		for (const step of steps) {
 			if (step.forceSprites) {
 				const incomingData = {
@@ -221,9 +224,11 @@
 
 			await moveTo(currentSpotId, step.duration ? +step.duration : undefined);
 		}
+
+		if (beatId !== "start" && beatId !== "end") idle = true;
 	};
 
-	// Update position when currentT or dimensions changes
+	// Update camera position when currentT or dimensions changes
 	$effect(() => {
 		if (!pathEl || !currentT) return;
 		const svgLocation = pathEl.getPointAtLength(currentT);
@@ -262,6 +267,7 @@
 	class="sprite"
 	class:flipped
 	class:gray
+	class:idle
 	style={`--y-offset: ${yOffset}`}
 	style:width={`${width}px`}
 	style:height={`${height}px`}
@@ -297,5 +303,35 @@
 
 	.gray {
 		filter: grayscale(100%);
+	}
+
+	.idle {
+		animation: bounce 1s infinite;
+	}
+
+	.idle.flipped {
+		animation: bounce-flipped 1s infinite;
+	}
+
+	@keyframes bounce {
+		0%,
+		100% {
+			transform: translate(-50%, calc(-100% * var(--y-offset))) translateY(0);
+		}
+		50% {
+			transform: translate(-50%, calc(-100% * var(--y-offset))) translateY(-2px);
+		}
+	}
+
+	@keyframes bounce-flipped {
+		0%,
+		100% {
+			transform: translate(-50%, calc(-100% * var(--y-offset))) scaleX(-1)
+				translateY(0);
+		}
+		50% {
+			transform: translate(-50%, calc(-100% * var(--y-offset))) scaleX(-1)
+				translateY(-2px);
+		}
 	}
 </style>
