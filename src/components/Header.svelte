@@ -18,6 +18,7 @@
 		height: var(--header-height);
 		width: 100%;
 		z-index: var(--z-top);
+		pointer-events: none;
 	}
 
 	.wordmark {
@@ -32,6 +33,7 @@
 		border: none;
 		display: block;
 		color: var(--color-fg);
+		pointer-events: all;
 	}
 
 	.wordmark a:hover {

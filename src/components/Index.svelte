@@ -1,7 +1,8 @@
 <script>
 	import Title from "$components/Title.svelte";
-	import Text from "$components/Text.svelte";
+	import Html from "$components/Html.svelte";
 	import World from "$components/World.svelte";
+	import DeepDive from "$components/DeepDive.svelte";
 	import Bottom from "$components/Bottom.svelte";
 	import Footer from "$components/Footer.svelte";
 	import momBeats from "$data/beats-mom.csv";
@@ -14,13 +15,14 @@
 		})
 	).length;
 
-	let started = $state(false);
-	let locked = $state(true);
 	let side = $state("mom");
-	let showBoth = $state(true);
 	let beatI = $state(0);
 	let direction = $state("forward");
 	let titleHeight = $state(0);
+	let started = $state(false);
+	let locked = $state(true);
+	let showBoth = $state(true);
+	let deepDiveOpen = $state(false);
 
 	const switchSides = () => {
 		const sideEls = document.querySelectorAll(".mask .Overlay path");
@@ -78,7 +80,7 @@
 		<Title bind:started bind:side bind:beatI bind:titleHeight />
 
 		<div class="story" class:started style={`--title-height: ${titleHeight}px`}>
-			<Text visible={started} bind:side bind:beatI />
+			<Html visible={started} bind:side bind:beatI bind:deepDiveOpen />
 			<World {side} {showBoth} {direction} {beatI} />
 		</div>
 
@@ -93,6 +95,7 @@
 			bind:beatI
 		/>
 
+		<DeepDive bind:open={deepDiveOpen} {side} />
 		<div class="gradient" class:visible={beatI < numBeats - 1}></div>
 	</div>
 

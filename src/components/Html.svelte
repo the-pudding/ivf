@@ -6,7 +6,12 @@
 	import copy from "$data/copy.json";
 	import _ from "lodash";
 
-	let { visible, side = $bindable(), beatI } = $props();
+	let {
+		visible,
+		side = $bindable(),
+		beatI,
+		deepDiveOpen = $bindable()
+	} = $props();
 
 	const DELAY = 2000;
 	const numBeats = Object.entries(_.groupBy(momBeats, "id")).map(
@@ -24,7 +29,12 @@
 	);
 </script>
 
-<div class="wrapper" class:visible>
+<div class="html-wrapper" class:visible>
+	<!-- <button
+		style="position: absolute; top: 0; left: 0"
+		onclick={() => (deepDiveOpen = true)}>open deep dive</button
+	> -->
+
 	<div class="switch mom" class:visible={beatI < numBeats - 1}>
 		<span class="switch-text" class:visible={side === "baby"}>Switch to</span>
 		<button
@@ -62,7 +72,7 @@
 </div>
 
 <style>
-	.wrapper {
+	.html-wrapper {
 		position: absolute;
 		z-index: 4;
 		width: 100%;
@@ -77,7 +87,7 @@
 		transition: opacity calc(var(--1s) * 0.5) calc(var(--1s) * 1.5) ease-in-out;
 	}
 
-	.wrapper.visible {
+	.html-wrapper.visible {
 		pointer-events: all;
 		opacity: 1;
 	}
@@ -194,12 +204,12 @@
 	}
 
 	@media (max-width: 1000px) {
-		.wrapper {
+		.html-wrapper {
 			align-items: start;
 		}
 
 		.switch {
-			transform: translate(0, 6rem);
+			transform: translate(0, 4rem);
 		}
 
 		.copy.right,
