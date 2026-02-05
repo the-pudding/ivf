@@ -112,14 +112,6 @@
 		}
 
 		let cycleFrames = frames.filter((d) => d.cycle === cycleId);
-		if (
-			cycleId === "follicle" ||
-			cycleId === "egg" ||
-			cycleId === "early-embryo" ||
-			cycleId === "embryo"
-		) {
-			cycleFrames = [...cycleFrames].reverse();
-		}
 
 		if (cycleFrames.length === 0) {
 			frameIndex = 0;
