@@ -35,8 +35,8 @@
 		Array.isArray(content) ? content.map((d) => d.value) : [content]
 	);
 
-	const showInstructions = () => {
-		const firstSpan = document.querySelector(`span#definition-retrievals`);
+	const showInstructions = (definitionId) => {
+		const firstSpan = document.querySelector(`span#definition-${definitionId}`);
 		firstSpan.style.position = "relative";
 		const instructionSpan = document.createElement("span");
 		instructionSpan.textContent = "Hover over for definitions";
@@ -86,8 +86,11 @@
 			});
 		});
 
-		if (side === "mom" && beatI === 4 && instructionsNeeded) {
-			showInstructions();
+		if (
+			instructionsNeeded &&
+			((side === "mom" && beatI === 4) || (side === "baby" && beatI == 2))
+		) {
+			showInstructions(side === "mom" ? "retrievals" : "follicles");
 			instructionsNeeded = false;
 		}
 	};
