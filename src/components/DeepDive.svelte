@@ -1,5 +1,7 @@
 <script>
-	let { open = $bindable(), side } = $props();
+	import xSvg from "$svg/x.svg";
+
+	let { open = $bindable(), content, side } = $props();
 
 	const close = () => {
 		open = false;
@@ -12,30 +14,57 @@
 	class:left={side === "baby"}
 	class:right={side === "mom"}
 >
-	<button onclick={close}>close</button>
+	<button class="close" onclick={close}>
+		{@html xSvg}
+	</button>
+
+	{#each content as { type, value }}
+		{#if type === "text"}
+			<p>{@html value}</p>
+		{:else if type === "img"}
+			<img src={value} alt="" />
+		{/if}
+	{/each}
 </div>
 
 <style>
 	.deep {
-		background: var(--color-fg);
-		color: var(--color-bg);
 		height: 100svh;
 		position: absolute;
 		top: 0;
 		width: 40%;
 		max-width: 450px;
+		background: #090d2e;
 		z-index: 4;
 		transition: none;
+		padding: 1rem;
+	}
+
+	button.close {
+		background: none;
+		border: none;
+		padding: 1rem;
+		height: 20px;
+		width: 20px;
+		padding: 0;
+		margin-bottom: 2rem;
+		display: block;
+	}
+
+	.left button.close {
+		margin-left: auto;
 	}
 
 	.deep.left {
 		left: 0;
 		transform: translate(-100%, 0);
+		border-right: 2px solid #4c5c8f;
 	}
 
 	.deep.right {
 		right: 0;
 		transform: translate(100%, 0);
+		border-left: 2px solid #4c5c8f;
 	}
 
 	.deep.open {

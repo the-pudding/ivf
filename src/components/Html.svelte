@@ -10,7 +10,8 @@
 		visible,
 		side = $bindable(),
 		beatI,
-		deepDiveOpen = $bindable()
+		deepDiveOpen = $bindable(),
+		deepDiveContent = $bindable()
 	} = $props();
 
 	const DELAY = 2000;
@@ -21,20 +22,52 @@
 		})
 	).length;
 
+	let definitionVisible = $state(false);
+	let definitionContent = $state("");
+
 	let content = $derived(
 		beatI === 0 ? [] : (copy.beats?.[side]?.[beatI - 1]?.text ?? "")
 	);
 	let paragraphs = $derived(
 		Array.isArray(content) ? content.map((d) => d.value) : [content]
 	);
+
+	const setUpButtons = () => {
+		const deepDiveButtons = document.querySelectorAll('span[id^="deep-"]');
+		deepDiveButtons.forEach((button) => {
+			const id = button.id;
+			button.addEventListener("click", () => {
+				deepDiveOpen = true;
+				deepDiveContent = copy.beats[side][beatI - 1][id];
+			});
+		});
+
+		const definitionSpans = document.querySelectorAll(
+			'span[id^="definition-"]'
+		);
+		definitionSpans.forEach((span) => {
+			span.addEventListener("mouseenter", (e) => {
+				const mouseX = e.clientX;
+				const mouseY = e.clientY;
+				const id = span.id;
+				definitionContent = copy.beats[side][beatI - 1][id];
+				const defEl = document.querySelector("p.definition");
+				defEl.style.left = `${mouseX}px`;
+				defEl.style.top = `${mouseY}px`;
+				definitionVisible = true;
+			});
+
+			span.addEventListener("mouseleave", () => {
+				definitionVisible = false;
+				definitionContent = "";
+			});
+		});
+	};
+
+	$effect(() => setUpButtons(paragraphs));
 </script>
 
 <div class="html-wrapper" class:visible>
-	<!-- <button
-		style="position: absolute; top: 0; left: 0"
-		onclick={() => (deepDiveOpen = true)}>open deep dive</button
-	> -->
-
 	<div class="switch mom" class:visible={beatI < numBeats - 1}>
 		<span class="switch-text" class:visible={side === "baby"}>Switch to</span>
 		<button
@@ -69,6 +102,10 @@
 			<span>{@html babySvg}</span>
 		</button>
 	</div>
+
+	<p class="definition" class:visible={definitionVisible}>
+		{@html definitionContent}
+	</p>
 </div>
 
 <style>
@@ -164,6 +201,23 @@
 		transform: translate(-5%, 0);
 	}
 
+	p.definition {
+		position: fixed;
+		background: #f9f4ff;
+		font-size: var(--14px);
+		border: 2px solid var(--color-black);
+		border-radius: 4px;
+		color: var(--color-bg);
+		padding: 1rem;
+		visibility: hidden;
+		z-index: var(--z-top);
+		max-width: 360px;
+	}
+
+	p.definition.visible {
+		visibility: visible;
+	}
+
 	button {
 		display: flex;
 		align-items: center;
@@ -181,10 +235,6 @@
 		height: 16px;
 	}
 
-	button:hover {
-		background: var(--color-button-bg);
-	}
-
 	button.inactive {
 		font-weight: normal;
 		border: 2px solid #4c5c8f;
@@ -194,6 +244,38 @@
 
 	button.inactive:hover {
 		background: var(--color-gray-900);
+	}
+
+	:global(span[id^="definition-"]) {
+		font-weight: bold;
+	}
+
+	/* :global(span[id^="definition-"]::before) {
+		content: "";
+		display: inline-block;
+		width: 14px;
+		height: 14px;
+		margin-right: 2px;
+		vertical-align: middle;
+		transform: translate(0, -2px);
+		background: url("assets/svg/info.svg") no-repeat center / contain;
+	} */
+
+	:global(span[id^="definition-"]:hover) {
+		cursor: help;
+	}
+
+	:global(span[id^="deep-"]) {
+		font-weight: bold;
+		border: 2px solid #4c5c8f;
+		background: var(--color-button-bg);
+		padding: 0.1rem 0.25rem;
+		border-radius: 4px;
+	}
+
+	:global(span[id^="deep-"]:hover) {
+		cursor: pointer;
+		background-color: var(--color-button-hover);
 	}
 
 	@media (min-width: 1800px) {

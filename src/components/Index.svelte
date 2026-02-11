@@ -23,6 +23,7 @@
 	let locked = $state(true);
 	let showBoth = $state(true);
 	let deepDiveOpen = $state(false);
+	let deepDiveContent = $state([]);
 
 	const switchSides = () => {
 		const sideEls = document.querySelectorAll(".mask .Overlay path");
@@ -80,7 +81,13 @@
 		<Title bind:started bind:side bind:beatI bind:titleHeight />
 
 		<div class="story" class:started style={`--title-height: ${titleHeight}px`}>
-			<Html visible={started} bind:side bind:beatI bind:deepDiveOpen />
+			<Html
+				visible={started}
+				bind:side
+				bind:beatI
+				bind:deepDiveOpen
+				bind:deepDiveContent
+			/>
 			<World {side} {showBoth} {direction} {beatI} />
 		</div>
 
@@ -95,7 +102,7 @@
 			bind:beatI
 		/>
 
-		<DeepDive bind:open={deepDiveOpen} {side} />
+		<DeepDive bind:open={deepDiveOpen} content={deepDiveContent} {side} />
 		<div class="gradient" class:visible={beatI < numBeats - 1}></div>
 	</div>
 

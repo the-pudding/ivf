@@ -92,6 +92,7 @@
 		z-index: 4;
 		width: 100%;
 		text-transform: uppercase;
+		text-align: center;
 		font-size: var(--12px);
 		font-weight: bold;
 		padding: 0 1rem;
