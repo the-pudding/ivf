@@ -326,7 +326,7 @@
 		margin-right: 2px;
 		vertical-align: middle;
 		transform: translate(0, -2px);
-		background: url("assets/svg/info.svg") no-repeat center / contain;
+		background: url("/assets/svg/info.svg") no-repeat center / contain;
 	}
 
 	:global(span[id^="definition-"]:hover) {
