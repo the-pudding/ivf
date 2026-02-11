@@ -5,6 +5,8 @@
 	import momBeats from "$data/beats-mom.csv";
 	import copy from "$data/copy.json";
 	import _ from "lodash";
+	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
+	let dimensions = new useWindowDimensions();
 
 	let {
 		visible,
@@ -22,6 +24,7 @@
 		})
 	).length;
 
+	let instructionsNeeded = $state(true);
 	let definitionVisible = $state(false);
 	let definitionContent = $state("");
 
@@ -32,7 +35,20 @@
 		Array.isArray(content) ? content.map((d) => d.value) : [content]
 	);
 
+	const showInstructions = () => {
+		const firstSpan = document.querySelector(`span#definition-retrievals`);
+		firstSpan.style.position = "relative";
+		const instructionSpan = document.createElement("span");
+		instructionSpan.textContent = "Hover over for definitions";
+		instructionSpan.classList.add("instructions");
+		instructionSpan.classList.add("visible");
+		firstSpan.appendChild(instructionSpan);
+	};
+
 	const setUpButtons = () => {
+		definitionVisible = false;
+		definitionContent = "";
+
 		const deepDiveButtons = document.querySelectorAll('span[id^="deep-"]');
 		deepDiveButtons.forEach((button) => {
 			const id = button.id;
@@ -47,13 +63,20 @@
 		);
 		definitionSpans.forEach((span) => {
 			span.addEventListener("mouseenter", (e) => {
+				const instructionsSpan = document.querySelector("span.instructions");
+				if (instructionsSpan) instructionsSpan.classList.remove("visible");
+
 				const mouseX = e.clientX;
 				const mouseY = e.clientY;
 				const id = span.id;
 				definitionContent = copy.beats[side][beatI - 1][id];
 				const defEl = document.querySelector("p.definition");
+
 				defEl.style.left = `${mouseX}px`;
 				defEl.style.top = `${mouseY}px`;
+				if (dimensions.width < 1000)
+					defEl.style.transform = "translate(0, calc(-100% - 1.5rem))";
+
 				definitionVisible = true;
 			});
 
@@ -62,6 +85,11 @@
 				definitionContent = "";
 			});
 		});
+
+		if (side === "mom" && beatI === 4 && instructionsNeeded) {
+			showInstructions();
+			instructionsNeeded = false;
+		}
 	};
 
 	$effect(() => setUpButtons(paragraphs));
@@ -185,6 +213,12 @@
 		padding: 1rem;
 	}
 
+	:global(.copy p a, p.definition a) {
+		pointer-events: auto;
+		color: var(--color-link-dark);
+		text-decoration-color: var(--color-link-dark);
+	}
+
 	.left p.multi:nth-of-type(1) {
 		transform: translate(10%, 0);
 	}
@@ -212,10 +246,43 @@
 		visibility: hidden;
 		z-index: var(--z-top);
 		max-width: 360px;
+		pointer-events: none;
 	}
 
 	p.definition.visible {
 		visibility: visible;
+	}
+
+	:global(span.instructions) {
+		position: absolute;
+		font-size: var(--12px);
+		top: -1.75rem;
+		left: 50%;
+		transform: translate(-50%, -100%);
+		background: var(--color-button-bg);
+		/* border: 2px solid #4c5c8f; */
+		padding: 0.5rem;
+		border-radius: 4px;
+		pointer-events: none;
+		opacity: 0;
+		transition: opacity calc(var(--1s) * 0.3) ease-in;
+	}
+
+	:global(span.instructions.visible) {
+		opacity: 1;
+	}
+
+	:global(span.instructions)::after {
+		content: "";
+		position: absolute;
+		top: calc(100% - 1px);
+		left: 50%;
+		transform: translateX(-50%);
+		width: 0;
+		height: 0;
+		border-left: 6px solid transparent;
+		border-right: 6px solid transparent;
+		border-top: 6px solid var(--color-button-bg);
 	}
 
 	button {
@@ -248,9 +315,10 @@
 
 	:global(span[id^="definition-"]) {
 		font-weight: bold;
+		white-space: nowrap;
 	}
 
-	/* :global(span[id^="definition-"]::before) {
+	:global(span[id^="definition-"]::before, span.instructions::before) {
 		content: "";
 		display: inline-block;
 		width: 14px;
@@ -259,7 +327,7 @@
 		vertical-align: middle;
 		transform: translate(0, -2px);
 		background: url("assets/svg/info.svg") no-repeat center / contain;
-	} */
+	}
 
 	:global(span[id^="definition-"]:hover) {
 		cursor: help;
