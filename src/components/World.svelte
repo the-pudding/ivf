@@ -5,7 +5,7 @@
 	import maskSvg from "$svg/world-mask.svg";
 	import momBeats from "$data/beats-mom.csv";
 	import babyBeats from "$data/beats-baby.csv";
-	import { Tween } from "svelte/motion";
+	import { Tween, prefersReducedMotion } from "svelte/motion";
 	import { cubicInOut } from "svelte/easing";
 	import { scaleLinear } from "d3-scale";
 	import { browser } from "$app/environment";
@@ -70,7 +70,11 @@
 
 	const camera = new Tween(
 		{ x: 0, y: 0, w: svgW, h: svgH },
-		{ duration: 2000, delay: 0, easing: cubicInOut }
+		{
+			duration: prefersReducedMotion.current ? 0 : 2000,
+			delay: 0,
+			easing: cubicInOut
+		}
 	);
 
 	const updateCamera = () => {
@@ -134,7 +138,7 @@
 <style>
 	.world {
 		position: relative;
-		transition: transform 2s 0.5s ease-out;
+		transition: transform calc(var(--1s) * 2) calc(var(--1s) * 0.5) ease-out;
 	}
 
 	.foreground {
@@ -235,10 +239,17 @@
 
 	:global(.calendar-flash) {
 		animation: flash-loop 8s steps(1) infinite;
-		transition: fill 0.25s ease;
+		transition: fill calc(var(--1s) * 0.25) ease;
 	}
 
 	:global(.needle-jab) {
 		animation: jab 1.1s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		:global(.calendar-flash, .needle-jab) {
+			animation: none;
+			transition: none;
+		}
 	}
 </style>

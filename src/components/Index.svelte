@@ -6,6 +6,8 @@
 	import Bottom from "$components/Bottom.svelte";
 	import Footer from "$components/Footer.svelte";
 	import momBeats from "$data/beats-mom.csv";
+	import copy from "$data/copy.json";
+	import focusTrap from "$actions/focusTrap.js";
 	import _ from "lodash";
 
 	const numBeats = Object.entries(_.groupBy(momBeats, "id")).map(
@@ -24,11 +26,13 @@
 	let showBoth = $state(true);
 	let deepDiveOpen = $state(false);
 	let deepDiveContent = $state([]);
+	let description = $derived(copy.beats[side][beatI - 1]?.description);
+	let atTheEnd = $derived(showBoth && beatI === numBeats - 1);
 
 	const switchSides = () => {
 		const sideEls = document.querySelectorAll(".mask .Overlay path");
 		sideEls.forEach((el) => {
-			el.style.transition = "fill-opacity 1s ease-in-out";
+			el.style.transition = "fill-opacity var(--1s) ease-in-out";
 			if (showBoth || Array.from(el.classList).some((d) => d.includes(side))) {
 				el.style.fillOpacity = 0;
 			} else {
@@ -77,10 +81,14 @@
 <svelte:window on:keydown={onKeyDown} />
 
 <article class:locked>
-	<div class="main">
+	<div class="main" use:focusTrap={locked && !deepDiveOpen}>
 		<Title bind:started bind:side bind:beatI bind:titleHeight />
 
-		<div class="story" class:started style={`--title-height: ${titleHeight}px`}>
+		<figure
+			class="story"
+			class:started
+			style={`--title-height: ${titleHeight}px`}
+		>
 			<Html
 				visible={started}
 				bind:side
@@ -89,11 +97,13 @@
 				bind:deepDiveContent
 			/>
 			<World {side} {showBoth} {direction} {beatI} />
-		</div>
+
+			<figcaption class="sr-only">{description}</figcaption>
+		</figure>
 
 		<Bottom
 			visible={started}
-			atTheEnd={showBoth && beatI === numBeats - 1}
+			{atTheEnd}
 			{numBeats}
 			{next}
 			{prev}
@@ -122,6 +132,7 @@
 	}
 
 	.main {
+		position: relative;
 		overflow: hidden;
 		height: 100svh;
 	}
@@ -136,8 +147,8 @@
 		margin: 0 auto;
 		transform: translate(0, -100px);
 		transition:
-			transform 1s 0.5s ease-in-out,
-			max-width 1s 0.5s ease-in-out;
+			transform var(--1s) calc(var(--1s) * 0.5) ease-in-out,
+			max-width var(--1s) calc(var(--1s) * 0.5) ease-in-out;
 	}
 
 	.story.started {

@@ -18,6 +18,11 @@
 		side = id;
 		beatI = 1;
 		visible = false;
+
+		const links = document.querySelectorAll(".bylines a");
+		links.forEach((link) => {
+			link.setAttribute("tabindex", "-1");
+		});
 	};
 
 	onMount(() => {
@@ -38,12 +43,20 @@
 		<div class="text">{@html copy.landing.text}</div>
 
 		<div class="buttons">
-			<button class="parent" onclick={() => start("mom")}>
+			<button
+				class="parent"
+				onclick={() => start("mom")}
+				tabindex={started ? -1 : 0}
+			>
 				<span>{@html parentSvg}</span>
 				Parent</button
 			>
 			<span>and</span>
-			<button class="baby" onclick={() => start("baby")}>
+			<button
+				class="baby"
+				onclick={() => start("baby")}
+				tabindex={started ? -1 : 0}
+			>
 				Baby
 				<span>{@html babySvg}</span>
 			</button>
@@ -64,7 +77,7 @@
 		padding: 0 1rem;
 		pointer-events: none;
 		opacity: 0;
-		transition: opacity 0.5s ease-in-out;
+		transition: opacity calc(var(--1s) * 0.5) ease-in-out;
 	}
 
 	#title.visible {
@@ -87,7 +100,7 @@
 		flex-direction: column;
 		align-items: center;
 		opacity: 0;
-		transition: opacity 0.5s 0.5s ease-in-out;
+		transition: opacity calc(var(--1s) * 0.5) calc(var(--1s) * 0.5) ease-in-out;
 	}
 
 	.bylines.visible {
@@ -126,7 +139,7 @@
 		margin: 0 1rem;
 		padding: 1.5rem;
 		opacity: 0;
-		transition: opacity 0.5s 1s ease-in-out;
+		transition: opacity calc(var(--1s) * 0.5) var(--1s) ease-in-out;
 	}
 
 	.instructions.visible {

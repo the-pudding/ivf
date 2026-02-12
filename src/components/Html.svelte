@@ -1,5 +1,6 @@
 <script>
 	import { fade } from "svelte/transition";
+	import { prefersReducedMotion } from "svelte/motion";
 	import parentSvg from "$svg/parent-preview.svg";
 	import babySvg from "$svg/baby-preview.svg";
 	import momBeats from "$data/beats-mom.csv";
@@ -49,9 +50,16 @@
 		definitionVisible = false;
 		definitionContent = "";
 
-		const deepDiveButtons = document.querySelectorAll('span[id^="deep-"]');
-		deepDiveButtons.forEach((button) => {
-			const id = button.id;
+		const deepDiveSpans = document.querySelectorAll('span[id^="deep-"]');
+		deepDiveSpans.forEach((span) => {
+			const id = span.id;
+
+			const button = document.createElement("button");
+			button.id = id;
+			button.innerHTML = span.innerHTML;
+			button.className = span.className;
+			span.replaceWith(button);
+
 			button.addEventListener("click", () => {
 				deepDiveOpen = true;
 				deepDiveContent = copy.beats[side][beatI - 1][id];
@@ -105,6 +113,7 @@
 			class="parent"
 			onclick={() => (side = "mom")}
 			class:inactive={side === "baby"}
+			tabindex={visible && beatI < numBeats - 1 ? 0 : -1}
 		>
 			<span>{@html parentSvg}</span>
 			Parent
@@ -115,7 +124,10 @@
 		{#each paragraphs as paragraph, i (paragraph)}
 			<p
 				class:multi={paragraphs.length > 1}
-				in:fade={{ duration: 300, delay: DELAY + i * 800 }}
+				in:fade={{
+					duration: prefersReducedMotion.current ? 0 : 300,
+					delay: prefersReducedMotion.current ? 0 : DELAY + i * 800
+				}}
 			>
 				{@html paragraph}
 			</p>
@@ -128,6 +140,7 @@
 			class="baby"
 			onclick={() => (side = "baby")}
 			class:inactive={side === "mom"}
+			tabindex={visible && beatI < numBeats - 1 ? 0 : -1}
 		>
 			Baby
 			<span>{@html babySvg}</span>
@@ -336,15 +349,17 @@
 		cursor: help;
 	}
 
-	:global(span[id^="deep-"]) {
+	:global(button[id^="deep-"]) {
+		text-transform: none;
 		font-weight: bold;
 		border: 2px solid #4c5c8f;
 		background: var(--color-button-bg);
 		padding: 0.1rem 0.25rem;
 		border-radius: 4px;
+		white-space: nowrap;
 	}
 
-	:global(span[id^="deep-"]:hover) {
+	:global(button[id^="deep-"]:hover) {
 		cursor: pointer;
 		background-color: var(--color-button-hover);
 	}

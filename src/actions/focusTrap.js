@@ -1,69 +1,86 @@
-// params = { disable: false }
+export default function focusTrap(node, active = true) {
+	let enabled = active;
+	let previousActiveElement;
 
-export default function focusTrap(node, params) {
-	const elements = [
-		"a",
-		"button",
-		"input",
-		"textarea",
-		"select",
-		"details",
-		"[tabindex]:not([tabindex='-1'])"
-	];
-	let firstFocusable;
-	let lastFocusable;
-	let active;
+	const focusableSelectors = [
+		"a[href]",
+		"button:not([disabled])",
+		"textarea:not([disabled])",
+		"input:not([disabled])",
+		"select:not([disabled])"
+	].join(",");
 
-	const moveFocusToTop = (e) => {
-		if (e.key === "Tab" && !e.shiftKey) {
-			e.preventDefault();
-			firstFocusable.focus();
+	const getFocusable = () =>
+		Array.from(node.querySelectorAll(focusableSelectors)).filter(
+			(el) =>
+				!el.disabled &&
+				el.getAttribute("aria-hidden") !== "true" &&
+				el.tabIndex >= 0 &&
+				el.offsetParent !== null
+		);
+
+	function activate() {
+		previousActiveElement = document.activeElement;
+
+		queueMicrotask(() => {
+			getFocusable()[0]?.focus();
+		});
+	}
+
+	function deactivate() {
+		previousActiveElement?.focus();
+	}
+
+	function handleKeydown(e) {
+		if (!enabled) return;
+		if (e.key !== "Tab") return;
+
+		const focusable = getFocusable();
+		if (!focusable.length) return;
+
+		const first = focusable[0];
+		const last = focusable[focusable.length - 1];
+
+		if (e.shiftKey) {
+			if (
+				document.activeElement === first ||
+				!node.contains(document.activeElement)
+			) {
+				e.preventDefault();
+				last.focus();
+			}
+		} else {
+			if (document.activeElement === last) {
+				e.preventDefault();
+				first.focus();
+			}
 		}
-	};
+	}
 
-	const moveFocusToBottom = (e) => {
-		if (e.key === "Tab" && e.shiftKey) {
-			e.preventDefault();
-			lastFocusable.focus();
-		}
-	};
+	node.addEventListener("keydown", handleKeydown);
 
-	const add = () => {
-		if (firstFocusable)
-			firstFocusable.addEventListener("keydown", moveFocusToBottom);
-		if (lastFocusable)
-			lastFocusable.addEventListener("keydown", moveFocusToTop);
-		active = true;
-	};
-
-	const remove = () => {
-		if (firstFocusable)
-			firstFocusable.removeEventListener("keydown", moveFocusToBottom);
-		if (lastFocusable)
-			lastFocusable.removeEventListener("keydown", moveFocusToTop);
-		active = false;
-	};
-
-	const setup = (p) => {
-		if (active && p && p.disable) remove();
-		else if ((!active && !p) || (p && !p.disable)) add();
-	};
-
-	const query = elements.join(", ");
-	const focusableElements = [...node.querySelectorAll(query)];
-
-	firstFocusable = focusableElements.shift();
-	lastFocusable = focusableElements.pop();
-
-	setup(params);
+	// If initially active
+	if (enabled) {
+		activate();
+	}
 
 	return {
-		update(params) {
-			setup(params);
-		},
+		update(value) {
+			if (value === enabled) return;
 
+			enabled = value;
+
+			if (enabled) {
+				activate();
+			} else {
+				deactivate();
+			}
+		},
 		destroy() {
-			remove();
+			node.removeEventListener("keydown", handleKeydown);
+			if (enabled) {
+				deactivate();
+			}
 		}
 	};
 }

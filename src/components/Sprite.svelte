@@ -5,6 +5,7 @@
 	import { getAngleAtT, findClosestT } from "$utils/spriteHelpers.js";
 	import { scenery } from "$utils/scenery.js";
 	import { onDestroy } from "svelte";
+	import { prefersReducedMotion } from "svelte/motion";
 
 	let {
 		id,
@@ -107,6 +108,8 @@
 	};
 
 	const cycle = (cycleId) => {
+		if (prefersReducedMotion.current) return;
+
 		if (cycleInterval) {
 			clearInterval(cycleInterval);
 			cycleInterval = null;
@@ -222,7 +225,13 @@
 			if (step.position) spritePosition = step.position;
 			else spritePosition = "below";
 
-			await moveTo(currentSpotId, step.duration ? +step.duration : undefined);
+			const dur = prefersReducedMotion.current
+				? 0
+				: step.duration
+					? +step.duration
+					: undefined;
+
+			await moveTo(currentSpotId, dur);
 		}
 
 		if (beatId !== "start" && beatId !== "end") idle = true;
@@ -267,7 +276,7 @@
 	class="sprite"
 	class:flipped
 	class:gray
-	class:idle
+	class:idle={idle && !prefersReducedMotion.current}
 	style={`--y-offset: ${yOffset}`}
 	style:width={`${width}px`}
 	style:height={`${height}px`}

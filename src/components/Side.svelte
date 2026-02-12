@@ -80,7 +80,7 @@
 		width: 50%;
 		height: 100%;
 		opacity: 0;
-		transition: opacity 1s ease-in-out;
+		transition: opacity var(--1s) ease-in-out;
 	}
 
 	.active {

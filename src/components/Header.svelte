@@ -46,6 +46,6 @@
 	}
 
 	:global(header .wordmark svg path) {
-		fill: #d1c3e3;
+		fill: rgba(209, 195, 227, 0.8);
 	}
 </style>

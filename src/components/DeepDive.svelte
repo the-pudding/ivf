@@ -1,5 +1,6 @@
 <script>
 	import xSvg from "$svg/x.svg";
+	import focusTrap from "$actions/focusTrap.js";
 
 	let { open = $bindable(), content, side } = $props();
 
@@ -13,8 +14,14 @@
 	class:open
 	class:left={side === "baby"}
 	class:right={side === "mom"}
+	use:focusTrap={open}
 >
-	<button class="close" onclick={close}>
+	<button
+		class="close"
+		onclick={close}
+		aria-label="close"
+		tabindex={open ? "0" : "-1"}
+	>
 		{@html xSvg}
 	</button>
 
@@ -35,24 +42,9 @@
 		width: 40%;
 		max-width: 450px;
 		background: #090d2e;
-		z-index: 4;
+		z-index: var(--z-top);
 		transition: none;
 		padding: 1rem;
-	}
-
-	button.close {
-		background: none;
-		border: none;
-		padding: 1rem;
-		height: 20px;
-		width: 20px;
-		padding: 0;
-		margin-bottom: 2rem;
-		display: block;
-	}
-
-	.left button.close {
-		margin-left: auto;
 	}
 
 	.deep.left {
@@ -69,6 +61,21 @@
 
 	.deep.open {
 		transform: translate(0, 0);
-		transition: transform 0.5s ease-in-out;
+		transition: transform calc(var(--1s) * 0.5) ease-in-out;
+	}
+
+	button.close {
+		background: none;
+		border: none;
+		padding: 1rem;
+		height: 20px;
+		width: 20px;
+		padding: 0;
+		margin-bottom: 2rem;
+		display: block;
+	}
+
+	.left button.close {
+		margin-left: auto;
 	}
 </style>
