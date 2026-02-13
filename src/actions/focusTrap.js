@@ -1,3 +1,5 @@
+import { tick } from "svelte";
+
 export default function focusTrap(node, active = true) {
 	let enabled = active;
 	let previousActiveElement;
@@ -19,12 +21,15 @@ export default function focusTrap(node, active = true) {
 				el.offsetParent !== null
 		);
 
-	function activate() {
+	async function activate() {
 		previousActiveElement = document.activeElement;
 
-		queueMicrotask(() => {
-			getFocusable()[0]?.focus();
-		});
+		await tick();
+
+		const first = getFocusable()[0];
+		if (first && first.innerHTML === "Lam Vo") return;
+
+		first?.focus({ preventScroll: true });
 	}
 
 	function deactivate() {
