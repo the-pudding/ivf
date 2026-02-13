@@ -39,8 +39,7 @@
 		height: 100svh;
 		position: absolute;
 		top: 0;
-		width: 40%;
-		max-width: 450px;
+		width: 450px;
 		background: #090d2e;
 		z-index: var(--z-top);
 		transition: none;
@@ -77,5 +76,17 @@
 
 	.left button.close {
 		margin-left: auto;
+	}
+
+	@media (max-width: 600px) {
+		.deep {
+			width: 350px;
+		}
+	}
+
+	@media (max-width: 400px) {
+		.deep {
+			width: 300px;
+		}
 	}
 </style>

@@ -3,6 +3,8 @@
 	import chevronDownSvg from "$svg/chevron-down.svg";
 	import parentSvg from "$svg/parent-preview.svg";
 	import babySvg from "$svg/baby-preview.svg";
+	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
+	let dimensions = new useWindowDimensions();
 
 	let {
 		visible,
@@ -63,7 +65,12 @@
 			Prev
 		</button>
 
-		<span class="mobile-instructions">Tap to navigate</span>
+		<span class="mobile-instructions">
+			Tap to navigate
+			{#if dimensions.width < 650}
+				<br />(step {beatI}/{numBeats - 1})
+			{/if}
+		</span>
 
 		<button class="nav" onclick={next}>
 			<span>{@html chevronDownSvg}</span>
@@ -161,6 +168,10 @@
 
 		.bottom {
 			justify-content: space-between;
+		}
+
+		.counter {
+			display: none;
 		}
 	}
 </style>
