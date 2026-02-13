@@ -936,8 +936,9 @@
         <circle cx="2154.5" cy="4237.5" r="12.5" fill="#2FF275" class="nutritionist"/>
         <circle cx="1722.5" cy="4279.5" r="12.5" fill="#2FF275" class="journey"/>
         <circle cx="1461.5" cy="4139.5" r="12.5" fill="#2FF275" class="variables"/>
-        <circle cx="1625.5" cy="3951.5" r="12.5" fill="#2FF275" class="transfer-2"/>
-        <circle cx="1698.5" cy="3904.5" r="12.5" fill="#2FF275" class="transfer-1"/>
+        <circle cx="1625.5" cy="3951.5" r="12.5" fill="#2FF275" class="transfer-3"/>
+        <circle cx="1734.5" cy="3883.5" r="12.5" fill="#2FF275" class="transfer-2"/>
+        <circle cx="1841.5" cy="3821.5" r="12.5" fill="#2FF275" class="transfer-1"/>
         <circle cx="1925.5" cy="3768.5" r="12.5" fill="#2FF275" class="perservere-2"/>
         <circle cx="2064.5" cy="3686.5" r="12.5" fill="#2FF275" class="perservere-1"/>
         <circle cx="2002.5" cy="3546.5" r="12.5" fill="#2FF275" class="lottery"/>

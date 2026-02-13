@@ -24,7 +24,35 @@ export const scenery = {
 			els[0].style.opacity = "0";
 		}
 	},
-	needle: {
+	needle1: {
+		enter: (els) => {
+			els.forEach((el) => {
+				const delay = Math.random() * 0.3 + 0.5;
+				el.style.transition = `opacity calc(var(--1s) * 0.5) calc(var(--1s) * ${delay}) ease-in-out, transform calc(var(--1s) * 0.5) calc(var(--1s) * ${delay + 0.1}) ease-in-out`;
+				el.style.opacity = "1";
+				el.style.transform = "translateY(1%)";
+			});
+		},
+		"poke-loop": (els) => {
+			els.forEach((el, i) => {
+				el.classList.add("needle-jab");
+				el.style.animationDelay = `calc(var(--1s) * ${i * 0.15})`;
+			});
+		},
+		fade: (els) => {
+			els.forEach((el) => {
+				el.classList.remove("needle-jab");
+				el.style.opacity = "0.2";
+			});
+		},
+		reset: (els) => {
+			els.forEach((el) => {
+				el.style.opacity = "0";
+				el.style.transform = "translateY(0)";
+			});
+		}
+	},
+	needle2: {
 		enter: (els) => {
 			els.forEach((el) => {
 				const delay = Math.random() * 0.3 + 0.5;

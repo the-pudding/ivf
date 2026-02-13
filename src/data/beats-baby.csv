@@ -25,26 +25,27 @@ viable,embryo-still,,,0,viable-2,viable-2,,,,explanation,"baby:embryo, baby:embr
 genetic-testing,,embryo,,,viable-2,genetic-testing-1,,,,explanation,"baby:embryo, baby:embryo",1,cluster
 genetic-testing,,embryo,,,genetic-testing-1,genetic-testing-2,,,,explanation,"baby:embryo, baby:embryo",1,cluster
 genetic-testing,embryo-still,,TRUE,0,genetic-testing-2,genetic-testing-2,,,,explanation,"baby:embryo, baby:embryo",1,cluster
-lottery,,embryo,TRUE,,genetic-testing-2,lottery,,,,explanation,"baby:embryo, baby:embryo",1,cluster
-lottery,embryo-still,,TRUE,0,lottery,lottery,,,,explanation,"baby:embryo, baby:embryo",1,cluster
-perservere,,embryo,,,lottery,perservere-1,,,,explanation,"baby:embryo, baby:embryo, baby:embryo",1,cluster
-perservere,,embryo,,,perservere-1,perservere-2,,,,explanation,"baby:embryo, baby:embryo, baby:embryo",1,cluster
-perservere,embryo-still,,,0,perservere-2,perservere-2,,,,explanation,"baby:embryo, baby:embryo, baby:embryo",1,cluster
-transfer,,embryo,,,perservere-2,transfer-1,,,,,,,
-transfer,,embryo,,,transfer-1,transfer-2,,,,,,,
-transfer,embryo-still,,TRUE,0,transfer-2,transfer-2,,,,,,,
-journey,,embryo,TRUE,,transfer-2,journey,,,,,,,
-journey,embryo-still,,TRUE,0,journey,journey,,,,,,,
+lottery,,follicle,,,genetic-testing-2,lottery,,,,,,,
+lottery,follicle-still,,,0,lottery,lottery,,,,,,,
+perservere,,embryo,,,lottery,perservere-1,,,,explanation2,"baby:embryo, baby:embryo, baby:embryo",1,cluster
+perservere,,embryo,,,perservere-1,perservere-2,,,,explanation2,"baby:embryo, baby:embryo, baby:embryo",1,cluster
+perservere,embryo-still,,,0,perservere-2,perservere-2,,,,explanation2,"baby:embryo, baby:embryo, baby:embryo",1,cluster
+transfer,,embryo,,,perservere-2,transfer-1,,,,explanation2,"baby:embryo, baby:embryo, baby:embryo",1,cluster
+transfer,,embryo,,,transfer-1,transfer-2,,,,explanation2,"baby:embryo, baby:embryo",1,cluster
+transfer,,embryo,,,transfer-2,transfer-3,,,,explanation2,baby:embryo,1,cluster
+transfer,embryo-still,,,0,transfer-3,transfer-3,,,,explanation2,baby:embryo,1,cluster
+journey,,embryo,,,transfer-3,journey,,,,,,,
+journey,embryo-still,,,0,journey,journey,,,,,,,
 nutritionist,,embryo,,,journey,nutritionist,,,,friends,floating-head-mom-1,1,above
 nutritionist,embryo-still,,,0,nutritionist,nutritionist,,,,friends,floating-head-mom-1,1,above
 doula,,embryo,,,nutritionist,doula,,,,friends,"floating-head-mom-1, floating-head-mom-2",1,above
 doula,embryo-still,,,0,doula,doula,,,,friends,"floating-head-mom-1, floating-head-mom-2",1,above
 acupuncurists,,embryo,,,doula,acupuncturists,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
 acupuncurists,embryo-still,,,0,acupuncturists,acupuncturists,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
-microbiologist,,embryo,,,acupuncturists,microbiologist,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
-microbiologist,embryo-still,,,0,microbiologist,microbiologist,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
-finally,,embryo,,,microbiologist,finally,,,,,,,
-finally,embryo-still,,,0,finally,finally,,,,,,,
+microbiologist,,embryo,,,acupuncturists,microbiologist,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",1,above
+microbiologist,embryo-still,,,0,microbiologist,microbiologist,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",1,above
+finally,,embryo,,,microbiologist,finally,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",1,above
+finally,embryo-still,,,0,finally,finally,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",1,above
 end,,embryo,,1800,finally,end-1,,,,,,,
 end,child-standing,,,200,end-1,end-2,,,,,,,
 end,,child-walk,,,end-2,end-3,,,,,,,
