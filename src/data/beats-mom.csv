@@ -26,8 +26,8 @@ wrong-clinic,covered,,0,wrong-clinic,wrong-clinic,,,,,,,
 owe-money,,walk-covered,,wrong-clinic,owe-money-1,,,,,,,
 owe-money,,walk-covered,,owe-money-1,owe-money-2,above,paper-stack,enter,,,,
 owe-money,crying,,0,owe-money-2,owe-money-2,above,,,,,,
-sanity,,walk-covered,,owe-money-2,sanity,,,,,,,
-sanity,crying,,0,sanity,sanity,,,,,,,
+sanity,,walk-covered,,owe-money-2,sanity,above,,,,,,
+sanity,crying,,0,sanity,sanity,above,,,,,,
 hoops,,walk-crying,,sanity,hoops-1,,,,cloud,cloud,0.7,above
 hoops,,walk-crying,,hoops-1,hoops-2,,horizontal-needle,enter,cloud,cloud,0.7,above
 hoops,crying,,0,hoops-2,hoops-2,,,,cloud,cloud,0.7,above

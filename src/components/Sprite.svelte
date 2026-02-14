@@ -164,16 +164,16 @@
 		});
 
 		// Fade out previous scenery
-		previousBeats
-			.filter((d) => d.steps.some((s) => s.scenery && s.sceneryAction))
-			.forEach((beat) => {
-				const actions = beat.steps.filter((s) => s.scenery && s.sceneryAction);
-				actions.forEach((step) => {
-					const els = document.querySelectorAll(`.Foreground .${step.scenery}`);
-					if (scenery[step.scenery].fade) scenery[step.scenery].fade(els);
-					else els.forEach((el) => (el.style.opacity = "0.2"));
-				});
-			});
+		// previousBeats
+		// 	.filter((d) => d.steps.some((s) => s.scenery && s.sceneryAction))
+		// 	.forEach((beat) => {
+		// 		const actions = beat.steps.filter((s) => s.scenery && s.sceneryAction);
+		// 		actions.forEach((step) => {
+		// 			const els = document.querySelectorAll(`.Foreground .${step.scenery}`);
+		// 			if (scenery[step.scenery].fade) scenery[step.scenery].fade(els);
+		// 			else els.forEach((el) => (el.style.opacity = "0.2"));
+		// 		});
+		// 	});
 
 		// Reset future scenery
 		const futureSceneryActions = allBeats

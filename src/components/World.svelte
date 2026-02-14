@@ -30,6 +30,12 @@
 		.domain([600, 1000, 2000])
 		.range([3, 1.5, 1])
 		.clamp(true);
+	const totalBeats = Object.entries(_.groupBy(momBeats, "id")).map(
+		([id, steps]) => ({
+			id,
+			steps
+		})
+	).length;
 
 	const buffer = $derived(dimensions.width > 1500 ? 0 : svgW * 0.15);
 
@@ -102,7 +108,12 @@
 	$effect(() => animateViewbox(camera));
 </script>
 
-<div class="world" bind:clientHeight={worldH} bind:clientWidth={worldW}>
+<div
+	class="world"
+	class:done={beatI >= totalBeats - 1}
+	bind:clientHeight={worldH}
+	bind:clientWidth={worldW}
+>
 	{@html worldSvg}
 
 	<div class="foreground">
@@ -250,6 +261,12 @@
 		:global(.calendar-flash, .needle-jab) {
 			animation: none;
 			transition: none;
+		}
+	}
+
+	@media (max-width: 1000px) {
+		.world.done {
+			transform: translate(0, -13rem);
 		}
 	}
 </style>
