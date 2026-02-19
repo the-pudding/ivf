@@ -11,9 +11,9 @@ inefficient,follicle-still,,,0,inefficient,inefficient,,,,explanation,"baby:foll
 egg,,follicle,,,inefficient,egg-1,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
 egg,,follicle,,,egg-1,egg-2,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
 egg,follicle-still,,,0,egg-2,egg-2,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
-hormones,,egg,,,egg-2,hormones,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
-hormones,egg-still,,,0,hormones,hormones,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
-first-cycle,,egg,,,hormones,first-cycle-1,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
+hormones,,egg,,,egg-2,hormones,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
+hormones,egg-still,,,0,hormones,hormones,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
+first-cycle,,egg,,,hormones,first-cycle-1,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
 first-cycle,,egg,,,first-cycle-1,first-cycle-2,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
 first-cycle,egg-still,,,0,first-cycle-2,first-cycle-2,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
 fertilize,,egg,,,first-cycle-2,fertilize-1,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
