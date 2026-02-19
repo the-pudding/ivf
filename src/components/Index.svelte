@@ -4,6 +4,7 @@
 	import World from "$components/World.svelte";
 	import DeepDive from "$components/DeepDive.svelte";
 	import Bottom from "$components/Bottom.svelte";
+	import Methods from "$components/Methods.svelte";
 	import Footer from "$components/Footer.svelte";
 	import momBeats from "$data/beats-mom.csv";
 	import copy from "$data/copy.json";
@@ -115,6 +116,8 @@
 		<DeepDive bind:open={deepDiveOpen} content={deepDiveContent} {side} />
 		<div class="gradient" class:visible={beatI < numBeats - 1}></div>
 	</div>
+
+	<Methods />
 
 	<svelte:boundary onerror={(e) => console.error(e)}>
 		<Footer recirc={true} recircImages={true} />

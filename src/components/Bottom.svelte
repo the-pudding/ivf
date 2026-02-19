@@ -28,7 +28,7 @@
 
 	const showCredits = () => {
 		locked = false;
-		document.querySelector("footer").scrollIntoView({ behavior: "smooth" });
+		document.querySelector("#methods").scrollIntoView({ behavior: "smooth" });
 	};
 </script>
 
@@ -94,6 +94,7 @@
 		height: 4rem;
 		background: rgba(0, 0, 0, 5);
 		border-top: 1px solid #4c5c8f;
+		border-bottom: 1px solid #4c5c8f;
 		position: absolute;
 		bottom: 0;
 		z-index: 4;
