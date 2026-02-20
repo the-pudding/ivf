@@ -96,6 +96,7 @@
 				bind:beatI
 				bind:deepDiveOpen
 				bind:deepDiveContent
+				bind:locked
 			/>
 			<World {side} {showBoth} {direction} {beatI} />
 

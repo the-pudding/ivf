@@ -12,9 +12,10 @@
 	let {
 		visible,
 		side = $bindable(),
-		beatI,
+		beatI = $bindable(),
 		deepDiveOpen = $bindable(),
-		deepDiveContent = $bindable()
+		deepDiveContent = $bindable(),
+		locked = $bindable()
 	} = $props();
 
 	const DELAY = 2000;
@@ -129,6 +130,19 @@
 		}
 	};
 
+	const switchSides = (toSide) => {
+		if (atTheEnd) {
+			locked = true;
+			document
+				.querySelector(".main")
+				.scrollIntoView({ behavior: "instant", block: "end" });
+			side = toSide;
+			beatI = 1;
+		} else {
+			side = toSide;
+		}
+	};
+
 	$effect(() => setUpButtons(paragraphs));
 </script>
 
@@ -139,7 +153,7 @@
 		>
 		<button
 			class="parent"
-			onclick={() => (side = "mom")}
+			onclick={() => switchSides("mom")}
 			class:inactive={side === "baby" && !atTheEnd}
 			tabindex={visible ? "0" : "-1"}
 		>
@@ -148,7 +162,12 @@
 		</button>
 	</div>
 
-	<div class="copy" class:left={side === "baby"} class:right={side === "mom"}>
+	<div
+		class="copy"
+		class:final={atTheEnd}
+		class:left={side === "baby"}
+		class:right={side === "mom"}
+	>
 		{#each paragraphs as paragraph, i (paragraph)}
 			<p
 				class:multi={paragraphs.length > 1}
@@ -168,7 +187,7 @@
 		>
 		<button
 			class="baby"
-			onclick={() => (side = "baby")}
+			onclick={() => switchSides("baby")}
 			class:inactive={side === "mom" && !atTheEnd}
 			tabindex={visible ? "0" : "-1"}
 		>
@@ -437,6 +456,11 @@
 
 		.right p.multi:nth-of-type(3) {
 			transform: translate(-0.5rem, 0);
+		}
+
+		.copy.final {
+			bottom: auto;
+			top: 55%;
 		}
 	}
 

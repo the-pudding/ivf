@@ -1,8 +1,6 @@
 <script>
 	import chevronUpSvg from "$svg/chevron-up.svg";
 	import chevronDownSvg from "$svg/chevron-down.svg";
-	import parentSvg from "$svg/parent-preview.svg";
-	import babySvg from "$svg/baby-preview.svg";
 	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
 	let dimensions = new useWindowDimensions();
 
@@ -17,38 +15,29 @@
 		beatI = $bindable()
 	} = $props();
 
-	const restart = (newSide) => {
-		locked = true;
-		document
-			.querySelector(".main")
-			.scrollIntoView({ behavior: "instant", block: "end" });
-		side = newSide;
-		beatI = 1;
-	};
-
 	const showCredits = () => {
 		locked = false;
 		document.querySelector("#methods").scrollIntoView({ behavior: "smooth" });
 	};
 </script>
 
-<div class="bottom" class:visible>
+<div class="bottom" class:end={atTheEnd} class:visible>
 	{#if atTheEnd}
 		<div class="counter left" class:visible={side === "mom"}>
 			step {beatI}/{numBeats - 1}
 		</div>
 
-		<!-- <button class="restart parent" onclick={() => restart("mom")}>
-			<span>{@html parentSvg}</span>
-			Restart as Parent
+		<button class="nav" onclick={prev}>
+			<span>{@html chevronUpSvg}</span>
+			Prev
 		</button>
 
-		<button class="restart baby" onclick={() => restart("baby")}>
-			Restart as baby
-			<span>{@html babySvg}</span>
-		</button> -->
-
 		<button onclick={showCredits}>Go to Credits</button>
+
+		<button class="nav" onclick={next}>
+			<span>{@html chevronDownSvg}</span>
+			Next
+		</button>
 
 		<div class="counter right" class:visible={side === "baby"}>
 			step {beatI}/{numBeats - 1}
