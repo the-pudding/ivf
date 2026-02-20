@@ -37,13 +37,15 @@
 	);
 
 	const showInstructions = (definitionId) => {
-		const firstSpan = document.querySelector(`span#definition-${definitionId}`);
-		firstSpan.style.position = "relative";
+		const firstDefinition = document.querySelector(
+			`button#definition-${definitionId}`
+		);
+		firstDefinition.style.position = "relative";
 		const instructionSpan = document.createElement("span");
 		instructionSpan.textContent = "Hover over for definitions";
 		instructionSpan.classList.add("instructions");
 		instructionSpan.classList.add("visible");
-		firstSpan.appendChild(instructionSpan);
+		firstDefinition.appendChild(instructionSpan);
 	};
 
 	const setUpButtons = () => {
@@ -70,25 +72,48 @@
 			'span[id^="definition-"]'
 		);
 		definitionSpans.forEach((span) => {
-			span.addEventListener("mouseenter", (e) => {
+			const id = span.id;
+			const button = document.createElement("button");
+			button.id = id;
+			button.innerHTML = span.innerHTML;
+			button.className = span.className;
+			span.replaceWith(button);
+
+			const show = (x, y) => {
 				const instructionsSpan = document.querySelector("span.instructions");
 				if (instructionsSpan) instructionsSpan.classList.remove("visible");
 
-				const mouseX = e.clientX;
-				const mouseY = e.clientY;
-				const id = span.id;
 				definitionContent = copy.beats[side][beatI - 1][id];
 				const defEl = document.querySelector("p.definition");
 
-				defEl.style.left = `${mouseX}px`;
-				defEl.style.top = `${mouseY}px`;
+				defEl.style.left = `${x}px`;
+				defEl.style.top = `${y}px`;
 				if (dimensions.width < 1000)
 					defEl.style.transform = "translate(0, calc(-100% - 1.5rem))";
 
 				definitionVisible = true;
+			};
+
+			button.addEventListener("mouseenter", (e) => {
+				const rect = button.getBoundingClientRect();
+				const x = rect.left;
+				const y = rect.top;
+				show(x, y);
 			});
 
-			span.addEventListener("mouseleave", () => {
+			button.addEventListener("click", (e) => {
+				if (definitionVisible) {
+					definitionVisible = false;
+					definitionContent = "";
+				} else {
+					const rect = button.getBoundingClientRect();
+					const x = rect.left;
+					const y = rect.top;
+					show(x, y);
+				}
+			});
+
+			button.addEventListener("mouseleave", () => {
 				definitionVisible = false;
 				definitionContent = "";
 			});
@@ -147,7 +172,7 @@
 		</button>
 	</div>
 
-	<p class="definition" class:visible={definitionVisible}>
+	<p class="definition" class:visible={definitionVisible} role="tooltip">
 		{@html definitionContent}
 	</p>
 </div>
@@ -276,7 +301,6 @@
 		left: 50%;
 		transform: translate(-50%, -100%);
 		background: var(--color-button-bg);
-		/* border: 2px solid #4c5c8f; */
 		padding: 0.5rem;
 		border-radius: 4px;
 		pointer-events: none;
@@ -329,12 +353,16 @@
 		background: var(--color-gray-900);
 	}
 
-	:global(span[id^="definition-"]) {
+	:global(button[id^="definition-"]) {
 		font-weight: bold;
 		white-space: nowrap;
+		background: none;
+		border: none;
+		padding: 0;
+		text-transform: none;
 	}
 
-	:global(span[id^="definition-"]::before, span.instructions::before) {
+	:global(button[id^="definition-"]::before, span.instructions::before) {
 		content: "";
 		display: inline-block;
 		width: 14px;
@@ -345,7 +373,7 @@
 		background: url("/assets/svg/info.svg") no-repeat center / contain;
 	}
 
-	:global(span[id^="definition-"]:hover) {
+	:global(button[id^="definition-"]:hover) {
 		cursor: help;
 	}
 
