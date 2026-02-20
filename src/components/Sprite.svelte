@@ -26,7 +26,6 @@
 
 	const spriteDataForId = spriteData.find((d) => d.id === id);
 	const { rows, cols, frameWidth, frameHeight, frames } = spriteDataForId;
-	const yOffset = spriteDataForId.yOffset || 0;
 	const scaleFactor = spriteDataForId.scaleFactor || 1;
 
 	let lastSteps;
@@ -50,6 +49,10 @@
 	let svgScaleFactor = $derived(
 		Math.min(worldW / camera.current.w, worldH / camera.current.h)
 	);
+	let yOffset = $derived(
+		id === "baby" && beatId === "end" ? 0.65 : spriteDataForId.yOffset || 0
+	);
+
 	let scale = $derived(scaleFactor * svgScaleFactor);
 	const width = $derived(frameWidth * scale);
 	const height = $derived(frameHeight * scale);
