@@ -76,7 +76,7 @@
 		"cols": 4,
 		"frameWidth": 100,
 		"frameHeight": 100,
-		"yOffset": 0.5,
+		"yOffset": 0.65,
 		"scaleFactor": 1,
 		"frames": [
 			{

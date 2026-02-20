@@ -54,7 +54,7 @@
 				: svgW - svgW / zoom - buffer
 	);
 	const viewboxY = $derived.by(() => {
-		if (!browser || beatI === 0) return 0;
+		if (!browser || beatI === 0 || beatI >= totalBeats - 1) return 0;
 
 		const steps =
 			side === "mom"
@@ -149,12 +149,25 @@
 <style>
 	.world {
 		position: relative;
-		transition: transform calc(var(--1s) * 2) calc(var(--1s) * 0.5) ease-out;
+	}
+
+	.world.done {
+		height: calc(100% - 5rem);
+	}
+
+	.done .foreground,
+	.done .mask {
+		height: 100%;
+	}
+
+	:global(.world.done svg) {
+		height: 100%;
 	}
 
 	.foreground {
 		position: absolute;
 		top: 0;
+		width: 100%;
 		z-index: 2;
 		pointer-events: none;
 	}
@@ -162,6 +175,7 @@
 	.mask {
 		position: absolute;
 		top: 0;
+		width: 100%;
 		z-index: 1;
 		pointer-events: none;
 	}
@@ -270,7 +284,7 @@
 
 	@media (max-width: 1000px) {
 		.world.done {
-			transform: translate(0, -13rem);
+			height: calc(100% - 12rem);
 		}
 	}
 </style>

@@ -48,7 +48,7 @@
 	);
 	let frame = $derived(frames[frameIndex]);
 	let svgScaleFactor = $derived(
-		Math.max(worldW / camera.current.w, worldH / camera.current.h)
+		Math.min(worldW / camera.current.w, worldH / camera.current.h)
 	);
 	let scale = $derived(scaleFactor * svgScaleFactor);
 	const width = $derived(frameWidth * scale);
@@ -238,24 +238,26 @@
 	};
 
 	// Update camera position when currentT or dimensions changes
-	$effect(() => {
+	const updatePosition = () => {
 		if (!pathEl || !currentT) return;
+
+		const svg = pathEl.ownerSVGElement;
 		const svgLocation = pathEl.getPointAtLength(currentT);
 
-		const screenScale = Math.max(
-			worldW / camera.current.w,
-			worldH / camera.current.h
-		);
+		const pt = svg.createSVGPoint();
+		pt.x = svgLocation.x;
+		pt.y = svgLocation.y;
+
+		const screenPoint = pt.matrixTransform(svg.getScreenCTM());
 
 		const parentEl = document.querySelector(`#side-${id}`);
+		const parentRect = parentEl.getBoundingClientRect();
 
-		const screenX =
-			(svgLocation.x - camera.current.x) * screenScale - parentEl.offsetLeft;
-		const screenY = (svgLocation.y - camera.current.y) * screenScale;
+		x = screenPoint.x - parentRect.left;
+		y = screenPoint.y - parentRect.top;
+	};
 
-		x = screenX;
-		y = screenY;
-	});
+	$effect(() => updatePosition(currentT, camera.current, worldW, worldH));
 
 	// New steps -> perform them
 	$effect(async () => {

@@ -926,7 +926,7 @@
     </g>
     <g class="markers">
       <g class="baby">
-        <circle cx="1429.5" cy="6451.5" r="12.5" fill="#2FF275" class="end-3"/>
+        <circle cx="1415.5" cy="6461.5" r="12.5" fill="#2FF275" class="end-3"/>
         <circle cx="2213.1" cy="5874.91" r="12.5" fill="#2FF275" class="end-2"/>
         <circle cx="2215.1" cy="5390.8" r="12.5" fill="#2FF275" class="end-1"/>
         <circle cx="1809.5" cy="5625.5" r="12.5" fill="#2FF275" class="finally"/>
@@ -961,7 +961,7 @@
         <circle cx="2280" cy="1046.3" r="12.5" fill="#2FF275" class="hidden-enter"/>
       </g>
       <g class="mom">
-        <circle cx="1318.5" cy="6451.5" r="12.5" fill="#2FF275" class="end-3"/>
+        <circle cx="1332.5" cy="6457.5" r="12.5" fill="#2FF275" class="end-3"/>
         <circle cx="551" cy="5926.7" r="12.5" fill="#2FF275" class="end-2"/>
         <circle cx="551" cy="5390.8" r="12.5" fill="#2FF275" class="end-1"/>
         <circle cx="860.5" cy="5577.5" r="12.5" fill="#2FF275" class="warriors-2"/>
