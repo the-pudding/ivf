@@ -5,13 +5,11 @@
 	import maskSvg from "$svg/world-mask.svg";
 	import momBeats from "$data/beats-mom.csv";
 	import babyBeats from "$data/beats-baby.csv";
+	import { scaleLinear } from "d3-scale";
 	import { Tween, prefersReducedMotion } from "svelte/motion";
 	import { cubicInOut } from "svelte/easing";
-	import { scaleLinear } from "d3-scale";
 	import { browser } from "$app/environment";
 	import _ from "lodash";
-	import useWindowDimensions from "$runes/useWindowDimensions.svelte.js";
-	let dimensions = new useWindowDimensions();
 
 	let { side, showBoth, direction, beatI } = $props();
 
@@ -26,9 +24,10 @@
 
 	const svgW = 2755;
 	const svgH = 6854;
-	const zoomScale = scaleLinear()
-		.domain([600, 1000, 2000])
-		.range([3, 1.5, 1])
+	const initialZoom = 3;
+	const bufferScale = scaleLinear()
+		.domain([600, 1000, 1500])
+		.range([0.2, 0.4, 0.45])
 		.clamp(true);
 	const totalBeats = Object.entries(_.groupBy(momBeats, "id")).map(
 		([id, steps]) => ({
@@ -37,24 +36,26 @@
 		})
 	).length;
 
-	const buffer = $derived(dimensions.width > 1500 ? 0 : svgW * 0.15);
-
 	let worldW = $state(0);
 	let worldH = $state(0);
+	let worldVisible = $state(false);
+	let zoomOut = $state(false);
 
-	const zoom = $derived(showBoth ? 1 : zoomScale(dimensions.width));
-	const cameraH = $derived(dimensions.height);
+	const buffer = $derived(bufferScale(worldW));
+	const zoom = $derived(
+		showBoth && beatI === 0 ? initialZoom : zoomOut ? 1 : 4.5
+	);
 	const viewboxW = $derived(svgW / zoom);
 	const viewboxH = $derived(svgH / zoom);
 	const viewboxX = $derived(
 		showBoth
 			? svgW / 2 - svgW / (2 * zoom)
 			: side === "mom"
-				? buffer
-				: svgW - svgW / zoom - buffer
+				? buffer * svgW
+				: (1 - buffer) * svgW - viewboxW
 	);
 	const viewboxY = $derived.by(() => {
-		if (!browser || beatI === 0 || beatI >= totalBeats - 1) return 0;
+		if (!browser || beatI === 0 || zoomOut) return 0;
 
 		const steps =
 			side === "mom"
@@ -63,19 +64,17 @@
 		const endSpot = steps.at(-1).endSpot;
 		const el = document.querySelector(`.${side} circle.${endSpot}`);
 
-		const min = 0;
-		const max = svgH - (cameraH * (svgH / worldH)) / zoom;
-
-		const center = dimensions.width < 600 ? 0.3 : 0.45;
-
-		const centeredY =
-			el.cy.baseVal.value - ((cameraH * (svgH / worldH)) / zoom) * center;
-
-		return Math.min(Math.max(centeredY, min), max);
+		const center = 0.45;
+		return el.cy.baseVal.value - (svgH / zoom) * center;
 	});
 
 	const camera = new Tween(
-		{ x: 0, y: 0, w: svgW, h: svgH },
+		{
+			x: svgW / 2 - svgW / (2 * initialZoom),
+			y: 0,
+			w: svgW / initialZoom,
+			h: svgH / initialZoom
+		},
 		{
 			duration: prefersReducedMotion.current ? 0 : 2000,
 			delay: 0,
@@ -84,12 +83,15 @@
 	);
 
 	const updateCamera = () => {
-		camera.set({
-			x: viewboxX,
-			y: viewboxY,
-			w: viewboxW,
-			h: viewboxH
-		});
+		camera.set(
+			{
+				x: viewboxX,
+				y: viewboxY,
+				w: viewboxW,
+				h: viewboxH
+			},
+			{ duration: prefersReducedMotion.current ? 0 : zoomOut ? 4000 : 2000 }
+		);
 	};
 
 	const animateViewbox = () => {
@@ -100,16 +102,33 @@
 			if (el) {
 				const { x, y, w, h } = camera.current;
 				el.setAttribute("viewBox", `${x} ${y} ${w} ${h}`);
+
+				if (!worldVisible) worldVisible = true;
 			}
 		});
 	};
 
+	const setZoomOut = () => {
+		zoomOut = false;
+		const pauseForSecs = 9;
+
+		if (beatI !== totalBeats - 1) return;
+
+		const timeout = setTimeout(() => {
+			zoomOut = true;
+		}, pauseForSecs * 1000);
+
+		return () => clearTimeout(timeout);
+	};
+
 	$effect(() => updateCamera(beatI));
 	$effect(() => animateViewbox(camera));
+	$effect(() => setZoomOut(beatI));
 </script>
 
 <div
 	class="world"
+	class:visible={worldVisible}
 	class:done={beatI >= totalBeats - 1}
 	bind:clientHeight={worldH}
 	bind:clientWidth={worldW}
@@ -149,18 +168,21 @@
 <style>
 	.world {
 		position: relative;
+		height: calc(100% - 4rem);
+		opacity: 0;
+		transition: opacity var(--1s) ease;
 	}
 
-	.world.done {
-		height: calc(100% - 5rem);
+	.world.visible {
+		opacity: 1;
 	}
 
-	.done .foreground,
-	.done .mask {
+	.foreground,
+	.mask {
 		height: 100%;
 	}
 
-	:global(.world.done svg) {
+	:global(.world svg) {
 		height: 100%;
 	}
 
@@ -279,12 +301,6 @@
 		:global(.calendar-flash, .needle-jab) {
 			animation: none;
 			transition: none;
-		}
-	}
-
-	@media (max-width: 1000px) {
-		.world.done {
-			height: calc(100% - 12rem);
 		}
 	}
 </style>
