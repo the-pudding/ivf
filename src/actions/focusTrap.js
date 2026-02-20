@@ -27,7 +27,12 @@ export default function focusTrap(node, active = true) {
 		await tick();
 
 		const first = getFocusable()[0];
-		if (first && first.innerHTML === "Lam Vo") return;
+		if (
+			first &&
+			first.innerHTML.includes("Lam") &&
+			first.innerHTML.includes("Vo")
+		)
+			return;
 
 		first?.focus({ preventScroll: true });
 	}
