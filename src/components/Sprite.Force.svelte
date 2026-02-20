@@ -107,7 +107,9 @@
 		if (!simulation) return;
 
 		if (forceData.config === "cluster") {
-			simulation.force("center", forceCenter(centerX, centerY));
+			if (nodes.length > 1) {
+				simulation.force("center", forceCenter(centerX, centerY));
+			}
 			simulation.force("radial", forceRadial(nodeRadius / 2, centerX, centerY));
 			simulation.alpha(0.3).restart();
 		} else if (forceData.config === "halo") {

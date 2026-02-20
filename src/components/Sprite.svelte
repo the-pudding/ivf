@@ -304,6 +304,9 @@
 	.sprite {
 		position: absolute;
 		transform: translate(-50%, calc(-100% * var(--y-offset)));
+		filter: grayscale(0%);
+		will-change: filter;
+		transition: none;
 	}
 
 	.flipped {
@@ -312,6 +315,7 @@
 
 	.gray {
 		filter: grayscale(100%);
+		transition: filter calc(var(--1s)) ease;
 	}
 
 	.idle {

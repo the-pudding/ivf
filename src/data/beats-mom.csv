@@ -16,19 +16,19 @@ logistics,,walk-armor,,more-needles,logistics-1,,,,,,,
 logistics,,walk-armor,,logistics-1,logistics-2, ,calendar,drop,,,,
 logistics,,walk-armor,,logistics-2,logistics-3,above,calendar,flash-loop,,,,
 logistics,standing-armor,,0,logistics-3,logistics-3,above,calendar,flash-loop,,,,
-adversaries,,walk-covered,,logistics-3,adversaries,,,,faces-halo,"adversary-1, adversary-2, adversary-3, adversary-4, adversary-5",0.5,halo
+adversaries,,walk-covered,,logistics-3,adversaries,above,,,faces-halo,"adversary-1, adversary-2, adversary-3, adversary-4, adversary-5",0.5,halo
 adversaries,covered,,0,adversaries,adversaries,,,,faces-halo,"adversary-1, adversary-2, adversary-3, adversary-4, adversary-5",0.5,halo
 go-wrong,,walk-armor,,adversaries,go-wrong,,,,,,,
-go-wrong,standing-armor,,0,go-wrong,go-wrong,,,,,,,
+go-wrong,covered,,0,go-wrong,go-wrong,,,,,,,
 wrong-clinic,,walk-armor,,go-wrong,wrong-clinic,,,,,,,
 wrong-clinic,standing-armor,,800,wrong-clinic,wrong-clinic,,block,fall,,,,
 wrong-clinic,covered,,0,wrong-clinic,wrong-clinic,,,,,,,
 owe-money,,walk-covered,,wrong-clinic,owe-money-1,,,,,,,
 owe-money,,walk-covered,,owe-money-1,owe-money-2,above,paper-stack,enter,,,,
 owe-money,crying,,0,owe-money-2,owe-money-2,above,,,,,,
-sanity,,walk-covered,,owe-money-2,sanity,above,,,,,,
+sanity,,walk-armor,,owe-money-2,sanity,above,,,,,,
 sanity,crying,,0,sanity,sanity,above,,,,,,
-hoops,,walk-crying,,sanity,hoops-1,,,,cloud,cloud,0.7,above
+hoops,,walk-crying,,sanity,hoops-1,above,,,cloud,cloud,0.7,above
 hoops,,walk-crying,,hoops-1,hoops-2,,horizontal-needle,enter,cloud,cloud,0.7,above
 hoops,crying,,0,hoops-2,hoops-2,,,,cloud,cloud,0.7,above
 help,,walk-crying,,hoops-2,help,,,,cloud,cloud,0.7,above

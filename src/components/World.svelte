@@ -120,7 +120,7 @@
 		{@html foregroundSvg}
 	</div>
 
-	<div class="mask">
+	<div class="mask" class:active={beatI === totalBeats - 1 || beatI <= 1}>
 		{@html maskSvg}
 	</div>
 
@@ -162,8 +162,12 @@
 	.mask {
 		position: absolute;
 		top: 0;
-		z-index: 3;
+		z-index: 1;
 		pointer-events: none;
+	}
+
+	.mask.active {
+		z-index: 3;
 	}
 
 	:global(.world .mom-path, .world .baby-path, .world .markers) {

@@ -30,10 +30,10 @@ lottery,follicle-still,,,0,lottery,lottery,,,,,,,
 perservere,,embryo,,,lottery,perservere-1,,,,explanation2,"baby:embryo, baby:embryo, baby:embryo",1,cluster
 perservere,,embryo,,,perservere-1,perservere-2,,,,explanation2,"baby:embryo, baby:embryo, baby:embryo",1,cluster
 perservere,embryo-still,,,0,perservere-2,perservere-2,,,,explanation2,"baby:embryo, baby:embryo, baby:embryo",1,cluster
-transfer,,embryo,,,perservere-2,transfer-1,,,,explanation2,"baby:embryo, baby:embryo, baby:embryo",1,cluster
-transfer,,embryo,,,transfer-1,transfer-2,,,,explanation2,"baby:embryo, baby:embryo",1,cluster
-transfer,,embryo,,,transfer-2,transfer-3,,,,explanation2,baby:embryo,1,cluster
-transfer,embryo-still,,,0,transfer-3,transfer-3,,,,explanation2,baby:embryo,1,cluster
+transfer,,embryo,,,perservere-2,transfer-1,,,,,,,
+transfer,,embryo,,,transfer-1,transfer-2,,,,,,,
+transfer,,embryo,,,transfer-2,transfer-3,,,,,,,
+transfer,embryo-still,,,0,transfer-3,transfer-3,,,,,,,
 journey,,embryo,,,transfer-3,journey,,,,,,,
 journey,embryo-still,,,0,journey,journey,,,,,,,
 nutritionist,,embryo,,,journey,nutritionist,,,,friends,floating-head-mom-1,1,above
