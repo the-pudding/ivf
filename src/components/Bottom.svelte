@@ -38,7 +38,7 @@
 			step {beatI}/{numBeats - 1}
 		</div>
 
-		<button class="restart parent" onclick={() => restart("mom")}>
+		<!-- <button class="restart parent" onclick={() => restart("mom")}>
 			<span>{@html parentSvg}</span>
 			Restart as Parent
 		</button>
@@ -46,9 +46,9 @@
 		<button class="restart baby" onclick={() => restart("baby")}>
 			Restart as baby
 			<span>{@html babySvg}</span>
-		</button>
+		</button> -->
 
-		<button onclick={showCredits}>Credits</button>
+		<button onclick={showCredits}>Go to Credits</button>
 
 		<div class="counter right" class:visible={side === "baby"}>
 			step {beatI}/{numBeats - 1}

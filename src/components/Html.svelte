@@ -29,6 +29,7 @@
 	let definitionVisible = $state(false);
 	let definitionContent = $state("");
 
+	let atTheEnd = $derived(beatI === numBeats - 1);
 	let content = $derived(
 		beatI === 0 ? [] : (copy.beats?.[side]?.[beatI - 1]?.text ?? "")
 	);
@@ -132,13 +133,15 @@
 </script>
 
 <div class="html-wrapper" class:visible>
-	<div class="switch mom" class:visible={beatI < numBeats - 1}>
-		<span class="switch-text" class:visible={side === "baby"}>Switch to</span>
+	<div class="switch mom">
+		<span class="switch-text" class:visible={side === "baby" || atTheEnd}
+			>{atTheEnd ? "Restart as" : "Switch to"}</span
+		>
 		<button
 			class="parent"
 			onclick={() => (side = "mom")}
-			class:inactive={side === "baby"}
-			tabindex={visible && beatI < numBeats - 1 ? 0 : -1}
+			class:inactive={side === "baby" && !atTheEnd}
+			tabindex={visible ? "0" : "-1"}
 		>
 			<span>{@html parentSvg}</span>
 			Parent
@@ -159,13 +162,15 @@
 		{/each}
 	</div>
 
-	<div class="switch baby" class:visible={beatI < numBeats - 1}>
-		<span class="switch-text" class:visible={side === "mom"}>Switch to</span>
+	<div class="switch baby">
+		<span class="switch-text" class:visible={side === "mom" || atTheEnd}
+			>{atTheEnd ? "Restart as" : "Switch to"}</span
+		>
 		<button
 			class="baby"
 			onclick={() => (side = "baby")}
-			class:inactive={side === "mom"}
-			tabindex={visible && beatI < numBeats - 1 ? 0 : -1}
+			class:inactive={side === "mom" && !atTheEnd}
+			tabindex={visible ? "0" : "-1"}
 		>
 			Baby
 			<span>{@html babySvg}</span>
@@ -205,12 +210,6 @@
 		gap: 4px;
 		font-weight: bold;
 		color: #f7e3bd;
-		opacity: 0;
-		transition: opacity calc(var(--1s) * 0.5) ease-in-out;
-	}
-
-	.switch.visible {
-		opacity: 1;
 	}
 
 	.switch.mom {
