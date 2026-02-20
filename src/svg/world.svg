@@ -950,7 +950,7 @@
         <circle cx="1921.5" cy="2802.5" r="12.5" fill="#2FF275" class="fertilize-1"/>
         <circle cx="1740.5" cy="2694.5" r="12.5" fill="#2FF275" class="first-cycle-2"/>
         <circle cx="1683.5" cy="2664.5" r="12.5" fill="#2FF275" class="first-cycle-1"/>
-        <circle cx="1556.5" cy="2489.5" r="12.5" fill="#2FF275" class="hormones"/>
+        <circle cx="1780.5" cy="2351.5" r="12.5" fill="#2FF275" class="hormones"/>
         <circle cx="1856.5" cy="1965.5" r="12.5" fill="#2FF275" class="egg-2"/>
         <circle cx="1543.5" cy="1814.5" r="12.5" fill="#2FF275" class="egg-1"/>
         <circle cx="1473.5" cy="1727.5" r="12.5" fill="#2FF275" class="inefficient"/>
@@ -976,7 +976,7 @@
         <circle cx="857.5" cy="3779.5" r="12.5" fill="#2FF275" class="help"/>
         <circle cx="1138.5" cy="3926.5" r="12.5" fill="#2FF275" class="hoops-2"/>
         <circle cx="1186.5" cy="3693.5" r="12.5" fill="#2FF275" class="hoops-1"/>
-        <circle cx="682.5" cy="3583.5" r="12.5" fill="#2FF275" class="sanity"/>
+        <circle cx="686.5" cy="3579.5" r="12.5" fill="#2FF275" class="sanity"/>
         <circle cx="1170.5" cy="3267.5" r="12.5" fill="#2FF275" class="owe-money-2"/>
         <circle cx="942.5" cy="3122.5" r="12.5" fill="#2FF275" class="owe-money-1"/>
         <circle cx="649.5" cy="3198.5" r="12.5" fill="#2FF275" class="wrong-clinic"/>
