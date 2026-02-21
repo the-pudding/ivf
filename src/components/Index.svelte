@@ -46,13 +46,24 @@
 		if (beatI >= numBeats - 1) return;
 		direction = "forward";
 		beatI = Math.min(numBeats - 1, beatI + 1);
+
+		document
+			.querySelector(".main")
+			.scrollIntoView({ behavior: "instant", block: "end" });
 	};
 
 	const prev = () => {
 		if (beatI === 1) return;
+
+		if (beatI === numBeats - 1 || !locked) {
+			document
+				.querySelector(".main")
+				.scrollIntoView({ behavior: "instant", block: "end" });
+			locked = true;
+		}
+
 		direction = "backward";
 		beatI = Math.max(0, beatI - 1);
-		locked = true;
 	};
 
 	const onKeyDown = (e) => {
