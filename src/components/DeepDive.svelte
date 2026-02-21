@@ -44,6 +44,7 @@
 		z-index: var(--z-top);
 		transition: none;
 		padding: 1rem;
+		overflow: scroll;
 	}
 
 	.deep.left {
@@ -66,12 +67,15 @@
 	button.close {
 		background: none;
 		border: none;
-		padding: 1rem;
-		height: 20px;
-		width: 20px;
+		height: 24px;
+		width: 24px;
 		padding: 0;
 		margin-bottom: 2rem;
 		display: block;
+		position: sticky;
+		top: 0;
+		padding: 4px;
+		background: var(--color-fg);
 	}
 
 	.left button.close {

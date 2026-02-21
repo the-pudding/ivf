@@ -50,6 +50,9 @@
 		document
 			.querySelector(".main")
 			.scrollIntoView({ behavior: "instant", block: "end" });
+
+		deepDiveOpen = false;
+		deepDiveContent = [];
 	};
 
 	const prev = () => {
@@ -64,6 +67,9 @@
 
 		direction = "backward";
 		beatI = Math.max(0, beatI - 1);
+
+		deepDiveOpen = false;
+		deepDiveContent = [];
 	};
 
 	const onKeyDown = (e) => {
