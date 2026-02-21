@@ -3,6 +3,7 @@
 	import worldSvg from "$svg/world.svg";
 	import foregroundSvg from "$svg/world-foreground.svg";
 	import maskSvg from "$svg/world-mask.svg";
+	import overlaySvg from "$svg/world-overlay.svg";
 	import momBeats from "$data/beats-mom.csv";
 	import babyBeats from "$data/beats-baby.csv";
 	import { scaleLinear } from "d3-scale";
@@ -97,8 +98,9 @@
 	const animateViewbox = () => {
 		const svgEl = document.querySelector(".world svg");
 		const maskEl = document.querySelector(".mask svg");
+		const overlayEl = document.querySelector(".overlay svg");
 		const fgEl = document.querySelector(".foreground svg");
-		[svgEl, maskEl, fgEl].forEach((el) => {
+		[svgEl, maskEl, overlayEl, fgEl].forEach((el) => {
 			if (el) {
 				const { x, y, w, h } = camera.current;
 				el.setAttribute("viewBox", `${x} ${y} ${w} ${h}`);
@@ -135,12 +137,16 @@
 >
 	{@html worldSvg}
 
-	<div class="foreground">
+	<div class="foreground" class:hide={side === "baby"}>
 		{@html foregroundSvg}
 	</div>
 
-	<div class="mask" class:active={beatI === totalBeats - 1 || beatI <= 1}>
+	<div class="mask">
 		{@html maskSvg}
+	</div>
+
+	<div class="overlay">
+		{@html overlaySvg}
 	</div>
 
 	<Side
@@ -178,7 +184,8 @@
 	}
 
 	.foreground,
-	.mask {
+	.mask,
+	.overlay {
 		height: 100%;
 	}
 
@@ -190,20 +197,28 @@
 		position: absolute;
 		top: 0;
 		width: 100%;
-		z-index: 2;
+		z-index: 3;
 		pointer-events: none;
+	}
+
+	.foreground.hide {
+		z-index: 2;
 	}
 
 	.mask {
 		position: absolute;
 		top: 0;
 		width: 100%;
-		z-index: 1;
+		z-index: 2;
 		pointer-events: none;
 	}
 
-	.mask.active {
-		z-index: 3;
+	.overlay {
+		position: absolute;
+		top: 0;
+		width: 100%;
+		z-index: 2;
+		pointer-events: none;
 	}
 
 	:global(.world .mom-path, .world .baby-path, .world .markers) {

@@ -31,7 +31,7 @@
 	let atTheEnd = $derived(showBoth && beatI === numBeats - 1);
 
 	const switchSides = () => {
-		const sideEls = document.querySelectorAll(".mask .Overlay path");
+		const sideEls = document.querySelectorAll(".overlay .Overlay path");
 		sideEls.forEach((el) => {
 			el.style.transition = "fill-opacity var(--1s) ease-in-out";
 			if (showBoth || Array.from(el.classList).some((d) => d.includes(side))) {
