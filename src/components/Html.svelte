@@ -1,5 +1,5 @@
 <script>
-	import { fade } from "svelte/transition";
+	import { fade, fly } from "svelte/transition";
 	import { prefersReducedMotion } from "svelte/motion";
 	import parentSvg from "$svg/parent-preview.svg";
 	import babySvg from "$svg/baby-preview.svg";
@@ -62,6 +62,7 @@
 			button.id = id;
 			button.innerHTML = span.innerHTML;
 			button.className = span.className;
+			button.classList.add("btn-deep-dive");
 			span.replaceWith(button);
 
 			button.addEventListener("click", () => {
@@ -79,6 +80,7 @@
 			button.id = id;
 			button.innerHTML = span.innerHTML;
 			button.className = span.className;
+			button.classList.add("btn-definition");
 			span.replaceWith(button);
 
 			const show = (x, y) => {
@@ -171,10 +173,12 @@
 		{#each paragraphs as paragraph, i (paragraph)}
 			<p
 				class:multi={paragraphs.length > 1}
-				in:fade={{
-					duration: prefersReducedMotion.current ? 0 : 300,
-					delay: prefersReducedMotion.current ? 0 : DELAY + i * 800
+				in:fly={{
+					duration: prefersReducedMotion.current ? 0 : 250,
+					delay: prefersReducedMotion.current ? 0 : DELAY + i * 250,
+					y: 50
 				}}
+				out:fade={{}}
 			>
 				{@html paragraph}
 			</p>
@@ -209,9 +213,9 @@
 		height: 100%;
 		padding: 0 1rem;
 		display: grid;
-		grid-template-columns: auto 1fr 1fr auto;
+		grid-template-columns: minmax(100px, auto) repeat(4, 1fr) minmax(100px, auto);
 		align-items: center;
-		gap: 1rem;
+		gap: 3rem;
 		opacity: 0;
 		pointer-events: none;
 		transition: opacity calc(var(--1s) * 0.5) calc(var(--1s) * 1.5) ease-in-out;
@@ -236,7 +240,7 @@
 	}
 
 	.switch.baby {
-		grid-column: 4;
+		grid-column: 6;
 	}
 
 	.switch-text {
@@ -253,12 +257,12 @@
 	}
 
 	.copy.left {
-		grid-column: 2;
+		grid-column: 2 / 4;
 		justify-self: start;
 	}
 
 	.copy.right {
-		grid-column: 3;
+		grid-column: 4 / 6;
 		justify-self: end;
 	}
 
@@ -296,7 +300,7 @@
 
 	p.definition {
 		position: fixed;
-		background: #f9f4ff;
+		background: var(--color-button-bg);
 		font-size: var(--14px);
 		border: 2px solid var(--color-black);
 		border-radius: 4px;
@@ -385,7 +389,7 @@
 		display: inline-block;
 		width: 14px;
 		height: 14px;
-		margin-right: 2px;
+		margin: 1px 2px 0 0;
 		vertical-align: middle;
 		transform: translate(0, -2px);
 		background: url("/assets/svg/info.svg") no-repeat center / contain;
@@ -403,6 +407,17 @@
 		padding: 0.1rem 0.25rem;
 		border-radius: 4px;
 		white-space: nowrap;
+	}
+
+	:global(button[id^="deep-"]::before) {
+		content: "";
+		display: inline-block;
+		width: 14px;
+		height: 14px;
+		margin: 1px 2px 0 0;
+		vertical-align: middle;
+		transform: translate(0, -2px);
+		background: url("/assets/svg/add.svg") no-repeat center / contain;
 	}
 
 	:global(button[id^="deep-"]:hover) {

@@ -7,6 +7,8 @@
 	const close = () => {
 		open = false;
 	};
+
+	console.log(content);
 </script>
 
 <div
@@ -29,7 +31,7 @@
 		{#if type === "text"}
 			<p>{@html value}</p>
 		{:else if type === "img"}
-			<img src={value} alt="" />
+			<img src="assets/deep/{value[0].src}" alt="{value[0].alt}" />
 		{/if}
 	{/each}
 </div>
@@ -42,7 +44,7 @@
 		width: 450px;
 		background: #090d2e;
 		z-index: var(--z-top);
-		transition: none;
+		transition: transform calc(var(--1s) * 0.5) ease-in-out;
 		padding: 1rem;
 		overflow: scroll;
 	}
@@ -80,6 +82,14 @@
 
 	.left button.close {
 		margin-left: auto;
+	}
+
+	p {
+		margin: 2rem 0;
+	}
+
+	p:last-of-type {
+		font-size: var(--12px);
 	}
 
 	@media (max-width: 600px) {
