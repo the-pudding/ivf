@@ -125,7 +125,6 @@
 		font-size: var(--18px);
 		background: rgba(249, 244, 255, 0.95);
 		color: var(--color-bg);
-		border: 2px solid #4c5c8f;
 		border-radius: 8px;
 		font-weight: 300;
 		position: absolute;
@@ -139,6 +138,8 @@
 		margin: 0 1rem;
 		padding: 1.5rem;
 		opacity: 0;
+		backdrop-filter: blur(4px);
+		box-shadow: 0 2px 16px rgba(249, 244, 255, 0.5);
 		transition: opacity calc(var(--1s) * 0.5) var(--1s) ease-in-out;
 	}
 
@@ -162,6 +163,14 @@
 		align-items: center;
 		gap: 4px;
 		height: 2.25rem;
+		transition: all calc(var(--1s) * 0.3) ease;
+		font-size: var(--16px);
+		box-shadow: 0 2px 16px rgba(247, 227, 189, 0.5);
+	}
+
+	button:hover {
+		background: var(--ivf-mid-yellow);
+		transform: translateY(-2px);
 	}
 
 	button span {

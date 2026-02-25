@@ -270,16 +270,22 @@
 		color: var(--color-bg);
 		background: rgba(249, 244, 255, 0.95);
 		color: var(--color-bg);
-		border: 2px solid #4c5c8f;
 		border-radius: 8px;
 		width: fit-content;
 		padding: 1rem;
+		backdrop-filter: blur(2px);
+		box-shadow: 0 2px 16px rgba(249, 244, 255, 0.5);
 	}
 
 	:global(.copy p a, p.definition a) {
 		pointer-events: auto;
 		color: var(--color-link-dark);
 		text-decoration-color: var(--color-link-dark);
+	}
+
+	:global(.copy p a:hover) {
+		color: var(--ivf-dark-purple);
+		text-decoration-color: var(--ivf-dark-purple);
 	}
 
 	.left p.multi:nth-of-type(1) {
@@ -352,6 +358,15 @@
 		align-items: center;
 		gap: 4px;
 		height: 2.25rem;
+		border: none;
+		box-shadow: 0 2px 16px rgba(247, 227, 189, 0.5);
+		transition: all calc(var(--1s) * 0.3) ease;
+		cursor: not-allowed;
+		border: 2px solid var(--ivf-yellow);
+	}
+
+	button:hover {
+		background: var(--ivf-yellow);
 	}
 
 	button span {
@@ -366,13 +381,18 @@
 
 	button.inactive {
 		font-weight: normal;
-		border: 2px solid #4c5c8f;
-		color: #4c5c8f;
+		border: 2px solid var(--ivf-mid-purple);
+		color: var(--ivf-mid-purple);
 		background: var(--color-bg);
+		box-shadow: 0 2px 16px rgba(76, 92, 143, 0.5);
+		pointer-events: all;
+		cursor: pointer;
 	}
 
 	button.inactive:hover {
-		background: var(--color-gray-900);
+		background: var(--ivf-yellow);
+		border: 2px solid var(--ivf-yellow);
+		transform: translateY(-2px);
 	}
 
 	:global(button[id^="definition-"]) {
@@ -407,6 +427,7 @@
 		padding: 0.1rem 0.25rem;
 		border-radius: 4px;
 		white-space: nowrap;
+		transition: all calc(var(--1s) * 0.3) ease;
 	}
 
 	:global(button[id^="deep-"]::before) {
@@ -422,7 +443,8 @@
 
 	:global(button[id^="deep-"]:hover) {
 		cursor: pointer;
-		background-color: var(--color-button-hover);
+		background-color: var(--ivf-mid-yellow);
+		transform: translateY(-2px);
 	}
 
 	@media (min-width: 1800px) {

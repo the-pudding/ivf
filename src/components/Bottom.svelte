@@ -79,9 +79,10 @@
 		display: none;
 		align-items: center;
 		justify-content: center;
-		gap: 4px;
+		gap: 0.5rem;
 		height: 4rem;
-		background: rgba(0, 0, 0, 5);
+		background: rgba(0, 0, 0, 0.75);
+		backdrop-filter: blur(2px);
 		border-top: 1px solid #4c5c8f;
 		position: absolute;
 		bottom: 0;
@@ -98,8 +99,21 @@
 		display: flex;
 	}
 
+	.desktop-instructions {
+		font-size: var(--12px);
+	}
+
 	button {
 		height: 2.25rem;
+		font-size: var(--16px);
+		transition: all calc(var(--1s) * 0.3) ease;
+		border: none;
+		box-shadow: 0 2px 16px rgba(247, 227, 189, 0.5);
+	}
+
+	button:hover {
+		background: var(--ivf-mid-yellow);
+		transform: translateY(-2px);
 	}
 
 	button.nav,
@@ -108,6 +122,7 @@
 		align-items: center;
 		justify-content: center;
 		gap: 4px;
+		border: none;
 	}
 
 	button.nav span {

@@ -174,7 +174,7 @@
 <style>
 	.world {
 		position: relative;
-		height: calc(100% - 4rem);
+		height: 100%;
 		opacity: 0;
 		transition: opacity var(--1s) ease;
 	}

@@ -44,7 +44,6 @@
 		width: 450px;
 		background: #090d2e;
 		z-index: var(--z-top);
-		transition: transform calc(var(--1s) * 0.5) ease-in-out;
 		padding: 1rem;
 		overflow: scroll;
 	}
@@ -52,13 +51,13 @@
 	.deep.left {
 		left: 0;
 		transform: translate(-100%, 0);
-		border-right: 2px solid #4c5c8f;
+		border-right: 1px solid #4c5c8f;
 	}
 
 	.deep.right {
 		right: 0;
 		transform: translate(100%, 0);
-		border-left: 2px solid #4c5c8f;
+		border-left: 1px solid #4c5c8f;
 	}
 
 	.deep.open {
@@ -77,7 +76,6 @@
 		position: sticky;
 		top: 0;
 		padding: 4px;
-		background: var(--color-fg);
 	}
 
 	.left button.close {
