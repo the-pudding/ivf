@@ -32,6 +32,18 @@
 			<p>{@html value}</p>
 		{:else if type === "img"}
 			<img src="assets/deep/{value[0].src}" alt="{value[0].alt}" />
+		{:else if type === "list"}
+			<ul>
+				{#each value as item}
+					<li>{@html item.value}</li>
+				{/each}
+			</ul>
+		{:else if type === "quotes"}
+			<div class="quotes">
+				{#each value as item, i}
+					<p class="quote" id="quote-{i}">{@html item.value}</p>
+				{/each}
+			</div>
 		{/if}
 	{/each}
 </div>
@@ -82,13 +94,87 @@
 		margin-left: auto;
 	}
 
-	p {
+	p, ul {
 		margin: 2rem 0;
 	}
 
 	p:last-of-type {
 		font-size: var(--12px);
 	}
+
+	.quotes {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		padding: 1rem 0;
+	}
+
+	.quote {
+		background-color: var(--ivf-yellow);
+		color: var(--color-bg);
+		padding: 0.5rem;
+		border-radius: 4px;
+		display: inline-block;
+		position: relative;
+		max-width: 80%;
+		margin: 0;
+	}
+
+	p.quote:last-of-type {
+		font-size: var(--16px);
+	}
+
+	#quote-0, #quote-2 {
+		align-self: flex-start;
+		margin-left: 2rem;
+	}
+
+	#quote-1, #quote-3 {
+		align-self: flex-end;
+		margin-right: 2rem;
+	}
+
+	#quote-0::before, #quote-2::before {
+		content: "";
+		position: absolute;
+		width: 3.5rem;
+		height: 3.5rem;
+		top: -2rem;
+		left: -2rem;
+		background-repeat: no-repeat;
+		background-size: contain;
+		z-index: 99;
+	}
+
+	#quote-0::before {
+		background-image: url('assets/sprites/floating-head-mom-5.png');
+	}
+
+	#quote-2::before {
+		background-image: url('assets/sprites/floating-head-mom-4.png');
+	}
+
+	#quote-1::before, #quote-3::before {
+		content: "";
+		position: absolute;
+		width: 3.5rem;
+		height: 3.5rem;
+		top: -2rem;
+		right: -2rem;
+		background-repeat: no-repeat;
+		background-size: contain;
+		z-index: 99;
+		transform: scaleX(-1);
+	}
+
+	#quote-1::before {
+		background-image: url('assets/sprites/floating-head-baby-2.png');
+	}
+
+	#quote-3::before {
+		background-image: url('assets/sprites/floating-head-baby-3.png');
+	}
+
 
 	@media (max-width: 600px) {
 		.deep {

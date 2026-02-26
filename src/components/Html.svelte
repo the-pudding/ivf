@@ -157,6 +157,7 @@
 			class="parent"
 			onclick={() => switchSides("mom")}
 			class:inactive={side === "baby" && !atTheEnd}
+			class:final={atTheEnd}
 			tabindex={visible ? "0" : "-1"}
 		>
 			<span>{@html parentSvg}</span>
@@ -173,12 +174,11 @@
 		{#each paragraphs as paragraph, i (paragraph)}
 			<p
 				class:multi={paragraphs.length > 1}
-				in:fly={{
+				in:fly|local={{
 					duration: prefersReducedMotion.current ? 0 : 250,
 					delay: prefersReducedMotion.current ? 0 : DELAY + i * 250,
 					y: 50
 				}}
-				out:fade={{}}
 			>
 				{@html paragraph}
 			</p>
@@ -193,6 +193,7 @@
 			class="baby"
 			onclick={() => switchSides("baby")}
 			class:inactive={side === "mom" && !atTheEnd}
+			class:final={atTheEnd}
 			tabindex={visible ? "0" : "-1"}
 		>
 			Baby
@@ -263,6 +264,12 @@
 
 	.copy.right {
 		grid-column: 4 / 6;
+		justify-self: end;
+	}
+
+	.copy.final {
+		grid-column: 3 / 5 !important;
+		margin-top: 10rem;
 		justify-self: end;
 	}
 
@@ -389,10 +396,15 @@
 		cursor: pointer;
 	}
 
-	button.inactive:hover {
+	button.inactive:hover, button.final:hover {
 		background: var(--ivf-yellow);
 		border: 2px solid var(--ivf-yellow);
 		transform: translateY(-2px);
+	}
+
+	button.final {
+		pointer-events: all !important;
+		cursor: pointer;
 	}
 
 	:global(button[id^="definition-"]) {
@@ -445,6 +457,47 @@
 		cursor: pointer;
 		background-color: var(--ivf-mid-yellow);
 		transform: translateY(-2px);
+	}
+
+	:global(.icon-armor, .icon-egg, .icon-embryo, .icon-baby, .icon-follicle, .icon-fertilized) {
+		position: relative;
+		font-weight: 700;
+		margin-left: 1.25rem;
+	}
+
+	:global(.icon-armor::before, .icon-egg::before, .icon-embryo::before, .icon-baby::before, .icon-follicle::before, .icon-fertilized::before) {
+		content: "";
+		position: absolute;
+		width: 1.5rem;
+		height: 1.5rem;
+		left: -1.5rem;
+		background-repeat: no-repeat;
+		background-size: contain;
+		z-index: 99;
+	}
+
+	:global(.icon-armor::before) {
+		background-image: url('assets/sprites/icon-armor.png');
+	}
+
+	:global(.icon-egg::before) {
+		background-image: url('assets/sprites/icon-egg.png');
+	}
+
+	:global(.icon-embryo::before) {
+		background-image: url('assets/sprites/icon-embryo.png');
+	}
+
+	:global(.icon-baby::before) {
+		background-image: url('assets/sprites/icon-baby.png');
+	}
+
+	:global(.icon-follicle::before) {
+		background-image: url('assets/sprites/icon-follicle.png');
+	}
+
+	:global(.icon-fertilized::before) {
+		background-image: url('assets/sprites/icon-fertilized.png');
 	}
 
 	@media (min-width: 1800px) {
