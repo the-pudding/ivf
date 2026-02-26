@@ -147,11 +147,11 @@
 	}
 
 	#quote-0::before {
-		background-image: url('assets/sprites/floating-head-mom-5.png');
+		background-image: url('/assets/sprites/floating-head-mom-5.png');
 	}
 
 	#quote-2::before {
-		background-image: url('assets/sprites/floating-head-mom-4.png');
+		background-image: url('/assets/sprites/floating-head-mom-4.png');
 	}
 
 	#quote-1::before, #quote-3::before {
@@ -168,11 +168,11 @@
 	}
 
 	#quote-1::before {
-		background-image: url('assets/sprites/floating-head-baby-2.png');
+		background-image: url('/assets/sprites/floating-head-baby-2.png');
 	}
 
 	#quote-3::before {
-		background-image: url('assets/sprites/floating-head-baby-3.png');
+		background-image: url('/assets/sprites/floating-head-baby-3.png');
 	}
 
 

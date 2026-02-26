@@ -477,27 +477,27 @@
 	}
 
 	:global(.icon-armor::before) {
-		background-image: url('assets/sprites/icon-armor.png');
+		background-image: url('/assets/sprites/icon-armor.png');
 	}
 
 	:global(.icon-egg::before) {
-		background-image: url('assets/sprites/icon-egg.png');
+		background-image: url('/assets/sprites/icon-egg.png');
 	}
 
 	:global(.icon-embryo::before) {
-		background-image: url('assets/sprites/icon-embryo.png');
+		background-image: url('/assets/sprites/icon-embryo.png');
 	}
 
 	:global(.icon-baby::before) {
-		background-image: url('assets/sprites/icon-baby.png');
+		background-image: url('/assets/sprites/icon-baby.png');
 	}
 
 	:global(.icon-follicle::before) {
-		background-image: url('assets/sprites/icon-follicle.png');
+		background-image: url('/assets/sprites/icon-follicle.png');
 	}
 
 	:global(.icon-fertilized::before) {
-		background-image: url('assets/sprites/icon-fertilized.png');
+		background-image: url('/assets/sprites/icon-fertilized.png');
 	}
 
 	@media (min-width: 1800px) {
