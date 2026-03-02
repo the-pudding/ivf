@@ -25,7 +25,7 @@
 
 	const svgW = 2755;
 	const svgH = 6854;
-	const initialZoom = 3;
+	const initialZoom = 2.25;
 	const bufferScale = scaleLinear()
 		.domain([600, 1000, 1500])
 		.range([0.2, 0.4, 0.45])
@@ -44,8 +44,12 @@
 
 	const buffer = $derived(bufferScale(worldW));
 	const zoom = $derived(
-		showBoth && beatI === 0 ? initialZoom : zoomOut ? 1 : 4.5
+		showBoth && beatI === 0 ? initialZoom : zoomOut ? 1 : 4
 	);
+
+	$effect(() => {
+		console.log(zoom)
+	})
 	const viewboxW = $derived(svgW / zoom);
 	const viewboxH = $derived(svgH / zoom);
 	const viewboxX = $derived(
@@ -112,7 +116,7 @@
 
 	const setZoomOut = () => {
 		zoomOut = false;
-		const pauseForSecs = 9;
+		const pauseForSecs = 12;
 
 		if (beatI !== totalBeats - 1) return;
 

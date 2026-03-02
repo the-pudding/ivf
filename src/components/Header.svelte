@@ -1,6 +1,6 @@
 <script>
 	// shadow, plain, line, bubble
-	import wordmark from "$svg/wordmark-plain.svg";
+	import wordmark from "$svg/wordmark-shadow.svg";
 </script>
 
 <header>
@@ -45,7 +45,7 @@
 		width: auto;
 	}
 
-	:global(header .wordmark svg path) {
-		fill: rgba(209, 195, 227, 0.8);
+	:global(header .wordmark svg .text path) {
+		fill: var(--ivf-x-light-purple);
 	}
 </style>

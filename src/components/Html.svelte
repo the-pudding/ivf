@@ -11,6 +11,7 @@
 
 	let {
 		visible,
+		showBoth,
 		side = $bindable(),
 		beatI = $bindable(),
 		deepDiveOpen = $bindable(),
@@ -29,6 +30,7 @@
 	let instructionsNeeded = $state(true);
 	let definitionVisible = $state(false);
 	let definitionContent = $state("");
+	let finalFaded = $state(false);
 
 	let atTheEnd = $derived(beatI === numBeats - 1);
 	let content = $derived(
@@ -44,7 +46,7 @@
 		);
 		firstDefinition.style.position = "relative";
 		const instructionSpan = document.createElement("span");
-		instructionSpan.textContent = "Hover over for definitions";
+		instructionSpan.textContent = "Interact for definitions";
 		instructionSpan.classList.add("instructions");
 		instructionSpan.classList.add("visible");
 		firstDefinition.appendChild(instructionSpan);
@@ -146,6 +148,22 @@
 	};
 
 	$effect(() => setUpButtons(paragraphs));
+
+	$effect(() => {
+		const pauseForSecs = 12;
+		if (showBoth && atTheEnd) {
+			const timer = setTimeout(() => {
+				finalFaded = true;
+			}, pauseForSecs * 1000);
+			
+			return () => {
+				clearTimeout(timer);
+				finalFaded = false;
+			};
+		} else {
+			finalFaded = false;
+		}
+	});
 </script>
 
 <div class="html-wrapper" class:visible>
@@ -167,7 +185,8 @@
 
 	<div
 		class="copy"
-		class:final={atTheEnd}
+		class:finalStep={atTheEnd}
+		class:finalFaded={finalFaded}
 		class:left={side === "baby"}
 		class:right={side === "mom"}
 	>
@@ -255,6 +274,7 @@
 
 	.copy {
 		max-width: 500px;
+		transition: opacity calc(var(--1s) * 0.5) ease-in-out;
 	}
 
 	.copy.left {
@@ -267,10 +287,14 @@
 		justify-self: end;
 	}
 
-	.copy.final {
-		grid-column: 3 / 5 !important;
-		margin-top: 10rem;
+	.copy.finalStep {
+		grid-column: 3 / 5;
+		margin-top: 15rem;
 		justify-self: end;
+	}
+
+	.copy.finalFaded {
+		opacity: 0;
 	}
 
 	.copy p {
@@ -363,6 +387,7 @@
 	button {
 		display: flex;
 		align-items: center;
+		justify-content: center;
 		gap: 4px;
 		height: 2.25rem;
 		border: none;
@@ -370,6 +395,7 @@
 		transition: all calc(var(--1s) * 0.3) ease;
 		cursor: not-allowed;
 		border: 2px solid var(--ivf-yellow);
+		width: 100%;
 	}
 
 	button:hover {
@@ -517,7 +543,7 @@
 		}
 
 		.copy.right,
-		.copy.left {
+		.copy.left, .copy.finalStep {
 			position: absolute;
 			bottom: 6rem;
 			left: 50%;
@@ -526,6 +552,10 @@
 			width: 100%;
 			max-width: 600px;
 			padding: 0 1.25rem;
+		}
+
+		.copy.finalStep {
+			margin-top: 0;
 		}
 
 		.copy p {
@@ -547,14 +577,13 @@
 		.right p.multi:nth-of-type(3) {
 			transform: translate(-0.5rem, 0);
 		}
-
-		.copy.final {
-			bottom: auto;
-			top: 55%;
-		}
 	}
 
 	@media (max-width: 600px) {
+		.html-wrapper {
+			gap: 0;
+		}
+
 		button,
 		.switch-text {
 			font-size: var(--12px);

@@ -24,7 +24,7 @@
 <div class="bottom" class:end={atTheEnd} class:visible>
 	{#if atTheEnd}
 		<div class="counter left" class:visible={side === "mom"}>
-			step {beatI}/{numBeats - 1}
+			{beatI}/{numBeats - 1}
 		</div>
 
 		<button class="nav" onclick={prev}>
@@ -40,14 +40,14 @@
 		</button>
 
 		<div class="counter right" class:visible={side === "baby"}>
-			step {beatI}/{numBeats - 1}
+			{beatI}/{numBeats - 1}
 		</div>
 	{:else}
 		<div class="counter left" class:visible={side === "mom"}>
-			step {beatI}/{numBeats - 1}
+			{beatI}/{numBeats - 1}
 		</div>
 
-		<span class="desktop-instructions">Tap here to navigate the story</span>
+		<span class="desktop-instructions left">Tap to navigate</span>
 
 		<button class="nav" onclick={prev}>
 			<span>{@html chevronUpSvg}</span>
@@ -57,7 +57,7 @@
 		<span class="mobile-instructions">
 			Tap to navigate
 			{#if dimensions.width < 650}
-				<br />(step {beatI}/{numBeats - 1})
+				<br />{beatI}/{numBeats - 1}
 			{/if}
 		</span>
 
@@ -66,10 +66,10 @@
 			Next
 		</button>
 
-		<span class="desktop-instructions">Or use your keyboard arrows</span>
+		<span class="desktop-instructions right">Or use arrow key</span>
 
 		<div class="counter right" class:visible={side === "baby"}>
-			step {beatI}/{numBeats - 1}
+			{beatI}/{numBeats - 1}
 		</div>
 	{/if}
 </div>
@@ -99,8 +99,14 @@
 		display: flex;
 	}
 
-	.desktop-instructions {
+	.desktop-instructions.left {
 		font-size: var(--12px);
+		text-align: right;
+	}
+
+	.desktop-instructions.right {
+		font-size: var(--12px);
+		text-align: left;
 	}
 
 	button {
@@ -161,7 +167,11 @@
 		margin-left: auto;
 	}
 
-	@media (max-width: 650px) {
+	@media (max-width: 600px) {
+		button {
+			font-size: var(--12px);
+		}
+
 		.mobile-instructions {
 			display: flex;
 		}

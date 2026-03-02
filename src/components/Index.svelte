@@ -109,6 +109,7 @@
 		>
 			<Html
 				visible={started}
+				{showBoth}
 				bind:side
 				bind:beatI
 				bind:deepDiveOpen

@@ -129,7 +129,7 @@
 		font-weight: 300;
 		position: absolute;
 		top: calc(100% + 3rem);
-		max-width: 550px;
+		max-width: 480px;
 		text-align: center;
 		display: flex;
 		flex-direction: column;
@@ -147,15 +147,16 @@
 		opacity: 1;
 	}
 
-	:global(.instructions strong) {
+	/* :global(.instructions strong) {
 		white-space: pre;
-	}
+	} */
 
 	.buttons {
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
 		font-size: var(--14px);
+		font-weight: 700;
 	}
 
 	button {

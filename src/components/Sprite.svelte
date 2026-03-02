@@ -32,6 +32,7 @@
 	let cycleInterval = null;
 	let rafId = null;
 
+	let isLastStep = $derived(active && beatId === "end");
 	let x = $state(0);
 	let y = $state(0);
 	let currentT = $state(0);
@@ -275,11 +276,17 @@
 	onDestroy(() => {
 		if (cycleInterval) clearInterval(cycleInterval);
 	});
+
+	$effect(() => {
+		console.log(active, sceneryState)
+	})
 </script>
 
 <div
 	class="sprite"
 	class:flipped
+	class:active={active}
+	class:last={isLastStep}
 	class:gray
 	class:idle={idle && !prefersReducedMotion.current}
 	style={`--y-offset: ${yOffset}`}
@@ -311,7 +318,8 @@
 		transform: translate(-50%, calc(-100% * var(--y-offset)));
 		filter: grayscale(0%);
 		will-change: filter;
-		transition: none;
+		transition: opacity var(--1s) ease-in-out;
+		opacity: 0;
 	}
 
 	.flipped {
@@ -329,6 +337,15 @@
 
 	.idle.flipped {
 		animation: bounce-flipped 1s infinite;
+	}
+
+	.active {
+		transition-delay: 0.5s;
+		opacity: 1;
+	}
+
+	.last {
+		transition-delay: 1s;
 	}
 
 	@keyframes bounce {

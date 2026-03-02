@@ -36,15 +36,15 @@ transfer,,embryo,,,transfer-2,transfer-3,,,,,,,
 transfer,embryo-still,,,0,transfer-3,transfer-3,,,,,,,
 journey,,embryo,,,transfer-3,journey,,,,,,,
 journey,embryo-still,,,0,journey,journey,,,,,,,
-nutritionist,,embryo,,,journey,nutritionist,,,,friends,floating-head-mom-1,1,above
-nutritionist,embryo-still,,,0,nutritionist,nutritionist,,,,friends,floating-head-mom-1,1,above
-doula,,embryo,,,nutritionist,doula,,,,friends,"floating-head-mom-1, floating-head-mom-2",1,above
-doula,embryo-still,,,0,doula,doula,,,,friends,"floating-head-mom-1, floating-head-mom-2",1,above
-acupuncurists,,embryo,,,doula,acupuncturists,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
-acupuncurists,embryo-still,,,0,acupuncturists,acupuncturists,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
-microbiologist,,embryo,,,acupuncturists,microbiologist,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",1,above
-microbiologist,embryo-still,,,0,microbiologist,microbiologist,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",1,above
-finally,,embryo,,,microbiologist,finally,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",1,above
+nutritionist,,embryo,,,journey,nutritionist,above,,,friends,floating-head-mom-1,1,above
+nutritionist,embryo-still,,,0,nutritionist,nutritionist,above,,,friends,floating-head-mom-1,1,above
+doula,,embryo,,,nutritionist,doula,above,,,friends,"floating-head-mom-1, floating-head-mom-2",1,above
+doula,embryo-still,,,0,doula,doula,above,,,friends,"floating-head-mom-1, floating-head-mom-2",1,above
+acupuncurists,,embryo,,,doula,acupuncturists,above,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
+acupuncurists,embryo-still,,,0,acupuncturists,acupuncturists,above,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3",1,above
+microbiologist,,embryo,,,acupuncturists,microbiologist,above,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",1,above
+microbiologist,embryo-still,,,0,microbiologist,microbiologist,above,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",1,above
+finally,,embryo,,,microbiologist,finally,above,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",1,above
 finally,embryo-still,,,0,finally,finally,,,,friends,"floating-head-mom-1, floating-head-mom-2, floating-head-mom-3, floating-head-mom-4",1,above
 end,,embryo,,1800,finally,end-1,,,,,,,
 end,child-standing,,,200,end-1,end-2,,,,,,,
