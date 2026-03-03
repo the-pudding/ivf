@@ -1,12 +1,14 @@
 <script>
 	import xSvg from "$svg/x.svg";
 	import focusTrap from "$actions/focusTrap.js";
+	import CostTable from "$components/CostTable.svelte";
 
 	let { open = $bindable(), content, side } = $props();
 
 	const close = () => {
 		open = false;
 	};
+	const id = $derived(content?.[1] ? content[1].split("-")[1] : null);
 </script>
 
 <div
@@ -24,26 +26,43 @@
 	>
 		{@html xSvg}
 	</button>
-
-	{#each content as { type, value }}
-		{#if type === "text"}
-			<p>{@html value}</p>
-		{:else if type === "img"}
-			<img src="assets/deep/{value[0].src}" alt="{value[0].alt}" />
-		{:else if type === "list"}
-			<ul>
-				{#each value as item}
-					<li>{@html item.value}</li>
-				{/each}
-			</ul>
-		{:else if type === "quotes"}
-			<div class="quotes">
-				{#each value as item, i}
-					<p class="quote" id="quote-{i}">{@html item.value}</p>
-				{/each}
-			</div>
-		{/if}
-	{/each}
+	{#if content && content[0]}
+		{#each content[0] as { type, value }}
+			{#if type === "text"}
+				<p>{@html value}</p>
+			{:else if type === "table"}
+				{#if value[0].title}
+					<p class="viz-title">{@html value[0].title}</p>
+				{/if}
+				<CostTable />
+				{#if value[0].credit}
+					<p class="viz-credit">{@html value[0].credit}</p>
+				{/if}
+			{:else if type === "img"}
+				<div class="img-wrapper">
+					{#if value[0].title}
+						<p class="viz-title">{@html value[0].title}</p>
+					{/if}
+					<img src="assets/deep/{value[0].src}" alt="{value[0].alt}" />
+					{#if value[0].credit}
+						<p class="viz-credit">{@html value[0].credit}</p>
+					{/if}
+				</div>
+			{:else if type === "list"}
+				<ul>
+					{#each value as item}
+						<li>{@html item.value}</li>
+					{/each}
+				</ul>
+			{:else if type === "quotes"}
+				<div class="quotes">
+					{#each value as item, i}
+						<p class="quote" id="quote-{i}">{@html item.value}</p>
+					{/each}
+				</div>
+			{/if}
+		{/each}
+	{/if}
 </div>
 
 <style>
@@ -97,13 +116,24 @@
 		line-height: 1.5;
 	}
 
-	p:last-of-type {
+	.img-wrapper {
+		width: 100%;
+		margin: 2rem 0;
+	}
+
+	.viz-credit {
 		font-size: var(--12px);
+		margin: 1rem 0 0 0;
+	}
+
+	.viz-title {
+		font-size: var(--20px);
+		font-weight: 700;
+		margin: 0 0 1rem 0;
 	}
 
 	img {
 		width: 100%;
-		margin: 3rem 0;
 	}
 
 	:global(.orange-span) {

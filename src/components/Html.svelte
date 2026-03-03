@@ -82,7 +82,8 @@
 
 			button.addEventListener("click", () => {
 				deepDiveOpen = true;
-				deepDiveContent = copy.beats[side][beatI - 1][id];
+				console.log(button.id)
+				deepDiveContent = [copy.beats[side][beatI - 1][id], button.id];
 			});
 		});
 

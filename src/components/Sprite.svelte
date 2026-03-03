@@ -121,7 +121,6 @@
 		}
 
 		let cycleFrames = frames.filter((d) => d.cycle === cycleId);
-		console.log(cycleId, cycleFrames.length)
 		if (cycleFrames.length === 0) {
 			frameIndex = 0;
 			return;
@@ -276,10 +275,6 @@
 
 	onDestroy(() => {
 		if (cycleInterval) clearInterval(cycleInterval);
-	});
-
-	$effect(() => {
-		console.log(frameIndex)
 	});
 </script>
 
