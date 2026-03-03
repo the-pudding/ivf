@@ -6,10 +6,10 @@ ivf,follicle-still,,,0,ivf,ivf,,,,,,,
 follicles,,follicle,,,ivf,follicles-1,,,,,,,
 follicles,,follicle,,,follicles-1,follicles-2,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
 follicles,follicle-still,,,0,follicles-2,follicles-2,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
-inefficient,,follicle,,,follicles-2,inefficient,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
-inefficient,follicle-still,,,0,inefficient,inefficient,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
-egg,,follicle,,,inefficient,egg-1,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
-egg,,follicle,,,egg-1,egg-2,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
+inefficient,,follicle,,,follicles-2,inefficient,above,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
+inefficient,follicle-still,,,0,inefficient,inefficient,above,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
+egg,,follicle,,,inefficient,egg-1,above,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
+egg,,follicle,,,egg-1,egg-2,above,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
 egg,follicle-still,,,0,egg-2,egg-2,,,,explanation,"baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle, baby:follicle",1,cluster
 hormones,,egg,,,egg-2,hormones,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
 hormones,egg-still,,,0,hormones,hormones,,,,explanation,"baby:egg, baby:egg, baby:egg, baby:egg, baby:egg, baby:egg",1,cluster
@@ -27,9 +27,9 @@ genetic-testing,,embryo,,,genetic-testing-1,genetic-testing-2,,,,explanation,"ba
 genetic-testing,embryo-still,,TRUE,0,genetic-testing-2,genetic-testing-2,,,,explanation,"baby:embryo, baby:embryo",1,cluster
 lottery,,follicle,,,genetic-testing-2,lottery,,,,,,,
 lottery,follicle-still,,,0,lottery,lottery,,,,,,,
-perservere,,embryo,,,lottery,perservere-1,,,,explanation2,"baby:embryo, baby:embryo, baby:embryo",1,cluster
-perservere,,embryo,,,perservere-1,perservere-2,,,,explanation2,"baby:embryo, baby:embryo, baby:embryo",1,cluster
-perservere,embryo-still,,,0,perservere-2,perservere-2,,,,explanation2,"baby:embryo, baby:embryo, baby:embryo",1,cluster
+perservere,,progression,,,lottery,perservere-1,,,,,,,
+perservere,,,,,perservere-1,perservere-2,,,,,,,
+perservere,progression-still,,,0,perservere-2,perservere-2,,,,,,,
 transfer,,embryo,,,perservere-2,transfer-1,,,,,,,
 transfer,,embryo,,,transfer-1,transfer-2,,,,,,,
 transfer,,embryo,,,transfer-2,transfer-3,,,,,,,

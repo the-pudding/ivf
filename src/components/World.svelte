@@ -47,9 +47,6 @@
 		showBoth && beatI === 0 ? initialZoom : zoomOut ? 1 : 4
 	);
 
-	$effect(() => {
-		console.log(zoom)
-	})
 	const viewboxW = $derived(svgW / zoom);
 	const viewboxH = $derived(svgH / zoom);
 	const viewboxX = $derived(

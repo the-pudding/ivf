@@ -72,7 +72,7 @@
 	},
 	{
 		"id": "baby",
-		"rows": 9,
+		"rows": 11,
 		"cols": 4,
 		"frameWidth": 100,
 		"frameHeight": 100,
@@ -130,20 +130,18 @@
 			{ "index": 30, "x": 200, "y": 700, "cycle": "embryo" },
 			{ "index": 31, "x": 300, "y": 700, "cycle": "embryo" },
 			{ "index": 32, "x": 0, "y": 800, "cycle": "child-walk" },
-			{
-				"index": 33,
-				"x": 100,
-				"y": 800,
-				"cycle": "child-walk",
-				"pose": "child-standing"
-			},
+			{ "index": 33, "x": 100, "y": 800, "cycle": "child-walk", "pose": "child-standing" },
 			{ "index": 34, "x": 200, "y": 800, "cycle": "child-walk" },
-			{
-				"index": 35,
-				"x": 300,
-				"y": 800,
-				"pose": "child-extended"
-			}
+			{ "index": 35, "x": 300, "y": 800, "pose": "child-extended" },
+			{ "index": 36, "x": 0, "y": 0, "cycle": "progression" },
+			{ "index": 37, "x": 100, "y": 0, "cycle": "progression" },
+			{ "index": 38, "x": 200, "y": 200, "cycle": "progression" },
+			{ "index": 39, "x": 300, "y": 200, "cycle": "progression" },
+			{ "index": 40, "x": 0, "y": 400, "cycle": "progression" },
+			{ "index": 41, "x": 100, "y": 400, "cycle": "progression" },
+			{ "index": 42, "x": 200, "y": 600, "cycle": "progression" },
+			{ "index": 43, "x": 300, "y": 600, "cycle": "progression" },
+			{ "index": 44, "x": 0, "y": 700, "cycle": "progression", "pose": "progression" }
 		]
 	},
 	{

@@ -87,8 +87,8 @@
 
 		if (forceData.config === "cluster") {
 			simulation = forceSimulation(nodes)
-				.force("charge", forceManyBody().strength(-10))
-				.force("collision", forceCollide().radius(nodeRadius / 4))
+				.force("charge", forceManyBody().strength(-5))
+				.force("collision", forceCollide().radius(nodeRadius / 3))
 				.on("tick", ticked);
 		} else if (forceData.config === "halo") {
 			simulation = forceSimulation(nodes)
@@ -201,5 +201,6 @@
 
 	.gray {
 		filter: grayscale(100%);
+		transition: filter var(--1s) ease-in-out;
 	}
 </style>

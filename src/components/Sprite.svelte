@@ -112,6 +112,7 @@
 	};
 
 	const cycle = (cycleId) => {
+
 		if (prefersReducedMotion.current) return;
 
 		if (cycleInterval) {
@@ -120,7 +121,7 @@
 		}
 
 		let cycleFrames = frames.filter((d) => d.cycle === cycleId);
-
+		console.log(cycleId, cycleFrames.length)
 		if (cycleFrames.length === 0) {
 			frameIndex = 0;
 			return;
@@ -278,8 +279,8 @@
 	});
 
 	$effect(() => {
-		console.log(active, sceneryState)
-	})
+		console.log(frameIndex)
+	});
 </script>
 
 <div
@@ -326,9 +327,15 @@
 		transform: translate(-50%, calc(-100% * var(--y-offset))) scaleX(-1);
 	}
 
+	.active {
+		opacity: 1;
+        transition-delay: 0.5s;
+	}
+
 	.gray {
 		filter: grayscale(100%);
-		transition: filter calc(var(--1s)) ease;
+		transition: filter var(--1s) ease-in-out;
+		transition-delay: 0s !important;
 	}
 
 	.idle {
@@ -337,11 +344,6 @@
 
 	.idle.flipped {
 		animation: bounce-flipped 1s infinite;
-	}
-
-	.active {
-		transition-delay: 0.5s;
-		opacity: 1;
 	}
 
 	.last {

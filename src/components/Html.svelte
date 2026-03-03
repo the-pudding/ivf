@@ -27,7 +27,8 @@
 		})
 	).length;
 
-	let instructionsNeeded = $state(true);
+	let instructionsNeededDef = $state(true);
+	let instructionsNeededDeep = $state(true);
 	let definitionVisible = $state(false);
 	let definitionContent = $state("");
 	let finalFaded = $state(false);
@@ -40,16 +41,28 @@
 		Array.isArray(content) ? content.map((d) => d.value) : [content]
 	);
 
-	const showInstructions = (definitionId) => {
+	const showInstructionsDef = (definitionId) => {
 		const firstDefinition = document.querySelector(
 			`button#definition-${definitionId}`
 		);
 		firstDefinition.style.position = "relative";
 		const instructionSpan = document.createElement("span");
-		instructionSpan.textContent = "Interact for definitions";
+		instructionSpan.textContent = "Hover for definitions";
 		instructionSpan.classList.add("instructions");
 		instructionSpan.classList.add("visible");
 		firstDefinition.appendChild(instructionSpan);
+	};
+
+	const showInstructionsDeep = (deepId) => {
+		const firstDeep = document.querySelector(
+			`button#deep-${deepId}`
+		);
+		firstDeep.style.position = "relative";
+		const instructionSpan = document.createElement("span");
+		instructionSpan.textContent = "Tap for more info";
+		instructionSpan.classList.add("instructions");
+		instructionSpan.classList.add("visible");
+		firstDeep.appendChild(instructionSpan);
 	};
 
 	const setUpButtons = () => {
@@ -125,13 +138,21 @@
 			});
 		});
 
-		if (
-			instructionsNeeded &&
-			((side === "mom" && beatI === 4) || (side === "baby" && beatI == 2))
-		) {
-			showInstructions(side === "mom" ? "retrievals" : "follicles");
-			instructionsNeeded = false;
-		}
+		// if (
+		// 	instructionsNeededDef &&
+		// 	((side === "mom" && beatI === 4) || (side === "baby" && beatI == 2))
+		// ) {
+		// 	showInstructionsDef(side === "mom" ? "retrievals" : "follicles");
+		// 	instructionsNeededDef = false;
+		// }
+
+		// if (
+		// 	instructionsNeededDeep &&
+		// 	((side === "mom" && beatI === 5) || (side === "baby" && beatI == 3))
+		// ) {
+		// 	showInstructionsDeep(side === "mom" ? "needles" : "births");
+		// 	instructionsNeededDeep = false;
+		// }
 	};
 
 	const switchSides = (toSide) => {
@@ -315,8 +336,8 @@
 	}
 
 	:global(.copy p a:hover) {
-		color: var(--ivf-dark-purple);
-		text-decoration-color: var(--ivf-dark-purple);
+		color: var(--color-bg);
+		text-decoration-color: var(--color-bg);
 	}
 
 	.left p.multi:nth-of-type(1) {
@@ -426,6 +447,8 @@
 		background: var(--ivf-yellow);
 		border: 2px solid var(--ivf-yellow);
 		transform: translateY(-2px);
+		font-weight: 700;
+		color: var(--color-bg);
 	}
 
 	button.final {
@@ -438,7 +461,12 @@
 		white-space: nowrap;
 		background: none;
 		border: none;
-		padding: 0;
+		border-radius: 0;
+		background-image: linear-gradient(to right, var(--ivf-mid-purple) 70%, rgba(255,255,255,0) 0%);
+		background-position: bottom;
+		background-size: 8px 2px; /* 12px = total dash+gap width | 2px = thickness */
+		background-repeat: repeat-x;
+		padding: 0 0 2px 0;
 		text-transform: none;
 	}
 
@@ -460,7 +488,7 @@
 	:global(button[id^="deep-"]) {
 		text-transform: none;
 		font-weight: bold;
-		border: 2px solid #4c5c8f;
+		border: 2px solid var(--ivf-mid-purple);
 		background: var(--color-button-bg);
 		padding: 0.1rem 0.25rem;
 		border-radius: 4px;
@@ -485,13 +513,13 @@
 		transform: translateY(-2px);
 	}
 
-	:global(.icon-armor, .icon-egg, .icon-embryo, .icon-baby, .icon-follicle, .icon-fertilized) {
+	:global(.icon-armor, .icon-egg, .icon-embryo, .icon-baby, .icon-follicle, .icon-fertilized, .icon-ab-embryo) {
 		position: relative;
 		font-weight: 700;
 		margin-left: 1.25rem;
 	}
 
-	:global(.icon-armor::before, .icon-egg::before, .icon-embryo::before, .icon-baby::before, .icon-follicle::before, .icon-fertilized::before) {
+	:global(.icon-armor::before, .icon-egg::before, .icon-embryo::before, .icon-baby::before, .icon-follicle::before, .icon-fertilized::before, .icon-ab-embryo::before) {
 		content: "";
 		position: absolute;
 		width: 1.5rem;
@@ -512,6 +540,12 @@
 
 	:global(.icon-embryo::before) {
 		background-image: url('/assets/sprites/icon-embryo.png');
+	}
+
+	:global(.icon-ab-embryo::before) {
+		background-image: url('/assets/sprites/icon-embryo.png');
+		filter: grayscale(100%);
+		opacity: 0.75;
 	}
 
 	:global(.icon-baby::before) {

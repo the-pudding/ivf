@@ -48,4 +48,8 @@
 	:global(header .wordmark svg .text path) {
 		fill: var(--ivf-x-light-purple);
 	}
+
+	:global(header .wordmark svg .shadow path) {
+		fill: rgba(0, 0, 0, 0.8);
+	}
 </style>

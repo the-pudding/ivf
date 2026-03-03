@@ -7,8 +7,6 @@
 	const close = () => {
 		open = false;
 	};
-
-	console.log(content);
 </script>
 
 <div
@@ -56,7 +54,7 @@
 		width: 450px;
 		background: #090d2e;
 		z-index: var(--z-top);
-		padding: 1rem;
+		padding: 1rem 2rem;
 		overflow: scroll;
 	}
 
@@ -96,10 +94,31 @@
 
 	p, ul {
 		margin: 2rem 0;
+		line-height: 1.5;
 	}
 
 	p:last-of-type {
 		font-size: var(--12px);
+	}
+
+	img {
+		width: 100%;
+		margin: 3rem 0;
+	}
+
+	:global(.orange-span) {
+		color: var(--ivf-orange);
+		font-weight: 700;
+	}
+
+	:global(.yellow-span) {
+		color: var(--ivf-yellow);
+		font-weight: 700;
+	}
+
+	:global(.purple-span) {
+		color: var(--ivf-x-light-purple);
+		font-weight: 700;
 	}
 
 	.quotes {
