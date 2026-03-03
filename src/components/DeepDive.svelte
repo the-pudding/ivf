@@ -38,6 +38,18 @@
 				{#if value[0].credit}
 					<p class="viz-credit">{@html value[0].credit}</p>
 				{/if}
+			{:else if type === "diagram"}
+				{#each value as step, i}
+					<div class="step-wrapper">
+						<div class="img-wrapper">
+							<img src="assets/deep/{step.src}" alt="{step.alt}" />
+						</div>
+						<div class="diagram-deets">
+							<p class="diagram-title"><span>{i+1}</span> {@html step.title}</p>
+							<p>{@html step.text}</p>
+						</div>
+					</div>
+				{/each}
 			{:else if type === "img"}
 				<div class="img-wrapper">
 					{#if value[0].title}
@@ -126,14 +138,62 @@
 		margin: 1rem 0 0 0;
 	}
 
-	.viz-title {
+	.viz-title, .diagram-title {
 		font-size: var(--20px);
 		font-weight: 700;
 		margin: 0 0 1rem 0;
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.diagram-title span {
+		background: var(--ivf-yellow);
+		color: var(--color-bg);
+		font-size: var(--14px);
+		width: 24px;
+		height: 24px;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 50%;
 	}
 
 	img {
 		width: 100%;
+	}
+
+	.step-wrapper {
+		display: flex;
+		flex-direction: row;
+		gap: 1.5rem;
+		padding: 2rem 0;
+		border-bottom: 1px solid #191F54;
+	}
+
+	.step-wrapper:last-of-type {
+		border-bottom: none;
+	}
+
+	.step-wrapper p {
+		margin: 0;
+	}
+
+	.step-wrapper .img-wrapper {
+		width: 80px;
+		height: 80px;
+		margin: 0.25rem 0 0 0;
+	}
+
+	.step-wrapper .img-wrapper img {
+		width: 100%;
+	}
+
+	.step-wrapper .diagram-deets {
+		flex: 1;
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
 	}
 
 	:global(.orange-span) {
