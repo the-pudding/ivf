@@ -25,7 +25,7 @@
 		top: 0;
 		height: var(--header-height);
 		width: 100%;
-		z-index: 1000;
+		z-index: 99;
 		pointer-events: none;
 	}
 
