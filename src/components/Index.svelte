@@ -73,6 +73,11 @@
 	};
 
 	const onKeyDown = (e) => {
+		if (e.key === "Escape" && deepDiveOpen) {
+            deepDiveOpen = false;
+            return;
+        }
+
 		if (!started) return;
 		if (e.key === "ArrowDown") {
 			next();
@@ -85,6 +90,17 @@
 		}
 	};
 
+	const handleClickOutside = (e) => {
+        if (!deepDiveOpen) return;
+
+        const isTrigger = e.target.closest('.deep .close');
+        const isInsideDeepDive = e.target.closest('.deep');
+
+        if (!isInsideDeepDive && !isTrigger) {
+            deepDiveOpen = false;
+        }
+    };
+
 	$effect(() => {
 		if (beatI >= numBeats - 1 || !started) {
 			showBoth = true;
@@ -96,7 +112,7 @@
 	$effect(() => switchSides(side));
 </script>
 
-<svelte:window on:keydown={onKeyDown} />
+<svelte:window on:keydown={onKeyDown} on:mousedown={handleClickOutside}/>
 
 <article class:locked>
 	<div class="main" use:focusTrap={locked && !deepDiveOpen}>

@@ -95,4 +95,20 @@ const getTotalStyle = (value) => {
   td:not(.city-cell), th:not(:first-of-type) {
     min-width: 80px;
   }
+
+  @media (max-width: 600px) {
+    table {
+      font-size: 10px;
+    }
+
+    th, td {
+      padding: 8px 5px;
+    }
+
+    th:first-of-type, 
+    .city-cell {
+      width: 84px; 
+      min-width: 84px;
+    }
+  }
 </style>

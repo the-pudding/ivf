@@ -86,7 +86,8 @@
 		background: #090d2e;
 		z-index: var(--z-top);
 		padding: 1rem 2rem;
-		overflow: scroll;
+		overflow-y: scroll;
+		overflow-x: hidden;
 	}
 
 	.deep.left {
@@ -107,16 +108,34 @@
 	}
 
 	button.close {
-		background: none;
+		background: var(--ivf-yellow);
 		border: none;
-		height: 24px;
-		width: 24px;
+		height: 32px;
+		width: 32px;
 		padding: 0;
 		margin-bottom: 2rem;
 		display: block;
 		position: sticky;
 		top: 0;
-		padding: 4px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		transition: all calc(var(--1s) * 0.3) ease;
+		box-shadow: 0 2px 16px rgba(247, 227, 189, 0.5);
+	}
+
+	button.close:hover {
+		background: var(--ivf-mid-yellow);
+		transform: translateY(-2px);
+	}
+
+	:global(button.close svg) {
+		width: 16px;
+		height: 16px;
+	}
+
+	:global(button.close svg path) {
+		fill: #090d2e;
 	}
 
 	.left button.close {
@@ -130,7 +149,7 @@
 
 	.img-wrapper {
 		width: 100%;
-		margin: 2rem 0;
+		margin: 3rem 0;
 	}
 
 	.viz-credit {
@@ -287,13 +306,8 @@
 
 	@media (max-width: 600px) {
 		.deep {
-			width: 350px;
-		}
-	}
-
-	@media (max-width: 400px) {
-		.deep {
-			width: 300px;
+			width: 90%;
+			padding: 1rem;
 		}
 	}
 </style>

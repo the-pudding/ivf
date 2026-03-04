@@ -32,6 +32,7 @@
 	let definitionVisible = $state(false);
 	let definitionContent = $state("");
 	let finalFaded = $state(false);
+	let lastTriggerEl = $state(null);
 
 	let atTheEnd = $derived(beatI === numBeats - 1);
 	let content = $derived(
@@ -48,7 +49,7 @@
 		firstDefinition.style.position = "relative";
 		const instructionSpan = document.createElement("span");
 		instructionSpan.textContent = "Hover for definitions";
-		instructionSpan.classList.add("instructions");
+		instructionSpan.classList.add("instructionsDef");
 		instructionSpan.classList.add("visible");
 		firstDefinition.appendChild(instructionSpan);
 	};
@@ -60,7 +61,7 @@
 		firstDeep.style.position = "relative";
 		const instructionSpan = document.createElement("span");
 		instructionSpan.textContent = "Tap for more info";
-		instructionSpan.classList.add("instructions");
+		instructionSpan.classList.add("instructionsDeep");
 		instructionSpan.classList.add("visible");
 		firstDeep.appendChild(instructionSpan);
 	};
@@ -81,9 +82,18 @@
 			span.replaceWith(button);
 
 			button.addEventListener("click", () => {
+				instructionsNeededDeep = false;
+				lastTriggerEl = button;
 				deepDiveOpen = true;
-				console.log(button.id)
 				deepDiveContent = [copy.beats[side][beatI - 1][id], button.id];
+			});
+
+			button.addEventListener("mouseenter", (e) => {
+				instructionsNeededDeep = false;
+			});
+
+			button.addEventListener("mouseleave", (e) => {
+				instructionsNeededDeep = false;
 			});
 		});
 
@@ -115,6 +125,7 @@
 			};
 
 			button.addEventListener("mouseenter", (e) => {
+				instructionsNeededDef = false;
 				const rect = button.getBoundingClientRect();
 				const x = rect.left;
 				const y = rect.top;
@@ -122,6 +133,7 @@
 			});
 
 			button.addEventListener("click", (e) => {
+				instructionsNeededDef = false;
 				if (definitionVisible) {
 					definitionVisible = false;
 					definitionContent = "";
@@ -139,21 +151,17 @@
 			});
 		});
 
-		// if (
-		// 	instructionsNeededDef &&
-		// 	((side === "mom" && beatI === 4) || (side === "baby" && beatI == 2))
-		// ) {
-		// 	showInstructionsDef(side === "mom" ? "retrievals" : "follicles");
-		// 	instructionsNeededDef = false;
-		// }
+		$effect(() => {
+			document.querySelectorAll('.instructionsDef, .instructionsDeep').forEach(el => el.remove());
 
-		// if (
-		// 	instructionsNeededDeep &&
-		// 	((side === "mom" && beatI === 5) || (side === "baby" && beatI == 3))
-		// ) {
-		// 	showInstructionsDeep(side === "mom" ? "needles" : "births");
-		// 	instructionsNeededDeep = false;
-		// }
+			if (instructionsNeededDef && ((side === "mom" && beatI === 4) || (side === "baby" && beatI == 2))) {
+				showInstructionsDef(side === "mom" ? "retrievals" : "follicles");
+			}
+
+			if (instructionsNeededDeep && ((side === "mom" && beatI === 5) || (side === "baby" && beatI == 3))) {
+				showInstructionsDeep(side === "mom" ? "needles" : "births");
+			}
+		});
 	};
 
 	const switchSides = (toSide) => {
@@ -186,6 +194,15 @@
 			finalFaded = false;
 		}
 	});
+
+	$effect(() => {
+        if (!deepDiveOpen && lastTriggerEl) {
+            setTimeout(() => {
+                lastTriggerEl.focus();
+                lastTriggerEl = null;
+            }, 10);
+        }
+    });
 </script>
 
 <div class="html-wrapper" class:visible>
@@ -375,7 +392,7 @@
 		visibility: visible;
 	}
 
-	:global(span.instructions) {
+	:global(span.instructionsDef, span.instructionsDeep) {
 		position: absolute;
 		font-size: var(--12px);
 		top: -1.75rem;
@@ -387,13 +404,22 @@
 		pointer-events: none;
 		opacity: 0;
 		transition: opacity calc(var(--1s) * 0.3) ease-in;
+		animation: subtle-shift-relative calc(var(--1s) * 0.5) ease-in-out infinite;
 	}
 
-	:global(span.instructions.visible) {
+	@keyframes subtle-shift-relative {
+		0%   { transform: translate(-50%, -100%); }
+		25%  { transform: translate(calc(-50% + 1px), -100%); }
+		50%  { transform: translate(-50%, -100%); }
+		75%  { transform: translate(calc(-50% - 1px), -100%); }
+		100% { transform: translate(-50%, -100%); }
+	}
+
+	:global(span.instructionsDef.visible, span.instructionsDeep.visible) {
 		opacity: 1;
 	}
 
-	:global(span.instructions)::after {
+	:global(span.instructionsDef::after, span.instructionsDeep::after) {
 		content: "";
 		position: absolute;
 		top: calc(100% - 1px);
@@ -471,7 +497,7 @@
 		text-transform: none;
 	}
 
-	:global(button[id^="definition-"]::before, span.instructions::before) {
+	:global(button[id^="definition-"]::before, span.instructionsDef::before) {
 		content: "";
 		display: inline-block;
 		width: 14px;
@@ -489,15 +515,16 @@
 	:global(button[id^="deep-"]) {
 		text-transform: none;
 		font-weight: bold;
-		border: 2px solid var(--ivf-mid-purple);
 		background: var(--color-button-bg);
-		padding: 0.1rem 0.25rem;
+		padding: 0.25rem;
+		border: none;
 		border-radius: 4px;
 		white-space: nowrap;
 		transition: all calc(var(--1s) * 0.3) ease;
+		box-shadow: 0 2px 16px rgba(247, 227, 189, 0.5);
 	}
 
-	:global(button[id^="deep-"]::before) {
+	:global(button[id^="deep-"]::before, span.instructionsDeep::before) {
 		content: "";
 		display: inline-block;
 		width: 14px;
@@ -594,7 +621,7 @@
 		}
 
 		.copy p {
-			margin: 0.15rem 0;
+			margin: 0.25rem 0;
 		}
 
 		.left p.multi:nth-of-type(1) {
