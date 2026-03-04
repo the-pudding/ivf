@@ -257,8 +257,8 @@
 		const parentEl = document.querySelector(`#side-${id}`);
 		const parentRect = parentEl.getBoundingClientRect();
 
-		x = screenPoint.x - parentRect.left;
-		y = screenPoint.y - parentRect.top;
+		x = Math.round(screenPoint.x - parentRect.left);
+		y = Math.round(screenPoint.y - parentRect.top);
 	};
 
 	$effect(() => updatePosition(currentT, camera.current, worldW, worldH));
@@ -279,21 +279,24 @@
 </script>
 
 <div
-	class="sprite"
-	class:flipped
-	class:active={active}
-	class:last={isLastStep}
-	class:gray
-	class:idle={idle && !prefersReducedMotion.current}
-	style={`--y-offset: ${yOffset}`}
-	style:width={`${width}px`}
-	style:height={`${height}px`}
-	style:background-image={`url("assets/sprites/${id}.png")`}
-	style:background-size={`calc(${cols} * 100%) calc(${rows} * 100%)`}
-	style:background-position={`${scale * frame.x * -1}px ${scale * frame.y * -1}px`}
-	style:left={`${x}px`}
-	style:top={`${y}px`}
-></div>
+    class="sprite-container"
+    class:active={active}
+    class:flipped={flipped}
+    style:transform={`translate3d(${x}px, ${y}px, 0) ${flipped ? 'scaleX(-1)' : ''}`}
+>
+    <div
+        class="sprite"
+        class:idle={idle && !prefersReducedMotion.current}
+        class:gray={gray}
+        class:last={isLastStep}
+        style={`--y-offset: ${yOffset}`}
+        style:width={`${width}px`}
+        style:height={`${height}px`}
+        style:background-image={`url("assets/sprites/${id}.png")`}
+        style:background-size={`calc(${cols} * 100%) calc(${rows} * 100%)`}
+        style:background-position={`${scale * frame.x * -1}px ${scale * frame.y * -1}px`}
+    ></div>
+</div>
 
 {#if forceData && x && y}
 	<Force
@@ -309,61 +312,44 @@
 {/if}
 
 <style>
-	.sprite {
+	.sprite-container {
 		position: absolute;
-		transform: translate(-50%, calc(-100% * var(--y-offset)));
-		filter: grayscale(0%);
-		will-change: filter;
+		top: 0;
+		left: 0;
+		/* Ensure the container itself has no size so (0,0) is the center */
+		width: 0;
+		height: 0;
+		will-change: transform;
 		transition: opacity var(--1s) ease-in-out;
 		opacity: 0;
+		z-index: 1;
 	}
 
-	.flipped {
-		transform: translate(-50%, calc(-100% * var(--y-offset))) scaleX(-1);
-	}
-
-	.active {
+	.sprite-container.active {
 		opacity: 1;
-        transition-delay: 0.5s;
+		/* Move the transition delay here if you want the fade-in delayed */
+		transition-delay: 0.5s;
 	}
 
-	.gray {
-		filter: grayscale(100%);
-		transition: filter var(--1s) ease-in-out;
-		transition-delay: 0s !important;
+	.sprite {
+		/* This handles the centering relative to the container's (0,0) */
+		position: absolute;
+		transform: translate(-50%, calc(-100% * var(--y-offset)));
+		will-change: transform;
+		filter: grayscale(0%);
 	}
 
 	.idle {
-		animation: bounce 1s infinite;
-	}
-
-	.idle.flipped {
-		animation: bounce-flipped 1s infinite;
-	}
-
-	.last {
-		transition-delay: 1s;
+		/* Only one animation needed now! */
+		animation: bounce 1s infinite ease-in-out;
 	}
 
 	@keyframes bounce {
-		0%,
-		100% {
+		0%, 100% {
 			transform: translate(-50%, calc(-100% * var(--y-offset))) translateY(0);
 		}
 		50% {
-			transform: translate(-50%, calc(-100% * var(--y-offset))) translateY(-2px);
-		}
-	}
-
-	@keyframes bounce-flipped {
-		0%,
-		100% {
-			transform: translate(-50%, calc(-100% * var(--y-offset))) scaleX(-1)
-				translateY(0);
-		}
-		50% {
-			transform: translate(-50%, calc(-100% * var(--y-offset))) scaleX(-1)
-				translateY(-2px);
+			transform: translate(-50%, calc(-100% * var(--y-offset))) translateY(-4px);
 		}
 	}
 </style>

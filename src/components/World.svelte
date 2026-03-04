@@ -192,6 +192,7 @@
 
 	:global(.world svg) {
 		height: 100%;
+		shape-rendering: crispEdges;
 	}
 
 	.foreground {
