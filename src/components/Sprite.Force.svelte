@@ -24,6 +24,7 @@
 	} = $props();
 
 	let currentForceId = $state();
+
 	let nodeRadius = $derived(
 		Math.max(
 			spriteWidth * +forceData.sizeFactor,
@@ -33,7 +34,8 @@
 	let spriteIds = $derived(forceData.sprites.split(",").map((d) => d.trim()));
 	let nodes = $derived(
 		Array.from({ length: spriteIds.length }, (d, i) => ({
-			sprite: spriteIds.length === 1 ? forceData.sprites : spriteIds[i]
+			sprite: spriteIds.length === 1 ? forceData.sprites : spriteIds[i],
+			facingRight: false // Initial state
 		}))
 	);
 
@@ -41,10 +43,25 @@
 	let nodeEls = [];
 
 	const ticked = () => {
+		const buffer = 10;
+
 		nodeEls.forEach((el, i) => {
 			const d = nodes[i];
 			if (el && d.x != null && d.y != null) {
-				el.style.transform = `translate(${d.x - nodeRadius / 2}px, calc(${d.y - nodeRadius / 2}px - ${yOffset * 100 - 50}%))`;
+				
+				if (currentForceId === "friends") {
+					if (d.x > centerX + buffer) {
+						d.facingRight = true;
+					} else if (d.x < centerX - buffer) {
+						d.facingRight = false;
+					}
+				} else {
+					d.facingRight = false;
+				}
+
+				const flip = d.facingRight ? ' scaleX(-1)' : '';
+				
+				el.style.transform = `translate(${d.x - nodeRadius / 2}px, calc(${d.y - nodeRadius / 2}px - ${yOffset * 100 - 50}%))${flip}`;
 			}
 		});
 	};
@@ -197,6 +214,7 @@
 <style>
 	.node {
 		position: absolute;
+		transition: filter var(--1s) ease-in-out, transform 0.1s linea
 	}
 
 	.gray {
