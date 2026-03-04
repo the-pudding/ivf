@@ -282,12 +282,12 @@
     class="sprite-container"
     class:active={active}
     class:flipped={flipped}
+	class:gray={gray}
     style:transform={`translate3d(${x}px, ${y}px, 0) ${flipped ? 'scaleX(-1)' : ''}`}
 >
     <div
         class="sprite"
         class:idle={idle && !prefersReducedMotion.current}
-        class:gray={gray}
         class:last={isLastStep}
         style={`--y-offset: ${yOffset}`}
         style:width={`${width}px`}
@@ -329,6 +329,12 @@
 		opacity: 1;
 		/* Move the transition delay here if you want the fade-in delayed */
 		transition-delay: 0.5s;
+	}
+
+	.sprite-container.gray {
+		filter: grayscale(100%);
+		transition: filter var(--1s) ease-in-out;
+		transition-delay: 0s !important;
 	}
 
 	.sprite {
