@@ -15,10 +15,25 @@
 <style>
 	section {
 		max-width: 600px;
-		margin: 5rem auto;
+		margin: 0rem auto;
+		padding: 5rem 1rem 1rem;
 	}
 
 	h4 {
 		font-weight: bold;
+	}
+
+	p {
+		font-size: var(--14px);
+	}
+
+	@media (max-width: 600px) {
+		h4 {
+			font-size: var(--20px);
+		}
+
+		p {
+			font-size: var(--12px);
+		}
 	}
 </style>

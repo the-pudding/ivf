@@ -57,7 +57,7 @@
 				onclick={() => start("baby")}
 				tabindex={started ? -1 : 0}
 			>
-				Baby
+				Child
 				<span>{@html babySvg}</span>
 			</button>
 		</div>

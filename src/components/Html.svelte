@@ -254,7 +254,7 @@
 			class:final={atTheEnd}
 			tabindex={visible ? "0" : "-1"}
 		>
-			Baby
+			Child
 			<span>{@html babySvg}</span>
 		</button>
 	</div>
@@ -407,14 +407,6 @@
 		animation: subtle-shift-relative calc(var(--1s) * 0.5) ease-in-out infinite;
 	}
 
-	@keyframes subtle-shift-relative {
-		0%   { transform: translate(-50%, -100%); }
-		25%  { transform: translate(calc(-50% + 1px), -100%); }
-		50%  { transform: translate(-50%, -100%); }
-		75%  { transform: translate(calc(-50% - 1px), -100%); }
-		100% { transform: translate(-50%, -100%); }
-	}
-
 	:global(span.instructionsDef.visible, span.instructionsDeep.visible) {
 		opacity: 1;
 	}
@@ -461,7 +453,7 @@
 	}
 
 	button.inactive {
-		font-weight: normal;
+		font-weight: 700;
 		border: 2px solid var(--ivf-mid-purple);
 		color: var(--ivf-mid-purple);
 		background: var(--color-bg);
@@ -481,6 +473,8 @@
 	button.final {
 		pointer-events: all !important;
 		cursor: pointer;
+		animation: subtle-shift calc(var(--1s) * 0.5) ease-in-out infinite;
+
 	}
 
 	:global(button[id^="definition-"]) {
@@ -588,6 +582,22 @@
 		background-image: url('/assets/sprites/icon-fertilized.png');
 	}
 
+	@keyframes subtle-shift {
+		0%   { transform: translateX(0); }
+		25%  { transform: translateX(1px); }
+		50%  { transform: translateX(0); }
+		75%  { transform: translateX(-1px); }
+		100% { transform: translateX(0); }
+	}
+
+	@keyframes subtle-shift-relative {
+		0%   { transform: translate(-50%, -100%); }
+		25%  { transform: translate(calc(-50% + 1px), -100%); }
+		50%  { transform: translate(-50%, -100%); }
+		75%  { transform: translate(calc(-50% - 1px), -100%); }
+		100% { transform: translate(-50%, -100%); }
+	}
+
 	@media (min-width: 1800px) {
 		.copy.left,
 		.copy.right {
@@ -657,6 +667,10 @@
 			font-size: var(--14px);
 			line-height: 1.3;
 			padding: 0.75rem;
+		}
+
+		:global(.icon-armor::before, .icon-egg::before, .icon-embryo::before, .icon-baby::before, .icon-follicle::before, .icon-fertilized::before, .icon-ab-embryo::before) {
+			top: -2px;
 		}
 	}
 </style>

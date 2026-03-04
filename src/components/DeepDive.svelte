@@ -80,7 +80,7 @@
 <style>
 	.deep {
 		height: 100svh;
-		position: absolute;
+		position: fixed;
 		top: 0;
 		width: 450px;
 		background: #090d2e;
@@ -88,6 +88,8 @@
 		padding: 1rem 2rem;
 		overflow-y: scroll;
 		overflow-x: hidden;
+		visibility: hidden;
+		pointer-events: none;
 	}
 
 	.deep.left {
@@ -105,6 +107,8 @@
 	.deep.open {
 		transform: translate(0, 0);
 		transition: transform calc(var(--1s) * 0.5) ease-in-out;
+		visibility: visible;
+    	pointer-events: auto;
 	}
 
 	button.close {
@@ -172,7 +176,8 @@
 		font-size: var(--14px);
 		width: 24px;
 		height: 24px;
-		display: inline-flex;
+		flex-shrink: 0; 
+    	display: flex;
 		align-items: center;
 		justify-content: center;
 		border-radius: 50%;
@@ -308,6 +313,15 @@
 		.deep {
 			width: 90%;
 			padding: 1rem;
+		}
+
+		.step-wrapper {
+			gap: 1rem;
+		}
+
+		.step-wrapper .img-wrapper {
+			width: 50px;
+			height: 50px;
 		}
 	}
 </style>

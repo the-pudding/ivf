@@ -32,9 +32,9 @@
 			Prev
 		</button>
 
-		<button onclick={showCredits}>Go to Credits</button>
+		<button class="credit-btn" onclick={showCredits}>Go to Credits</button>
 
-		<button class="nav" onclick={next}>
+		<button class="nav" disabled={atTheEnd} onclick={next}>
 			<span>{@html chevronDownSvg}</span>
 			Next
 		</button>
@@ -144,6 +144,21 @@
 	button.restart.parent span {
 		height: 16px;
 		width: 16px;
+	}
+
+	.credit-btn {
+		border: 2px solid var(--ivf-mid-purple);
+		color: var(--ivf-mid-purple);
+    	background: var(--color-bg); 
+		box-shadow: 0 2px 16px rgba(76, 92, 143, 0.5);
+		line-height: 1;
+	}
+
+	.credit-btn:hover {
+		background: var(--ivf-mid-yellow);
+		border: 2px solid var(--ivf-mid-yellow);
+		box-shadow: 0 2px 16px rgba(76, 92, 143, 0.5);
+		color: var(--color-bg); 
 	}
 
 	.mobile-instructions {
