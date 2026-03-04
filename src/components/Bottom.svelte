@@ -19,6 +19,10 @@
 		locked = false;
 		document.querySelector("#methods").scrollIntoView({ behavior: "smooth" });
 	};
+
+	$effect(() => {
+		console.log(beatI)
+	})
 </script>
 
 <div class="bottom" class:end={atTheEnd} class:visible>
@@ -27,7 +31,7 @@
 			{beatI}/{numBeats - 1}
 		</div>
 
-		<button class="nav" onclick={prev}>
+		<button class="nav" disabled={beatI === 1} onclick={prev}>
 			<span>{@html chevronUpSvg}</span>
 			Prev
 		</button>
@@ -49,7 +53,7 @@
 
 		<span class="desktop-instructions left">Tap to navigate</span>
 
-		<button class="nav" onclick={prev}>
+		<button class="nav" disabled={beatI === 1} onclick={prev}>
 			<span>{@html chevronUpSvg}</span>
 			Prev
 		</button>
@@ -61,7 +65,7 @@
 			{/if}
 		</span>
 
-		<button class="nav" onclick={next}>
+		<button class="nav" disabled={atTheEnd} onclick={next}>
 			<span>{@html chevronDownSvg}</span>
 			Next
 		</button>

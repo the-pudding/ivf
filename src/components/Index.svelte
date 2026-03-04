@@ -1,4 +1,5 @@
 <script>
+	import { projectState } from "$runes/misc.svelte.js";
 	import Title from "$components/Title.svelte";
 	import Html from "$components/Html.svelte";
 	import World from "$components/World.svelte";
@@ -22,7 +23,6 @@
 	let beatI = $state(0);
 	let direction = $state("forward");
 	let titleHeight = $state(0);
-	let started = $state(false);
 	let locked = $state(true);
 	let showBoth = $state(true);
 	let deepDiveOpen = $state(false);
@@ -78,7 +78,7 @@
             return;
         }
 
-		if (!started) return;
+		if (!projectState.started) return;
 		if (e.key === "ArrowDown") {
 			next();
 		} else if (e.key === "ArrowUp") {
@@ -102,7 +102,7 @@
     };
 
 	$effect(() => {
-		if (beatI >= numBeats - 1 || !started) {
+		if (beatI >= numBeats - 1 || !projectState.started) {
 			showBoth = true;
 		} else {
 			showBoth = false;
@@ -116,15 +116,15 @@
 
 <article class:locked>
 	<div class="main" use:focusTrap={locked && !deepDiveOpen}>
-		<Title bind:started bind:side bind:beatI bind:titleHeight />
+		<Title bind:side bind:beatI bind:titleHeight />
 
 		<figure
 			class="story"
-			class:started
+			class:started={projectState.started}
 			style={`--title-height: ${titleHeight}px`}
 		>
 			<Html
-				visible={started}
+				visible={projectState.started}
 				{showBoth}
 				bind:side
 				bind:beatI
@@ -138,7 +138,7 @@
 		</figure>
 
 		<Bottom
-			visible={started}
+			visible={projectState.started}
 			{atTheEnd}
 			{numBeats}
 			{next}

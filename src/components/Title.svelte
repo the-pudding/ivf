@@ -1,11 +1,11 @@
 <script>
+	import { projectState } from "$runes/misc.svelte.js";
 	import { onMount } from "svelte";
 	import copy from "$data/copy.json";
 	import parentSvg from "$svg/parent-preview.svg";
 	import babySvg from "$svg/baby-preview.svg";
 
 	let {
-		started = $bindable(),
 		side = $bindable(),
 		beatI = $bindable(),
 		titleHeight = $bindable()
@@ -14,7 +14,7 @@
 	let visible = $state(false);
 
 	const start = (id) => {
-		started = true;
+		projectState.started = true;
 		side = id;
 		beatI = 1;
 		visible = false;
@@ -46,7 +46,7 @@
 			<button
 				class="parent"
 				onclick={() => start("mom")}
-				tabindex={started ? -1 : 0}
+				tabindex={projectState.started ? -1 : 0}
 			>
 				<span>{@html parentSvg}</span>
 				Parent</button
@@ -55,7 +55,7 @@
 			<button
 				class="baby"
 				onclick={() => start("baby")}
-				tabindex={started ? -1 : 0}
+				tabindex={projectState.started ? -1 : 0}
 			>
 				Child
 				<span>{@html babySvg}</span>
@@ -87,7 +87,7 @@
 
 	h1 {
 		font-family: var(--serif);
-		margin: 2rem 0;
+		padding: 2rem 0;
 		text-align: center;
 		font-size: var(--80px);
 		max-width: 800px;
