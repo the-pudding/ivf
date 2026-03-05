@@ -43,28 +43,58 @@
 	);
 
 	const showInstructionsDef = (definitionId) => {
-		const firstDefinition = document.querySelector(
-			`button#definition-${definitionId}`
-		);
-		firstDefinition.style.position = "relative";
-		const instructionSpan = document.createElement("span");
-		instructionSpan.textContent = "Hover for definitions";
-		instructionSpan.classList.add("instructionsDef");
-		instructionSpan.classList.add("visible");
-		firstDefinition.appendChild(instructionSpan);
-	};
+        const button = document.querySelector(`button#definition-${definitionId}`);
+        if (!button) return;
+
+        const parentP = button.closest('p');
+        if (!parentP) return;
+
+        // Ensure parent is the coordinate anchor
+        parentP.style.position = "relative";
+
+        const instructionSpan = document.createElement("span");
+        instructionSpan.textContent = "What’s this?";
+        instructionSpan.classList.add("instructionsDef", "visible");
+
+        // Calculate position relative to the P tag
+        const buttonRect = button.getBoundingClientRect();
+        const pRect = parentP.getBoundingClientRect();
+        
+        // Horizontal center of button relative to P
+        const leftOffset = (buttonRect.left - pRect.left) + (buttonRect.width / 2);
+        // Top of button relative to P
+        const topOffset = 0;
+
+        instructionSpan.style.left = `${leftOffset}px`;
+        instructionSpan.style.top = `${topOffset}px`;
+
+        parentP.appendChild(instructionSpan);
+    };
 
 	const showInstructionsDeep = (deepId) => {
-		const firstDeep = document.querySelector(
-			`button#deep-${deepId}`
-		);
-		firstDeep.style.position = "relative";
-		const instructionSpan = document.createElement("span");
-		instructionSpan.textContent = "Tap for more info";
-		instructionSpan.classList.add("instructionsDeep");
-		instructionSpan.classList.add("visible");
-		firstDeep.appendChild(instructionSpan);
-	};
+        const button = document.querySelector(`button#deep-${deepId}`);
+        if (!button) return;
+
+        const parentP = button.closest('p');
+        if (!parentP) return;
+
+        parentP.style.position = "relative";
+
+        const instructionSpan = document.createElement("span");
+        instructionSpan.textContent = "Go deeper";
+        instructionSpan.classList.add("instructionsDeep", "visible");
+
+        const buttonRect = button.getBoundingClientRect();
+        const pRect = parentP.getBoundingClientRect();
+        
+        const leftOffset = (buttonRect.left - pRect.left) + (buttonRect.width / 2);
+        const topOffset = 0;
+
+        instructionSpan.style.left = `${leftOffset}px`;
+        instructionSpan.style.top = `${topOffset}px`;
+
+        parentP.appendChild(instructionSpan);
+    };
 
 	const setUpButtons = () => {
 		definitionVisible = false;
@@ -393,19 +423,20 @@
 	}
 
 	:global(span.instructionsDef, span.instructionsDeep) {
-		position: absolute;
-		font-size: var(--12px);
-		top: -1.75rem;
-		left: 50%;
-		transform: translate(-50%, -100%);
-		background: var(--color-button-bg);
-		padding: 0.5rem;
-		border-radius: 4px;
-		pointer-events: none;
-		opacity: 0;
-		transition: opacity calc(var(--1s) * 0.3) ease-in;
+        position: absolute;
+        font-size: var(--12px);
+        font-weight: 700;
+        transform: translate(-50%, calc(-100% - 10px)); 
+        background: var(--color-button-bg);
+        padding: 0.5rem;
+        border-radius: 4px;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity calc(var(--1s) * 0.3) ease-in;
+        z-index: 10;
+        white-space: nowrap;
 		animation: subtle-shift-relative calc(var(--1s) * 0.5) ease-in-out infinite;
-	}
+    }
 
 	:global(span.instructionsDef.visible, span.instructionsDeep.visible) {
 		opacity: 1;
@@ -591,12 +622,12 @@
 	}
 
 	@keyframes subtle-shift-relative {
-		0%   { transform: translate(-50%, -100%); }
-		25%  { transform: translate(calc(-50% + 1px), -100%); }
-		50%  { transform: translate(-50%, -100%); }
-		75%  { transform: translate(calc(-50% - 1px), -100%); }
-		100% { transform: translate(-50%, -100%); }
-	}
+        0%   { transform: translate(-50%, calc(-100% - 10px)); }
+        25%  { transform: translate(calc(-50% + 1px), calc(-100% - 10px)); }
+        50%  { transform: translate(-50%, calc(-100% - 10px)); }
+        75%  { transform: translate(calc(-50% - 1px), calc(-100% - 10px)); }
+        100% { transform: translate(-50%, calc(-100% - 10px)); }
+    }
 
 	@media (min-width: 1800px) {
 		.copy.left,
