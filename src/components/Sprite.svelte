@@ -113,6 +113,7 @@
 
 	const cycle = (cycleId) => {
 
+
 		if (prefersReducedMotion.current) return;
 
 		if (cycleInterval) {
@@ -121,6 +122,8 @@
 		}
 
 		let cycleFrames = frames.filter((d) => d.cycle === cycleId);
+
+		console.log({ cycleId, cycleFrames });
 		if (cycleFrames.length === 0) {
 			frameIndex = 0;
 			return;
