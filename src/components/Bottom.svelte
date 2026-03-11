@@ -19,10 +19,6 @@
 		locked = false;
 		document.querySelector("#methods").scrollIntoView({ behavior: "smooth" });
 	};
-
-	$effect(() => {
-		console.log(beatI)
-	})
 </script>
 
 <div class="bottom" class:end={atTheEnd} class:visible>
