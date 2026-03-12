@@ -134,11 +134,7 @@
 			</div>
 
 			<section class="links">
-				<a
-					class="img-wrapper"
-					href="https://pudding.cool"
-					aria-label="The Pudding"
-				>
+				<a class="img-wrapper" href="https://pudding.cool">
 					<span class="wordmark">{@html wordmark}</span>
 				</a>
 				<div class="inner">
