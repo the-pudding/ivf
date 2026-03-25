@@ -1,4 +1,4 @@
-# A Journay Through Infertility
+# A Journey Through Infertility
 
 by [Lam Thuy Vo](https://github.com/lamthuyvo), with [Jan Diehm]([url](https://github.com/jadiehm)) and [Michelle Pera-McGhee
   ]([url](https://github.com/mmcghee18))
