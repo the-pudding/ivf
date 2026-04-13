@@ -455,6 +455,13 @@
 		border-top: 6px solid var(--color-button-bg);
 	}
 
+	@media (prefers-reduced-motion: reduce) {
+		button.final,
+		:global(span.instructionsDef, span.instructionsDeep) {
+			animation-name: none !important;
+		}
+	}
+
 	button {
 		display: flex;
 		align-items: center;
