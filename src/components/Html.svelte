@@ -435,7 +435,7 @@
         transition: opacity calc(var(--1s) * 0.3) ease-in;
         z-index: 10;
         white-space: nowrap;
-		animation: subtle-shift-relative calc(var(--1s) * 0.5) ease-in-out infinite;
+		animation: subtle-shift-relative calc(var(--1s) * 0.5) ease-in-out 3;
     }
 
 	:global(span.instructionsDef.visible, span.instructionsDeep.visible) {
