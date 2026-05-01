@@ -1,4 +1,13 @@
-# Svelte Starter
+# A Journey Through Infertility
+
+by [Lam Thuy Vo](https://github.com/lamthuyvo), with [Jan Diehm]([url](https://github.com/jadiehm)) and [Michelle Pera-McGhee
+  ]([url](https://github.com/mmcghee18))
+  
+An interactive scrollytelling piece about IVF told from two parallel perspectives (the mother and the baby). It's built in SvelteKit with D3 and uses an isometric illustrated world (inspired by Monument Valley) that zooms and pans through SVG scenes as the reader scrolls. The data files (beats-mom.csv, beats-baby.csv) drive the animation sequence, and there's a cost comparison table showing IVF expenses across seven U.S. cities ($13,600–$18,600 per cycle). The piece includes sprite-based force-layout visualizations and a split-screen mechanic toggling between the two perspectives.
+
+Published at [pudding.cool/2026/03/ivf](http://pudding.cool/2026/03/ivf).
+
+## Svelte Starter
 
 **NOTE**: This uses Svelte 5 and is under active migration (not all features will work). For the less adventurous, use the [previous version](https://github.com/the-pudding/svelte-starter) (with Svelte 4).
 
