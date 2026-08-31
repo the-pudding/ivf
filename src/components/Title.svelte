@@ -218,4 +218,21 @@
 			font-size: var(--40px);
 		}
 	}
+
+	/* When there isn't enough vertical room (e.g. browser zoomed in), the
+	   title's own layout can push .instructions below the visible area of
+	   its overflow:hidden ancestor. Anchor it to the viewport instead so
+	   the start buttons stay reachable, scrolling internally if needed. */
+	@media (max-height: 700px) {
+		.instructions {
+			position: fixed;
+			top: auto;
+			bottom: 0.5rem;
+			left: 1rem;
+			right: 1rem;
+			margin: 0 auto;
+			max-height: calc(100svh - 1rem);
+			overflow-y: auto;
+		}
+	}
 </style>
